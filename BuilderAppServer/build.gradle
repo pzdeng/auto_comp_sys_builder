@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+// Plugins to apply: Java (for compiling), Jetty (to test locally), War (to create WAR file)
+apply plugin: 'java'
+apply plugin: 'war'
+//define plugin for AWS
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    // Use 'jcenter' for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    mavenCentral()
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+	//hk2
+	compile 'org.glassfish.hk2:hk2-api:2.5.0-b05'
+	compile 'org.glassfish.hk2:hk2-locator:2.5.0-b05'
+	compile 'org.glassfish.hk2:hk2-utils:2.5.0-b05'
+	//Jackson for JSON
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.0'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.8.0'
+    //Java web service
+    compile 'org.ow2.util.bundles:javassist-3.14.0-GA:1.0.0'
+    compile 'javax.annotation:javax.annotation-api:1.2'
+    compile 'javax.ws.rs:javax.ws.rs-api:2.0.1'
+    //Jersey dependencies
+    compile 'org.glassfish.jersey.core:jersey-client:2.23.2'
+	compile 'org.glassfish.jersey.core:jersey-common:2.23.2'
+	compile 'org.glassfish.jersey.containers:jersey-container-servlet-core:2.23.2'
+	compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.23.2'
+	compile 'org.glassfish.jersey.bundles.repackaged:jersey-guava:2.23.2'
+	compile 'org.glassfish.jersey.core:jersey-server:2.23.2'
+	//Validation
+	compile 'javax.validation:validation-api:1.1.0.Final'
+    // Test compiles here.
+    testCompile 'junit:junit:4.12'
+}
