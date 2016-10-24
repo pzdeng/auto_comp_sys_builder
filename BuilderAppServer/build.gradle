@@ -1,12 +1,17 @@
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.akhikhl.gretty:gretty:+'
     }
 }
 
 // Plugins to apply: Java (for compiling), Jetty (to test locally), War (to create WAR file)
 apply plugin: 'java'
 apply plugin: 'war'
+apply plugin: 'org.akhikhl.gretty'
 //define plugin for AWS
 
 // In this section you declare where to find the dependencies of your project
@@ -40,4 +45,10 @@ dependencies {
 	compile 'javax.validation:validation-api:1.1.0.Final'
     // Test compiles here.
     testCompile 'junit:junit:4.12'
+}
+
+gretty {
+    port = 8080
+    contextPath = '/'
+    servletContainer = 'jetty9'
 }
