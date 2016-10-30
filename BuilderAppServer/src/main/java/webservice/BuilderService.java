@@ -23,4 +23,11 @@ public class BuilderService {
     public String respond() {
         return "Computer Parts";
     }
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public ComputerBuild buildService() {
+        return new ComputerBuild();
+    }
 }

@@ -43,6 +43,8 @@ dependencies {
 	compile 'org.glassfish.jersey.core:jersey-server:2.23.2'
 	//Validation
 	compile 'javax.validation:validation-api:1.1.0.Final'
+	//MySQL lib
+	compile 'mysql:mysql-connector-java:5.1.40'
     // Test compiles here.
     testCompile 'junit:junit:4.12'
 }
