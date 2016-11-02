@@ -28,8 +28,7 @@ dependencies {
 	compile 'org.glassfish.hk2:hk2-locator:2.5.0-b05'
 	compile 'org.glassfish.hk2:hk2-utils:2.5.0-b05'
 	//Jackson for JSON
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.0'
-    compile 'com.fasterxml.jackson.core:jackson-core:2.8.0'
+    compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.8.0'
     //Java web service
     compile 'org.ow2.util.bundles:javassist-3.14.0-GA:1.0.0'
     compile 'javax.annotation:javax.annotation-api:1.2'
