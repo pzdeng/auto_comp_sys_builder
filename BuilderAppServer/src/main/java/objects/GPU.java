@@ -17,6 +17,18 @@ public class GPU extends ComputerPart{
 		this.type = Constants.gpu;
 	}
 	
+	//Populate this object with dummy data
+	public void dummyPopulate(){
+		name = "Sapphire AMD Radeon HD 6850 1GB PCI-E Video Card (100315L)";
+		productURL = "https://www.amazon.com/Sapphire-Radeon-6850-Video-100315L/dp/B0047ZGIUK";
+		picURL = "https://images-na.ssl-images-amazon.com/images/I/41qu7WKjnBL.jpg";
+		vendorPrice = (float) 60.00;
+		coreSpeed = (float) 775;
+		coreCount = 960;
+		memSize = 1;
+		year = 2010;
+	}
+	
 	public ComputerPartMin shortenSpecs(){
 		ComputerPartMin part = new ComputerPartMin();
 		part.type = type;
@@ -30,8 +42,8 @@ public class GPU extends ComputerPart{
 	
 	public String specBuilder(){
 		StringBuilder specs = new StringBuilder();
-		specs.append("Clock Speed: ").append(coreSpeed).append(Constants.gigahertz).append(Constants.newLine);
-		specs.append("Core Count: ").append(coreCount).append(Constants.newLine);
+		specs.append("Clock Speed: ").append(coreSpeed).append(Constants.megahertz).append(Constants.newLine);
+		specs.append("Stream Processors: ").append(coreCount).append(Constants.newLine);
 		specs.append("Video Memory: ").append(memSize).append(Constants.megabyte).append(Constants.newLine);
 		specs.append("Year: ").append(year);
 		return specs.toString();

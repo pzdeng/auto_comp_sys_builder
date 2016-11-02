@@ -50,8 +50,14 @@ public class ComputerBuild {
 		//TODO redo section
 		//Init all computer parts to test response
 		cpu = new CPU();
+		cpu.dummyPopulate();
+		
 		GPU gpu = new GPU();
+		gpu.dummyPopulate();
+		
 		mb = new Motherboard();
+		mb.dummyPopulate();
+		
 		gpuList.add(gpu);
 	}
 	

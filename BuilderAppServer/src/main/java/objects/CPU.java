@@ -6,6 +6,7 @@ public class CPU extends ComputerPart{
 	public String make;
 	public int year;
 	public float coreSpeed;
+	public float coreTurboSpeed;
 	public int coreCount;
 	public String socketType;
 	public int thermalRating;
@@ -15,6 +16,17 @@ public class CPU extends ComputerPart{
 	
 	public CPU(){
 		this.type = Constants.cpu;
+	}
+	
+	//Populate this object with dummy data
+	public void dummyPopulate(){
+		name = "AMD Phenom 2 1100T";
+		productURL = "https://www.amazon.com/AMD-Phenom-1100T-Processor-HDE00ZFBGRBOX/dp/B004DALW5K";
+		picURL = "https://images-na.ssl-images-amazon.com/images/I/51Az8R3douL.jpg";
+		vendorPrice = (float) 340.00;
+		coreSpeed = (float) 3.3;
+		coreCount = 6;
+		year = 2010;
 	}
 	
 	public ComputerPartMin shortenSpecs(){

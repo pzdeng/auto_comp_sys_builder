@@ -1,7 +1,7 @@
 package main.java.objects;
 
 public enum ComputerType {
-	GAMING, WEBSERVER, GENERAL;
+	GAMING, SERVER, WORKSTATION, GENERAL;
 	
 	public static ComputerType toType(String type){
 		if(type != null){
@@ -9,8 +9,11 @@ public enum ComputerType {
 			if(type.equalsIgnoreCase(ComputerType.GAMING.name())){
 				return ComputerType.GAMING;
 			}
-			if(type.equalsIgnoreCase(ComputerType.WEBSERVER.name())){
-				return ComputerType.WEBSERVER;
+			if(type.equalsIgnoreCase(ComputerType.SERVER.name())){
+				return ComputerType.SERVER;
+			}
+			if(type.equalsIgnoreCase(ComputerType.WORKSTATION.name())){
+				return ComputerType.WORKSTATION;
 			}
 		}
 		return ComputerType.GENERAL;
