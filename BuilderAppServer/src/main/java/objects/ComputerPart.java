@@ -12,6 +12,8 @@ public abstract class ComputerPart {
 	public int id;
 	public Timestamp createTime;
 	public Timestamp modifyTime;
+	//If dirty, needs to update the database
+	public boolean dirty;
 	//Computer component type
 	public String type;
 	//Computer component name

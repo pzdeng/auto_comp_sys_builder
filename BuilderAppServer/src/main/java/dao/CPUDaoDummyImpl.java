@@ -1,38 +1,25 @@
 package main.java.dao;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import main.java.objects.CPU;
 
 public class CPUDaoDummyImpl implements CPUDao{		
 	//Dummy database
-    List<CPU> cpuList;
+    Map<String, CPU> cpuList;
 
 	public CPUDaoDummyImpl(){
-		cpuList = new ArrayList<CPU>();
+		cpuList = new HashMap<String, CPU>();
 	    CPU cpu1 = new CPU();
 	    CPU cpu2 = new CPU();
 	}
 
-	@Override
-	public List<CPU> getAllCPU() {
-		return cpuList;
-	}
 
 	@Override
 	public CPU getCPU(int id) {
 		return cpuList.get(id);
-	}
-
-	@Override
-	public void insertCPU(CPU cpu) {
-		cpuList.add(cpu);
-	}
-
-	@Override
-	public void updateCPU(CPU cpu) {
-		CPU temp = cpuList.get(cpu.getId());
-		updateTemp(temp, cpu);
 	}
 
 	//Helper method for the above method
@@ -41,8 +28,42 @@ public class CPUDaoDummyImpl implements CPUDao{
 	}
 
 	@Override
+	public Map<String, CPU> getAllCPU() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Map<String, CPU> getALLCPU(Map<String, String> params) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CPU getCPUByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void insertCPU(CPU cpu) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void updateCPU(CPU cpu) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
 	public void deleteCPU(CPU cpu) {
-		cpuList.remove(cpu.getId());
+		// TODO Auto-generated method stub
+		
 	}
 	   
 	}

@@ -1,13 +1,13 @@
 package main.java.dao;
 
-import java.util.List;
+import java.util.Map;
 
 import main.java.objects.CPU;
 
 public class CPUDaoMySQLImpl implements CPUDao{
 
 	@Override
-	public List<CPU> getAllCPU() {
+	public Map<String, CPU> getAllCPU() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -17,6 +17,8 @@ public class CPUDaoMySQLImpl implements CPUDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
 
 	@Override
 	public void insertCPU(CPU cpu) {
@@ -34,6 +36,18 @@ public class CPUDaoMySQLImpl implements CPUDao{
 	public void deleteCPU(CPU cpu) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Map<String, CPU> getALLCPU(Map<String, String> params) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CPU getCPUByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
