@@ -46,7 +46,11 @@ public class BuilderService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        return Response.status(200).entity(jsonStr).build();
+    	//Building response with CORS support
+        return Response.status(200).entity(jsonStr)
+        		.header("Access-Control-Allow-Origin", "*")
+    			.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+        		.build();
     }
     
 }
