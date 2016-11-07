@@ -3,8 +3,6 @@ package main.java.objects;
 import main.java.global.Constants;
 
 public class CPU extends ComputerPart{
-	public String make;
-	public int year;
 	public float coreSpeed;
 	public float coreTurboSpeed;
 	public int coreCount;

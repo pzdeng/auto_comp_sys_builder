@@ -5,9 +5,7 @@ import java.util.List;
 import main.java.global.Constants;
 
 public class Motherboard extends ComputerPart{
-	public String make;
 	public String formFactor;
-	public int year;
 	public String socketType;
 	public String memType;
 	public int memMaxSize;

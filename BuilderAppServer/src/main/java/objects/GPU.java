@@ -4,8 +4,6 @@ import main.java.global.Constants;
 
 public class GPU extends ComputerPart{
 	public String branding;
-	public String make;
-	public int year;
 	public float coreSpeed;
 	public int coreCount;
 	public String interfaceType;
