@@ -18,7 +18,7 @@ public class CPU extends ComputerPart{
 	
 	//Populate this object with dummy data
 	public void dummyPopulate(){
-		name = "AMD Phenom 2 1100T";
+		productName = "AMD Phenom 2 1100T";
 		productURL = "https://www.amazon.com/AMD-Phenom-1100T-Processor-HDE00ZFBGRBOX/dp/B004DALW5K";
 		picURL = "https://images-na.ssl-images-amazon.com/images/I/51Az8R3douL.jpg";
 		vendorPrice = (float) 340.00;
@@ -30,7 +30,7 @@ public class CPU extends ComputerPart{
 	public ComputerPartMin shortenSpecs(){
 		ComputerPartMin part = new ComputerPartMin();
 		part.type = type;
-		part.name = name;
+		part.name = productName;
 		part.url = productURL;
 		part.picUrl = picURL;
 		part.price = vendorPrice;

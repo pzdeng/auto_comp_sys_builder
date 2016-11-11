@@ -20,18 +20,6 @@ public class BuilderService {
         //get build with this budget
 		return new ComputerBuild();
     }
-	/*
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public ClientPayload respond(
-    		@QueryParam("budget") int budget,
-    		@QueryParam("computerType") String computerType) {
-    	ComputerBuild build = new ComputerBuild(budget, computerType);
-    	//JSON String as payload
-        return build.createClientPayload();
-    }
-    */
-    //OR
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)

@@ -9,6 +9,7 @@ public class Constants {
 	//Text formating
 	public final static String newLine	 = "\n";
 	public final static String tab		 = "\t";
+	public final static String separator = " :: ";
 	//Suffixes
 	public final static String gigahertz = "GHz";
 	public final static String megahertz = "MHz";

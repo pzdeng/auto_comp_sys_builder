@@ -20,7 +20,7 @@ public class Motherboard extends ComputerPart{
 
 	//Populate this object with dummy data
 	public void dummyPopulate(){
-		name = "Gigabyte AM3+ AMD 970 SATA 6Gbps USB 3.0 ATX AM3+ Socket DDR3 1600 Motherboards (GA-970A-DS3P)";
+		productName = "Gigabyte AM3+ AMD 970 SATA 6Gbps USB 3.0 ATX AM3+ Socket DDR3 1600 Motherboards (GA-970A-DS3P)";
 		productURL = "https://www.amazon.com/Gigabyte-6Gbps-Socket-Motherboards-GA-970A-DS3P/dp/B00CX4MUCC";
 		picURL = "https://images-na.ssl-images-amazon.com/images/I/91AIuBuQjuL._AC_UL115_.jpg";
 		make = "GIGABYTE";
@@ -31,7 +31,7 @@ public class Motherboard extends ComputerPart{
 	public ComputerPartMin shortenSpecs(){
 		ComputerPartMin part = new ComputerPartMin();
 		part.type = type;
-		part.name = name;
+		part.name = productName;
 		part.url = productURL;
 		part.picUrl = picURL;
 		part.price = vendorPrice;

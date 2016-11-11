@@ -19,8 +19,12 @@ public abstract class ComputerPart {
 	public boolean dirty;
 	//Computer component type
 	public String type;
-	//Computer component name
-	public String name;
+	//Computer component product name/title
+	public String productName;
+	//Computer component product identification (unique)
+	public String productID;
+	//Computer component model name
+	public String modelName;
 	//Computer component make
 	public String make;
 	//Computer component year
@@ -33,7 +37,7 @@ public abstract class ComputerPart {
 	public float vendorPrice;
 	//Comparison metrics
 	public float relativeRating;
-	public float consolidateRating;
+	public float benchScore;
 	
 	public abstract ComputerPartMin shortenSpecs();
 	public abstract String specBuilder();
@@ -47,7 +51,7 @@ public abstract class ComputerPart {
 		if(printMake.length() > makeLimit){
 			printMake = printMake.substring(0, makeLimit);
 		}
-		String printName = name;
+		String printName = productName;
 		if(printName.length() > nameLimit){
 			printName = printName.substring(0, nameLimit);
 		}

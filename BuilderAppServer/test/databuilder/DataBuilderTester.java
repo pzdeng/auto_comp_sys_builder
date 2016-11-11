@@ -25,14 +25,28 @@ public class DataBuilderTester {
     
 	@Test
     public void testReadUserBenchMarkDS() {
-		String fileDir = new String("datasourceExtract" + File.separator + "ALL_UserBenchmarks.csv");
-		String type = "USERBENCHMARK";
-		dataBuild.addProductListings(fileDir, type);
+		int popGPU = 0;
+		String productFile = new String("datasourceExtract" + File.separator + "ALL_UserBenchmarks.csv");
+		String nvidiaGPUFile = new String("datasourceExtract" + File.separator + "BaseGPUListNVIDIA.csv");
+		String amdGPUFile = new String("datasourceExtract" + File.separator + "BaseGPUListAMD.csv");
+		String productFileType = "USERBENCHMARK";
+		String nvidiaGPUFileType = "NVIDIA_GPU_SPECS_1";
+		String amdGPUFileType = "AMD_GPU_SPECS_1";
+		dataBuild.addProductListings(productFile, productFileType);
+		dataBuild.autoMapHardwareSpecs(nvidiaGPUFile, nvidiaGPUFileType);
+		dataBuild.autoMapHardwareSpecs(amdGPUFile, amdGPUFileType);
 		for(CPU aCPU : dataBuild.getCPUList()){
 			System.out.println(aCPU.toString());
 		}
 		for(GPU aGPU : dataBuild.getGPUList()){
 			System.out.println(aGPU.toString());
+			System.out.println(aGPU.dataContent());
+			if(aGPU.coreSpeed > 0){
+				popGPU++;
+			}
 		}
+		
+		System.out.println("Total Number of GPUs: " + dataBuild.getGPUList().size());
+		System.out.println("Populated GPUs: " + popGPU);
 	}
 }
