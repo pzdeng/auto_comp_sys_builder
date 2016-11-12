@@ -40,9 +40,20 @@ public class CPU extends ComputerPart{
 	
 	public String specBuilder(){
 		StringBuilder specs = new StringBuilder();
-		specs.append("Clock Speed: ").append(coreSpeed).append(AppConstants.gigahertz).append(AppConstants.newLine);
+		specs.append("Clock Speed: ").append(coreSpeed).append(AppConstants.megahertz).append(AppConstants.newLine);
 		specs.append("Core Count: ").append(coreCount).append(AppConstants.newLine);
 		specs.append("Year: ").append(year);
+		return specs.toString();
+	}
+
+	public String dataContent(){
+		StringBuilder specs = new StringBuilder();
+		specs.append("Clock Speed: ").append(coreSpeed).append(AppConstants.megahertz).append(AppConstants.separator);
+		specs.append("Core Count: ").append(coreCount).append(AppConstants.separator);
+		specs.append("ThermalRating: ").append(thermalRating).append(AppConstants.separator);
+		specs.append("BenchScore: ").append(benchScore).append(AppConstants.separator);
+		specs.append("Year: ").append(year);
+		
 		return specs.toString();
 	}
 }

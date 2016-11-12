@@ -1,11 +1,13 @@
 package main.java.databuilder;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import main.java.global.AppConstants;
 import main.java.objects.CPU;
 import main.java.objects.GPU;
 import main.java.objects.Motherboard;
+import main.java.objects.comparator.ModelNameComparator;
 
 /**
  * Data builder features/responsibilities
@@ -89,6 +91,7 @@ public class DataBuilder {
 				cpuTemp.productID = products[i][1].trim();
 				cpuTemp.make = products[i][2].trim();
 				cpuTemp.productName = products[i][3].trim();
+				cpuTemp.modelName = cpuTemp.productName;
 				cpuTemp.relativeRating = Float.parseFloat(products[i][4]);
 				cpuTemp.benchScore = Float.parseFloat(products[i][5]);
 				cpuList.add(cpuTemp);
@@ -128,37 +131,62 @@ public class DataBuilder {
 	public void autoMapHardwareSpecs(String file, String type){
 		String[][] parsedFile = CSVReader.parseFile(file);
 		switch(type){
-		case "NVIDIA_GPU_SPECS_1":
-			nvidiaGPUSpecs1Populate(parsedFile);
+		case "TECHPOWEREDUP_CPU":
+			techpoweredup_cpu(parsedFile);
 			break;
-		case "AMD_GPU_SPECS_1":
-			amdGPUSpecs1Populate(parsedFile);
+		case "TECHPOWEREDUP_GPU":
+			techpoweredup_gpu(parsedFile);
 			break;	
+		
 		default:
 			//TODO
 		}
 	}
 	
-	private void amdGPUSpecs1Populate(String[][] parsedFile) {
-		GPU temp;
-		//Go through each item
-		for(int i = 0; i < gpuList.size(); i++){
-			for(int j = 0; j < parsedFile.length; j++){
-				temp = gpuList.get(i);
-				
-				if((parsedFile[j][0]).contains(temp.modelName)){
-					temp.coreSpeed = extractCoreSpeed(parsedFile[j][1]);
-					temp.coreCount = extractCoreCount(parsedFile[j][6]);
-					temp.memClockSpeed = extractCoreSpeed(parsedFile[j][3]);
-					temp.interfaceType = parsedFile[j][8];
-					gpuList.set(i, temp);
-					break;
+	private void techpoweredup_cpu(String[][] parsedFile) {
+		//Sort based on model name
+		Collections.sort(cpuList, new ModelNameComparator());
+		//Additional CPUs not captured with benchmark data
+		ArrayList<CPU> extras = new ArrayList<CPU>();
+		
+		CPU temp;
+		//Skip headers
+		for(int i = 1; i < parsedFile.length; i++){
+			temp = new CPU();
+			temp.modelName = parsedFile[i][0].trim();
+			int index = Collections.binarySearch(cpuList, temp, new ModelNameComparator());
+			if(index >= 0){
+				//replace temp with actual cpu from list
+				temp = cpuList.get(index);
+			}
+			//Set in data for CPU
+			temp.coreSpeed = extractCoreSpeed(parsedFile[i][6]);
+			temp.coreCount = extractCoreCount(parsedFile[i][2], AppConstants.cpu);
+			temp.socketType = parsedFile[i][4];
+			temp.thermalRating = extractTDP(parsedFile[i][10]);
+			temp.year = extractYear(parsedFile[i][11]);
+			
+			if(index >= 0){
+				//update entry in cpulist
+				cpuList.set(index, temp);
+			}
+			else{
+				//Add in the extra cpu
+				temp.productName = temp.modelName;
+				temp.make = parsedFile[i][3];
+				if(extras.isEmpty()){
+					extras.add(temp);
+				}
+				else if(!extras.get(extras.size() - 1).productName.equals(temp.productName)){
+					extras.add(temp);
 				}
 			}
 		}
+		//Add in the extras to cpuList
+		cpuList.addAll(extras);
 	}
 
-	private void nvidiaGPUSpecs1Populate(String[][] parsedFile) {
+	private void techpoweredup_gpu(String[][] parsedFile) {		
 		GPU temp;
 		//Go through each item
 		for(int i = 0; i < gpuList.size(); i++){
@@ -166,10 +194,11 @@ public class DataBuilder {
 				temp = gpuList.get(i);
 				
 				if((parsedFile[j][0]).contains(temp.modelName)){
-					temp.coreSpeed = extractCoreSpeed(parsedFile[j][1]);
-					temp.coreCount = extractCoreCount(parsedFile[j][6]);
-					temp.memClockSpeed = extractCoreSpeed(parsedFile[j][3]);
-					temp.interfaceType = parsedFile[j][9];
+					temp.coreSpeed = extractCoreSpeed(parsedFile[j][5]);
+					temp.coreCount = extractCoreCount(parsedFile[j][7], AppConstants.gpu);
+					temp.memClockSpeed = extractCoreSpeed(parsedFile[j][6]);
+					temp.interfaceType = parsedFile[j][3];
+					temp.year = extractYear(parsedFile[i][2]);
 					gpuList.set(i, temp);
 					break;
 				}
@@ -221,21 +250,71 @@ public class DataBuilder {
 	 * @param string
 	 * @return
 	 */
-	private int extractCoreCount(String string) {
+	private int extractCoreCount(String string, String type) {
 		int coreCount = 0;
-		//Expected format: Number OptionalText
-		//Expected input examples: 1 or 1024 someText
-		String[] partition = string.split(" ");
-		//First part is a number
+		//Expected format (CPU): Number OptionalText
+		//Expected input examples (CPU): 1 or 1024 someText
+		
+		//Custom to TechPoweredUp (just take the first value)
+		//Expected format (GPU): Shaders / TMUs / ROPs
+		//Expected input examples (GPU): 1 / 1 / 2 / 3
+		String[] partition;
+		
 		try{
-			coreCount = Integer.parseInt(partition[0]);
-			//TODO: if GPU has some weird configuration
+			if(type.equals(AppConstants.cpu)){
+				//TechPoweredUp delimiter "-"
+				partition = string.split("-");
+				coreCount = Integer.parseInt(partition[0]);
+			}
+			else if(type.equals(AppConstants.gpu)){
+				partition = string.split("/");
+				System.out.println(partition[0]);
+				coreCount = Integer.parseInt(partition[0].trim());
+			}
 		}
 		catch(Exception e){
 			System.err.println("Unable to parse {" + string + "}");
 		}
 		
 		return coreCount;
+	}
+	
+	/**
+	 * Method to extract TDP value
+	 * @param string
+	 * @return
+	 */
+	private int extractTDP(String string) {
+		//Expected format: number sometext
+		//Expected input examples: 65W or 65 w or 65Watts
+		//TechPoweredUp follows "65W" example
+		try{
+			return Integer.parseInt(string.substring(0, string.length() - 1));
+		}
+		catch(Exception e){
+			System.err.println("Unable to parse {" + string + "}");
+		}
+		
+		return 0;
+	}
+	
+	/**
+	 * Method to extract Year
+	 * @param string
+	 * @return
+	 */
+	private int extractYear(String string) {
+		//Expected format: some text year
+		//Expected input examples: Mar-2013 or May 23 2011 or Jun2011 or Jan 2010
+		//TechPoweredUp follows "Jan-10" example
+		String year = string.substring(string.length() - 2);
+		if(Integer.parseInt(year) > 70){
+			year = "19" + year;
+		}
+		else{
+			year = "20" + year;
+		}
+		return Integer.parseInt(year);
 	}
 
 	public ArrayList<CPU> getCPUList(){

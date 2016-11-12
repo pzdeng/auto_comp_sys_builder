@@ -53,7 +53,8 @@ public class GPU extends ComputerPart{
 		specs.append("Clock Speed: ").append(coreSpeed).append(AppConstants.megahertz).append(AppConstants.separator);
 		specs.append("Stream Processors: ").append(coreCount).append(AppConstants.separator);
 		specs.append("Mem Speed: ").append(memClockSpeed).append(AppConstants.megahertz).append(AppConstants.separator);
-		specs.append("Model Name: ").append(modelName);
+		specs.append("Model Name: ").append(modelName).append(AppConstants.megahertz).append(AppConstants.separator);
+		specs.append("Year: ").append(year);
 		return specs.toString();
 	}
 }
