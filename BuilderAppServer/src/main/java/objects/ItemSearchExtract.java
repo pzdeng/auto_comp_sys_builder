@@ -1,6 +1,6 @@
 package main.java.objects;
 
-import main.java.global.Constants;
+import main.java.global.AppConstants;
 
 /**
  * Data class that holds information from Amazon ItemSearch service call
@@ -20,10 +20,10 @@ public class ItemSearchExtract {
 	
 	public String toString(){
 		StringBuilder out = new StringBuilder();
-		out.append(itemName).append(Constants.separator);
-		out.append(itemURL).append(Constants.separator);
-		out.append(itemPicURL).append(Constants.separator);
-		out.append(itemPrice).append(Constants.separator);
+		out.append(itemName).append(AppConstants.separator);
+		out.append(itemURL).append(AppConstants.separator);
+		out.append(itemPicURL).append(AppConstants.separator);
+		out.append(itemPrice).append(AppConstants.separator);
 		out.append(itemPartID);
 		
 		return out.toString();

@@ -5,7 +5,7 @@ package main.java.global;
  * @author Peter
  *
  */
-public class Constants {
+public class AppConstants {
 	//Text formating
 	public final static String newLine	 = "\n";
 	public final static String tab		 = "\t";

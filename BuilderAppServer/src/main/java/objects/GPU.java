@@ -1,6 +1,6 @@
 package main.java.objects;
 
-import main.java.global.Constants;
+import main.java.global.AppConstants;
 
 public class GPU extends ComputerPart{
 	public String branding;
@@ -13,7 +13,7 @@ public class GPU extends ComputerPart{
 	public int thermalRating;
 	
 	public GPU(){
-		this.type = Constants.gpu;
+		this.type = AppConstants.gpu;
 	}
 	
 	//Populate this object with dummy data
@@ -41,18 +41,18 @@ public class GPU extends ComputerPart{
 	
 	public String specBuilder(){
 		StringBuilder specs = new StringBuilder();
-		specs.append("Clock Speed: ").append(coreSpeed).append(Constants.megahertz).append(Constants.newLine);
-		specs.append("Stream Processors: ").append(coreCount).append(Constants.newLine);
-		specs.append("Video Memory: ").append(memSize).append(Constants.megabyte).append(Constants.newLine);
+		specs.append("Clock Speed: ").append(coreSpeed).append(AppConstants.megahertz).append(AppConstants.newLine);
+		specs.append("Stream Processors: ").append(coreCount).append(AppConstants.newLine);
+		specs.append("Video Memory: ").append(memSize).append(AppConstants.megabyte).append(AppConstants.newLine);
 		specs.append("Year: ").append(year);
 		return specs.toString();
 	}
 	
 	public String dataContent(){
 		StringBuilder specs = new StringBuilder();
-		specs.append("Clock Speed: ").append(coreSpeed).append(Constants.megahertz).append(Constants.separator);
-		specs.append("Stream Processors: ").append(coreCount).append(Constants.separator);
-		specs.append("Mem Speed: ").append(memClockSpeed).append(Constants.megahertz).append(Constants.separator);
+		specs.append("Clock Speed: ").append(coreSpeed).append(AppConstants.megahertz).append(AppConstants.separator);
+		specs.append("Stream Processors: ").append(coreCount).append(AppConstants.separator);
+		specs.append("Mem Speed: ").append(memClockSpeed).append(AppConstants.megahertz).append(AppConstants.separator);
 		specs.append("Model Name: ").append(modelName);
 		return specs.toString();
 	}

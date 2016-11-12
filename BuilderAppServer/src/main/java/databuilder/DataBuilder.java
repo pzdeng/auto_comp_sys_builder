@@ -2,7 +2,7 @@ package main.java.databuilder;
 
 import java.util.ArrayList;
 
-import main.java.global.Constants;
+import main.java.global.AppConstants;
 import main.java.objects.CPU;
 import main.java.objects.GPU;
 import main.java.objects.Motherboard;
@@ -204,7 +204,7 @@ public class DataBuilder {
 				index++;
 			}
 			//Convert to MHz
-			if(partition[index].equalsIgnoreCase(Constants.gigahertz)){
+			if(partition[index].equalsIgnoreCase(AppConstants.gigahertz)){
 				speed *= 1000;
 			}
 		}

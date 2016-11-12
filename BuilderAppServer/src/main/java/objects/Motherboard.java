@@ -2,7 +2,7 @@ package main.java.objects;
 
 import java.util.List;
 
-import main.java.global.Constants;
+import main.java.global.AppConstants;
 
 public class Motherboard extends ComputerPart{
 	public String formFactor;
@@ -15,7 +15,7 @@ public class Motherboard extends ComputerPart{
 	public int thermalRating;
 	
 	public Motherboard(){
-		type = Constants.mobo;
+		type = AppConstants.mobo;
 	}	
 
 	//Populate this object with dummy data
@@ -41,7 +41,7 @@ public class Motherboard extends ComputerPart{
 	
 	public String specBuilder(){
 		StringBuilder specs = new StringBuilder();
-		specs.append("Make: ").append(make).append(Constants.newLine);
+		specs.append("Make: ").append(make).append(AppConstants.newLine);
 		specs.append("Year: ").append(year);
 		return specs.toString();
 	}

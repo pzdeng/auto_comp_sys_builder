@@ -1,6 +1,6 @@
 package main.java.objects;
 
-import main.java.global.Constants;
+import main.java.global.AppConstants;
 
 public class CPU extends ComputerPart{
 	public float coreSpeed;
@@ -13,7 +13,7 @@ public class CPU extends ComputerPart{
 	public int l3Size;
 	
 	public CPU(){
-		this.type = Constants.cpu;
+		this.type = AppConstants.cpu;
 	}
 	
 	//Populate this object with dummy data
@@ -40,8 +40,8 @@ public class CPU extends ComputerPart{
 	
 	public String specBuilder(){
 		StringBuilder specs = new StringBuilder();
-		specs.append("Clock Speed: ").append(coreSpeed).append(Constants.gigahertz).append(Constants.newLine);
-		specs.append("Core Count: ").append(coreCount).append(Constants.newLine);
+		specs.append("Clock Speed: ").append(coreSpeed).append(AppConstants.gigahertz).append(AppConstants.newLine);
+		specs.append("Core Count: ").append(coreCount).append(AppConstants.newLine);
 		specs.append("Year: ").append(year);
 		return specs.toString();
 	}

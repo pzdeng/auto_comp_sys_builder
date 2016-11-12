@@ -3,7 +3,7 @@ package main.java.objects;
 import java.nio.charset.Charset;
 import java.sql.Timestamp;
 
-import main.java.global.Constants;
+import main.java.global.AppConstants;
 
 /**
  * Superclass for computer parts
@@ -60,7 +60,7 @@ public abstract class ComputerPart {
     		printName = String.format(formatTarget, printName, Charset.forName("UTF8"));
 		}
 		StringBuilder out = new StringBuilder();
-		out.append(type).append(" :: ").append(printMake).append(",").append(Constants.tab).append(printName);
+		out.append(type).append(" :: ").append(printMake).append(",").append(AppConstants.tab).append(printName);
 		return out.toString();
 	}
 }
