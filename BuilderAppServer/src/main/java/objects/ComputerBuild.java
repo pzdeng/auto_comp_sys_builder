@@ -1,9 +1,12 @@
 package main.java.objects;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import main.java.databuilder.DataBuilder;
 
 /**
  * In memory data class to hold computer build information
@@ -32,6 +35,7 @@ public class ComputerBuild {
 		type = ComputerType.toType(compType);
 		gpuList = new ArrayList<GPU>();
 		buildComp();
+		//buildRandomComp();
 	}
 	
 	/*
@@ -46,9 +50,12 @@ public class ComputerBuild {
 	}
 	*/
 	
+	/**
+	 * Method should choose some optimal build based on target computer type
+	 */
 	private void buildComp(){
-		//TODO redo section
-		//Init all computer parts to test response
+		DataBuilder components = DataBuilder.getInstance();
+		
 		cpu = new CPU();
 		cpu.dummyPopulate();
 		
@@ -61,6 +68,52 @@ public class ComputerBuild {
 		gpuList.add(gpu);
 	}
 	
+	/**
+	 * Build some random computer...
+	 */
+	private void buildRandomComp(){
+		DataBuilder components = DataBuilder.getInstance();
+		Random rand = new Random();
+		
+		do{
+			//random cpu
+			cpu = components.getCPUList().get(rand.nextInt(components.getCPUList().size()));
+			//random gpu
+			GPU gpu = components.getGPUList().get(rand.nextInt(components.getGPUList().size()));
+			//random motherboard
+			mb = components.getMBList().get(rand.nextInt(components.getMBList().size()));
+			gpuList.add(gpu);
+		}
+		while(!validateBuild());
+	}
+	
+	/**
+	 * Validate computer build
+	 * @return
+	 */
+	private boolean validateBuild() {
+		//Check 1: CPU fits into Motherboard CPU socket
+		if(!mb.fitCPU(cpu)){
+			return false;
+		}
+		//Check 2: GPU(s) fits into Motherboard's available interface(s)
+		if(!mb.fitGPU(gpuList)){
+			return false;
+		}
+		//Check 3: Memory/RAM Type is compatible with Motherboard and CPU
+		//TODO: Fail check if DDR2/DDR3/DDR4 are not the same
+		//Check 4: Memory/RAM unit fits into Motherboard's available memory slots
+		//TODO: Fail check # RAM modules > Motherboard's # mem slots
+		//Check 5: Storage Units fits into Motherboard's available SATA ports
+		//TODO: Fail check if # of HDD/SDD > Motherboard's # SATA ports
+		//Check 6: Fits into power requirements (require power calculation)
+		//TODO: Compute power requirements of current build
+		//TODO: Check against PSU capacity
+		//Check 7: Build is within budget
+		//TODO: Check prices of items are within budget
+		return true;
+	}
+
 	/**
 	 * Create custom payload to frontend client
 	 * @return client payload

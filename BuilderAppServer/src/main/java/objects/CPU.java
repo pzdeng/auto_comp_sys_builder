@@ -7,7 +7,6 @@ public class CPU extends ComputerPart{
 	public float coreTurboSpeed;
 	public int coreCount;
 	public String socketType;
-	public int thermalRating;
 	public int l1Size;
 	public int l2Size;
 	public int l3Size;
@@ -50,7 +49,7 @@ public class CPU extends ComputerPart{
 		StringBuilder specs = new StringBuilder();
 		specs.append("Clock Speed: ").append(coreSpeed).append(AppConstants.megahertz).append(AppConstants.separator);
 		specs.append("Core Count: ").append(coreCount).append(AppConstants.separator);
-		specs.append("ThermalRating: ").append(thermalRating).append(AppConstants.separator);
+		specs.append("ThermalRating: ").append(powerRating).append(AppConstants.separator);
 		specs.append("BenchScore: ").append(benchScore).append(AppConstants.separator);
 		specs.append("Year: ").append(year);
 		

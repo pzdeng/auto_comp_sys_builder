@@ -2,6 +2,7 @@ package main.java.databuilder;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 import main.java.global.AppConstants;
 import main.java.objects.CPU;
@@ -65,11 +66,37 @@ public class DataBuilder {
 		case "USERBENCHMARK":
 			userbenchPopulate(parsedFile);
 			break;
-		default:
-			//TODO
+		case "HARDWAREINFO_MB":
+			hardwareInfoMBPopulate(parsedFile);
+			break;
 		}
 	}
 	
+	/**
+	 * Method to populate motherboard list from HardwareInfo datasource extract
+	 * @param parsedFile
+	 */
+	private void hardwareInfoMBPopulate(String[][] parsedFile) {
+		Motherboard temp;
+		//Skip header line
+		for(int i = 1; i < parsedFile.length; i++){
+			temp = new Motherboard();
+			temp.productName = parsedFile[i][0];
+			//Extract Make/Brand
+			//Assume it is the first word from product name
+			temp.make = temp.productName.split(" ")[0];
+			temp.formFactor = parsedFile[i][1];
+			//Format: Socket socketType
+			temp.socketType = parsedFile[i][2].split(" ")[1];
+			temp.memType = parsedFile[i][4];
+			//Captures number of Sata Ports capable of 6Gbps
+			temp.sataNum = extractSataNum(parsedFile[i][5]);
+			temp.memSlotNum = extractMemSlots(temp.memType, parsedFile[i][7], parsedFile[i][8]);
+			temp.pciExpressX16Num = extractPCIESlots(parsedFile[i][6]);
+			mbList.add(temp);
+		}
+	}
+
 	/**
 	 * Method to handle userbenchmark data format
 	 * @param parsedFile
@@ -137,12 +164,14 @@ public class DataBuilder {
 		case "TECHPOWEREDUP_GPU":
 			techpoweredup_gpu(parsedFile);
 			break;	
-		
+		case "GPU_POWER":
+			gpuPower(parsedFile);
+			break;
 		default:
 			//TODO
 		}
 	}
-	
+
 	private void techpoweredup_cpu(String[][] parsedFile) {
 		//Sort based on model name
 		Collections.sort(cpuList, new ModelNameComparator());
@@ -155,32 +184,37 @@ public class DataBuilder {
 			temp = new CPU();
 			temp.modelName = parsedFile[i][0].trim();
 			int index = Collections.binarySearch(cpuList, temp, new ModelNameComparator());
-			if(index >= 0){
-				//replace temp with actual cpu from list
-				temp = cpuList.get(index);
+			try{
+				if(index >= 0){
+					//replace temp with actual cpu from list
+					temp = cpuList.get(index);
+				}
+				//Set in data for CPU
+				temp.coreSpeed = extractCoreSpeed(parsedFile[i][6]);
+				temp.coreCount = extractCoreCount(parsedFile[i][2], AppConstants.cpu);
+				temp.socketType = parsedFile[i][4];
+				temp.powerRating = extractTDP(parsedFile[i][10]);
+				temp.year = extractYear(parsedFile[i][11]);
+				
+				if(index >= 0){
+					//update entry in cpulist
+					cpuList.set(index, temp);
+				}
+				else{
+					//Add in the extra cpu
+					temp.productName = temp.modelName;
+					temp.make = parsedFile[i][3];
+					if(extras.isEmpty()){
+						extras.add(temp);
+					}
+					else if(!extras.get(extras.size() - 1).productName.equals(temp.productName)){
+						extras.add(temp);
+					}
+				}
+			} catch (Exception e){
+				System.err.println("Error parsing data entry for {" + parsedFile[i][0]+ "}: " + e.getMessage());
 			}
-			//Set in data for CPU
-			temp.coreSpeed = extractCoreSpeed(parsedFile[i][6]);
-			temp.coreCount = extractCoreCount(parsedFile[i][2], AppConstants.cpu);
-			temp.socketType = parsedFile[i][4];
-			temp.thermalRating = extractTDP(parsedFile[i][10]);
-			temp.year = extractYear(parsedFile[i][11]);
 			
-			if(index >= 0){
-				//update entry in cpulist
-				cpuList.set(index, temp);
-			}
-			else{
-				//Add in the extra cpu
-				temp.productName = temp.modelName;
-				temp.make = parsedFile[i][3];
-				if(extras.isEmpty()){
-					extras.add(temp);
-				}
-				else if(!extras.get(extras.size() - 1).productName.equals(temp.productName)){
-					extras.add(temp);
-				}
-			}
 		}
 		//Add in the extras to cpuList
 		cpuList.addAll(extras);
@@ -194,12 +228,41 @@ public class DataBuilder {
 				temp = gpuList.get(i);
 				
 				if((parsedFile[j][0]).contains(temp.modelName)){
-					temp.coreSpeed = extractCoreSpeed(parsedFile[j][5]);
-					temp.coreCount = extractCoreCount(parsedFile[j][7], AppConstants.gpu);
-					temp.memClockSpeed = extractCoreSpeed(parsedFile[j][6]);
-					temp.interfaceType = parsedFile[j][3];
-					temp.year = extractYear(parsedFile[i][2]);
-					gpuList.set(i, temp);
+					try{
+						temp.coreSpeed = extractCoreSpeed(parsedFile[j][5]);
+						temp.coreCount = extractCoreCount(parsedFile[j][7], AppConstants.gpu);
+						temp.memClockSpeed = extractCoreSpeed(parsedFile[j][6]);
+						temp.interfaceType = parsedFile[j][3];
+						temp.year = extractYear(parsedFile[i][2]);
+						gpuList.set(i, temp);
+					} catch (Exception e){
+						System.err.println("Error parsing data entry for {" + parsedFile[j][0]+ "}: " + e.getMessage());
+					}
+					break;
+				}
+			}
+		}
+	}
+	
+	private void gpuPower(String[][] parsedFile) {
+		GPU temp;
+		//Create map of gpu power: name | Wattage
+		HashMap<String, String> gpuPower = new HashMap<String, String>();
+		for(int i = 1; i < parsedFile.length; i++){
+			gpuPower.put(parsedFile[i][0], parsedFile[i][1]);
+		}
+		//Go through each item
+		for(int i = 0; i < gpuList.size(); i++){
+			for(int j = 0; j < parsedFile.length; j++){
+				temp = gpuList.get(i);
+				
+				if((parsedFile[j][0]).contains(temp.modelName)){
+					try{
+						temp.powerRating = Integer.parseInt(parsedFile[j][1].trim());
+						gpuList.set(i, temp);
+					} catch (Exception e){
+						System.err.println("Error parsing data entry for {" + parsedFile[j][0]+ "}: " + e.getMessage());
+					}
 					break;
 				}
 			}
@@ -268,7 +331,6 @@ public class DataBuilder {
 			}
 			else if(type.equals(AppConstants.gpu)){
 				partition = string.split("/");
-				System.out.println(partition[0]);
 				coreCount = Integer.parseInt(partition[0].trim());
 			}
 		}
@@ -307,14 +369,61 @@ public class DataBuilder {
 		//Expected format: some text year
 		//Expected input examples: Mar-2013 or May 23 2011 or Jun2011 or Jan 2010
 		//TechPoweredUp follows "Jan-10" example
-		String year = string.substring(string.length() - 2);
-		if(Integer.parseInt(year) > 70){
-			year = "19" + year;
+		try{
+			String year = string.substring(string.length() - 2);
+			if(Integer.parseInt(year) > 70){
+				year = "19" + year;
+			}
+			else{
+				year = "20" + year;
+			}
+			return Integer.parseInt(year);
+		} catch(Exception e){
+			//Any exception will be treated as 0
 		}
-		else{
-			year = "20" + year;
+		return 0;
+	}
+	
+	private int extractPCIESlots(String string) {
+		try{
+			string = string.trim();
+			if(string.length() > 0){
+				return Integer.parseInt(string); 
+			}
+		} catch(Exception e){
+			//Any exception will be treated as 0
 		}
-		return Integer.parseInt(year);
+		return 0;
+	}
+
+	/**
+	 * Report the number of slots for the highest memory type supported
+	 * @param memType
+	 * @param ddr3Slots
+	 * @param ddr4Slots
+	 * @return
+	 */
+	private int extractMemSlots(String memType, String ddr3Slots, String ddr4Slots) {
+		try{
+			if(memType.contains(AppConstants.ddr4)){
+				return Integer.parseInt(ddr4Slots);
+			}
+			if(memType.contains(AppConstants.ddr3)){
+				return Integer.parseInt(ddr3Slots);
+			}
+		} catch(Exception e){
+			//Any exception will be treated as 0
+		}
+		
+		return 0;
+	}
+
+	private int extractSataNum(String string) {
+		string = string.trim();
+		if(string.length() > 0){
+			return Integer.parseInt(string); 
+		}
+		return 0;
 	}
 
 	public ArrayList<CPU> getCPUList(){

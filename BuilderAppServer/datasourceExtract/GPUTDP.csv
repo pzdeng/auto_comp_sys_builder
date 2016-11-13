@@ -1,0 +1,179 @@
+Graphics Card Model,TDP (Watts)
+GeForce GTX Titan X,250
+GeForce GTX 980 Ti,250
+GeForce GTX 980,165
+GeForce GTX 970,165
+GeForce GTX 960,120
+GeForce GTX 750 Ti,60
+GeForce GTX 750,55
+GeForce GTX Titan Z,375
+GeForce GTX Titan Black,250
+GeForce GTX 780 Ti,250
+GeForce GTX Titan,250
+GeForce GTX 780,250
+GeForce GTX 770,230
+GeForce GTX 760,170
+GeForce GTX 690,300
+GeForce GTX 680,195
+GeForce GTX 670,170
+GeForce GTX 660 Ti,150
+GeForce GTX 660,140
+GeForce GTX 650 Ti BOOST 2048MB,140
+GeForce GTX 650 Ti BOOST 1024MB,134
+GeForce GTX 650 Ti,110
+GeForce GTX 650,64
+GeForce GT 640,65
+GeForce GT 630,65
+GeForce GT 620,49
+GeForce GT 610,29
+GeForce GTX 590,365
+GeForce GTX 580,280
+GeForce GTX 570,240 
+GeForce GTX 560 Ti,260
+GeForce GTX 560 Ti,205 
+GeForce GTX 560,190
+GeForce GTX 560,150
+GeForce GTX 555,150
+GeForce GTX 550 Ti,116
+GeForce GTX 480,260
+GeForce GTX 480,250
+GeForce GTX 470,220
+GeForce GTX 465,200
+GeForce GTX 460,160
+GeForce GTX 460 SE,140
+GeForce GTS 450,106
+GeForce GT 440,81 
+GeForce GT 430,49
+GeForce GT 420,50
+GeForce GT 340,69
+GeForce GT 330,75
+GeForce GT 320,43
+GeForce 315,33
+GeForce 310,31
+GeForce GTX 295,289
+GeForce GTS 285,204
+GeForce GTX 280,236
+GeForce GTX 275,219
+GeForce GTX 260,182
+GeForce GTS 250,150
+GeForce GTS 240,120
+GeForce GTS 150,141
+GeForce GT 240,69
+GeForce GT 230,65
+GeForce GT 220,58
+GeForce GT 130,75
+GeForce GT 120,50
+GeForce G 210,35
+GeForce 210,31
+GeForce 205,31
+GeForce G100,35
+GeForce 9800 GX2,197
+GeForce 9800 GTX+,141
+GeForce 9800 GTX,140
+GeForce 9800 GT,105
+GeForce 9600 GSO,105
+GeForce 9600 GT,96
+GeForce 9500 GT,50
+GeForce 9400 GT,50
+GeForce 8800 Ultra,175
+GeForce 8800 GTX,145
+GeForce 8800 GTS 512,135
+GeForce 8800 GT,105
+GeForce 8800 GS,105
+GeForce 8600 GTS,71
+GeForce 8600 GT,43
+GeForce 8600 GS,43
+GeForce 8500 GT,40
+GeForce 8400 GT,38
+GeForce 7950 GX2,110
+GeForce 7900 GTX,84
+GeForce 7800 GTX,81
+GeForce 7600 GT,35
+GeForce 7300 GS,16
+Quadro 6000,204
+Quadro 5000,152
+Quadro 4000,142
+Quadro 2000,62
+Quadro 600,40
+Quadro FX 5800,189
+Quadro FX 4800,150
+Quadro FX 3800,108
+Quadro FX 1800,59
+Quadro FX 580,40
+Quadro FX 380,34
+Quadro FX 380 LP,28
+Quadro 2000,62
+Quadro 600,40
+Quadro 400,32
+FirePro V9800,225
+Radeon R9 Fury X,275
+Radeon R9 390X,275
+Radeon R9 390,275
+Radeon R9 380,190
+Radeon R9 370,110
+Radeon R9 360,100
+Radeon R9 295X2,500
+Radeon R9 290X,300
+Radeon R9 290,300
+Radeon R9 280,250
+Radeon R9 270X,180
+Radeon R7 260X,115
+Radeon HD 7990,375
+Radeon HD 7970,250
+Radeon HD 7950,200
+Radeon HD 7870,190
+Radeon HD 7850,150
+Radeon HD 7790,85
+Radeon HD 7770,80
+Radeon HD 7750,55
+Radeon HD 7670,66
+Radeon HD 7570,60
+Radeon HD 7470,27
+Radeon HD 7450,18
+Radeon HD 7350,19
+Radeon HD 6990,375 
+Radeon HD 6970,256 
+Radeon HD 6950,252 
+Radeon HD 6870,200
+Radeon HD 6870,151
+Radeon HD 6850,127
+Radeon HD 6790,150
+Radeon HD 6770,108
+Radeon HD 6750,86
+Radeon HD 6670,72
+Radeon HD 6670,66
+Radeon HD 6570,60
+Radeon HD 5970,294
+Radeon HD 5870 X2,376
+Radeon HD 5870,188
+Radeon HD 5850,151
+Radeon HD 5830,175
+Radeon HD 5770,108
+Radeon HD 5750,86
+Radeon HD 5670,61
+Radeon HD 5650,60
+Radeon HD 5570,43
+Radeon HD 5550,40
+Radeon HD 5450,19
+Radeon HD 4890,190
+Radeon HD 4870 X2,286
+Radeon HD 4870,157
+Radeon HD 4850 X2,230
+Radeon HD 4850,114
+Radeon HD 4830,110
+Radeon HD 4770,80
+Radeon HD 4670,70
+Radeon HD 4650,55
+Radeon HD 4550,25
+Radeon HD 4350,20
+Radeon HD 3870 X2,190
+Radeon HD 3870,105
+Radeon HD 3850 X2,140
+Radeon HD 3850,75
+Radeon HD 2900 XT,215
+Radeon HD 2900 GT,150
+Radeon HD 2600 XT,45
+Radeon HD 2400 XT,25
+Radeon X1900XTX,135
+Radeon X1800XT,113
+Radeon X1800XL,70

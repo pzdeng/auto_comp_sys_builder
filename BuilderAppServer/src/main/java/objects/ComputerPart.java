@@ -29,6 +29,8 @@ public abstract class ComputerPart {
 	public String make;
 	//Computer component year
 	public int year;
+	//Computer power requirement
+	public int powerRating;
 	//Standard price
 	public float msrpPrice;
 	//Product resources (picture, link, and price)

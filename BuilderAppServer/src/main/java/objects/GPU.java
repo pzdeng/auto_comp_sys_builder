@@ -10,7 +10,6 @@ public class GPU extends ComputerPart{
 	public String interfaceType;
 	public int memSize;
 	public int multiCardSupport;
-	public int thermalRating;
 	
 	public GPU(){
 		this.type = AppConstants.gpu;
@@ -53,7 +52,8 @@ public class GPU extends ComputerPart{
 		specs.append("Clock Speed: ").append(coreSpeed).append(AppConstants.megahertz).append(AppConstants.separator);
 		specs.append("Stream Processors: ").append(coreCount).append(AppConstants.separator);
 		specs.append("Mem Speed: ").append(memClockSpeed).append(AppConstants.megahertz).append(AppConstants.separator);
-		specs.append("Model Name: ").append(modelName).append(AppConstants.megahertz).append(AppConstants.separator);
+		specs.append("Model Name: ").append(modelName).append(AppConstants.separator);
+		specs.append("Power Wattage: ").append(powerRating).append(AppConstants.separator);
 		specs.append("Year: ").append(year);
 		return specs.toString();
 	}

@@ -7,12 +7,17 @@ import main.java.global.AppConstants;
 public class Motherboard extends ComputerPart{
 	public String formFactor;
 	public String socketType;
+	//There are motherboards that can accept multiple MemoryTypes but will only utilize one type
 	public String memType;
 	public int memMaxSize;
-	public int memSlot;
+	//Implicitly assume every motherboard will have at least 2 slots minimum of stated memtype(s)
+	public int memSlotNum;
+	//Sata num regards 6Gbps connection
+	//if 0, then assume there is at least 1 sata port for 3Gbps
 	public int sataNum;
-	public List<String> interfaceList;
-	public int thermalRating;
+	//Simplify interface to number of PCIe_X16 slots 
+	public int pciExpressX16Num;
+	//public List<String> interfaceList;
 	
 	public Motherboard(){
 		type = AppConstants.mobo;
@@ -44,5 +49,41 @@ public class Motherboard extends ComputerPart{
 		specs.append("Make: ").append(make).append(AppConstants.newLine);
 		specs.append("Year: ").append(year);
 		return specs.toString();
+	}
+	
+	public String dataContent(){
+		StringBuilder specs = new StringBuilder();
+		specs.append("Make: ").append(make).append(AppConstants.separator);
+		specs.append("CPU Socket: ").append(socketType).append(AppConstants.separator);
+		specs.append("FormFactor: ").append(formFactor).append(AppConstants.separator);
+		specs.append("Memory Type: ").append(memType).append(AppConstants.separator);
+		specs.append("Memory Slots: ").append(memSlotNum).append(AppConstants.separator);
+		specs.append("Sata Ports (6Gbps): ").append(sataNum).append(AppConstants.separator);
+		specs.append("PCI Express X16 Slot(s): ").append(pciExpressX16Num);
+		return specs.toString();
+	}
+	
+	public boolean fitCPU(CPU cpu){
+		//If socket types are perfect match
+		if(socketType.equals(cpu.socketType)){
+			return true;
+		}
+		//Due to different data, treat contains also as a match
+		if(socketType.contains(cpu.socketType) || cpu.socketType.contains(socketType)){
+			return true;
+		}
+		//TODO: check partial match?
+		return false;
+	}
+	
+	public boolean fitGPU(List<GPU> gpuList){
+		int pciex16 = pciExpressX16Num;
+		if(pciex16 == 0){
+			pciex16 = 1;
+		}
+		if(gpuList.size() < pciex16){
+			return true;
+		}
+		return false;
 	}
 }

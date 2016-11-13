@@ -18,16 +18,27 @@ public class CSVReader {
 		
 	}
 	
+	/**
+	 * Accounts for trailing empty entries
+	 * @param csvFile
+	 * @return
+	 */
 	public static String[][] parseFile(String csvFile){
 		BufferedReader br = null;
 		String line;
 		String[] temp;
 		ArrayList<String[]> contents = new ArrayList<String[]>();
+		int length;
 		
 		try {
             br = new BufferedReader(new FileReader(csvFile));
+            //Assume Header line
+            line = br.readLine();
+            length = line.split(cvsSplitBy).length;
+            contents.add(line.split(cvsSplitBy, length));
+            
             while ((line = br.readLine()) != null) {
-            	temp = line.split(cvsSplitBy);
+            	temp = line.split(cvsSplitBy, length);
             	//remove double quotes for each entry
             	for(int i = 0; i < temp.length; i++){
             		if(temp[i].length() > 0 && temp[i].charAt(0) == '"'){

@@ -23,4 +23,9 @@ public class AppConstants {
 	public final static String cpu		 = "CPU";
 	public final static String gpu		 = "GPU";
 	public final static String mobo		 = "Motherboard";
+	//MemoryTypes
+	public final static String ddr		 = "DDR";
+	public final static String ddr2		 = "DDR2";
+	public final static String ddr3		 = "DDR3";
+	public final static String ddr4		 = "DDR4";
 }
