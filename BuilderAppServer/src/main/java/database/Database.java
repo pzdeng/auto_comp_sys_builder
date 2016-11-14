@@ -19,8 +19,8 @@ public class Database {
         String dbName = "AutoCompBuilderDB";
         String driver = "com.mysql.jdbc.Driver";
         //Database Credentials go here
-        String userName = "app";
-        String password = "autocomp";
+        String userName = "";
+        String password = "";
 
         Class.forName(driver).newInstance();
         Connection conn = DriverManager.getConnection(url + dbName, userName,password);

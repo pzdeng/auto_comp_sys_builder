@@ -9,37 +9,37 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import main.java.database.Database;
-import main.java.objects.CPU;
+import main.java.objects.GPU;
 
-public class CPUDaoMySQLImpl implements CPUDao{
+public class GPUDaoMySQLImpl implements GPUDao{
 
-	private final String selectCPU = "SELECT * FROM cpu WHERE productName = ?";
-	private final String insertStmt = "INSERT INTO cpu(createTime, modifyTime, type, productName, productID, "
+	private final String selectGPU = "SELECT * FROM gpu WHERE productName = ?";
+	private final String insertStmt = "INSERT INTO gpu(createTime, modifyTime, type, productName, productID, "
 			+ "modelName, make, year, powerRating, picURL, productURL, "
-			+ "vendorPrice, relativeRating, benchScore, coreSpeed, "
-			+ "coreTurboSpeed, coreCount, socketType, l1Size, l2Size, l3Size) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-	private final String updateStmt = "UPDATE cpu SET modifyTime = ?, type = ?, productName = ?, productID = ?, "
+			+ "vendorPrice, relativeRating, benchScore, branding, "
+			+ "coreSpeed, memClockSpeed, coreCount, interfaceType, memSize) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	private final String updateStmt = "UPDATE gpu SET modifyTime = ?, type = ?, productName = ?, productID = ?, "
 			+ "modelName = ?, make = ?, year = ?, powerRating = ?, picURL = ?, productURL = ?, "
-			+ "vendorPrice = ?, relativeRating = ?, benchScore = ?, coreSpeed = ?, "
-			+ "coreTurboSpeed = ?, coreCount = ?, socketType = ?, l1Size = ?, l2Size = ?, l3Size = ? WHERE cpuid = ?";
-	private final String updatePriceStmt = "UPDATE cpu SET modifyTime = ?, picURL = ?, productURL = ?, "
-			+ "vendorPrice = ? WHERE cpuid = ?";
-	private final String deleStmt = "DELETE FROM cpu WHERE cpuid = ?";
+			+ "vendorPrice = ?, relativeRating = ?, benchScore = ?, branding = ?, "
+			+ "coreSpeed = ?, memClockSpeed = ?, coreCount = ?, interfaceType = ?, memSize = ? WHERE gpuid = ?";
+	private final String updatePriceStmt = "UPDATE gpu SET modifyTime = ?, picURL = ?, productURL = ?, "
+			+ "vendorPrice = ? WHERE gpuid = ?";
+	private final String deleStmt = "DELETE FROM gpu WHERE gpuid = ?";
 	
 	@Override
-	public ArrayList<CPU> getAllCPU() throws SQLException{
-		ArrayList<CPU> cpuList = new ArrayList<CPU>();
+	public ArrayList<GPU> getAllGPU() throws SQLException{
+		ArrayList<GPU> gpuList = new ArrayList<GPU>();
 		Connection dbConn = null;
 		Statement stmt = null;
-		CPU temp;
+		GPU temp;
 		
 		try{
 			dbConn = Database.getConnection();
 			stmt = dbConn.createStatement();  
-			ResultSet rs = stmt.executeQuery("select * from cpu");  
+			ResultSet rs = stmt.executeQuery("select * from gpu");  
 			while(rs.next()) {
-				temp = new CPU();
-				temp.id = rs.getInt("cpuID");
+				temp = new GPU();
+				temp.id = rs.getInt("gpuID");
 				temp.createTime = rs.getTimestamp("createTime");
 				temp.modifyTime = rs.getTimestamp("modifyTime");
 				temp.type = rs.getString("type");
@@ -55,14 +55,13 @@ public class CPUDaoMySQLImpl implements CPUDao{
 				temp.relativeRating = rs.getInt("relativeRating");
 				
 				temp.benchScore = rs.getFloat("benchScore");
+				temp.branding = rs.getString("branding");
 				temp.coreSpeed = rs.getFloat("coreSpeed");
-				temp.coreTurboSpeed = rs.getFloat("coreTurboSpeed");
+				temp.memClockSpeed = rs.getFloat("memClockSpeed");
 				temp.coreCount = rs.getInt("coreCount");
-				temp.socketType = rs.getString("socketType");
-				temp.l1Size = rs.getInt("l1Size");
-				temp.l2Size = rs.getInt("l2Size");
-				temp.l3Size = rs.getInt("l3Size");
-				cpuList.add(temp);
+				temp.interfaceType = rs.getString("interfaceType");
+				temp.memSize = rs.getInt("memSize");
+				gpuList.add(temp);
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -74,12 +73,12 @@ public class CPUDaoMySQLImpl implements CPUDao{
 				stmt.close();
 			}
 		}
-		return cpuList;
+		return gpuList;
 	}	
 	
 
 	@Override
-	public void insertCPU(CPU cpu) throws SQLException{
+	public void insertGPU(GPU gpu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -89,26 +88,25 @@ public class CPUDaoMySQLImpl implements CPUDao{
 			
 			stmt.setTimestamp(1, getCurrentTimeStamp());
 			stmt.setTimestamp(2, getCurrentTimeStamp());
-			stmt.setString(3, cpu.type);
-			stmt.setString(4, cpu.productName);
-			stmt.setString(5, cpu.productID);
-			stmt.setString(6, cpu.modelName);
-			stmt.setString(7, cpu.make);
-			stmt.setInt(8, cpu.year);
-			stmt.setInt(9, cpu.powerRating);
-			stmt.setString(10, cpu.picURL);
-			stmt.setString(11, cpu.productURL);
-			stmt.setFloat(12, cpu.vendorPrice);
-			stmt.setInt(13, cpu.relativeRating);
+			stmt.setString(3, gpu.type);
+			stmt.setString(4, gpu.productName);
+			stmt.setString(5, gpu.productID);
+			stmt.setString(6, gpu.modelName);
+			stmt.setString(7, gpu.make);
+			stmt.setInt(8, gpu.year);
+			stmt.setInt(9, gpu.powerRating);
+			stmt.setString(10, gpu.picURL);
+			stmt.setString(11, gpu.productURL);
+			stmt.setFloat(12, gpu.vendorPrice);
+			stmt.setInt(13, gpu.relativeRating);
 			
-			stmt.setFloat(14, cpu.benchScore);
-			stmt.setFloat(15, cpu.coreSpeed);
-			stmt.setFloat(16, cpu.coreTurboSpeed);
-			stmt.setInt(17, cpu.coreCount);
-			stmt.setString(18, cpu.socketType);
-			stmt.setInt(19, cpu.l1Size);
-			stmt.setInt(20, cpu.l2Size);
-			stmt.setInt(21, cpu.l3Size);
+			stmt.setFloat(14, gpu.benchScore);
+			stmt.setString(15, gpu.branding);
+			stmt.setFloat(16, gpu.coreSpeed);
+			stmt.setFloat(17, gpu.memClockSpeed);
+			stmt.setInt(18, gpu.coreCount);
+			stmt.setString(19, gpu.interfaceType);
+			stmt.setInt(20, gpu.memSize);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -124,7 +122,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 
 
 	@Override
-	public void updateFullCPU(CPU cpu) throws SQLException{
+	public void updateFullGPU(GPU gpu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -133,27 +131,26 @@ public class CPUDaoMySQLImpl implements CPUDao{
 			stmt = dbConn.prepareStatement(updateStmt);
 			
 			stmt.setTimestamp(1, getCurrentTimeStamp());
-			stmt.setString(2, cpu.type);
-			stmt.setString(3, cpu.productName);
-			stmt.setString(4, cpu.productID);
-			stmt.setString(5, cpu.modelName);
-			stmt.setString(6, cpu.make);
-			stmt.setInt(7, cpu.year);
-			stmt.setInt(8, cpu.powerRating);
-			stmt.setString(9, cpu.picURL);
-			stmt.setString(10, cpu.productURL);
-			stmt.setFloat(11, cpu.vendorPrice);
-			stmt.setInt(12, cpu.relativeRating);
+			stmt.setString(2, gpu.type);
+			stmt.setString(3, gpu.productName);
+			stmt.setString(4, gpu.productID);
+			stmt.setString(5, gpu.modelName);
+			stmt.setString(6, gpu.make);
+			stmt.setInt(7, gpu.year);
+			stmt.setInt(8, gpu.powerRating);
+			stmt.setString(9, gpu.picURL);
+			stmt.setString(10, gpu.productURL);
+			stmt.setFloat(11, gpu.vendorPrice);
+			stmt.setInt(12, gpu.relativeRating);
 			
-			stmt.setFloat(13, cpu.benchScore);
-			stmt.setFloat(14, cpu.coreSpeed);
-			stmt.setFloat(15, cpu.coreTurboSpeed);
-			stmt.setInt(16, cpu.coreCount);
-			stmt.setString(17, cpu.socketType);
-			stmt.setInt(18, cpu.l1Size);
-			stmt.setInt(19, cpu.l2Size);
-			stmt.setInt(20, cpu.l3Size);
-			stmt.setInt(21, cpu.id);
+			stmt.setFloat(13, gpu.benchScore);
+			stmt.setString(14, gpu.branding);
+			stmt.setFloat(15, gpu.coreSpeed);
+			stmt.setFloat(16, gpu.memClockSpeed);
+			stmt.setInt(17, gpu.coreCount);
+			stmt.setString(18, gpu.interfaceType);
+			stmt.setInt(19, gpu.memSize);
+			stmt.setInt(20, gpu.id);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -168,7 +165,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 	}
 	
 	@Override
-	public void updatePriceCPU(CPU cpu) throws SQLException{
+	public void updatePriceGPU(GPU gpu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -177,11 +174,11 @@ public class CPUDaoMySQLImpl implements CPUDao{
 			stmt = dbConn.prepareStatement(updatePriceStmt);
 			
 			stmt.setTimestamp(1, getCurrentTimeStamp());
-			stmt.setString(2, cpu.picURL);
-			stmt.setString(3, cpu.productURL);
-			stmt.setFloat(4, cpu.vendorPrice);
+			stmt.setString(2, gpu.picURL);
+			stmt.setString(3, gpu.productURL);
+			stmt.setFloat(4, gpu.vendorPrice);
 			
-			stmt.setInt(5, cpu.id);
+			stmt.setInt(5, gpu.id);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -196,7 +193,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 	}
 
 	@Override
-	public void deleteCPU(CPU cpu) throws SQLException{
+	public void deleteGPU(GPU gpu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -204,7 +201,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 			dbConn = Database.getConnection();
 			stmt = dbConn.prepareStatement(deleStmt);
 			
-			stmt.setInt(1, cpu.id);
+			stmt.setInt(1, gpu.id);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -219,19 +216,19 @@ public class CPUDaoMySQLImpl implements CPUDao{
 	}
 	
 	@Override
-	public CPU getCPUByName(String productName) throws SQLException {
+	public GPU getGPUByName(String productName) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
-		CPU temp = null;
+		GPU temp = null;
 		
 		try{
 			dbConn = Database.getConnection();
-			stmt = dbConn.prepareStatement(selectCPU);  
+			stmt = dbConn.prepareStatement(selectGPU);  
 			stmt.setString(1, productName);
 			ResultSet rs = stmt.executeQuery();  
 			while(rs.next()) {
-				temp = new CPU();
-				temp.id = rs.getInt("cpuID");
+				temp = new GPU();
+				temp.id = rs.getInt("gpuID");
 				temp.createTime = rs.getTimestamp("createTime");
 				temp.modifyTime = rs.getTimestamp("modifyTime");
 				temp.type = rs.getString("type");
@@ -247,13 +244,12 @@ public class CPUDaoMySQLImpl implements CPUDao{
 				temp.relativeRating = rs.getInt("relativeRating");
 				
 				temp.benchScore = rs.getFloat("benchScore");
+				temp.branding = rs.getString("branding");
 				temp.coreSpeed = rs.getFloat("coreSpeed");
-				temp.coreTurboSpeed = rs.getFloat("coreTurboSpeed");
+				temp.memClockSpeed = rs.getFloat("memClockSpeed");
 				temp.coreCount = rs.getInt("coreCount");
-				temp.socketType = rs.getString("socketType");
-				temp.l1Size = rs.getInt("l1Size");
-				temp.l2Size = rs.getInt("l2Size");
-				temp.l3Size = rs.getInt("l3Size");
+				temp.interfaceType = rs.getString("interfaceType");
+				temp.memSize = rs.getInt("memSize");
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
