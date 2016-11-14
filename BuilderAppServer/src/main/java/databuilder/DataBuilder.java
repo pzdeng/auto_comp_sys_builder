@@ -1,11 +1,15 @@
 package main.java.databuilder;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
+import main.java.dao.CPUDao;
+import main.java.dao.CPUDaoMySQLImpl;
 import main.java.global.AppConstants;
 import main.java.objects.CPU;
+import main.java.objects.ComputerPart;
 import main.java.objects.GPU;
 import main.java.objects.Motherboard;
 import main.java.objects.comparator.ModelNameComparator;
@@ -45,6 +49,17 @@ public class DataBuilder {
 	 * Pull existing data from database
 	 */
 	public void initData(){
+		CPUDao cpuDao = new CPUDaoMySQLImpl();
+		try {
+			cpuList = cpuDao.getAllCPU();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//CPUDao cpuDao = new CPUDaoMySQLImpl();
+		//cpuList = cpuDao.getAllCPU();
+		//CPUDao cpuDao = new CPUDaoMySQLImpl();
+		//cpuList = cpuDao.getAllCPU();
 		//TODO populate cpu, gpu, motherboard list
 	}
 	
@@ -53,6 +68,18 @@ public class DataBuilder {
 	 */
 	public void updateData(){
 		//TODO scan each entry and issue update if dirty
+	}
+	
+	public void initProductInfo(){
+		
+	}
+	
+	public void updateProductPricing(){
+		
+	}
+	
+	public void updateProductPricing(ComputerPart part){
+		
 	}
 	
 	/**
@@ -119,7 +146,7 @@ public class DataBuilder {
 				cpuTemp.make = products[i][2].trim();
 				cpuTemp.productName = products[i][3].trim();
 				cpuTemp.modelName = cpuTemp.productName;
-				cpuTemp.relativeRating = Float.parseFloat(products[i][4]);
+				cpuTemp.relativeRating = Integer.parseInt(products[i][4]);
 				cpuTemp.benchScore = Float.parseFloat(products[i][5]);
 				cpuList.add(cpuTemp);
 				break;
@@ -128,13 +155,14 @@ public class DataBuilder {
 				gpuTemp.productID = products[i][1].trim();
 				gpuTemp.make = products[i][2].trim();
 				gpuTemp.productName = products[i][3].trim();
-				gpuTemp.relativeRating = Float.parseFloat(products[i][4]);
+				gpuTemp.relativeRating = Integer.parseInt(products[i][4]);
 				gpuTemp.benchScore = Float.parseFloat(products[i][5]);
 				//Check if partnumber column is empty
 				if(gpuTemp.productID.length() == 0){
 					//ASSUMPTION: Product name is also model type for this GPU
 					//ASSUMPTION: Similar GPU models will be grouped together sequentially 
 					similarGPUModel = products[i][3];
+					gpuTemp.productID = "*"; //Star indicates no single correspondence to a product
 				}
 				gpuTemp.modelName = similarGPUModel;
 				gpuList.add(gpuTemp);

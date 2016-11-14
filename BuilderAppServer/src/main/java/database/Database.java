@@ -15,22 +15,16 @@ public class Database {
 	}
 	
 	public static Connection getConnection() throws Exception{
-		String url = "jdbc:mysql://autocompsysbuilderdb.ccmk3v3o5ojq.us-east-1.rds.amazonaws.com:3306/";
-        String dbName = "autocompdb";
+		String url = "jdbc:mysql://autocompbuilder.ccmk3v3o5ojq.us-east-1.rds.amazonaws.com:3306/";
+        String dbName = "AutoCompBuilderDB";
         String driver = "com.mysql.jdbc.Driver";
         //Database Credentials go here
-        String userName = "";
-        String password = "";
+        String userName = "app";
+        String password = "autocomp";
 
         Class.forName(driver).newInstance();
         Connection conn = DriverManager.getConnection(url + dbName, userName,password);
         
 		return conn;
-	}
-	
-	public static void closeConnection(Connection conn) throws Exception{
-		if(conn != null){
-			conn.close();
-		}
 	}
 }

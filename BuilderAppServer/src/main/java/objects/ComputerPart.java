@@ -38,7 +38,7 @@ public abstract class ComputerPart {
 	public String productURL;
 	public float vendorPrice;
 	//Comparison metrics
-	public float relativeRating;
+	public int relativeRating;
 	public float benchScore;
 	
 	public abstract ComputerPartMin shortenSpecs();
@@ -50,16 +50,20 @@ public abstract class ComputerPart {
 		makeLimit = 7;
 		nameLimit = 40;
 		String printMake = make;
-		if(printMake.length() > makeLimit){
-			printMake = printMake.substring(0, makeLimit);
+		if(printMake != null){
+			if(printMake.length() > makeLimit){
+				printMake = printMake.substring(0, makeLimit);
+			}
 		}
 		String printName = productName;
-		if(printName.length() > nameLimit){
-			printName = printName.substring(0, nameLimit);
-		}
-		else if(printName.length() < nameLimit){
-			String formatTarget = "%-" + (nameLimit - printName.length()) + "s";
-    		printName = String.format(formatTarget, printName, Charset.forName("UTF8"));
+		if(printName != null){
+			if(printName.length() > nameLimit){
+				printName = printName.substring(0, nameLimit);
+			}
+			else if(printName.length() < nameLimit){
+				String formatTarget = "%-" + (nameLimit - printName.length()) + "s";
+	    		printName = String.format(formatTarget, printName, Charset.forName("UTF8"));
+			}
 		}
 		StringBuilder out = new StringBuilder();
 		out.append(type).append(" :: ").append(printMake).append(",").append(AppConstants.tab).append(printName);

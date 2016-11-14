@@ -1,14 +1,14 @@
 package main.java.dao;
-import java.util.Map;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import main.java.objects.CPU;
 
 public interface CPUDao {
-   public Map<String, CPU> getAllCPU();
-   public Map<String, CPU> getALLCPU(Map<String, String> params);
-   public CPU getCPU(int id);
-   public CPU getCPUByName(String name);
-   public void insertCPU(CPU cpu);
-   public void updateCPU(CPU cpu);
-   public void deleteCPU(CPU cpu);
+   public ArrayList<CPU> getAllCPU() throws SQLException;
+   public void insertCPU(CPU cpu) throws SQLException;
+   public void updateFullCPU(CPU cpu) throws SQLException;
+   public void updatePriceCPU(CPU cpu) throws SQLException;
+   public CPU getCPUByName(String productName) throws SQLException;
+   public void deleteCPU(CPU cpu) throws SQLException;
 }
