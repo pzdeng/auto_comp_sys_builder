@@ -1,5 +1,6 @@
 package main.java.databuilder;
 
+import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,6 +8,8 @@ import java.util.HashMap;
 
 import main.java.dao.CPUDao;
 import main.java.dao.CPUDaoMySQLImpl;
+import main.java.dao.GPUDao;
+import main.java.dao.GPUDaoMySQLImpl;
 import main.java.global.AppConstants;
 import main.java.objects.CPU;
 import main.java.objects.ComputerPart;
@@ -50,12 +53,25 @@ public class DataBuilder {
 	 */
 	public void initData(){
 		CPUDao cpuDao = new CPUDaoMySQLImpl();
+		GPUDao gpuDao = new GPUDaoMySQLImpl();
 		try {
 			cpuList = cpuDao.getAllCPU();
+			gpuList = gpuDao.getAllGPU();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		if(cpuList.isEmpty()){
+			firstTimeLoadCPUData();
+		}
+		if(gpuList.isEmpty()){
+			firstTimeLoadGPUData();
+		}
+		/*
+		if(mbList.isEmpty()){
+			firstTimeLoadMBData();
+		}
+		*/
 		//CPUDao cpuDao = new CPUDaoMySQLImpl();
 		//cpuList = cpuDao.getAllCPU();
 		//CPUDao cpuDao = new CPUDaoMySQLImpl();
@@ -63,6 +79,57 @@ public class DataBuilder {
 		//TODO populate cpu, gpu, motherboard list
 	}
 	
+	private void firstTimeLoadMBData() {
+		String productFile = new String("datasourceExtract" + File.separator + "MoboSimpleData.csv");
+		String productFileCat = "HARDWAREINFO_MB";
+		addProductListings(productFile, productFileCat);
+		//TODO DAO object
+	}
+
+	private void firstTimeLoadGPUData() {
+		GPUDao gpuDao = new GPUDaoMySQLImpl();
+		String productFile = new String("datasourceExtract" + File.separator + "ALL_UserBenchmarks.csv");
+		String techPoweredUpCPUFile = new String("datasourceExtract" + File.separator + "techPoweredUpCPU.csv");
+		String productFileCat = "USERBENCHMARK";
+		String techPoweredUpCPUFileCat = "TECHPOWEREDUP_CPU";
+		addProductListings(productFile, productFileCat);
+		autoMapHardwareSpecs(techPoweredUpCPUFile, techPoweredUpCPUFileCat);
+		try{
+			gpuDao.insertGPU(gpuList);
+		} catch(Exception e){
+			System.err.println("Records cannot be inserted into gpu table; Error: " + e);
+		}
+
+		//Refresh GPUlist, to get id and time stamps
+		try{
+			gpuList = gpuDao.getAllGPU();
+		} catch(Exception e){
+			System.err.println("Error getting GPU's, Error: " + e);
+		}		
+	}
+
+	private void firstTimeLoadCPUData() {
+		CPUDao cpuDao = new CPUDaoMySQLImpl();
+		String productFile = new String("datasourceExtract" + File.separator + "ALL_UserBenchmarks.csv");
+		String techPoweredUpCPUFile = new String("datasourceExtract" + File.separator + "techPoweredUpCPU.csv");
+		String productFileCat = "USERBENCHMARK";
+		String techPoweredUpCPUFileCat = "TECHPOWEREDUP_CPU";
+		addProductListings(productFile, productFileCat);
+		autoMapHardwareSpecs(techPoweredUpCPUFile, techPoweredUpCPUFileCat);
+		try{
+			cpuDao.insertCPU(cpuList);
+		} catch(Exception e){
+			System.err.println("Records cannot be inserted into cpu table; Error: " + e);
+		}
+
+		//Refresh CPUlist, to get id and time stamps
+		try{
+			cpuList = cpuDao.getAllCPU();
+		} catch(Exception e){
+			System.err.println("Error getting CPU's, Error: " + e);
+		}	
+	}
+
 	/**
 	 * For any entry marked as dirty, update database
 	 */

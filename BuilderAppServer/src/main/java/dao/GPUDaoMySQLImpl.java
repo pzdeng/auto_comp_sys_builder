@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 
 import main.java.database.Database;
 import main.java.objects.GPU;
@@ -267,5 +268,86 @@ public class GPUDaoMySQLImpl implements GPUDao{
 	private static Timestamp getCurrentTimeStamp() {
 		return new Timestamp(System.currentTimeMillis());
 
+	}
+
+
+	@Override
+	public void insertGPU(List<GPU> gpuList) throws SQLException {
+		Connection dbConn = null;
+		PreparedStatement stmt = null;
+		
+		try{
+			dbConn = Database.getConnection();
+			stmt = dbConn.prepareStatement(insertStmt);
+			for(int i = 0; i < gpuList.size(); i++){
+				GPU gpu = gpuList.get(i);
+			
+				stmt.setTimestamp(1, getCurrentTimeStamp());
+				stmt.setTimestamp(2, getCurrentTimeStamp());
+				stmt.setString(3, gpu.type);
+				stmt.setString(4, gpu.productName);
+				stmt.setString(5, gpu.productID);
+				stmt.setString(6, gpu.modelName);
+				stmt.setString(7, gpu.make);
+				stmt.setInt(8, gpu.year);
+				stmt.setInt(9, gpu.powerRating);
+				stmt.setString(10, gpu.picURL);
+				stmt.setString(11, gpu.productURL);
+				stmt.setFloat(12, gpu.vendorPrice);
+				stmt.setInt(13, gpu.relativeRating);
+				
+				stmt.setFloat(14, gpu.benchScore);
+				stmt.setString(15, gpu.branding);
+				stmt.setFloat(16, gpu.coreSpeed);
+				stmt.setFloat(17, gpu.memClockSpeed);
+				stmt.setInt(18, gpu.coreCount);
+				stmt.setString(19, gpu.interfaceType);
+				stmt.setInt(20, gpu.memSize);
+				stmt.addBatch();
+			}
+			stmt.executeBatch();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally{
+			if(dbConn != null){
+				dbConn.close();
+			}
+			if(stmt != null){
+				stmt.close();
+			}
+		}
+		
+	}
+
+
+	@Override
+	public void updatePriceGPU(List<GPU> gpuList) throws SQLException {
+		Connection dbConn = null;
+		PreparedStatement stmt = null;
+		
+		try{
+			dbConn = Database.getConnection();
+			stmt = dbConn.prepareStatement(updatePriceStmt);
+			for(int i = 0; i < gpuList.size(); i++){
+				GPU gpu = gpuList.get(i);
+				stmt.setTimestamp(1, getCurrentTimeStamp());
+				stmt.setString(2, gpu.picURL);
+				stmt.setString(3, gpu.productURL);
+				stmt.setFloat(4, gpu.vendorPrice);
+				
+				stmt.setInt(5, gpu.id);
+				stmt.addBatch();
+			}
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally{
+			if(dbConn != null){
+				dbConn.close();
+			}
+			if(stmt != null){
+				stmt.close();
+			}
+		}
 	}
 }

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 
 import main.java.database.Database;
 import main.java.objects.CPU;
@@ -271,5 +272,87 @@ public class CPUDaoMySQLImpl implements CPUDao{
 	private static Timestamp getCurrentTimeStamp() {
 		return new Timestamp(System.currentTimeMillis());
 
+	}
+
+
+	@Override
+	public void insertCPU(List<CPU> cpuList) throws SQLException {
+		Connection dbConn = null;
+		PreparedStatement stmt = null;
+		
+		try{
+			dbConn = Database.getConnection();
+			stmt = dbConn.prepareStatement(insertStmt);
+			
+			for(int i = 0; i < cpuList.size(); i++){
+				CPU cpu = cpuList.get(i);	
+				
+				stmt.setTimestamp(1, getCurrentTimeStamp());
+				stmt.setTimestamp(2, getCurrentTimeStamp());
+				stmt.setString(3, cpu.type);
+				stmt.setString(4, cpu.productName);
+				stmt.setString(5, cpu.productID);
+				stmt.setString(6, cpu.modelName);
+				stmt.setString(7, cpu.make);
+				stmt.setInt(8, cpu.year);
+				stmt.setInt(9, cpu.powerRating);
+				stmt.setString(10, cpu.picURL);
+				stmt.setString(11, cpu.productURL);
+				stmt.setFloat(12, cpu.vendorPrice);
+				stmt.setInt(13, cpu.relativeRating);
+				
+				stmt.setFloat(14, cpu.benchScore);
+				stmt.setFloat(15, cpu.coreSpeed);
+				stmt.setFloat(16, cpu.coreTurboSpeed);
+				stmt.setInt(17, cpu.coreCount);
+				stmt.setString(18, cpu.socketType);
+				stmt.setInt(19, cpu.l1Size);
+				stmt.setInt(20, cpu.l2Size);
+				stmt.setInt(21, cpu.l3Size);
+				stmt.addBatch();
+			}
+			stmt.executeBatch();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally{
+			if(dbConn != null){
+				dbConn.close();
+			}
+			if(stmt != null){
+				stmt.close();
+			}
+		}
+	}
+
+
+	@Override
+	public void updatePriceCPU(List<CPU> cpuList) throws SQLException {
+		Connection dbConn = null;
+		PreparedStatement stmt = null;
+		
+		try{
+			dbConn = Database.getConnection();
+			stmt = dbConn.prepareStatement(updatePriceStmt);
+			for(int i = 0; i < cpuList.size(); i++){
+				CPU cpu = cpuList.get(i);	
+				stmt.setTimestamp(1, getCurrentTimeStamp());
+				stmt.setString(2, cpu.picURL);
+				stmt.setString(3, cpu.productURL);
+				stmt.setFloat(4, cpu.vendorPrice);
+				
+				stmt.setInt(5, cpu.id);
+				stmt.addBatch();
+			}
+			stmt.executeBatch();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally{
+			if(dbConn != null){
+				dbConn.close();
+			}
+			if(stmt != null){
+				stmt.close();
+			}
+		}
 	}
 }

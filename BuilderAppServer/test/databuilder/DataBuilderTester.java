@@ -1,5 +1,7 @@
 package databuilder;
 
+import static org.junit.Assert.*;
+
 import java.io.File;
 
 import org.junit.After;
@@ -22,6 +24,16 @@ public class DataBuilderTester {
     @After
     public void tearDown() throws Exception {
     	dataBuild.clear();
+    }
+    
+    
+    @Test
+    public void testDataBuilder_Init(){
+    	dataBuild.initData();
+    	assertTrue(dataBuild.getCPUList().size() > 0);
+    	System.out.println("Total # of CPU's: " + dataBuild.getCPUList().size());
+    	assertTrue(dataBuild.getGPUList().size() > 0);
+    	System.out.println("Total # of GPU's: " + dataBuild.getGPUList().size());
     }
     
 	@Test
