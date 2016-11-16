@@ -10,6 +10,8 @@ import main.java.dao.CPUDao;
 import main.java.dao.CPUDaoMySQLImpl;
 import main.java.dao.GPUDao;
 import main.java.dao.GPUDaoMySQLImpl;
+import main.java.dao.MBDao;
+import main.java.dao.MBDaoMySQLImpl;
 import main.java.global.AppConstants;
 import main.java.objects.CPU;
 import main.java.objects.ComputerPart;
@@ -54,36 +56,43 @@ public class DataBuilder {
 	public void initData(){
 		CPUDao cpuDao = new CPUDaoMySQLImpl();
 		GPUDao gpuDao = new GPUDaoMySQLImpl();
+		MBDao mbDao = new MBDaoMySQLImpl();
 		try {
 			cpuList = cpuDao.getAllCPU();
 			gpuList = gpuDao.getAllGPU();
+			mbList = mbDao.getAllMotherboard();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//Populate respective lists if database table is empty
 		if(cpuList.isEmpty()){
 			firstTimeLoadCPUData();
 		}
 		if(gpuList.isEmpty()){
 			firstTimeLoadGPUData();
 		}
-		/*
 		if(mbList.isEmpty()){
 			firstTimeLoadMBData();
 		}
-		*/
-		//CPUDao cpuDao = new CPUDaoMySQLImpl();
-		//cpuList = cpuDao.getAllCPU();
-		//CPUDao cpuDao = new CPUDaoMySQLImpl();
-		//cpuList = cpuDao.getAllCPU();
-		//TODO populate cpu, gpu, motherboard list
 	}
 	
 	private void firstTimeLoadMBData() {
+		MBDao mbDao = new MBDaoMySQLImpl();
 		String productFile = new String("datasourceExtract" + File.separator + "MoboSimpleData.csv");
 		String productFileCat = "HARDWAREINFO_MB";
 		addProductListings(productFile, productFileCat);
-		//TODO DAO object
+		try{
+			mbDao.insertMotherboard(mbList);
+		} catch(Exception e){
+			System.err.println("Records cannot be inserted into motherboard table; Error: " + e);
+		}
+		//Refresh motherboard list, to get id and time stamps
+		try{
+			mbList = mbDao.getAllMotherboard();
+		} catch(Exception e){
+			System.err.println("Error getting motherboards', Error: " + e);
+		}
 	}
 
 	private void firstTimeLoadGPUData() {

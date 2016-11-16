@@ -28,4 +28,6 @@ public class AppConstants {
 	public final static String ddr2		 = "DDR2";
 	public final static String ddr3		 = "DDR3";
 	public final static String ddr4		 = "DDR4";
+	//Database
+	public final static int batchCommit	 = 200;
 }

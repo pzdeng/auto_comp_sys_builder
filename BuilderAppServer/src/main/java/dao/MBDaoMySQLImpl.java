@@ -11,37 +11,37 @@ import java.util.List;
 
 import main.java.database.Database;
 import main.java.global.AppConstants;
-import main.java.objects.GPU;
+import main.java.objects.Motherboard;
 
-public class GPUDaoMySQLImpl implements GPUDao{
+public class MBDaoMySQLImpl implements MBDao{
 
-	private final String selectGPU = "SELECT * FROM gpu WHERE productName = ?";
-	private final String insertStmt = "INSERT INTO gpu(createTime, modifyTime, type, productName, productID, "
+	private final String selectMotherboard = "SELECT * FROM motherboard WHERE productName = ?";
+	private final String insertStmt = "INSERT INTO motherboard(createTime, modifyTime, type, productName, productID, "
 			+ "modelName, make, year, powerRating, picURL, productURL, "
-			+ "vendorPrice, relativeRating, benchScore, branding, "
-			+ "coreSpeed, memClockSpeed, coreCount, interfaceType, memSize) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-	private final String updateStmt = "UPDATE gpu SET modifyTime = ?, type = ?, productName = ?, productID = ?, "
+			+ "vendorPrice, relativeRating, benchScore, formFactor, "
+			+ "socketType, memType, memSlotNum, sataNum, pciExpressX16Num) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	private final String updateStmt = "UPDATE motherboard SET modifyTime = ?, type = ?, productName = ?, productID = ?, "
 			+ "modelName = ?, make = ?, year = ?, powerRating = ?, picURL = ?, productURL = ?, "
-			+ "vendorPrice = ?, relativeRating = ?, benchScore = ?, branding = ?, "
-			+ "coreSpeed = ?, memClockSpeed = ?, coreCount = ?, interfaceType = ?, memSize = ? WHERE gpuid = ?";
-	private final String updatePriceStmt = "UPDATE gpu SET modifyTime = ?, picURL = ?, productURL = ?, "
-			+ "vendorPrice = ? WHERE gpuid = ?";
-	private final String deleStmt = "DELETE FROM gpu WHERE gpuid = ?";
+			+ "vendorPrice = ?, relativeRating = ?, benchScore = ?, formFactor = ?, "
+			+ "socketType = ?, memType = ?, memSlotNum = ?, sataNum = ?, pciExpressX16Num = ? WHERE mbid = ?";
+	private final String updatePriceStmt = "UPDATE motherboard SET modifyTime = ?, picURL = ?, productURL = ?, "
+			+ "vendorPrice = ? WHERE mbid = ?";
+	private final String deleStmt = "DELETE FROM motherboard WHERE mbid = ?";
 	
 	@Override
-	public ArrayList<GPU> getAllGPU() throws SQLException{
-		ArrayList<GPU> gpuList = new ArrayList<GPU>();
+	public ArrayList<Motherboard> getAllMotherboard() throws SQLException{
+		ArrayList<Motherboard> mbList = new ArrayList<Motherboard>();
 		Connection dbConn = null;
 		Statement stmt = null;
-		GPU temp;
+		Motherboard temp;
 		
 		try{
 			dbConn = Database.getConnection();
 			stmt = dbConn.createStatement();  
-			ResultSet rs = stmt.executeQuery("select * from gpu");  
+			ResultSet rs = stmt.executeQuery("select * from motherboard");  
 			while(rs.next()) {
-				temp = new GPU();
-				temp.id = rs.getInt("gpuID");
+				temp = new Motherboard();
+				temp.id = rs.getInt("mbID");
 				temp.createTime = rs.getTimestamp("createTime");
 				temp.modifyTime = rs.getTimestamp("modifyTime");
 				temp.type = rs.getString("type");
@@ -57,13 +57,13 @@ public class GPUDaoMySQLImpl implements GPUDao{
 				temp.relativeRating = rs.getInt("relativeRating");
 				
 				temp.benchScore = rs.getFloat("benchScore");
-				temp.branding = rs.getString("branding");
-				temp.coreSpeed = rs.getFloat("coreSpeed");
-				temp.memClockSpeed = rs.getFloat("memClockSpeed");
-				temp.coreCount = rs.getInt("coreCount");
-				temp.interfaceType = rs.getString("interfaceType");
-				temp.memSize = rs.getInt("memSize");
-				gpuList.add(temp);
+				temp.formFactor = rs.getString("formFactor");
+				temp.socketType = rs.getString("socketType");
+				temp.memType = rs.getString("memType");
+				temp.memSlotNum = rs.getInt("memSlotNum");
+				temp.sataNum = rs.getInt("sataNum");
+				temp.pciExpressX16Num = rs.getInt("pciExpressX16Num");
+				mbList.add(temp);
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -75,12 +75,12 @@ public class GPUDaoMySQLImpl implements GPUDao{
 				stmt.close();
 			}
 		}
-		return gpuList;
+		return mbList;
 	}	
 	
 
 	@Override
-	public void insertGPU(GPU gpu) throws SQLException{
+	public void insertMotherboard(Motherboard mb) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -90,25 +90,25 @@ public class GPUDaoMySQLImpl implements GPUDao{
 			
 			stmt.setTimestamp(1, getCurrentTimeStamp());
 			stmt.setTimestamp(2, getCurrentTimeStamp());
-			stmt.setString(3, gpu.type);
-			stmt.setString(4, gpu.productName);
-			stmt.setString(5, gpu.productID);
-			stmt.setString(6, gpu.modelName);
-			stmt.setString(7, gpu.make);
-			stmt.setInt(8, gpu.year);
-			stmt.setInt(9, gpu.powerRating);
-			stmt.setString(10, gpu.picURL);
-			stmt.setString(11, gpu.productURL);
-			stmt.setFloat(12, gpu.vendorPrice);
-			stmt.setInt(13, gpu.relativeRating);
+			stmt.setString(3, mb.type);
+			stmt.setString(4, mb.productName);
+			stmt.setString(5, mb.productID);
+			stmt.setString(6, mb.modelName);
+			stmt.setString(7, mb.make);
+			stmt.setInt(8, mb.year);
+			stmt.setInt(9, mb.powerRating);
+			stmt.setString(10, mb.picURL);
+			stmt.setString(11, mb.productURL);
+			stmt.setFloat(12, mb.vendorPrice);
+			stmt.setInt(13, mb.relativeRating);
 			
-			stmt.setFloat(14, gpu.benchScore);
-			stmt.setString(15, gpu.branding);
-			stmt.setFloat(16, gpu.coreSpeed);
-			stmt.setFloat(17, gpu.memClockSpeed);
-			stmt.setInt(18, gpu.coreCount);
-			stmt.setString(19, gpu.interfaceType);
-			stmt.setInt(20, gpu.memSize);
+			stmt.setFloat(14, mb.benchScore);
+			stmt.setString(15, mb.formFactor);
+			stmt.setString(16, mb.socketType);
+			stmt.setString(17, mb.memType);
+			stmt.setInt(18, mb.memSlotNum);
+			stmt.setInt(19, mb.sataNum);
+			stmt.setInt(20, mb.pciExpressX16Num);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -124,7 +124,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 
 
 	@Override
-	public void updateFullGPU(GPU gpu) throws SQLException{
+	public void updateFullMotherboard(Motherboard mb) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -133,26 +133,26 @@ public class GPUDaoMySQLImpl implements GPUDao{
 			stmt = dbConn.prepareStatement(updateStmt);
 			
 			stmt.setTimestamp(1, getCurrentTimeStamp());
-			stmt.setString(2, gpu.type);
-			stmt.setString(3, gpu.productName);
-			stmt.setString(4, gpu.productID);
-			stmt.setString(5, gpu.modelName);
-			stmt.setString(6, gpu.make);
-			stmt.setInt(7, gpu.year);
-			stmt.setInt(8, gpu.powerRating);
-			stmt.setString(9, gpu.picURL);
-			stmt.setString(10, gpu.productURL);
-			stmt.setFloat(11, gpu.vendorPrice);
-			stmt.setInt(12, gpu.relativeRating);
+			stmt.setString(2, mb.type);
+			stmt.setString(3, mb.productName);
+			stmt.setString(4, mb.productID);
+			stmt.setString(5, mb.modelName);
+			stmt.setString(6, mb.make);
+			stmt.setInt(7, mb.year);
+			stmt.setInt(8, mb.powerRating);
+			stmt.setString(9, mb.picURL);
+			stmt.setString(10, mb.productURL);
+			stmt.setFloat(11, mb.vendorPrice);
+			stmt.setInt(12, mb.relativeRating);
 			
-			stmt.setFloat(13, gpu.benchScore);
-			stmt.setString(14, gpu.branding);
-			stmt.setFloat(15, gpu.coreSpeed);
-			stmt.setFloat(16, gpu.memClockSpeed);
-			stmt.setInt(17, gpu.coreCount);
-			stmt.setString(18, gpu.interfaceType);
-			stmt.setInt(19, gpu.memSize);
-			stmt.setInt(20, gpu.id);
+			stmt.setFloat(14, mb.benchScore);
+			stmt.setString(15, mb.formFactor);
+			stmt.setString(16, mb.socketType);
+			stmt.setString(17, mb.memType);
+			stmt.setInt(18, mb.memSlotNum);
+			stmt.setInt(19, mb.sataNum);
+			stmt.setInt(20, mb.pciExpressX16Num);
+			stmt.setInt(21, mb.id);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -167,7 +167,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 	}
 	
 	@Override
-	public void updatePriceGPU(GPU gpu) throws SQLException{
+	public void updatePriceMotherboard(Motherboard mb) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -176,11 +176,11 @@ public class GPUDaoMySQLImpl implements GPUDao{
 			stmt = dbConn.prepareStatement(updatePriceStmt);
 			
 			stmt.setTimestamp(1, getCurrentTimeStamp());
-			stmt.setString(2, gpu.picURL);
-			stmt.setString(3, gpu.productURL);
-			stmt.setFloat(4, gpu.vendorPrice);
+			stmt.setString(2, mb.picURL);
+			stmt.setString(3, mb.productURL);
+			stmt.setFloat(4, mb.vendorPrice);
 			
-			stmt.setInt(5, gpu.id);
+			stmt.setInt(5, mb.id);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -195,7 +195,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 	}
 
 	@Override
-	public void deleteGPU(GPU gpu) throws SQLException{
+	public void deleteMotherboard(Motherboard mb) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -203,7 +203,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 			dbConn = Database.getConnection();
 			stmt = dbConn.prepareStatement(deleStmt);
 			
-			stmt.setInt(1, gpu.id);
+			stmt.setInt(1, mb.id);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -218,19 +218,19 @@ public class GPUDaoMySQLImpl implements GPUDao{
 	}
 	
 	@Override
-	public GPU getGPUByName(String productName) throws SQLException {
+	public Motherboard getMotherboardByName(String productName) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
-		GPU temp = null;
+		Motherboard temp = null;
 		
 		try{
 			dbConn = Database.getConnection();
-			stmt = dbConn.prepareStatement(selectGPU);  
+			stmt = dbConn.prepareStatement(selectMotherboard);  
 			stmt.setString(1, productName);
 			ResultSet rs = stmt.executeQuery();  
 			while(rs.next()) {
-				temp = new GPU();
-				temp.id = rs.getInt("gpuID");
+				temp = new Motherboard();
+				temp.id = rs.getInt("mbID");
 				temp.createTime = rs.getTimestamp("createTime");
 				temp.modifyTime = rs.getTimestamp("modifyTime");
 				temp.type = rs.getString("type");
@@ -246,12 +246,12 @@ public class GPUDaoMySQLImpl implements GPUDao{
 				temp.relativeRating = rs.getInt("relativeRating");
 				
 				temp.benchScore = rs.getFloat("benchScore");
-				temp.branding = rs.getString("branding");
-				temp.coreSpeed = rs.getFloat("coreSpeed");
-				temp.memClockSpeed = rs.getFloat("memClockSpeed");
-				temp.coreCount = rs.getInt("coreCount");
-				temp.interfaceType = rs.getString("interfaceType");
-				temp.memSize = rs.getInt("memSize");
+				temp.formFactor = rs.getString("formFactor");
+				temp.socketType = rs.getString("socketType");
+				temp.memType = rs.getString("memType");
+				temp.memSlotNum = rs.getInt("memSlotNum");
+				temp.sataNum = rs.getInt("sataNum");
+				temp.pciExpressX16Num = rs.getInt("pciExpressX16Num");
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -273,39 +273,50 @@ public class GPUDaoMySQLImpl implements GPUDao{
 
 
 	@Override
-	public void insertGPU(List<GPU> gpuList) throws SQLException {
+	public void insertMotherboard(List<Motherboard> mbList) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
+		int count = 0;
 		
 		try{
 			dbConn = Database.getConnection();
 			stmt = dbConn.prepareStatement(insertStmt);
-			for(int i = 0; i < gpuList.size(); i++){
-				GPU gpu = gpuList.get(i);
 			
-				stmt.setTimestamp(1, getCurrentTimeStamp());
-				stmt.setTimestamp(2, getCurrentTimeStamp());
-				stmt.setString(3, gpu.type);
-				stmt.setString(4, gpu.productName);
-				stmt.setString(5, gpu.productID);
-				stmt.setString(6, gpu.modelName);
-				stmt.setString(7, gpu.make);
-				stmt.setInt(8, gpu.year);
-				stmt.setInt(9, gpu.powerRating);
-				stmt.setString(10, gpu.picURL);
-				stmt.setString(11, gpu.productURL);
-				stmt.setFloat(12, gpu.vendorPrice);
-				stmt.setInt(13, gpu.relativeRating);
-				
-				stmt.setFloat(14, gpu.benchScore);
-				stmt.setString(15, gpu.branding);
-				stmt.setFloat(16, gpu.coreSpeed);
-				stmt.setFloat(17, gpu.memClockSpeed);
-				stmt.setInt(18, gpu.coreCount);
-				stmt.setString(19, gpu.interfaceType);
-				stmt.setInt(20, gpu.memSize);
-				stmt.addBatch();
+			for(int i = 0; i < mbList.size(); i++){
+				//Commit 200 or n records at a time
+				if(count < AppConstants.batchCommit){
+					Motherboard mb = mbList.get(i);	
+					
+					stmt.setTimestamp(1, getCurrentTimeStamp());
+					stmt.setTimestamp(2, getCurrentTimeStamp());
+					stmt.setString(3, mb.type);
+					stmt.setString(4, mb.productName);
+					stmt.setString(5, mb.productID);
+					stmt.setString(6, mb.modelName);
+					stmt.setString(7, mb.make);
+					stmt.setInt(8, mb.year);
+					stmt.setInt(9, mb.powerRating);
+					stmt.setString(10, mb.picURL);
+					stmt.setString(11, mb.productURL);
+					stmt.setFloat(12, mb.vendorPrice);
+					stmt.setInt(13, mb.relativeRating);
+					
+					stmt.setFloat(14, mb.benchScore);
+					stmt.setString(15, mb.formFactor);
+					stmt.setString(16, mb.socketType);
+					stmt.setString(17, mb.memType);
+					stmt.setInt(18, mb.memSlotNum);
+					stmt.setInt(19, mb.sataNum);
+					stmt.setInt(20, mb.pciExpressX16Num);
+					stmt.addBatch();
+					count++;
+				}
+				else{
+					stmt.executeBatch();
+					count = 0;
+				}
 			}
+			//Process any leftovers
 			stmt.executeBatch();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -317,27 +328,27 @@ public class GPUDaoMySQLImpl implements GPUDao{
 				stmt.close();
 			}
 		}
-		
 	}
 
 
 	@Override
-	public void updatePriceGPU(List<GPU> gpuList) throws SQLException {
+	public void updatePriceMotherboard(List<Motherboard> mbList) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		int count = 0;
+		
 		try{
 			dbConn = Database.getConnection();
 			stmt = dbConn.prepareStatement(updatePriceStmt);
-			for(int i = 0; i < gpuList.size(); i++){
+			for(int i = 0; i < mbList.size(); i++){
 				if(count < AppConstants.batchCommit){
-					GPU gpu = gpuList.get(i);
+					Motherboard mb = mbList.get(i);	
 					stmt.setTimestamp(1, getCurrentTimeStamp());
-					stmt.setString(2, gpu.picURL);
-					stmt.setString(3, gpu.productURL);
-					stmt.setFloat(4, gpu.vendorPrice);
+					stmt.setString(2, mb.picURL);
+					stmt.setString(3, mb.productURL);
+					stmt.setFloat(4, mb.vendorPrice);
 					
-					stmt.setInt(5, gpu.id);
+					stmt.setInt(5, mb.id);
 					stmt.addBatch();
 					count++;
 				}
