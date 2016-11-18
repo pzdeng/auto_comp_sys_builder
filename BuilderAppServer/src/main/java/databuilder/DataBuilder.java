@@ -16,7 +16,9 @@ import main.java.global.AppConstants;
 import main.java.objects.CPU;
 import main.java.objects.ComputerPart;
 import main.java.objects.GPU;
+import main.java.objects.Memory;
 import main.java.objects.Motherboard;
+import main.java.objects.PSU;
 import main.java.objects.comparator.ModelNameComparator;
 import main.java.webservice.VendorProductSearch;
 
@@ -33,6 +35,8 @@ public class DataBuilder {
 	private ArrayList<CPU> cpuList;
 	private ArrayList<GPU> gpuList;
 	private ArrayList<Motherboard> mbList;
+	private ArrayList<Memory> memList;
+	private ArrayList<PSU> psuList;
 	
 	private static DataBuilder dBuild;
 	
@@ -63,7 +67,6 @@ public class DataBuilder {
 			gpuList = gpuDao.getAllGPU();
 			mbList = mbDao.getAllMotherboard();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		//Populate respective lists if database table is empty
@@ -203,8 +206,35 @@ public class DataBuilder {
 		updateData();
 	}
 	
-	public void updateProductPricing(ComputerPart part){
-		
+	public void updateProductPricing(){
+		//For each computer part that has some valid productID, fetch information from Vendor (Amazon)
+		//TODO: due to slow nature of hitting amazon, do time checking
+		ComputerPart temp;
+		for(int i = 0; i < cpuList.size(); i++){
+			if(cpuList.get(i).productID != null && !cpuList.get(i).productID.equals("-")){
+				temp = VendorProductSearch.getProductInfo(cpuList.get(i));
+				if(!temp.productID.equals("-")){
+					cpuList.set(i, (CPU) temp);
+				}
+			}
+		}
+		for(int i = 0; i < gpuList.size(); i++){
+			if(gpuList.get(i).productID != null && !(gpuList.get(i).productID.equals("-") || gpuList.get(i).productID.equals("*"))){
+				temp = VendorProductSearch.getProductInfo(gpuList.get(i));
+				if(!temp.productID.equals("-")){
+					gpuList.set(i, (GPU) temp);
+				}
+			}
+		}
+		for(int i = 0; i < mbList.size(); i++){
+			if(mbList.get(i).productID != null && !mbList.get(i).productID.equals("-")){
+				temp = VendorProductSearch.getProductInfo(mbList.get(i));
+				if(!temp.productID.equals("-")){
+					mbList.set(i, (Motherboard) temp);
+				}
+			}
+		}
+		updateData();
 	}
 	
 	/**

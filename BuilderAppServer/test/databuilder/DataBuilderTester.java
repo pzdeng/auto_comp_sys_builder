@@ -38,6 +38,7 @@ public class DataBuilderTester {
     	System.out.println("Total # of Motherboards's: " + dataBuild.getMBList().size());
     }
     
+    //Update if productID is empty or null
     @Test
     public void testDataBuilder_Update(){
     	dataBuild.initData();
@@ -48,6 +49,20 @@ public class DataBuilderTester {
     	assertTrue(dataBuild.getMBList().size() > 0);
     	System.out.println("Total # of Motherboards's: " + dataBuild.getMBList().size());
     	dataBuild.updateCheckProductID();
+    	System.out.println("Update Complete");
+    }
+    
+    //Update if productID is some valid value
+    @Test
+    public void testDataBuilder_Update2(){
+    	dataBuild.initData();
+    	assertTrue(dataBuild.getCPUList().size() > 0);
+    	System.out.println("Total # of CPU's: " + dataBuild.getCPUList().size());
+    	assertTrue(dataBuild.getGPUList().size() > 0);
+    	System.out.println("Total # of GPU's: " + dataBuild.getGPUList().size());
+    	assertTrue(dataBuild.getMBList().size() > 0);
+    	System.out.println("Total # of Motherboards's: " + dataBuild.getMBList().size());
+    	dataBuild.updateProductPricing();
     	System.out.println("Update Complete");
     }
     

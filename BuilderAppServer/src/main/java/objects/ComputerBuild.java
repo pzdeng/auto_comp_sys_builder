@@ -18,6 +18,8 @@ public class ComputerBuild {
 	private CPU cpu;
 	private ArrayList<GPU> gpuList;
 	private Motherboard mb;
+	private ArrayList<Memory> memList;
+	private PSU psu;
 	private float totalCost;
 	private int budget;
 	private ComputerType type;

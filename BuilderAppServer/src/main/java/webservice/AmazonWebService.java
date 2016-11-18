@@ -32,6 +32,8 @@ public class AmazonWebService {
     private static final int maxNumPages = 10;
     private static final int maxRetryCount = 3;
     private static int retryCount = 0;
+    //Back off time to wait
+    private static final int backOffTime = 3000;
     //Help narrow the search and fetch more valid computer part items
     private static final Map<String, String> browseNodes;
     static{
@@ -39,6 +41,7 @@ public class AmazonWebService {
     	browseNodes.put(AppConstants.cpu, "229189");
     	browseNodes.put(AppConstants.gpu, "284822");
     	browseNodes.put(AppConstants.mobo, "1048424");
+    	// memory : 172500
     	browseNodes.put("DEFAULT", "193870011");
     }
     
@@ -47,15 +50,19 @@ public class AmazonWebService {
      */
     private static void initAccess(){		
     	try {
+    		//Plan A use Default Credentials Provider attached to EC2 instance
     		AWSCredentialsProvider credentialsProvider = new DefaultAWSCredentialsProviderChain();
             AWS_ACCESS_KEY_ID = credentialsProvider.getCredentials().getAWSAccessKeyId();
             AWS_SECRET_KEY = credentialsProvider.getCredentials().getAWSSecretKey();
+            //Plan B read from file or path
             AWSGoodStatus = true;
+            System.out.println("Good AWS Credentials");
         } catch (Exception e) {
             System.err.println("AWS not enabled, Exception: " + e.getMessage());
             AWS_ACCESS_KEY_ID = "FAIL";
             AWS_SECRET_KEY = "FAIL";
             AWSGoodStatus = false;
+            System.out.println("Bad AWS Credentials");
         }
     }
     
@@ -84,14 +91,6 @@ public class AmazonWebService {
 	        requestURL = createSignedRequest(params);
 	        retryCount = 0;
 	        itemSearch.addAll(fetchInformation(requestURL));
-	        /*
-	        try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				System.out.println("Got interrupt, ending ItemSearch early.");
-				return itemSearch;
-			}
-			*/
     	}        
         
         return itemSearch;
@@ -101,8 +100,8 @@ public class AmazonWebService {
      * Call to get specific/highly relevant item(s). Makes only one request (quick). Returns up to 10
      * @return
      */
-    public static ArrayList<ItemSearchExtract> getSpecificItems(String maxPrice, String minPrice, 
-    		String page, String keywords, String computerPartType){
+    public static ArrayList<ItemSearchExtract> getSpecificItems(String maxPrice, String minPrice,
+    		String keywords, String computerPartType){
     	Map<String, String> params = paramsSetUp();
     	String requestURL;
     	ArrayList<ItemSearchExtract> itemSearch = new ArrayList<ItemSearchExtract>();
@@ -114,7 +113,6 @@ public class AmazonWebService {
 	    params.put("Keywords", keywords);
 	    params.put("MaximumPrice", maxPrice);
         params.put("MinimumPrice", minPrice);
-	    params.put("ItemPage", page);
 	        
 	    requestURL = createSignedRequest(params);
 	    retryCount = 0;
@@ -208,31 +206,38 @@ public class AmazonWebService {
 	            	if(imgNode == null){
 	            		//Try small image
 	            		imgNode = ((Element) aNode).getElementsByTagName("SmallImage").item(0);
-	            	}
+	            	}	            	
 	            	if(imgNode != null){
-	            		temp.itemPicURL = ((Element) imgNode).getElementsByTagName("URL").item(0).getTextContent();
+	            		temp.itemPicURL = ((Element) imgNode).getElementsByTagName("URL").item(0) == null ? null : 
+	            			((Element) imgNode).getElementsByTagName("URL").item(0).getTextContent();
 	            	}
 	            	//Product Name/Title
 	            	Node itemAttr = ((Element) aNode).getElementsByTagName("ItemAttributes").item(0);
-	            	temp.itemName = ((Element) itemAttr).getElementsByTagName("Title").item(0).getTextContent();
+	            	if(itemAttr != null){
+	            		temp.itemName = ((Element) itemAttr).getElementsByTagName("Title").item(0) == null ? null :
+	            			((Element) itemAttr).getElementsByTagName("Title").item(0).getTextContent();
+	            	}
 	            	//Product ID (Computer Part ID)
-	            	temp.itemPartID = ((Element) aNode).getElementsByTagName("PartNumber").item(0).getTextContent();
+	            	temp.itemPartID = ((Element) aNode).getElementsByTagName("PartNumber").item(0) == null ? null :
+	            			((Element) aNode).getElementsByTagName("PartNumber").item(0).getTextContent();
 	            	//Product Price
 	            	Float newPrice, usedPrice;
 	            	Node offerSumm = ((Element) aNode).getElementsByTagName("OfferSummary").item(0);
-	            	Node newPriceNode = ((Element) offerSumm).getElementsByTagName("LowestNewPrice").item(0);
-	            	Node usedPriceNode = ((Element) offerSumm).getElementsByTagName("LowestUsedPrice").item(0);
-	            	if(newPriceNode == null){
+	            	Node newPriceNodes = ((Element) offerSumm).getElementsByTagName("LowestNewPrice").item(0);
+	            	Node usedPriceNodes = ((Element) offerSumm).getElementsByTagName("LowestUsedPrice").item(0);
+	            	if(newPriceNodes == null){
 	            		newPrice = Float.MAX_VALUE;
 	            	}
 	            	else{
-	            		newPrice = Float.parseFloat(((Element) newPriceNode).getElementsByTagName("Amount").item(0).getTextContent());
+	            		newPrice = ((Element) newPriceNodes).getElementsByTagName("Amount").item(0) == null ? Float.MAX_VALUE :
+	            			Float.parseFloat(((Element) newPriceNodes).getElementsByTagName("Amount").item(0).getTextContent());
 	            	}
-	            	if(usedPriceNode == null){
+	            	if(usedPriceNodes == null){
 	            		usedPrice = Float.MAX_VALUE;
 	            	}
 	            	else{
-	            		usedPrice = Float.parseFloat(((Element) usedPriceNode).getElementsByTagName("Amount").item(0).getTextContent());
+	            		usedPrice = ((Element) usedPriceNodes).getElementsByTagName("Amount").item(0) == null ? Float.MAX_VALUE :
+	            			Float.parseFloat(((Element) usedPriceNodes).getElementsByTagName("Amount").item(0).getTextContent());
 	            	}
 	            	temp.itemPrice = newPrice > usedPrice ? usedPrice : newPrice;
 	            	//Check if price == Float.MAX_VALUE
@@ -244,18 +249,18 @@ public class AmazonWebService {
 	            	temp.itemPrice /= 100;
 	            	prodList.add(temp);
             	} catch (Exception e){
-            		System.out.println("Some error when parsing out some element/node in XML: " + e.getMessage());
-            		return null;
+            		System.out.println("Some error when parsing out some element/node in XML: " + e);
+            		//return null;
             	}
             }
         } catch (Exception e) {
         	if(e.getMessage().contains("HTTP response code: 503") && retryCount < maxRetryCount){
         		try {
         			//Backoff
-        			System.err.println("Probably hitting Amazon too fast... waiting 5 sec");
-        			Thread.sleep(5000);
+        			System.err.println("Probably hitting Amazon too fast... waiting " + backOffTime/1000 + " sec");
+        			Thread.sleep(backOffTime);
         			retryCount++;
-        			fetchInformation(requestUrl);
+        			return fetchInformation(requestUrl);
     			} catch (InterruptedException intE) {
     				//exit early
     				return prodList;
