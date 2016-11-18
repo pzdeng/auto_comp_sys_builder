@@ -12,6 +12,7 @@ public class CPU extends ComputerPart{
 	public int l3Size;
 	
 	public CPU(){
+		super();
 		this.type = AppConstants.cpu;
 	}
 	

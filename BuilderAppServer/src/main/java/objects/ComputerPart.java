@@ -44,6 +44,10 @@ public abstract class ComputerPart {
 	public abstract ComputerPartMin shortenSpecs();
 	public abstract String specBuilder();
 	
+	public ComputerPart(){
+		dirty = false;
+	}
+	
 	//Print out basic details for this part
 	public String toString(){
 		int makeLimit, nameLimit;

@@ -34,6 +34,21 @@ public class DataBuilderTester {
     	System.out.println("Total # of CPU's: " + dataBuild.getCPUList().size());
     	assertTrue(dataBuild.getGPUList().size() > 0);
     	System.out.println("Total # of GPU's: " + dataBuild.getGPUList().size());
+    	assertTrue(dataBuild.getMBList().size() > 0);
+    	System.out.println("Total # of Motherboards's: " + dataBuild.getMBList().size());
+    }
+    
+    @Test
+    public void testDataBuilder_Update(){
+    	dataBuild.initData();
+    	assertTrue(dataBuild.getCPUList().size() > 0);
+    	System.out.println("Total # of CPU's: " + dataBuild.getCPUList().size());
+    	assertTrue(dataBuild.getGPUList().size() > 0);
+    	System.out.println("Total # of GPU's: " + dataBuild.getGPUList().size());
+    	assertTrue(dataBuild.getMBList().size() > 0);
+    	System.out.println("Total # of Motherboards's: " + dataBuild.getMBList().size());
+    	dataBuild.updateCheckProductID();
+    	System.out.println("Update Complete");
     }
     
 	@Test

@@ -11,8 +11,8 @@ public interface MBDao {
 	public void insertMotherboard(Motherboard mb) throws SQLException;
 	public void insertMotherboard(List<Motherboard> mbList) throws SQLException;
 	public void updateFullMotherboard(Motherboard mb) throws SQLException;
-	public void updatePriceMotherboard(Motherboard mb) throws SQLException;
-	public void updatePriceMotherboard(List<Motherboard> mbList) throws SQLException;
+	public void updateVendorInfoMotherboard(Motherboard mb) throws SQLException;
+	public void updateVendorInfoMotherboard(List<Motherboard> mbList) throws SQLException;
 	public Motherboard getMotherboardByName(String productName) throws SQLException;
 	public void deleteMotherboard(Motherboard mb) throws SQLException;
 }

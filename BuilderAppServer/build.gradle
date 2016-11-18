@@ -5,6 +5,7 @@ buildscript {
     }
     dependencies {
         classpath 'org.akhikhl.gretty:gretty:+'
+        classpath 'io.spring.gradle:dependency-management-plugin:0.6.1.RELEASE'
     }
 }
 
@@ -13,6 +14,13 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'org.akhikhl.gretty'
 //define plugin for AWS
+apply plugin: 'io.spring.dependency-management'
+
+dependencyManagement {
+    imports {
+        mavenBom 'com.amazonaws:aws-java-sdk-bom:1.11.50'
+    }
+}
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -44,6 +52,8 @@ dependencies {
 	compile 'javax.validation:validation-api:1.1.0.Final'
 	//MySQL lib
 	compile 'mysql:mysql-connector-java:5.1.40'
+	//AWS lib
+	compile 'com.amazonaws:aws-java-sdk-s3'
     // Test compiles here.
     testCompile 'junit:junit:4.12'
 }

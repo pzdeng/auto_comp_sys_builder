@@ -25,7 +25,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 			+ "vendorPrice = ?, relativeRating = ?, benchScore = ?, branding = ?, "
 			+ "coreSpeed = ?, memClockSpeed = ?, coreCount = ?, interfaceType = ?, memSize = ? WHERE gpuid = ?";
 	private final String updatePriceStmt = "UPDATE gpu SET modifyTime = ?, picURL = ?, productURL = ?, "
-			+ "vendorPrice = ? WHERE gpuid = ?";
+			+ "vendorPrice = ?, productID = ? WHERE gpuid = ?";
 	private final String deleStmt = "DELETE FROM gpu WHERE gpuid = ?";
 	
 	@Override
@@ -167,7 +167,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 	}
 	
 	@Override
-	public void updatePriceGPU(GPU gpu) throws SQLException{
+	public void updateVendorInfoGPU(GPU gpu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -179,8 +179,9 @@ public class GPUDaoMySQLImpl implements GPUDao{
 			stmt.setString(2, gpu.picURL);
 			stmt.setString(3, gpu.productURL);
 			stmt.setFloat(4, gpu.vendorPrice);
+			stmt.setString(5, gpu.productID);
 			
-			stmt.setInt(5, gpu.id);
+			stmt.setInt(6, gpu.id);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -322,7 +323,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 
 
 	@Override
-	public void updatePriceGPU(List<GPU> gpuList) throws SQLException {
+	public void updateVendorInfoGPU(List<GPU> gpuList) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		int count = 0;
@@ -336,8 +337,9 @@ public class GPUDaoMySQLImpl implements GPUDao{
 					stmt.setString(2, gpu.picURL);
 					stmt.setString(3, gpu.productURL);
 					stmt.setFloat(4, gpu.vendorPrice);
+					stmt.setString(5, gpu.productID);
 					
-					stmt.setInt(5, gpu.id);
+					stmt.setInt(6, gpu.id);
 					stmt.addBatch();
 					count++;
 				}

@@ -11,8 +11,8 @@ public interface GPUDao {
    public void insertGPU(GPU gpu) throws SQLException;
    public void insertGPU(List<GPU> gpuList) throws SQLException;
    public void updateFullGPU(GPU gpu) throws SQLException;
-   public void updatePriceGPU(GPU gpu) throws SQLException;
-   public void updatePriceGPU(List<GPU> gpuList) throws SQLException;
+   public void updateVendorInfoGPU(GPU gpu) throws SQLException;
+   public void updateVendorInfoGPU(List<GPU> gpuList) throws SQLException;
    public GPU getGPUByName(String productName) throws SQLException;
    public void deleteGPU(GPU gpu) throws SQLException;
 }

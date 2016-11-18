@@ -18,6 +18,7 @@ import main.java.objects.ComputerPart;
 import main.java.objects.GPU;
 import main.java.objects.Motherboard;
 import main.java.objects.comparator.ModelNameComparator;
+import main.java.webservice.VendorProductSearch;
 
 /**
  * Data builder features/responsibilities
@@ -143,15 +144,63 @@ public class DataBuilder {
 	 * For any entry marked as dirty, update database
 	 */
 	public void updateData(){
-		//TODO scan each entry and issue update if dirty
+		CPUDao cpuDao = new CPUDaoMySQLImpl();
+		GPUDao gpuDao = new GPUDaoMySQLImpl();
+		MBDao mbDao = new MBDaoMySQLImpl();
+		//scan each entry and issue update if dirty
+		ArrayList<CPU> dirtyCPU = new ArrayList<CPU>();
+		ArrayList<GPU> dirtyGPU = new ArrayList<GPU>();
+		ArrayList<Motherboard> dirtyMB = new ArrayList<Motherboard>();
+		for(int i = 0; i < cpuList.size(); i++){
+			if(cpuList.get(i).dirty){
+				dirtyCPU.add(cpuList.get(i));
+				cpuList.get(i).dirty = false;
+			}
+		}
+		for(int i = 0; i < gpuList.size(); i++){
+			if(gpuList.get(i).dirty){
+				dirtyGPU.add(gpuList.get(i));
+				gpuList.get(i).dirty = false;
+			}
+		}
+		for(int i = 0; i < mbList.size(); i++){
+			if(mbList.get(i).dirty){
+				dirtyMB.add(mbList.get(i));
+				mbList.get(i).dirty = false;
+			}
+		}
+		try{
+			cpuDao.updateVendorInfoCPU(dirtyCPU);
+			gpuDao.updateVendorInfoGPU(dirtyGPU);
+			mbDao.updateVendorInfoMotherboard(dirtyMB);
+		}
+		catch(Exception e){
+			System.err.println("Something bad happened during record updates, handle me... " + e);
+		}
 	}
 	
 	public void initProductInfo(){
 		
 	}
 	
-	public void updateProductPricing(){
-		
+	public void updateCheckProductID(){
+		//For each computer part that has an empty productID, fetch information from Vendor (Amazon)
+		for(int i = 0; i < cpuList.size(); i++){
+			if(cpuList.get(i).productID == null || cpuList.get(i).productID.isEmpty()){
+				cpuList.set(i, (CPU) VendorProductSearch.getProductInfo(cpuList.get(i)));
+			}
+		}
+		for(int i = 0; i < gpuList.size(); i++){
+			if(gpuList.get(i).productID == null || gpuList.get(i).productID.isEmpty()){
+				gpuList.set(i, (GPU) VendorProductSearch.getProductInfo(gpuList.get(i)));
+			}
+		}
+		for(int i = 0; i < mbList.size(); i++){
+			if(mbList.get(i).productID == null || mbList.get(i).productID.isEmpty()){
+				mbList.set(i, (Motherboard) VendorProductSearch.getProductInfo(mbList.get(i)));
+			}
+		}
+		updateData();
 	}
 	
 	public void updateProductPricing(ComputerPart part){

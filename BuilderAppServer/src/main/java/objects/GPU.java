@@ -12,6 +12,7 @@ public class GPU extends ComputerPart{
 	public int multiCardSupport;
 	
 	public GPU(){
+		super();
 		this.type = AppConstants.gpu;
 	}
 	

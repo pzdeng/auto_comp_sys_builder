@@ -25,7 +25,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 			+ "vendorPrice = ?, relativeRating = ?, benchScore = ?, coreSpeed = ?, "
 			+ "coreTurboSpeed = ?, coreCount = ?, socketType = ?, l1Size = ?, l2Size = ?, l3Size = ? WHERE cpuid = ?";
 	private final String updatePriceStmt = "UPDATE cpu SET modifyTime = ?, picURL = ?, productURL = ?, "
-			+ "vendorPrice = ? WHERE cpuid = ?";
+			+ "vendorPrice = ?, productID = ? WHERE cpuid = ?";
 	private final String deleStmt = "DELETE FROM cpu WHERE cpuid = ?";
 	
 	@Override
@@ -170,7 +170,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 	}
 	
 	@Override
-	public void updatePriceCPU(CPU cpu) throws SQLException{
+	public void updateVendorInfoCPU(CPU cpu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -182,8 +182,9 @@ public class CPUDaoMySQLImpl implements CPUDao{
 			stmt.setString(2, cpu.picURL);
 			stmt.setString(3, cpu.productURL);
 			stmt.setFloat(4, cpu.vendorPrice);
+			stmt.setString(5, cpu.productID);
 			
-			stmt.setInt(5, cpu.id);
+			stmt.setInt(6, cpu.id);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -335,7 +336,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 
 
 	@Override
-	public void updatePriceCPU(List<CPU> cpuList) throws SQLException {
+	public void updateVendorInfoCPU(List<CPU> cpuList) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		int count = 0;
@@ -350,8 +351,9 @@ public class CPUDaoMySQLImpl implements CPUDao{
 					stmt.setString(2, cpu.picURL);
 					stmt.setString(3, cpu.productURL);
 					stmt.setFloat(4, cpu.vendorPrice);
+					stmt.setString(5, cpu.productID);
 					
-					stmt.setInt(5, cpu.id);
+					stmt.setInt(6, cpu.id);
 					stmt.addBatch();
 					count++;
 				}

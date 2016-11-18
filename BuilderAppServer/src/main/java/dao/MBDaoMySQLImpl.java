@@ -25,7 +25,7 @@ public class MBDaoMySQLImpl implements MBDao{
 			+ "vendorPrice = ?, relativeRating = ?, benchScore = ?, formFactor = ?, "
 			+ "socketType = ?, memType = ?, memSlotNum = ?, sataNum = ?, pciExpressX16Num = ? WHERE mbid = ?";
 	private final String updatePriceStmt = "UPDATE motherboard SET modifyTime = ?, picURL = ?, productURL = ?, "
-			+ "vendorPrice = ? WHERE mbid = ?";
+			+ "vendorPrice = ?, productID = ? WHERE mbid = ?";
 	private final String deleStmt = "DELETE FROM motherboard WHERE mbid = ?";
 	
 	@Override
@@ -167,7 +167,7 @@ public class MBDaoMySQLImpl implements MBDao{
 	}
 	
 	@Override
-	public void updatePriceMotherboard(Motherboard mb) throws SQLException{
+	public void updateVendorInfoMotherboard(Motherboard mb) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -332,7 +332,7 @@ public class MBDaoMySQLImpl implements MBDao{
 
 
 	@Override
-	public void updatePriceMotherboard(List<Motherboard> mbList) throws SQLException {
+	public void updateVendorInfoMotherboard(List<Motherboard> mbList) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		int count = 0;
@@ -347,8 +347,9 @@ public class MBDaoMySQLImpl implements MBDao{
 					stmt.setString(2, mb.picURL);
 					stmt.setString(3, mb.productURL);
 					stmt.setFloat(4, mb.vendorPrice);
+					stmt.setString(5, mb.productID);
 					
-					stmt.setInt(5, mb.id);
+					stmt.setInt(6, mb.id);
 					stmt.addBatch();
 					count++;
 				}

@@ -20,6 +20,7 @@ public class Motherboard extends ComputerPart{
 	//public List<String> interfaceList;
 	
 	public Motherboard(){
+		super();
 		type = AppConstants.mobo;
 	}	
 

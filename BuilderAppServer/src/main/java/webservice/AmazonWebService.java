@@ -1,9 +1,5 @@
 package main.java.webservice;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,9 +12,17 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
+
 import main.java.global.AppConstants;
 import main.java.objects.ItemSearchExtract;
-
+/**
+ * Amazon Web Service calls
+ * Customized to get computer parts
+ * @author Peter
+ *
+ */
 public class AmazonWebService {
 
     private static String AWS_ACCESS_KEY_ID = "";
@@ -26,6 +30,9 @@ public class AmazonWebService {
     private static final String ENDPOINT = "webservices.amazon.com";
     private static boolean AWSGoodStatus = false;
     private static final int maxNumPages = 10;
+    private static final int maxRetryCount = 3;
+    private static int retryCount = 0;
+    //Help narrow the search and fetch more valid computer part items
     private static final Map<String, String> browseNodes;
     static{
     	browseNodes = new HashMap<String, String>();
@@ -38,31 +45,17 @@ public class AmazonWebService {
     /**
      * Set AWS Credentials (should only be called once)
      */
-    private static void initAccess(){
-    	String fileloc = new String("datasourceExtract" + File.separator + "aws.csv");
-    	BufferedReader br = null;
-		String[][] temp = new String[2][];
-		
+    private static void initAccess(){		
     	try {
-            br = new BufferedReader(new FileReader(fileloc));
-            temp[0] = br.readLine().split("::");
-            temp[1] = br.readLine().split("::");
-            AWS_ACCESS_KEY_ID = temp[0][1];
-            AWS_SECRET_KEY = temp[1][1];
+    		AWSCredentialsProvider credentialsProvider = new DefaultAWSCredentialsProviderChain();
+            AWS_ACCESS_KEY_ID = credentialsProvider.getCredentials().getAWSAccessKeyId();
+            AWS_SECRET_KEY = credentialsProvider.getCredentials().getAWSSecretKey();
             AWSGoodStatus = true;
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.err.println("AWS not enabled, Exception: " + e.getMessage());
             AWS_ACCESS_KEY_ID = "FAIL";
             AWS_SECRET_KEY = "FAIL";
             AWSGoodStatus = false;
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
     
@@ -89,13 +82,16 @@ public class AmazonWebService {
 	        params.put("ItemPage", i + 1 + "");
 	        
 	        requestURL = createSignedRequest(params);
+	        retryCount = 0;
 	        itemSearch.addAll(fetchInformation(requestURL));
+	        /*
 	        try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				System.out.println("Got interrupt, ending ItemSearch early.");
 				return itemSearch;
 			}
+			*/
     	}        
         
         return itemSearch;
@@ -105,7 +101,7 @@ public class AmazonWebService {
      * Call to get specific/highly relevant item(s). Makes only one request (quick). Returns up to 10
      * @return
      */
-    public ArrayList<ItemSearchExtract> getSpecificItems(String maxPrice, String minPrice, 
+    public static ArrayList<ItemSearchExtract> getSpecificItems(String maxPrice, String minPrice, 
     		String page, String keywords, String computerPartType){
     	Map<String, String> params = paramsSetUp();
     	String requestURL;
@@ -118,10 +114,11 @@ public class AmazonWebService {
 	    params.put("Keywords", keywords);
 	    params.put("MaximumPrice", maxPrice);
         params.put("MinimumPrice", minPrice);
-	    params.put("ItemPage", "1");
+	    params.put("ItemPage", page);
 	        
 	    requestURL = createSignedRequest(params);
-	    itemSearch.addAll(fetchInformation(requestURL));    
+	    retryCount = 0;
+	    itemSearch = fetchInformation(requestURL);    
         
         return itemSearch;
     }
@@ -179,11 +176,17 @@ public class AmazonWebService {
     /**
      * Utility function to fetch the response from the service and extract product information from ItemSearch service
      * Price, URL, PicURL
+     * @return null if something bad happened
      */
     private static ArrayList<ItemSearchExtract> fetchInformation(String requestUrl) {
     	ArrayList<ItemSearchExtract> prodList = new ArrayList<ItemSearchExtract>();
     	ItemSearchExtract temp;
         Node aNode;
+        
+        if(requestUrl == null){
+    		return prodList;
+    	}
+        
     	try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -242,21 +245,26 @@ public class AmazonWebService {
 	            	prodList.add(temp);
             	} catch (Exception e){
             		System.out.println("Some error when parsing out some element/node in XML: " + e.getMessage());
+            		return null;
             	}
             }
         } catch (Exception e) {
-        	System.err.println("Exception encountered: " + e.getMessage());
-        	/*
-        	if(e.getMessage().contains("HTTP response code: 503")){
+        	if(e.getMessage().contains("HTTP response code: 503") && retryCount < maxRetryCount){
         		try {
         			//Backoff
-    				Thread.sleep(1000);
+        			System.err.println("Probably hitting Amazon too fast... waiting 5 sec");
+        			Thread.sleep(5000);
+        			retryCount++;
+        			fetchInformation(requestUrl);
     			} catch (InterruptedException intE) {
     				//exit early
     				return prodList;
     			}
         	}
-        	*/
+        	else{
+        		System.err.println("Exception encountered: " + e.getMessage());
+        	}
+        	return null;
         }
     	return prodList;
     }
