@@ -66,6 +66,40 @@ public class ComputerBuild {
 		mb.dummyPopulate();
 		
 		gpuList.add(gpu);
+		//Algorithm to build computer
+		//Check Computer Type
+		//If GAMING
+			//Outlining Computer Specs:
+			// > 8GB RAM
+			// > Mid CPU
+			// Motherboard, needs to have > 1 PCIExpress slot
+			// High Graphics (40% of budget)
+				// Dual Graphics Cards (if time permits) 
+			// Storage should be > 500GB
+		//If SERVER
+			//Outlining Computer Specs:
+			// > 16GB RAM
+			// > Low CPU
+			// Motherboard, favor high # of SataPorts, favor high number of memory slots
+			// Graphics (None)
+			// Storage should be > 10TB
+		//If WORKSTATION or BATCH PROCESSING SERVER
+			//Outlining Computer Specs:
+			// > 8GB RAM
+			// High CPU, favor high threading (40% of budget)
+			// Motherboard
+			// Mid - Low Graphics
+			// Storage should be > 500GB
+		//If GENERAL
+			//Outlining Computer Specs:
+			// > 4 GB
+			// Mid - Low CPU
+			// Motherboard
+			// Mid - Low Graphics
+			// Storage should be > 500 GB
+		//While computer is being built,
+			// Validate build
+			// Check Power supply
 	}
 	
 	/**
