@@ -13,6 +13,46 @@ public class Memory extends ComputerPart{
 		type = AppConstants.memory;
 	}
 	
+	/**
+	 * Check to see if this title matches the specs we have
+	 * @param productTitle
+	 * @return
+	 */
+	public boolean titleCheck(String productTitle){
+		productTitle = productTitle.toLowerCase();
+		//Check make
+		if(!productTitle.contains(make.toLowerCase())){
+			return false;
+		}
+		//Check model name (in parts)
+		String[] modelNameParition = modelName.toLowerCase().split(" ");
+		boolean partialMatch = false;
+		if(modelNameParition.length > 0){
+			for(String partition : modelNameParition){
+				if(productTitle.contains(partition)){
+					partialMatch = true;
+				}
+			}
+		}
+		if(!partialMatch){
+			return false;
+		}
+		//Check memtype
+		if(!productTitle.contains(memType.toLowerCase())){
+			return false;
+		}
+		//Check memspeed
+		String memorySpeed = (int) memSpeed + "";
+		if(!productTitle.contains(memorySpeed)){
+			return false;
+		}
+		//Check capacity
+		if(!productTitle.contains((totalCapacity+AppConstants.gigabyte).toLowerCase())){
+			return false;
+		}
+		return true;
+	}
+	
 	@Override
 	public ComputerPartMin shortenSpecs() {
 		// TODO Auto-generated method stub

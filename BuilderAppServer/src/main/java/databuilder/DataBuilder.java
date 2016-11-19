@@ -174,6 +174,16 @@ public class DataBuilder {
 			System.err.println("Error getting GPU's, Error: " + e);
 		}		
 	}
+	
+	/**
+	 * Additional graphic cards entries
+	 * Assume that all of these records would be new
+	 */
+	public void additionalLoadGPUData(){
+		//TODO: 
+		//GPUDao gpuDao = new GPUDaoMySQLImpl();
+		
+	}
 
 	private void firstTimeLoadCPUData() {
 		CPUDao cpuDao = new CPUDaoMySQLImpl();
@@ -200,26 +210,43 @@ public class DataBuilder {
 	/**
 	 * For any entry marked as dirty, update database
 	 */
-	public void updateData(){
+	public void updateCPUData(){
 		CPUDao cpuDao = new CPUDaoMySQLImpl();
-		GPUDao gpuDao = new GPUDaoMySQLImpl();
-		MBDao mbDao = new MBDaoMySQLImpl();
-		//scan each entry and issue update if dirty
 		ArrayList<CPU> dirtyCPU = new ArrayList<CPU>();
-		ArrayList<GPU> dirtyGPU = new ArrayList<GPU>();
-		ArrayList<Motherboard> dirtyMB = new ArrayList<Motherboard>();
 		for(int i = 0; i < cpuList.size(); i++){
 			if(cpuList.get(i).dirty){
 				dirtyCPU.add(cpuList.get(i));
 				cpuList.get(i).dirty = false;
 			}
 		}
+		try{
+			cpuDao.updateVendorInfoCPU(dirtyCPU);			
+		}
+		catch(Exception e){
+			System.err.println("Something bad happened during record updates, handle me... " + e);
+		}
+	}
+	
+	public void updateGPUData(){
+		GPUDao gpuDao = new GPUDaoMySQLImpl();		
+		ArrayList<GPU> dirtyGPU = new ArrayList<GPU>();
 		for(int i = 0; i < gpuList.size(); i++){
 			if(gpuList.get(i).dirty){
 				dirtyGPU.add(gpuList.get(i));
 				gpuList.get(i).dirty = false;
 			}
 		}
+		try{
+			gpuDao.updateVendorInfoGPU(dirtyGPU);
+		}
+		catch(Exception e){
+			System.err.println("Something bad happened during gpu record updates, handle me... " + e);
+		}
+	}
+	
+	public void updateMBData(){
+		MBDao mbDao = new MBDaoMySQLImpl();	
+		ArrayList<Motherboard> dirtyMB = new ArrayList<Motherboard>();
 		for(int i = 0; i < mbList.size(); i++){
 			if(mbList.get(i).dirty){
 				dirtyMB.add(mbList.get(i));
@@ -227,17 +254,28 @@ public class DataBuilder {
 			}
 		}
 		try{
-			cpuDao.updateVendorInfoCPU(dirtyCPU);
-			gpuDao.updateVendorInfoGPU(dirtyGPU);
 			mbDao.updateVendorInfoMotherboard(dirtyMB);
 		}
 		catch(Exception e){
-			System.err.println("Something bad happened during record updates, handle me... " + e);
+			System.err.println("Something bad happened during motherboard record updates, handle me... " + e);
 		}
 	}
 	
-	public void initProductInfo(){
-		
+	public void updateMEMData(){
+		MEMDao memDao = new MEMDaoMySQLImpl();	
+		ArrayList<Memory> dirtyMEM = new ArrayList<Memory>();
+		for(int i = 0; i < memList.size(); i++){
+			if(memList.get(i).dirty){
+				dirtyMEM.add(memList.get(i));
+				memList.get(i).dirty = false;
+			}
+		}
+		try{
+			memDao.updateVendorInfoMemory(dirtyMEM);
+		}
+		catch(Exception e){
+			System.err.println("Something bad happened during memory record updates, handle me... " + e);
+		}
 	}
 	
 	public void updateCheckProductID(){
@@ -247,17 +285,25 @@ public class DataBuilder {
 				cpuList.set(i, (CPU) VendorProductSearch.getProductInfo(cpuList.get(i)));
 			}
 		}
+		updateCPUData();
 		for(int i = 0; i < gpuList.size(); i++){
 			if(gpuList.get(i).productID == null || gpuList.get(i).productID.isEmpty()){
 				gpuList.set(i, (GPU) VendorProductSearch.getProductInfo(gpuList.get(i)));
 			}
 		}
+		updateGPUData();
 		for(int i = 0; i < mbList.size(); i++){
 			if(mbList.get(i).productID == null || mbList.get(i).productID.isEmpty()){
 				mbList.set(i, (Motherboard) VendorProductSearch.getProductInfo(mbList.get(i)));
 			}
 		}
-		updateData();
+		updateMBData();
+		for(int i = 0; i < memList.size(); i++){
+			if(memList.get(i).productID == null || memList.get(i).productID.isEmpty()){
+				memList.set(i, (Memory) VendorProductSearch.getProductInfo(memList.get(i)));
+			}
+		}
+		updateMEMData();
 	}
 	
 	public void updateProductPricing(){
@@ -272,6 +318,7 @@ public class DataBuilder {
 				}
 			}
 		}
+		updateCPUData();
 		for(int i = 0; i < gpuList.size(); i++){
 			if(gpuList.get(i).productID != null && !(gpuList.get(i).productID.equals("-") || gpuList.get(i).productID.equals("*"))){
 				temp = VendorProductSearch.getProductInfo(gpuList.get(i));
@@ -280,6 +327,7 @@ public class DataBuilder {
 				}
 			}
 		}
+		updateGPUData();
 		for(int i = 0; i < mbList.size(); i++){
 			if(mbList.get(i).productID != null && !mbList.get(i).productID.equals("-")){
 				temp = VendorProductSearch.getProductInfo(mbList.get(i));
@@ -288,7 +336,7 @@ public class DataBuilder {
 				}
 			}
 		}
-		updateData();
+		updateMBData();
 	}
 	
 	/**
@@ -404,6 +452,7 @@ public class DataBuilder {
 			//Extract Make/Brand
 			//Assume it is the first word from product name
 			temp.make = temp.productName.split(" ")[0];
+			temp.modelName = temp.productName.substring(temp.make.length()).trim();
 			temp.formFactor = parsedFile[i][1];
 			//Format: Socket socketType
 			temp.socketType = parsedFile[i][2].split(" ")[1];
@@ -458,11 +507,6 @@ public class DataBuilder {
 				}
 				gpuTemp.modelName = similarGPUModel;
 				gpuList.add(gpuTemp);
-				break;
-			case "SSD":
-			case "HDD":
-				break;
-			case "RAM":
 				break;
 			default:
 				//Unrecognized Type, do nothing

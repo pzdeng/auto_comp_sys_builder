@@ -30,7 +30,7 @@ public class AmazonWebService {
     private static final String ENDPOINT = "webservices.amazon.com";
     private static boolean AWSGoodStatus = false;
     private static final int maxNumPages = 10;
-    private static final int maxRetryCount = 3;
+    private static final int maxRetryCount = 5;
     private static int retryCount = 0;
     //Back off time to wait
     private static final int backOffTime = 3000;
@@ -41,7 +41,7 @@ public class AmazonWebService {
     	browseNodes.put(AppConstants.cpu, "229189");
     	browseNodes.put(AppConstants.gpu, "284822");
     	browseNodes.put(AppConstants.mobo, "1048424");
-    	// memory : 172500
+    	browseNodes.put(AppConstants.memory, "172500");
     	browseNodes.put("DEFAULT", "193870011");
     }
     
