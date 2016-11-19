@@ -33,11 +33,15 @@ public class DataBuilderTester {
     public void testDataBuilder_Init(){
     	dataBuild.initData();
     	assertTrue(dataBuild.getCPUList().size() > 0);
-    	System.out.println("Total # of CPU's: " + dataBuild.getCPUList().size());
+    	System.out.println("Total # of CPUs: " + dataBuild.getCPUList().size());
     	assertTrue(dataBuild.getGPUList().size() > 0);
-    	System.out.println("Total # of GPU's: " + dataBuild.getGPUList().size());
+    	System.out.println("Total # of GPUs: " + dataBuild.getGPUList().size());
     	assertTrue(dataBuild.getMBList().size() > 0);
-    	System.out.println("Total # of Motherboards's: " + dataBuild.getMBList().size());
+    	System.out.println("Total # of Motherboards: " + dataBuild.getMBList().size());
+    	assertTrue(dataBuild.getMEMList().size() > 0);
+    	System.out.println("Total # of Memory Units: " + dataBuild.getMEMList().size());
+    	assertTrue(dataBuild.getPSUList().size() > 0);
+    	System.out.println("Total # of PSU: " + dataBuild.getPSUList().size());
     }
     
     //Update if productID is empty or null
@@ -145,7 +149,7 @@ public class DataBuilderTester {
 		String productFileCat = "HARDWAREINFO_MEM";
 		dataBuild.addProductListings(productFile, productFileCat);
 		for(Memory aMem : dataBuild.getMEMList()){
-			System.out.println(aMem.toString());
+			System.out.println(aMem.toString() + " :: " + aMem.modelName);
 			System.out.println(aMem.dataContent());
 		}
 		

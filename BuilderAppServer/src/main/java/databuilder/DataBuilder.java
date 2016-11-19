@@ -12,6 +12,10 @@ import main.java.dao.GPUDao;
 import main.java.dao.GPUDaoMySQLImpl;
 import main.java.dao.MBDao;
 import main.java.dao.MBDaoMySQLImpl;
+import main.java.dao.MEMDao;
+import main.java.dao.MEMDaoMySQLImpl;
+import main.java.dao.PSUDao;
+import main.java.dao.PSUDaoMySQLImpl;
 import main.java.global.AppConstants;
 import main.java.objects.CPU;
 import main.java.objects.ComputerPart;
@@ -64,10 +68,15 @@ public class DataBuilder {
 		CPUDao cpuDao = new CPUDaoMySQLImpl();
 		GPUDao gpuDao = new GPUDaoMySQLImpl();
 		MBDao mbDao = new MBDaoMySQLImpl();
+		MEMDao memDao = new MEMDaoMySQLImpl();
+		PSUDao psuDao = new PSUDaoMySQLImpl();
+		
 		try {
 			cpuList = cpuDao.getAllCPU();
 			gpuList = gpuDao.getAllGPU();
 			mbList = mbDao.getAllMotherboard();
+			memList = memDao.getAllMemory();
+			psuList = psuDao.getAllPSU();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -81,8 +90,51 @@ public class DataBuilder {
 		if(mbList.isEmpty()){
 			firstTimeLoadMBData();
 		}
+		if(memList.isEmpty()){
+			firstTimeLoadMEMData();
+		}
+		if(psuList.isEmpty()){
+			firstTimeLoadPSUData();
+		}
+		
 	}
 	
+	private void firstTimeLoadPSUData() {
+		PSUDao psuDao = new PSUDaoMySQLImpl();
+		String productFile = new String("datasourceExtract" + File.separator + "PSUSimpleData.csv");
+		String productFileCat = "HARDWAREINFO_PSU";
+		addProductListings(productFile, productFileCat);
+		try{
+			psuDao.insertPSU(psuList);
+		} catch(Exception e){
+			System.err.println("Records cannot be inserted into psu table; Error: " + e);
+		}
+		//Refresh psu list, to get id and time stamps
+		try{
+			psuList = psuDao.getAllPSU();
+		} catch(Exception e){
+			System.err.println("Error getting psus, Error: " + e);
+		}
+	}
+
+	private void firstTimeLoadMEMData() {
+		MEMDao memDao = new MEMDaoMySQLImpl();
+		String productFile = new String("datasourceExtract" + File.separator + "MemorySimpleData.csv");
+		String productFileCat = "HARDWAREINFO_MEM";
+		addProductListings(productFile, productFileCat);
+		try{
+			memDao.insertMemory(memList);
+		} catch(Exception e){
+			System.err.println("Records cannot be inserted into memory table; Error: " + e);
+		}
+		//Refresh memory list, to get id and time stamps
+		try{
+			memList = memDao.getAllMemory();
+		} catch(Exception e){
+			System.err.println("Error getting memory units, Error: " + e);
+		}
+	}
+
 	private void firstTimeLoadMBData() {
 		MBDao mbDao = new MBDaoMySQLImpl();
 		String productFile = new String("datasourceExtract" + File.separator + "MoboSimpleData.csv");
@@ -310,13 +362,13 @@ public class DataBuilder {
 			middlePortion = "";
 			for(int j = 1; j < fullProductName.length; j++){
 				if(!(fullProductName[j].contains("GB") || fullProductName[j].contains("DDR"))){
-					middlePortion += fullProductName[j];
+					middlePortion += fullProductName[j] + " ";
 				}
 				else{
 					break;
 				}
 			}
-			temp.modelName = middlePortion;
+			temp.modelName = middlePortion.trim();
 			temp.totalCapacity = extractMemSize(parsedFile[i][1]);
 			temp.numModules = extractNumModules(parsedFile[i][2]);
 			temp.memType = parsedFile[i][3];
