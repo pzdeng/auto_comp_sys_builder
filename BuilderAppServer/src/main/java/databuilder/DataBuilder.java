@@ -52,6 +52,8 @@ public class DataBuilder {
 		cpuList = new ArrayList<CPU>();
 		gpuList = new ArrayList<GPU>();
 		mbList = new ArrayList<Motherboard>();
+		psuList = new ArrayList<PSU>();
+		memList = new ArrayList<Memory>();
 		initData();
 	}
 	
@@ -251,9 +253,92 @@ public class DataBuilder {
 		case "HARDWAREINFO_MB":
 			hardwareInfoMBPopulate(parsedFile);
 			break;
+		case "HARDWAREINFO_MEM":
+			hardwareInfoMEMPopulate(parsedFile);
+			break;
+		case "HARDWAREINFO_PSU":
+			hardwareInfoPSUPopulate(parsedFile);
+			break;
+			/*
+		case "HARDWAREINFO_DISK":
+			hardwareInfoDISKPopulate(parsedFile);
+			break;
+			*/
 		}
 	}
 	
+	private void hardwareInfoPSUPopulate(String[][] parsedFile) {
+		PSU temp;
+		//Skip header line
+		for(int i = 1; i < parsedFile.length; i++){
+			temp = new PSU();
+			temp.productName = parsedFile[i][0];
+			//Extract Make/Brand
+			temp.make = extractPSUBrand(temp.productName);
+			//Piggy back on TDP value extraction
+			temp.powerWattage = extractTDP(parsedFile[i][1]);
+			temp.efficiency = parsedFile[i][2];
+			psuList.add(temp);
+		}
+	}
+
+	private String extractPSUBrand(String productName) {
+		//Check if brand consist of multiple words
+		for(String brand : AppConstants.psuMultiWordBrand){
+			if(productName.contains(brand)){
+				return brand;
+			}
+		}
+		//otherwise return first word in productName
+		return productName.split(" ")[0];
+	}
+
+	private void hardwareInfoMEMPopulate(String[][] parsedFile) {
+		Memory temp;
+		String[] fullProductName;
+		String middlePortion;
+		//Skip header line
+		for(int i = 1; i < parsedFile.length; i++){
+			temp = new Memory();
+			temp.productName = parsedFile[i][0];
+			fullProductName = temp.productName.split(" ");
+			//Extract Make/Brand
+			//Assume it is the first word from product name
+			temp.make = fullProductName[0];
+			//model name is the memory series name
+			//extract the middle portion (stop at 12GB or DDR type)
+			middlePortion = "";
+			for(int j = 1; j < fullProductName.length; j++){
+				if(!(fullProductName[j].contains("GB") || fullProductName[j].contains("DDR"))){
+					middlePortion += fullProductName[j];
+				}
+				else{
+					break;
+				}
+			}
+			temp.modelName = middlePortion;
+			temp.totalCapacity = extractMemSize(parsedFile[i][1]);
+			temp.numModules = extractNumModules(parsedFile[i][2]);
+			temp.memType = parsedFile[i][3];
+			//Piggy back method to extract memory speed in MHz
+			temp.memSpeed = extractCoreSpeed(parsedFile[i][4]);
+			memList.add(temp);
+		}
+	}
+
+	private int extractMemSize(String string) {
+		//Expected format: number GB
+		//Expected input examples: 2 GB or 50 GB or 125 GB
+		return Integer.parseInt(string.split(" ")[0]);
+	}
+
+	private int extractNumModules(String string) {
+		//Expected format: number x
+		//Expected input examples: 2 x or 4 x or 8 x
+		//ASSUME single digit value
+		return Integer.parseInt(string.substring(0, 1));
+	}
+
 	/**
 	 * Method to populate motherboard list from HardwareInfo datasource extract
 	 * @param parsedFile
@@ -533,13 +618,19 @@ public class DataBuilder {
 		//Expected format: number sometext
 		//Expected input examples: 65W or 65 w or 65Watts
 		//TechPoweredUp follows "65W" example
-		try{
-			return Integer.parseInt(string.substring(0, string.length() - 1));
+		//HardwareInfo follows "65 W" example
+		String[] temp = string.split(" ");
+		if(temp.length == 1){
+			try{
+				return Integer.parseInt(string.substring(0, string.length() - 1));
+			}
+			catch(Exception e){
+				System.err.println("Unable to parse {" + string + "}");
+			}
 		}
-		catch(Exception e){
-			System.err.println("Unable to parse {" + string + "}");
+		else{
+			return Integer.parseInt(temp[0]);
 		}
-		
 		return 0;
 	}
 	
@@ -625,5 +716,15 @@ public class DataBuilder {
 		cpuList = new ArrayList<CPU>();
 		gpuList = new ArrayList<GPU>();
 		mbList = new ArrayList<Motherboard>();
+		psuList = new ArrayList<PSU>();
+		memList = new ArrayList<Memory>();
+	}
+
+	public ArrayList<PSU> getPSUList() {
+		return psuList;
+	}
+	
+	public ArrayList<Memory> getMEMList() {
+		return memList;
 	}
 }

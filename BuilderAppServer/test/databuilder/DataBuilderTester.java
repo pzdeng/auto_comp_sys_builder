@@ -11,7 +11,9 @@ import org.junit.Test;
 import main.java.databuilder.DataBuilder;
 import main.java.objects.CPU;
 import main.java.objects.GPU;
+import main.java.objects.Memory;
 import main.java.objects.Motherboard;
+import main.java.objects.PSU;
 
 public class DataBuilderTester {
 	private DataBuilder dataBuild;
@@ -122,5 +124,31 @@ public class DataBuilderTester {
 		}
 		
 		System.out.println("Total Number of Motherboards: " + dataBuild.getMBList().size());
+	}
+	
+	@Test
+	public void testLoad_Map_PSU_Data(){
+		String productFile = new String("datasourceExtract" + File.separator + "PSUSimpleData.csv");
+		String productFileCat = "HARDWAREINFO_PSU";
+		dataBuild.addProductListings(productFile, productFileCat);
+		for(PSU aPSU : dataBuild.getPSUList()){
+			System.out.println(aPSU.toString());
+			System.out.println(aPSU.dataContent());
+		}
+		
+		System.out.println("Total Number of PSUs: " + dataBuild.getPSUList().size());
+	}
+	
+	@Test
+	public void testLoad_Map_Memory_Data(){
+		String productFile = new String("datasourceExtract" + File.separator + "MemorySimpleData.csv");
+		String productFileCat = "HARDWAREINFO_MEM";
+		dataBuild.addProductListings(productFile, productFileCat);
+		for(Memory aMem : dataBuild.getMEMList()){
+			System.out.println(aMem.toString());
+			System.out.println(aMem.dataContent());
+		}
+		
+		System.out.println("Total Number of Memory products: " + dataBuild.getMEMList().size());
 	}
 }

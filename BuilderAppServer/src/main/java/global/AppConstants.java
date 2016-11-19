@@ -23,6 +23,8 @@ public class AppConstants {
 	public final static String cpu		 = "CPU";
 	public final static String gpu		 = "GPU";
 	public final static String mobo		 = "Motherboard";
+	public final static String psu		 = "PSU";
+	public final static String memory	 = "Memory";
 	//MemoryTypes
 	public final static String ddr		 = "DDR";
 	public final static String ddr2		 = "DDR2";
@@ -30,4 +32,8 @@ public class AppConstants {
 	public final static String ddr4		 = "DDR4";
 	//Database
 	public final static int batchCommit	 = 200;
+	//PSU brand (multi-word)
+	public final static String[] psuMultiWordBrand = {
+			"Be quiet!", "Cooler Master", "Fractal Design", "Super Flower"
+	};
 }

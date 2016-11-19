@@ -51,7 +51,7 @@ public abstract class ComputerPart {
 	//Print out basic details for this part
 	public String toString(){
 		int makeLimit, nameLimit;
-		makeLimit = 7;
+		makeLimit = 10;
 		nameLimit = 40;
 		String printMake = make;
 		if(printMake != null){
