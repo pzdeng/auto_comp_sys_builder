@@ -72,14 +72,15 @@ cargo "org.codehaus.cargo:cargo-core-uberjar:$cargoVersion",
    compile 'org.webjars:angular-ui-utils:0.1.0'
    compile 'org.webjars:angular-ui-bootstrap:0.9.0'
 }
-
+war.archiveName = "ROOT"
 cargo {
     containerId = 'tomcat7x'
     port = 8080
 
     deployable {
-        file = file('build/libs/BuilderAppServer.war')
-        context = 'BuilderAppServer'
+        file = file('build/libs/ROOT')
+        //context = 'BuilderAppServer'
+        context = ''
     }
 
     local {
