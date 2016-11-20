@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import main.java.databuilder.DataBuilder;
 import main.java.objects.CPU;
+import main.java.objects.Disk;
 import main.java.objects.GPU;
 import main.java.objects.Memory;
 import main.java.objects.Motherboard;
@@ -41,7 +42,9 @@ public class DataBuilderTester {
     	assertTrue(dataBuild.getMEMList().size() > 0);
     	System.out.println("Total # of Memory Units: " + dataBuild.getMEMList().size());
     	assertTrue(dataBuild.getPSUList().size() > 0);
-    	System.out.println("Total # of PSU: " + dataBuild.getPSUList().size());
+    	System.out.println("Total # of PSUs: " + dataBuild.getPSUList().size());
+    	assertTrue(dataBuild.getDISKList().size() > 0);
+    	System.out.println("Total # of Disks: " + dataBuild.getDISKList().size());
     }
     
     //Update if productID is empty or null
@@ -158,5 +161,21 @@ public class DataBuilderTester {
 		}
 		
 		System.out.println("Total Number of Memory products: " + dataBuild.getMEMList().size());
+	}
+	
+	@Test
+	public void testLoad_Map_Disk_Data(){
+		String productFileHDD = new String("datasourceExtract" + File.separator + "HDDSimpleData.csv");
+		String productFileCatHDD = "HARDWAREINFO_HDD";
+		String productFileSSD = new String("datasourceExtract" + File.separator + "SSDSimpleData.csv");
+		String productFileCatSSD = "HARDWAREINFO_SSD";
+		dataBuild.addProductListings(productFileHDD, productFileCatHDD);
+		dataBuild.addProductListings(productFileSSD, productFileCatSSD);
+		for(Disk aDisk : dataBuild.getDISKList()){
+			System.out.println(aDisk.toString() + " :: " + aDisk.modelName);
+			System.out.println(aDisk.dataContent());
+		}
+		
+		System.out.println("Total Number of disk products: " + dataBuild.getDISKList().size());
 	}
 }

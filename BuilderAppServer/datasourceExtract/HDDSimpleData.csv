@@ -1,0 +1,914 @@
+ProductName,DiskType,Capacity,Rotation Speed,Interface,FormFactor
+Samsung Spinpoint F1 160GB,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Toshiba MD04ACA 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Green 1.5TB (SATA2; 32MB),Hard disk,1500 GB,5400 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus STBD750200 750GB,Hard disk,750 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Red 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Seagate Constellation ES.3 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Surveillance HDD 5TB (rescue),Hard disk,5000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint F1R 750GB,Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar SE 500GB (IDE; retail),Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus XT 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 300,2.5 inch
+Toshiba MD04ABA500V 5TB,Hard disk,5000 GB,,Serial ATA 600,3.5 inch
+Western Digital Re 2TB (SATA2),Hard disk,2000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Black 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 600,2.5 inch
+Toshiba DT01ABA200 2TB,Hard disk,2000 GB,5700 rpm,Serial ATA 600,3.5 inch
+Seagate Archive HDD 6TB,Hard disk,6000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Toshiba MK3263GSX 320GB SATA2,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Travelstar 5K250 200GB SATA2,Hard disk,200 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Pipeline 320GB,Hard disk,320 GB,5900 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda Green 1TB,Hard disk,1000 GB,5900 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus Thin 320GB,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Barracuda 7200.14 1.5TB,Hard disk,1500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Green 1TB (SATA2; 64MB),Hard disk,1000 GB,5400 rpm,Serial ATA 300,3.5 inch
+Western Digital AV-GP 4TB (SATA3; 64MB),Hard disk,4000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Fujitsu MHV2160BT 160GB SATA2,Hard disk,160 GB,4200 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint M2 160GB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar SE 500GB (SATA2; retail),Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital AV-GP 1TB (SATA3; 64MB),Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital RE2 750GB,Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+HGST Ultrastar 7K4000 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba MK2576GSX 250GB,Hard disk,250 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital AV-GP 1.5TB (SATA2; 64MB),Hard disk,1500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda LP 2TB,Hard disk,2000 GB,5900 rpm,Serial ATA 300,3.5 inch
+Seagate Constellation ES 2TB (SAS2),Hard disk,2000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Deskstar 7K1000.B 320GB SATA2,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Samsung Spinpoint F3 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+"Intenso 3.5"" Internal HDD 2TB",Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Green 2.5TB (SATA3; 64MB),Hard disk,2500 GB,5400 rpm,Serial ATA 300,3.5 inch
+Western Digital Se 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital RE2 160GB,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda ES.2 750GB SATA2,Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda 7200.11 640GB,Hard disk,640 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Deskstar 7K1000 640GB SATA2,Hard disk,640 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Laptop Thin HDD 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 600,2.5 inch
+Western Digital AV-25 160GB (SATA2; 8MB),Hard disk,160 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar Black 1TB (SATA2; 32MB),Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Samsung Spinpoint T133 400GB,Hard disk,400 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Green 320GB (SATA3; 64MB),Hard disk,320 GB,,Serial ATA 600,3.5 inch
+"Western Digital VelociRaptor VR200M 450GB (2.5"")",Hard disk,450 GB,10000 rpm,Serial ATA 600,2.5 inch
+Western Digital Purple 2TB (retail),Hard disk,2000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Seagate Constellation ES 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Black V2 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar RE4-GP 3TB,Hard disk,3000 GB,,Serial ATA 600,3.5 inch
+Western Digital Green 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 600,3.5 inch
+Fujitsu MHW2060BK 60GB SATA2,Hard disk,60 GB,7200 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint F4 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar 80GB SATA2,Hard disk,80 GB,7200 rpm,Serial ATA 300,3.5 inch
+"Western Digital VelociRaptor 150GB (2.5"")",Hard disk,150 GB,10000 rpm,Serial ATA 300,2.5 inch
+Toshiba MK2049GSY 200GB SATA2,Hard disk,200 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital AV-GP 750GB (SATA2; 16MB),Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Laptop Mainstream 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital VelociRaptor 250GB,Hard disk,250 GB,10000 rpm,Serial ATA 600,3.5 inch
+Seagate Barracuda 7200.12 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Toshiba MQ Series 750GB,Hard disk,750 GB,5400 rpm,Serial ATA 300,2.5 inch
+Toshiba MK7575GSX 750GG,Hard disk,750 GB,5400 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint T133 300GB,Hard disk,300 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Deskstar T7K250 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Maxtor DiamondMax 23 750GB SATA2,Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Travelstar E7K320 250GB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate BarraCuda New 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Black 1.5TB (SATA3; 64MB),Hard disk,1500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Archive HDD 8TB,Hard disk,8000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Seagate Momentus 7200.2 200GB SATA2 G-Force,Hard disk,200 GB,7200 rpm,Serial ATA 300,2.5 inch
+Hitachi Deskstar 7K3000 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar 5K320 160GB SATA2,Hard disk,160 GB,5400 rpm,Serial ATA 300,2.5 inch
+Toshiba MD Series 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate SkyHawk 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Deskstar 7K1000.C 250GB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus 5400.6 320GB SATA,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Momentus 5400.7 640GB,Hard disk,640 GB,5400 rpm,Serial ATA 300,3.5 inch
+Toshiba DT01ACA100 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Fujitsu MHW2120BK 120GB SATA2,Hard disk,120 GB,7200 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint F3 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Desktop Performance 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Momentus 7200.2 80GB SATA2,Hard disk,80 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Pipeline 160GB (2MB),Hard disk,160 GB,5900 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Green 320GB (SATA3; 32MB),Hard disk,320 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Constellation ES 500GB (SATA3),Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Red 1TB (retail),Hard disk,1000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Western Digital Green 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Hitachi Touro Mobile Pro 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital AV-25 1TB (SATA3; 16MB),Hard disk,1000 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Scorpio Blue 1TB (7mm),Hard disk,1000 GB,5400 rpm,Serial ATA 600,2.5 inch
+Western Digital Black 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar 5K320 320GB SATA2,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint F4 EcoGreen 2TB,Hard disk,2000 GB,5400 rpm,Serial ATA 300,3.5 inch
+"Western Digital VelociRaptor VR200M 450GB (3.5"")",Hard disk,450 GB,10000 rpm,Serial ATA 600,3.5 inch
+Seagate Surveillance HDD 8TB,Hard disk,8000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint T166 250GB 16MB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda XT 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+"Western Digital VelociRaptor 150GB (3.5"" backplane)",Hard disk,150 GB,10000 rpm,Serial ATA 300,3.5 inch
+Hitachi Travelstar Z7K320 320GB (7200rpm),Hard disk,320 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Re+ Yellow 5TB,Hard disk,5000 GB,5700 rpm,Serial ATA 600,3.5 inch
+Western Digital Re Enterprise Capacity 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Scorpio Blue 640GB (WD6400BPVT),Hard disk,640 GB,5400 rpm,Serial ATA 300,2.5 inch
+Maxtor DiamondMax 21 80GB SATA,Hard disk,80 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate IronWolf 3TB,Hard disk,3000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Hitachi Deskstar 7K1000.C 160GB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Black V2 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba MQ01ADB075 750GB,Hard disk,750 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital HDD AV-GRN 320GB 3.5 SATA 3Gbs 16MB,Hard disk,320 GB,5400 rpm,Serial ATA 300,3.5 inch
+Toshiba MK1002TSKB 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Scorpio Blue 640GB,Hard disk,640 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Pipeline 2TB (SATA2),Hard disk,2000 GB,5900 rpm,Serial ATA 300,3.5 inch
+Seagate BarraCuda Pro 8TB,Hard disk,8000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital AV-25 320GB (SATA2; 16MB),Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Barracuda 7200.12 1TB (SATA3),Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Enterprise Capacity 3.5 HDD 5TB,Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Constellation ES.3 ST2000NM0053 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Black 2TB (SATA3; 64MB),Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar RE2 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi MegaScale 4000 4TB,Hard disk,4000 GB,5700 rpm,Serial ATA 600,3.5 inch
+Seagate Terascale 4TB,Hard disk,4000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Seagate Constellation CS 1TB (Instant Secure Erase),Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate NAS HDD 4TB (retail),Hard disk,4000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Western Digital Red 5TB (retail),Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+"Western Digital VelociRaptor 500GB (2.5"")",Hard disk,500 GB,10000 rpm,Serial ATA 600,2.5 inch
+Hitachi Deskstar P7K500 500GB SATA2,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital AV-GP 500GB (SATA3; 32MB),Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Red 5TB,Hard disk,5000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Western Digital VelociRaptor 300GB,Hard disk,300 GB,10000 rpm,Serial ATA 300,3.5 inch
+Hitachi Deskstar 7K1000.C 1TB SATA2,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus 7200.2 80GB SATA2 G-Force,Hard disk,80 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Surveillance HDD 2TB (rescue),Hard disk,2000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Hitachi Deskstar 7K1000 1TB SATA2,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Green 2TB (SATA2; retail),Hard disk,2000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Toshiba E300 2TB,Hard disk,2000 GB,5700 rpm,Serial ATA 600,3.5 inch
+Toshiba MK7559GSXP 750GB,Hard disk,750 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar Green 1TB (SATA2; 32MB),Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Samsung Spinpoint M2 200GB SATA2,Hard disk,200 GB,7200 rpm,Serial ATA 300,2.5 inch
+Hitachi Deskstar 7K2000 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Mainstream Green 6TB,Hard disk,6000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Seagate Momentus Spinpoint M8 320GB,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate SV35.5 1TB (SATA3),Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Green 500GB (SATA2; 32MB),Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Green 750GB (SATA3; 64MB),Hard disk,750 GB,5400 rpm,Serial ATA 600,3.5 inch
+Maxtor DiamondMax 21 80GB SATA2,Hard disk,80 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Laptop Mainstream 320GB,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate SV35.5 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Desktop Mainstream 5TB,Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+HGST Ultrastar A7K2000 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Toshiba MQ01ABD050 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+HGST Travelstar 5K1000 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 600,2.5 inch
+Western Digital Scorpio Blue 500GB (retail),Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Archive HDD 5TB (encryption),Hard disk,5000 GB,5900 rpm,Serial ATA 600,3.5 inch
+HGST Ultrastar He10 10TB,Hard disk,10000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital AV-GP 250GB (SATA2; 8MB),Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Enterprise Capacity 6TB (SAS; 4Kn; SED),Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint M2 250GB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Purple 5TB,Hard disk,5000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Western Digital Scorpio Blue 400GB,Hard disk,400 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Gold 10TB,Hard disk,10000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Black 640GB (SATA2; 32MB),Hard disk,640 GB,7200 rpm,Serial ATA 300,3.5 inch
+Samsung Spinpoint F3 EcoGreen 2TB,Hard disk,2000 GB,5400 rpm,Serial ATA 300,3.5 inch
+Hitachi Deskstar P7K500 320GB SATA2,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda XT 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Momentus SpinPoint M8 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Travelstar Z7K320 160GB,Hard disk,160 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Se 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint MT2 750GB,Hard disk,750 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Red Pro 8TB,Hard disk,8000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar 5K320 250GB SATA2,Hard disk,250 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital AV-GP 2TB (SATA2; 64MB),Hard disk,2000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Pipeline 1TB (32MB),Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Toshiba H200 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 600,2.5 inch
+Toshiba MG04ACA400A 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba MK5075GSX 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Travelstar 7K1000 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,2.5 inch
+Seagate Momentus 7200.2 160GB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,2.5 inch
+Samsung HN-M750MBB 750GB,Hard disk,750 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Barracuda 7200.10 320GB SATA2,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Toshiba MQ03ABB200 2TB,Hard disk,2000 GB,5400 rpm,Serial ATA 600,2.5 inch
+Samsung Spinpoint P133 320GB SATA2,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Travelstar Z5K500 250GB,Hard disk,250 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital AV 160GB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Deskstar P7K500 250GB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus 7200.3 80GB SATA2,Hard disk,80 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital AV-GP 160GB (SATA2; 8MB),Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital RE3 750GB,Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Red 3TB,Hard disk,3000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Western Digital AV-GP 250GB (SATA3; 32MB),Hard disk,250 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba MQ01ABD150 1.5TB,Hard disk,1500 GB,5400 rpm,Serial ATA 300,2.5 inch
+HGST Ultrastar He8 6TB (4Kn),Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate NAS HDD 2TB,Hard disk,2000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Toshiba MC04ACA500E 5TB,Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+"Western Digital VelociRaptor 74GB (3.5"" backplane)",Hard disk,74 GB,10000 rpm,Serial ATA 300,3.5 inch
+Seagate SkyHawk 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba MQ03ABB300 3TB,Hard disk,3000 GB,5400 rpm,Serial ATA 600,2.5 inch
+Seagate Momentus 5400.FDE.4 500GB SATA2,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Toshiba MK1661GSYN 160GB,Hard disk,160 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Barracuda 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Constellation ES.3 4TB (SATA3),Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital VelociRaptor 300GB (retail),Hard disk,300 GB,10000 rpm,Serial ATA 300,3.5 inch
+Western Digital Scorpio Black 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 600,2.5 inch
+Western Digital Scorpio Blue 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Deskstar T7K500 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Travelstar Z7K320 320GB (5400rpm),Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Momentus Spinpoint M8 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 300,2.5 inch
+Toshiba DT01ACA050 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Desk Blue 2TB,Hard disk,2000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Seagate Constellation 2.5 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 600,2.5 inch
+Western Digital Se 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+"Intenso 3.5"" Internal HDD 4TB",Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Constellation.2 250GB (SATA3),Hard disk,250 GB,7200 rpm,Serial ATA 600,2.5 inch
+Seagate Pipeline 2TB (SATA3),Hard disk,2000 GB,5900 rpm,Serial ATA 600,3.5 inch
+HGST Deskstar 7K4000 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar 5K750 750GB,Hard disk,750 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Deskstar 7K1000.B 160GB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Constellation ES.3 ST1000NM0033 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba MQ02ABD100H 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 600,2.5 inch
+Western Digital VelociRaptor 500GB,Hard disk,500 GB,10000 rpm,Serial ATA 600,3.5 inch
+Seagate Enterprise Capacity 2TB (SATA3),Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital AV-25 160GB (SATA2; 16MB),Hard disk,160 GB,5400 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint P80 160GB,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar SE16 500GB (SATA2; retail),Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda 7200.12 160GB,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Mobile HDD 2TB,Hard disk,2000 GB,5400 rpm,Serial ATA 600,2.5 inch
+Western Digital Purple 2TB,Hard disk,2000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar Z5K320 250GB,Hard disk,250 GB,5400 rpm,Serial ATA 300,2.5 inch
+Fujitsu MHZ2320BH 320GB SATA2,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Green 6TB,Hard disk,6000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Seagate Constellation ES.2 3TB (SATA3; SED),Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital AV-GP 3TB (SATA2; 64MB),Hard disk,3000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital AV-GP 500GB (SATA2; 32MB),Hard disk,500 GB,5400 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Black 750GB (SATA2; 32MB; V2),Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Pipeline 500GB,Hard disk,500 GB,5900 rpm,Serial ATA 300,3.5 inch
+Western Digital Red 2TB (retail),Hard disk,2000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Seagate Barracuda ES 250GB 16MB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus 7200.2 120GB SATA2,Hard disk,120 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Enterprise Capacity 6TB (SED-FIPS),Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint F4 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Surveillance HDD 3TB,Hard disk,3000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Western Digital AV 500GB (SATA3),Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Fujitsu MHZ2500BT 500GB SATA2,Hard disk,500 GB,4200 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar SE16 750GB,Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital RE3 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Travelstar Z5K500 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Fujitsu MHZ2250BH 250GB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Barracuda 7200.14 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba MG03ACA 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Momentus Thin 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Momentus Thin 250GB,Hard disk,250 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar Green 1.5TB (SATA2; 8MB),Hard disk,1500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Constellation CS 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Deskstar 5k3000 2TB,Hard disk,2000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Hitachi Deskstar 7K1000.C 750GB SATA2,Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+"Western Digital VelociRaptor VR200M 600GB (2.5"")",Hard disk,600 GB,10000 rpm,Serial ATA 600,2.5 inch
+Hitachi Travelstar Z7K500 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 600,2.5 inch
+Western Digital Caviar Green 640GB (SATA2; 64MB),Hard disk,640 GB,5400 rpm,Serial ATA 300,3.5 inch
+Hitachi Travelstar 5K500.B 250GB SATA2,Hard disk,250 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate NAS HDD 3TB,Hard disk,3000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Seagate Surveillance HDD 6TB (rescue),Hard disk,6000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint S166 80GB SATA2,Hard disk,80 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Desk Blue 4TB,Hard disk,4000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Seagate NAS HDD 6TB (rescue),Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Red 8TB,Hard disk,8000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Toshiba DT01ABA300V 3TB,Hard disk,3000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Seagate Barracuda 7200.12 750GB,Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Red Pro 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Desktop Mainstream 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital RE 5TB,Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Blue 1TB (64MB),Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Barracuda ES.2 1TB SATA2,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Toshiba MJA2320BH 320GB SATA2,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Purple 4TB,Hard disk,4000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Seagate Pipeline 250GB,Hard disk,250 GB,5900 rpm,Serial ATA 300,3.5 inch
+Hitachi Ultrastar 7K6000 5TB (SAS),Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Scorpio Black 250GB (with freefall sensor),Hard disk,250 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital AV GP 750GB SATA2,Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Surveillance HDD 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint F3 750GB (32MB),Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Constellation ES.3 ST1000NM0053 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba MQ02ABF050H 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 600,2.5 inch
+Hitachi Travelstar Z7K320 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate NAS HDD 4TB (rescue),Hard disk,4000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar RE 400GB SATA2,Hard disk,400 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar SE 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Maxtor DiamondMax 22 320GB SATA2,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus 1.75TB,Hard disk,1750 GB,5400 rpm,Serial ATA 600,2.5 inch
+Western Digital AV-GP 160GB (SATA2; 16MB),Hard disk,160 GB,5400 rpm,Serial ATA 300,3.5 inch
+Hitachi Travelstar 5K500.B 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital AV-GP 2TB (SATA3; 64MB),Hard disk,2000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Hitachi Deskstar E7K1000 750GB SATA2,Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital AV-GP 1.5TB (SATA2; 32MB),Hard disk,1500 GB,5400 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda ES 750GB SATA2,Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Enterprise Capacity 3TB (SED),Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Blue 1TB (SATA2; 32MB),Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Purple NV 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Deskstar T7K500 250GB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Constellation CS 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Scorpio Black 500GB (SATA3),Hard disk,500 GB,7200 rpm,Serial ATA 600,2.5 inch
+Western Digital Scorpio Blue 1TB (12.5mm),Hard disk,1000 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Constellation ES.2 2TB (SATA3; SED),Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Momentus Laptop HDD 3TB,Hard disk,3000 GB,5400 rpm,Serial ATA 600,2.5 inch
+Western Digital Green 1.5TB,Hard disk,1500 GB,7200 rpm,Serial ATA 600,3.5 inch
+"Western Digital Red 1TB (2.5"")",Hard disk,1000 GB,5400 rpm,Serial ATA 600,2.5 inch
+Western Digital Red 6TB,Hard disk,6000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint F1 1TB (retail),Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Ultrastar A7K1000 SATA2,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Desk Blue 6TB,Hard disk,6000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Green 3TB (SATA2; 64MB),Hard disk,3000 GB,5400 rpm,Serial ATA 300,3.5 inch
+Hitachi Deskstar 7K1000.B 1TB SATA2,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Green 1TB (SATA3; 32MB),Hard disk,1000 GB,5400 rpm,Serial ATA 600,3.5 inch
+HGST Deskstar NAS 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba DT01ABA200V 2TB,Hard disk,2000 GB,5700 rpm,Serial ATA 600,3.5 inch
+Western Digital Red Pro 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Enterprise Capacity 6TB (SED),Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Green 2TB (SATA2; 32MB),Hard disk,2000 GB,5400 rpm,Serial ATA 300,3.5 inch
+HGST Ultrastar A7K2000 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+"Western Digital VelociRaptor VR200M 600GB (3.5"")",Hard disk,600 GB,10000 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Green 1.5TB,Hard disk,1500 GB,5400 rpm,Serial ATA 600,2.5 inch
+Seagate Barracuda LP 1.5TB,Hard disk,1500 GB,5900 rpm,Serial ATA 300,3.5 inch
+Western Digital Desktop Mainstream 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Surveillance HDD 8TB (rescue),Hard disk,8000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Momentus 5400.4 160GB SATA2,Hard disk,160 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar Green 1TB (SATA2; retail),Hard disk,1000 GB,5400 rpm,Serial ATA 300,3.5 inch
+Seagate Desktop HDD 1TB (encryption),Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+HGST Ultrastar 7K3000 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Green 2TB,Hard disk,2000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Hitachi Deskstar 7K1000.C 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Toshiba MQ01ABF 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 600,2.5 inch
+Toshiba MK1649GSY 160GB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Scorpio Black 320GB (without freefall sensor),Hard disk,320 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Momentus 5400.4 200GB SATA,Hard disk,200 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Momentus XT 750GB,Hard disk,750 GB,7200 rpm,Serial ATA 600,2.5 inch
+Hitachi Ultrastar A7K1000 500GB SATA2,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda 7200.12 500GB (SATA3),Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch
+"Western Digital VelociRaptor 1TB (2.5"")",Hard disk,1000 GB,10000 rpm,Serial ATA 600,2.5 inch
+Toshiba MQ01ABF032H 320GB,Hard disk,320 GB,5400 rpm,Serial ATA 600,2.5 inch
+Seagate Momentus 7200.FDE.4 500GB SATA2,Hard disk,500 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar SE16 400GB SATA,Hard disk,400 GB,7200 rpm,Serial ATA 300,3.5 inch
+Samsung Spinpoint F1 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda 7200.11 1.5TB,Hard disk,1500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Samsung Spinpoint M7 160GB,Hard disk,160 GB,5400 rpm,Serial ATA 300,2.5 inch
+Toshiba MQ01ABF 320GB,Hard disk,320 GB,5400 rpm,Serial ATA 600,2.5 inch
+Seagate Barracuda 7200.9 300GB,Hard disk,300 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Red 4TB (retail),Hard disk,4000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Western Digital Scorpio Blue 120GB,Hard disk,120 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital AV 320GB (SATA3),Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital RE4-GP 2TB,Hard disk,2000 GB,5400 rpm,Serial ATA 300,3.5 inch
+Seagate SV35.5 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Green 2TB (SATA2; 64MB),Hard disk,2000 GB,5400 rpm,Serial ATA 300,3.5 inch
+Toshiba X300 5TB,Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba DT01ACA300 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Purple NV 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint F3 EcoGreen 1.5TB,Hard disk,1500 GB,5400 rpm,Serial ATA 300,3.5 inch
+Samsung Spinpoint T166 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Scorpio Blue 750GB (WD7500BPVT),Hard disk,750 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Enterprise NAS HDD 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Re 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Video 3.5 HDD 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Sentinel 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Blue 640GB (SATA2; 16MB),Hard disk,640 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Scorpio Black 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Constellation.2 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 600,2.5 inch
+Seagate Constellation.2 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Travelstar 7K320 160GB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Ae 6TB,Hard disk,6000 GB,5700 rpm,Serial ATA 600,3.5 inch
+Toshiba MK1249GSY 120GB SATA2,Hard disk,120 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar Black 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Green 750GB (SATA2; 16MB),Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital AV 250GB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Blue 250GB (SATA2; 16MB),Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus 7200.3 160GB SATA2 G-Force,Hard disk,160 GB,7200 rpm,Serial ATA 300,2.5 inch
+Toshiba MK5055GSX 500GB SATA2,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Travelstar Z7K500 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 600,2.5 inch
+Maxtor DiamondMax 22 750GB SATA2,Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Constellation ES 1TB (SAS2),Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Green 4TB,Hard disk,4000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Seagate Desktop HDD 3TB (encryption),Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Surveillance HDD 3TB (R/V),Hard disk,3000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Toshiba MK4058GSX 400GB SATA2,Hard disk,400 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Constellation.2 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,2.5 inch
+Western Digital AV-GP 1TB (SATA2; 8MB),Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Desktop HDD 5TB,Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Black 500GB (SATA2; 32MB),Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda 7200.10 750GB,Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Green 500GB (SATA2; 16MB),Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital AV-GP 2.5TB (SATA2; 64MB),Hard disk,2500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Scorpio Black 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 600,2.5 inch
+Seagate Surveillance HDD 5TB,Hard disk,5000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Fujitsu MHW2120BJ 120GB SATA2,Hard disk,120 GB,7200 rpm,Serial ATA 300,2.5 inch
+Toshiba MK2555GSX 250GB SATA2,Hard disk,250 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar Green 750GB (SATA2; retail),Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar SE16 320GB (SATA2; retail),Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar SE16 400GB SATA2,Hard disk,400 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital AV-25 320GB (SATA2; 32MB),Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+"Western Digital VelociRaptor VR200M 300GB (2.5"")",Hard disk,300 GB,10000 rpm,Serial ATA 600,2.5 inch
+Hitachi Travelstar 5K500.B 320GB SATA2,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital RE2-GP 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Desktop HDD 2TB (encryption),Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Barracuda 7200.12 320GB (SATA3),Hard disk,320 GB,7200 rpm,Serial ATA 600,3.5 inch
+Maxtor DiamondMax 21 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate SV35.6 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Barracuda 7200.14 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Fujitsu MJA2400BH 400GB SATA2,Hard disk,400 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Deskstar 7K500 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Enterprise NAS HDD 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate MomentusThin 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 300,2.5 inch
+Toshiba MG03ACA 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Silicon Power T10 64GB,Hard disk,64 GB,,Serial ATA 300,2.5 inch
+Toshiba MK5076GSX 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Travelstar 7K500 500GB SATA2,Hard disk,500 GB,7200 rpm,Serial ATA 300,2.5 inch
+Fujitsu MHZ2160BH 160GB SATA2,Hard disk,160 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Enterprise Capacity 5TB,Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint F1R 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Ultrastar A7K2000 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Sentinel 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Re 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Laptop Mainstream 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint F4 EcoGreen 1.5TB,Hard disk,1500 GB,5400 rpm,Serial ATA 300,3.5 inch
+Samsung Spinpoint F1 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital AV 320GB SATA2,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Gold 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital RE4-GP 1.5TB,Hard disk,1500 GB,5400 rpm,Serial ATA 300,3.5 inch
+Western Digital Red Pro 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Barracuda ES 320GB SATA2,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Green 640GB (SATA2; 32MB),Hard disk,640 GB,7200 rpm,Serial ATA 300,3.5 inch
+HGST Deskstar NAS v2 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar E5K250 120GB SATA2,Hard disk,120 GB,5400 rpm,Serial ATA 300,2.5 inch
+Toshiba MD04ACA 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Scorpio Black 160GB (without freefall sensor),Hard disk,160 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Barracuda 7200.11 1.5TB (retail),Hard disk,1500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus Spinpoint M8 750GB,Hard disk,750 GB,5400 rpm,Serial ATA 300,2.5 inch
+HGST Ultrastar 7K4000 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Black 2TB (SATA2; 64MB),Hard disk,2000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Constellation G2 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,2.5 inch
+Seagate Barracuda ES 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda 7200.11 750GB,Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda LP 1TB,Hard disk,1000 GB,5900 rpm,Serial ATA 300,3.5 inch
+Hitachi Deskstar 7K160 160GB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Toshiba MC04ACA200E 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Se 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar 7K320 250GB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,2.5 inch
+Maxtor DiamondMax 23 1TB SATA2,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+"Western Digital VelociRaptor VR200M 300GB (3.5"")",Hard disk,300 GB,10000 rpm,Serial ATA 600,3.5 inch
+Western Digital Re+ Yellow 6TB,Hard disk,6000 GB,5700 rpm,Serial ATA 600,3.5 inch
+Hitachi Deskstar 7K3000 1.5TB (SATA3),Hard disk,1500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Momentus 7200.4 500GB SATA (OEM),Hard disk,500 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Constellation ES 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate SV35 500GB SATA2,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Black V2 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba MD04ACA 5TB,Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba MK6476GSX 640GB,Hard disk,640 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar RE4-GP 2TB,Hard disk,2000 GB,,Serial ATA 300,3.5 inch
+Seagate Barracuda 7200.10 160GB 8MB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital AV-GP 1TB (SATA3; 16MB),Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Enterprise NAS HDD 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba MK3261GSYN 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 300,2.5 inch
+Toshiba MK2552GSX 250GB SATA2,Hard disk,250 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Ultrastar 7K6000 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+"Intenso 2.5"" Internal HDD 1TB",Hard disk,1000 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Barracuda 7200.11 160GB,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Constellation ES.3 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Deskstar 7K1000.C 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint S166 160GB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda 7200.10 160GB 2MB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital AV-GP 250GB (SATA2; 16MB),Hard disk,250 GB,5400 rpm,Serial ATA 300,3.5 inch
+Hitachi Travelstar 5K500 500GB SATA2,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Barracuda Green 2TB,Hard disk,2000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Hitachi CinemaStar 5K1000 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda 7200.14 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint M7 250GB,Hard disk,250 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital AV-GP 1TB (SATA2; 32MB),Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Fujitsu MHZ2120BH 120GB SATA2,Hard disk,120 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Scorpio Black 250GB (without freefall sensor),Hard disk,250 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate SkyHawk 3TB,Hard disk,3000 GB,,Serial ATA 600,3.5 inch
+Seagate Archive HDD 5TB,Hard disk,5000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Toshiba DT01ABA100V 1TB,Hard disk,1000 GB,5700 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint M8 640GB,Hard disk,640 GB,5400 rpm,Serial ATA 600,2.5 inch
+Western Digital Gold 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Green 800GB (SATA2; 64MB),Hard disk,800 GB,5400 rpm,Serial ATA 300,3.5 inch
+Hitachi Deskstar 5K1000 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 300,3.5 inch
+Seagate Pipeline 1.5TB,Hard disk,1500 GB,5900 rpm,Serial ATA 300,3.5 inch
+Hitachi Deskstar 7K3000 1.5TB,Hard disk,1500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Deskstar 7K1000.D 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Constellation CS 3TB (Instant Secure Erase),Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint MP4 640GB,Hard disk,640 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital AV-25 500GB (SATA2; 32MB),Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Barracuda ES 400GB SATA2,Hard disk,400 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda Spinpoint F3 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital AV-GP 750GB (SATA2; 8MB),Hard disk,750 GB,5400 rpm,Serial ATA 300,3.5 inch
+Seagate Constellation ES.2 2TB (SATA3),Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Desk Blue 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 600,3.5 inch
+HGST Travelstar Z5K500 320GB,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Maxtor DiamondMax 21 160GB 8MB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Green 2TB,Hard disk,2000 GB,5400 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint MP4 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint HD160J 160GB,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Video 3.5 HDD 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+"Western Digital VelociRaptor 300GB (3.5"" backplane)",Hard disk,300 GB,10000 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda XT 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Black 750GB (SATA3; 64MB),Hard disk,750 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint M7E 320GB,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Surveillance HDD 3TB (rescue),Hard disk,3000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Western Digital Re Enterprise Capacity 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Red 3TB (retail),Hard disk,3000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Western Digital Se 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Maxtor DiamondMax 23 500GB SATA2,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Enterprise Capacity 6TB (4Kn; SED),Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate IronWolf 2TB,Hard disk,2000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint F1 750GB (16MB),Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Ultrathin HDD 2TB,Hard disk,2000 GB,5400 rpm,Serial ATA 600,2.5 inch
+Western Digital Caviar Green 1TB (SATA2; 16MB),Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Black V2 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint M7 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar RE 160GB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Maxtor DiamondMax 21 500GB SATA2,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Scorpio Black 160GB (with freefall sensor),Hard disk,160 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Enterprise NAS HDD 8TB,Hard disk,8000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate DB35 7200.3 320GB SATA2,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus 5400.7 750GB,Hard disk,750 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Barracuda Pro 10TB,Hard disk,10000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Scorpio Blue 750GB (WD7500BPVX),Hard disk,750 GB,5400 rpm,Serial ATA 600,2.5 inch
+Maxtor DiamondMax 21 250GB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate NAS HDD 2TB (rescue),Hard disk,2000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar Z5K500 320GB,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Maxtor DiamondMax 23 250GB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda ES.2 500GB SATA2,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Surveillance HDD 4TB (retail),Hard disk,4000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Western Digital Scorpio Blue 320GB SATA2,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint F1 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus Spinpoint M8 160GB,Hard disk,160 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Purple 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Desktop Performance 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint F2 EcoGreen 1.5TB,Hard disk,1500 GB,5400 rpm,Serial ATA 300,3.5 inch
+Samsung Spinpoint T166 500GB SATA2,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Samsung HN-M160MBB 160GB,Hard disk,160 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Purple 6TB,Hard disk,6000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Western Digital Scorpio Blue 750GB,Hard disk,750 GB,5400 rpm,Serial ATA 600,2.5 inch
+Hitachi Travelstar 5K1000 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 600,2.5 inch
+Hitachi Travelstar 5K320 120GB SATA2,Hard disk,120 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Constellation Enterprise Capacity 5TB,Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Purple 4TB (retail),Hard disk,4000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Seagate Laptop Ultrathin HDD 500GB (encryption),Hard disk,500 GB,5400 rpm,Serial ATA 600,2.5 inch
+Toshiba MG04 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Fujitsu MHZ2400BT 400GB SATA2,Hard disk,400 GB,4200 rpm,Serial ATA 300,2.5 inch
+Western Digital Desk Blue 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint F3 EcoGreen 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda 7200.10 80GB 8MB SATA2,Hard disk,80 GB,7200 rpm,Serial ATA 300,3.5 inch
+Toshiba MC04ACA300E 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Desktop HDD 4TB (retail),Hard disk,4000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint M2 120GB SATA2,Hard disk,120 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Momentus 5400.FDE.4 250GB SATA2,Hard disk,250 GB,5400 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint F1R 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Constellation ES.3 ST2000NM0033 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint T166 400GB SATA2,Hard disk,400 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Travelstar Z7K500 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 600,2.5 inch
+Toshiba MK1676GSX 160GB,Hard disk,160 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital RE2-GP 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Toshiba MK8049GSY 80GB SATA2,Hard disk,80 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar Blue 500GB (SATA2; 16MB),Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Blue 500GB (16MB),Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate IronWolf 4TB,Hard disk,4000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Seagate Barracuda 7200.12 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate IronWolf 10TB,Hard disk,10000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Momentus 5400.6 500GB SATA,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar Black 640GB (SATA3; 64MB),Hard disk,640 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Enterprise Capacity 3.5 HDD 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba MQ01ABB200 2TB,Hard disk,2000 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Scorpio Blue 320GB (7mm),Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Travelstar E7K200 160GB,Hard disk,160 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar Green 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Re 250GB (SATA2),Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Red 4TB,Hard disk,4000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Western Digital Scorpio Black 320GB (with freefall sensor),Hard disk,320 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Barracuda 7200.11 1TB v2,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda 7200.12 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Black 1.5TB (SATA2; 64MB),Hard disk,1500 GB,10000 rpm,Serial ATA 300,3.5 inch
+Toshiba MK3255GSX 320GB SATA2,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Toshiba E300 3TB,Hard disk,3000 GB,5940 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint F3 Raid 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+HGST Deskstar NAS 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Deskstar E7K1000 500GB SATA2,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Terascale 4TB (ISE),Hard disk,4000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Western Digital Blue 1TB (32MB),Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Ultrastar A7K1000 750GB SATA2,Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus 7200.4 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar Green 1TB (SATA3; 64MB),Hard disk,1000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Fujitsu MJA2500BH 500GB SATA2,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint P80 200GB SATA2,Hard disk,200 GB,7200 rpm,Serial ATA 300,3.5 inch
+Maxtor DiamondMax 21 160GB 2MB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Green 2TB (SATA3; 64MB; 3 platters),Hard disk,2000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Western Digital Purple 8TB,Hard disk,8000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Hitachi Deskstar T7K250 160GB,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Maxtor DiamondMax 23 320GB SATA2,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda Green 1.5TB,Hard disk,1500 GB,5900 rpm,Serial ATA 600,3.5 inch
+Seagate Enterprise Capacity 4TB (SED),Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar 7K320 320GB SATA2,Hard disk,320 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Barracuda 7200.10 80GB 2MB SATA2,Hard disk,80 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Scorpio Blue 500GB (SATA2),Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Barracuda 7200.10 250GB 16MB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Toshiba MK2051GSY 200GB SATA2,Hard disk,200 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Desktop Performance 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar E5K250 160GB SATA2,Hard disk,160 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Scorpio Blue 1TB (9.5mm),Hard disk,1000 GB,5400 rpm,Serial ATA 300,2.5 inch
+Toshiba MK1237GSX 120GB SATA2,Hard disk,120 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Red 6TB (retail),Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint F1 640GB,Hard disk,640 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Se 5TB,Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar 7K500 160GB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,2.5 inch
+Toshiba MC04ACA400E 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+"Intenso 3.5"" Internal HDD 5TB",Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Barracuda 7200.11 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Desk Blue 3TB,Hard disk,3000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Western Digital Scorpio Blue 500GB (SATA3),Hard disk,500 GB,5400 rpm,Serial ATA 600,2.5 inch
+Samsung Spinpoint M6 500GB SATA2,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate SkyHawk 10TB,Hard disk,10000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Toshiba MQ01ABD032 320GB,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital RE3 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Samsung Spinpoint F2 EcoGreen 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 300,3.5 inch
+Samsung Spinpoint MP4 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,2.5 inch
+Maxtor DiamondMax 22 500GB SATA2,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Samsung Spinpoint T166 320GB 16MB SATA2,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate DiamondMax 23 160GB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda 7200.12 160GB (SATA3),Hard disk,160 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Green 750GB (SATA2; 32MB),Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+"Western Digital VelociRaptor 300GB SATA2 (3.5""; retail)",Hard disk,300 GB,,Serial ATA 300,3.5 inch
+Seagate Enterprise Capacity 3.5 HDD 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Green (SATA3; 64MB),Hard disk,750 GB,5400 rpm,Serial ATA 300,3.5 inch
+Seagate Constellation CS 2TB (Instant Secure Erase),Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Scorpio Blue 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 600,2.5 inch
+Western Digital Red 2TB,Hard disk,2000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar 5K750 640GB,Hard disk,640 GB,5400 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint T166 320GB 8MB SATA2,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Travelstar 5K500.B 160GB SATA2,Hard disk,160 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Barracuda 7200.10 250GB 8MB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate NAS HDD 1TB,Hard disk,1000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Western Digital Scorpio Blue 250GB (7mm),Hard disk,250 GB,5400 rpm,Serial ATA 600,2.5 inch
+Western Digital Caviar Blue 160GB (SATA2; 8MB),Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda Spinpoint 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus XT 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Barracuda ES.2 250GB 16MB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar SE16 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda 7200.9 500GB (SATA2),Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Pipeline 1TB (64MB),Hard disk,1000 GB,5900 rpm,Serial ATA 300,3.5 inch
+Western Digital AV-GP 3TB (SATA3; 64MB),Hard disk,3000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Seagate Barracuda 7200.12 250GB (SATA3),Hard disk,250 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Momentus 7200.2 100GB SATA2,Hard disk,100 GB,7200 rpm,Serial ATA 300,2.5 inch
+Toshiba DT01ABA050V 500GB,Hard disk,500 GB,5700 rpm,Serial ATA 600,3.5 inch
+Western Digital Scorpio Blue 160GB,Hard disk,160 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar Blue 250GB (SATA2; 8MB),Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Constellation 500GB SATA2,Hard disk,500 GB,7200 rpm,Serial ATA 300,2.5 inch
+Verbatim 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint M6 400GB SATA2,Hard disk,400 GB,5400 rpm,Serial ATA 300,2.5 inch
+Toshiba MK1252GSX 120GB SATA2,Hard disk,120 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Momentus ST640LM001 640GB,Hard disk,640 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Deskstar 7K1000.D 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Blue 320GB (SATA2; 16MB),Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus SpinPoint 2TB,Hard disk,2000 GB,5400 rpm,Serial ATA 600,2.5 inch
+Toshiba MG03ACA 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital AV-GP 750GB (SATA2; 32MB),Hard disk,750 GB,5400 rpm,Serial ATA 300,3.5 inch
+Western Digital AV 500GB SATA2,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital AV-GP 320GB (SATA3; 32MB),Hard disk,320 GB,7200 rpm,Serial ATA 600,3.5 inch
+Fujitsu MHW2080BK 80GB SATA2,Hard disk,80 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Constellation CS 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar 320GB SATA2,Hard disk,320 GB,7200 rpm,Serial ATA 300,2.5 inch
+Samsung HN-320MBB 320GB,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar Green 750GB (SATA3; 64MB; LP),Hard disk,750 GB,5400 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint F1 750GB (retail),Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Enterprise Capacity 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,2.5 inch
+"Western Digital VelociRaptor VR200M 150GB (3.5"")",Hard disk,150 GB,10000 rpm,Serial ATA 600,3.5 inch
+Fujitsu MHZ2320BJ 320GB SATA2,Hard disk,320 GB,7200 rpm,Serial ATA 300,2.5 inch
+Toshiba MK5061GSYN 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Black 1TB,Hard disk,1024 GB,7200 rpm,Serial ATA 600,2.5 inch
+Western Digital Caviar Blue 400GB (SATA2; retail),Hard disk,400 GB,7200 rpm,Serial ATA 300,3.5 inch
+Samsung Spinpoint F1 750GB (32MB),Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Constellation 2.5 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 600,2.5 inch
+Western Digital Desk Blue 5TB,Hard disk,5000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Seagate Momentus XT 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate NAS HDD 4TB,Hard disk,4000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Seagate Momentus 7200.5 750GB,Hard disk,750 GB,7200 rpm,Serial ATA 300,2.5 inch
+Maxtor DiamondMax 11 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+HGST Deskstar NAS 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Momentus 7200.4 320GB SATA2,Hard disk,320 GB,7200 rpm,Serial ATA 300,2.5 inch
+Toshiba P300 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba DT01ABA300 3TB,Hard disk,3000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Western Digital Re 1TB (SATA2),Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Red Pro 5TB,Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+HGST Deskstar NAS v2 5TB,Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Desktop Mainstream 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Scorpio Blue 750GB (WD7500KEVT),Hard disk,750 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Black 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 600,2.5 inch
+Toshiba Surveillance 4TB,Hard disk,4000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Western Digital RE 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Scorpio Blue 320GB (AdvFormat),Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Deskstar 7K1000.B 750GB SATA2,Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital AV 250GB (SATA3),Hard disk,250 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Blue 750GB (64MB),Hard disk,750 GB,7200 rpm,Serial ATA 600,3.5 inch
+Maxtor DiamondMax 22 1TB SATA2,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Purple 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 600,3.5 inch
+HGST Travelstar Z5K1000 750GB,Hard disk,750 GB,5400 rpm,Serial ATA 600,2.5 inch
+Western Digital Caviar Green 500GB (SATA3; 32MB),Hard disk,500 GB,5400 rpm,Serial ATA 600,3.5 inch
+Toshiba MK1251GSY 120GB SATA2,Hard disk,120 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Momentus 7200.2 200GB SATA2,Hard disk,200 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital AV-GP 320GB (SATA2; 8MB),Hard disk,320 GB,5400 rpm,Serial ATA 300,3.5 inch
+HGST Travelstar 5K1000 750GB,Hard disk,1000 GB,5400 rpm,Serial ATA 600,2.5 inch
+Seagate Momentus 7200.4 250GB SATA2 G-Force,Hard disk,250 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar Green 640GB (SATA2; 16MB),Hard disk,640 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus 7200.2 160GB SATA2 G-Force,Hard disk,160 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Desktop HDD 8TB,Hard disk,8000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Western Digital RE3 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Scorpio Blue 80GB,Hard disk,80 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Purple 1TB (retail),Hard disk,1000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Seagate Surveillance HDD 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital AV-25 500GB (SATA2; 16MB),Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Toshiba MK2561GSYN 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Scorpio Black 750GB,Hard disk,750 GB,7200 rpm,Serial ATA 300,2.5 inch
+Hitachi Travelstar 7K750 640GB,Hard disk,640 GB,7200 rpm,Serial ATA 300,2.5 inch
+HGST Ultrastar He8 8TB,Hard disk,8000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Barracuda 7200.12 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Deskstar 5K3000 3TB,Hard disk,3000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint T166 250GB 8MB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital WD5000LPCX 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 600,2.5 inch
+Seagate Laptop Ultrathin HDD 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 600,2.5 inch
+Seagate Pipeline 160GB (8MB),Hard disk,160 GB,5900 rpm,Serial ATA 300,3.5 inch
+Seagate Desktop HDD 6TB (retail),Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba MQ02ABF100 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 600,2.5 inch
+Seagate Barracuda 7200.12 750GB (SATA3),Hard disk,750 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint F3 EcoGreen 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,3.5 inch
+Western Digital AV-GP 2TB (SATA2; 32MB),Hard disk,2000 GB,5400 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Blue 80GB (SATA2; 8MB),Hard disk,80 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Deskstar E7K1000 1TB SATA2,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Toshiba X300 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate SV35.5 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung M6 500GB SATA2,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint MT2 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Blue 320GB (16MB),Hard disk,320 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar 5K750 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint M8 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 300,2.5 inch
+Toshiba MK5065GSX 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint M7 320GB,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Deskstar 7K160 80GB SATA2,Hard disk,80 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate NAS HDD 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Re 1.5TB (SATA2),Hard disk,1500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Silicon Power T10 32GB,Hard disk,32 GB,,Serial ATA 300,2.5 inch
+Western Digital Scorpio Green 2TB (SATA2; 8MB),Hard disk,2000 GB,5200 rpm,Serial ATA 300,2.5 inch
+HGST Deskstar NAS 5TB,Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Fujitsu MHZ2080BH 80GB SATA2,Hard disk,80 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Enterprise Capacity 10TB,Hard disk,10000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint F1 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus Laptop HDD 4TB,Hard disk,4000 GB,5400 rpm,Serial ATA 600,2.5 inch
+Toshiba MD03ACA400V 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar SE 160GB SATA,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital VelociRaptor 1TB,Hard disk,1000 GB,10000 rpm,Serial ATA 600,3.5 inch
+HGST Ultrastar He8 8TB (Secure Erase),Hard disk,8000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba P300 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Blue 250GB (16MB),Hard disk,250 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Momentus 7200.4 250GB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint F1 EcoGreen 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 300,3.5 inch
+Western Digital Desktop Mainstream 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Re 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Surveillance HDD 1TB (rescue),Hard disk,1000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar 5K500 400GB SATA2,Hard disk,400 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Deskstar T7K500 400GB SATA2,Hard disk,400 GB,7200 rpm,Serial ATA 300,3.5 inch
+HGST Travelstar Z7K500 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 600,2.5 inch
+Western Digital Purple 3TB,Hard disk,3000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Western Digital Black 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 600,2.5 inch
+Hitachi Deskstar 5K1000 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus 5400.4 120GB SATA2,Hard disk,120 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Deskstar 7K1000.C 500GB SATA2,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Scorpio Blue 250GB,Hard disk,250 GB,5400 rpm,Serial ATA 300,2.5 inch
+Toshiba L200 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+HGST Ultrastar He6 6TB (SATA; encryption),Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Enterprise Capacity 6TB (4Kn),Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Deskstar 7K3000 2TB (SATA3),Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint MP4 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar Black 500GB (SATA3; 32MB),Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Constellation ES.2 3TB (SATA3),Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Barracuda 7200.11 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital RE2-GP 750GB (WD7500AYPS),Hard disk,750 GB,5400 rpm,Serial ATA 300,3.5 inch
+"Western Digital VelociRaptor 300GB (2.5"")",Hard disk,300 GB,10000 rpm,Serial ATA 300,2.5 inch
+Seagate Barracuda 7200.14 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Barracuda Spinpoint F3 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Deskstar 5K4000 4TB,Hard disk,4000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Western Digital AV-25 250GB (SATA2; 32MB),Hard disk,250 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Enterprise Capacity 2TB (SED),Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint M8 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Enterprise NAS HDD 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital RE2 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Travelstar 5K500 400GB SATA,Hard disk,400 GB,5400 rpm,Serial ATA 300,2.5 inch
+HGST Travelstar Z5K1000 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 600,2.5 inch
+Seagate Constellation 160GB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate SV35.5 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba X300 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Enterprise Capacity 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital AV 80GB (SATA3),Hard disk,80 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda ES.2 250GB 32MB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda Spinpoint F3 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar SE 500GB SATA2,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Sentinel 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+HGST Travelstar 7K1000 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,2.5 inch
+Western Digital Re 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Black 5TB,Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Barracuda 7200.10 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Constellation ES 2TB (SATA3),Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar RE2 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Green 2.5TB (SATA2; 64MB),Hard disk,2500 GB,5400 rpm,Serial ATA 300,3.5 inch
+Samsung Spinpoint M40 80GB SATA2,Hard disk,80 GB,5400 rpm,Serial ATA 300,2.5 inch
+Toshiba MQ01ACF032 320GB,Hard disk,320 GB,7200 rpm,Serial ATA 600,2.5 inch
+Seagate NAS HDD 8TB,Hard disk,8000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Blue 320GB (SATA2; 8MB),Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Toshiba MD03ACA200V 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba MK8052GSX 80GB SATA2,Hard disk,80 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar Green 1.5TB (SATA2; 64MB),Hard disk,1500 GB,5400 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar SE 400GB SATA2,Hard disk,400 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Momentus Thin ST500LT025 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint F2 EcoGreen 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 300,3.5 inch
+Western Digital Blue 750GB (32MB),Hard disk,750 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar 7K500 320GB SATA2,Hard disk,320 GB,7200 rpm,Serial ATA 300,2.5 inch
+"Intenso 2.5"" Internal HDD 500GB",Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Deskstar 7K1000.C 320GB SATA2 16MB,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate NAS HDD 8TB (rescue),Hard disk,8000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital AV-GP 500GB (SATA2; 8MB),Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Scorpio Black 160GB,Hard disk,160 GB,7200 rpm,Serial ATA 600,2.5 inch
+Western Digital Green 3TB,Hard disk,3000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Western Digital Scorpio Blue 320GB (retail),Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Toshiba DT01ACA200 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Fujitsu MJA2320BH 320GB SATA2,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Hitachi Ultrastar 7K6000 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Laptop Ultrathin HDD 320GB,Hard disk,320 GB,5400 rpm,Serial ATA 600,2.5 inch
+Western Digital Desktop Mainstream 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Re 500GB (SATA2),Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Deskstar 7K1000.C 320GB SATA2 8MB,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate BarraCuda New 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Barracuda 7200.11 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Desktop HDD 4TB,Hard disk,4000 GB,5900 rpm,Serial ATA 600,3.5 inch
+HGST Ultrastar He8 6TB (SAS),Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar 7K750 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Surveillance HDD 6TB,Hard disk,6000 GB,5900 rpm,Serial ATA 600,3.5 inch
+"Western Digital Red 750GB (2.5"")",Hard disk,750 GB,5400 rpm,Serial ATA 600,2.5 inch
+Western Digital VelociRaptor 74GB,Hard disk,74 GB,10000 rpm,Serial ATA 300,2.5 inch
+Seagate Momentus 7200.3 160GB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar SE16 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Deskstar 7K1000 750GB SATA2,Hard disk,750 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda 7200.9 500GB (SATA2; retail),Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda 7200.10 2TB (SATA3),Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital VelociRaptor 300GB (SATA cable connect),Hard disk,300 GB,10000 rpm,Serial ATA 300,3.5 inch
+Samsung Spinpoint F3 500GB (retail),Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate SV35.6 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Green 500GB (SATA2; 8MB),Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda 7200.14 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba MG03ACA 2TB,Hard disk,2000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital RE2 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Enterprise NAS HDD 5TB,Hard disk,5000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Pipeline 1TB (8MB),Hard disk,1000 GB,5900 rpm,Serial ATA 300,3.5 inch
+Fujitsu MJA2250BH 250GB SATA2,Hard disk,250 GB,5400 rpm,Serial ATA 300,2.5 inch
+HGST Ultrastar 7K4000 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Deskstar 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 300,2.5 inch
+Samsung Spinpoint F1R 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Barracuda 7200.10 400GB,Hard disk,400 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Enterprise Capacity 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba MQ01ABD100S 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate Momentus 7200.FDE.4 250GB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital AV-25 160GB (SATA2; 32MB),Hard disk,160 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Caviar Black 500GB (SATA3; 64MB),Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Re 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Momentus Spinpoint M7E 250GB,Hard disk,250 GB,5400 rpm,Serial ATA 300,2.5 inch
+HGST Ultrastar He6 6TB (SATA),Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Caviar Black 1TB,Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Travelstar 5K500.B 500GB SATA2,Hard disk,500 GB,5400 rpm,Serial ATA 300,2.5 inch
+"Western Digital VelociRaptor VR200M 150GB (2.5"")",Hard disk,150 GB,10000 rpm,Serial ATA 600,2.5 inch
+Toshiba MG04ACA400E 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Enterprise Capacity ST4000NM0024 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint P120 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Scorpio Black 750GB (SATA3),Hard disk,750 GB,7200 rpm,Serial ATA 600,2.5 inch
+Samsung Spinpoint T166 160GB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,3.5 inch
+Toshiba MD03ACA300V 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital RE3 250GB,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi Deskstar 7K1000.B 250GB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,3.5 inch
+Hitachi MegaScale DC 4000.B 4TB,Hard disk,4000 GB,,Serial ATA 600,3.5 inch
+Western Digital Caviar SE16 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Samsung Spinpoint M7 640GB,Hard disk,640 GB,5400 rpm,Serial ATA 300,2.5 inch
+Western Digital Red Pro 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Deskstar T7K500 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Surveillance HDD 4TB (rescue),Hard disk,4000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Toshiba MK3275GSX 320GB,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Maxtor DiamondMax 21 320GB SATA2,Hard disk,320 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Caviar Black 1TB (SATA3; 64MB),Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Re 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Barracuda 7200.10 3TB (SATA3),Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Seagate Barracuda Spinpoint F4 2TB,Hard disk,2000 GB,5400 rpm,Serial ATA 300,3.5 inch
+Western Digital AV-GP 1TB (SATA2; 64MB),Hard disk,1000 GB,7200 rpm,Serial ATA 300,3.5 inch
+Western Digital Green 5TB,Hard disk,5000 GB,5400 rpm,Serial ATA 600,3.5 inch
+Seagate Constellation ES 1TB (SATA3),Hard disk,1000 GB,7200 rpm,Serial ATA 600,3.5 inch
+HGST Ultrastar 7K3000 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Ultrastar 7K6000 4TB,Hard disk,4000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Hitachi Travelstar Z5K320 320GB,Hard disk,320 GB,5400 rpm,Serial ATA 300,2.5 inch
+Toshiba MQ Series 2TB,Hard disk,2000 GB,5400 rpm,Serial ATA 300,2.5 inch
+"Western Digital VelociRaptor 250GB (2.5"")",Hard disk,250 GB,10000 rpm,Serial ATA 600,2.5 inch
+Seagate Barracuda 7200.14 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch
+Samsung Spinpoint T166 500GB (SATA2; retail),Hard disk,500 GB,7200 rpm,Serial ATA 300,3.5 inch
+Seagate Desktop HDD 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Silicon Power Volex V60 480GB,Hard disk,480 GB,,Serial ATA 600,2.5 inch
+Hitachi Travelstar 7K500 250GB SATA2,Hard disk,250 GB,7200 rpm,Serial ATA 300,2.5 inch
+Western Digital AV-Green 500GB,Hard disk,500 GB,5400 rpm,Serial ATA 600,3.5 inch
+Seagate Surveillance HDD 4TB,Hard disk,4000 GB,5900 rpm,Serial ATA 600,3.5 inch
+Toshiba MQ01ABD100 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 300,2.5 inch
+Toshiba P300 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch
+HGST Ultrastar He8 6TB,Hard disk,6000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Toshiba MK1651GSY 160GB SATA2,Hard disk,160 GB,7200 rpm,Serial ATA 300,2.5 inch
+Seagate Momentus STBD1000200 1TB,Hard disk,1000 GB,5400 rpm,Serial ATA 300,2.5 inch
+Seagate SV35.6 3TB,Hard disk,3000 GB,7200 rpm,Serial ATA 600,3.5 inch
+Western Digital Blue 500GB,Hard disk,500 GB,7200 rpm,Serial ATA 600,3.5 inch

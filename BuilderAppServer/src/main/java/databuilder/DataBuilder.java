@@ -8,6 +8,8 @@ import java.util.HashMap;
 
 import main.java.dao.CPUDao;
 import main.java.dao.CPUDaoMySQLImpl;
+import main.java.dao.DISKDao;
+import main.java.dao.DISKDaoMySQLImpl;
 import main.java.dao.GPUDao;
 import main.java.dao.GPUDaoMySQLImpl;
 import main.java.dao.MBDao;
@@ -19,6 +21,7 @@ import main.java.dao.PSUDaoMySQLImpl;
 import main.java.global.AppConstants;
 import main.java.objects.CPU;
 import main.java.objects.ComputerPart;
+import main.java.objects.Disk;
 import main.java.objects.GPU;
 import main.java.objects.Memory;
 import main.java.objects.Motherboard;
@@ -41,6 +44,7 @@ public class DataBuilder {
 	private ArrayList<Motherboard> mbList;
 	private ArrayList<Memory> memList;
 	private ArrayList<PSU> psuList;
+	private ArrayList<Disk> diskList;
 	
 	private static DataBuilder dBuild;
 	
@@ -58,6 +62,7 @@ public class DataBuilder {
 		mbList = new ArrayList<Motherboard>();
 		psuList = new ArrayList<PSU>();
 		memList = new ArrayList<Memory>();
+		diskList = new ArrayList<Disk>();
 		initData();
 	}
 	
@@ -70,6 +75,7 @@ public class DataBuilder {
 		MBDao mbDao = new MBDaoMySQLImpl();
 		MEMDao memDao = new MEMDaoMySQLImpl();
 		PSUDao psuDao = new PSUDaoMySQLImpl();
+		DISKDao diskDao = new DISKDaoMySQLImpl();
 		
 		try {
 			cpuList = cpuDao.getAllCPU();
@@ -77,6 +83,7 @@ public class DataBuilder {
 			mbList = mbDao.getAllMotherboard();
 			memList = memDao.getAllMemory();
 			psuList = psuDao.getAllPSU();
+			diskList = diskDao.getAllDisk();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -96,9 +103,33 @@ public class DataBuilder {
 		if(psuList.isEmpty()){
 			firstTimeLoadPSUData();
 		}
+		if(diskList.isEmpty()){
+			firstTimeLoadDISKData();
+		}
 		
 	}
 	
+	private void firstTimeLoadDISKData() {
+		DISKDao diskDao = new DISKDaoMySQLImpl();
+		String productFileHDD = new String("datasourceExtract" + File.separator + "HDDSimpleData.csv");
+		String productFileCatHDD = "HARDWAREINFO_HDD";
+		String productFileSSD = new String("datasourceExtract" + File.separator + "SSDSimpleData.csv");
+		String productFileCatSSD = "HARDWAREINFO_SSD";
+		addProductListings(productFileHDD, productFileCatHDD);
+		addProductListings(productFileSSD, productFileCatSSD);
+		try{
+			diskDao.insertDisk(diskList);
+		} catch(Exception e){
+			System.err.println("Records cannot be inserted into disk table; Error: " + e);
+		}
+		//Refresh disk list, to get id and time stamps
+		try{
+			diskList = diskDao.getAllDisk();
+		} catch(Exception e){
+			System.err.println("Error getting disks, Error: " + e);
+		}
+	}
+
 	private void firstTimeLoadPSUData() {
 		PSUDao psuDao = new PSUDaoMySQLImpl();
 		String productFile = new String("datasourceExtract" + File.separator + "PSUSimpleData.csv");
@@ -359,14 +390,80 @@ public class DataBuilder {
 		case "HARDWAREINFO_PSU":
 			hardwareInfoPSUPopulate(parsedFile);
 			break;
-			/*
-		case "HARDWAREINFO_DISK":
-			hardwareInfoDISKPopulate(parsedFile);
+		case "HARDWAREINFO_HDD":
+			hardwareInfoHDDPopulate(parsedFile);
 			break;
-			*/
+		case "HARDWAREINFO_SSD":
+			hardwareInfoSSDPopulate(parsedFile);
+			break;
 		}
 	}
 	
+	private void hardwareInfoSSDPopulate(String[][] parsedFile) {
+		Disk temp;
+		String middlePortion;
+		String[] fullProductName;
+		//Skip header line
+		for(int i = 1; i < parsedFile.length; i++){
+			temp = new Disk();
+			temp.productName = parsedFile[i][0];
+			//Extract Make/Brand
+			temp.make = extractMultiWordBrand(temp.productName);
+			//extract the middle portion (stop at 12GB or DDR type)
+			middlePortion = "";
+			fullProductName = temp.productName.substring(temp.make.length()).split(" ");
+			for(int j = 0; j < fullProductName.length; j++){
+				if(!(fullProductName[j].contains(AppConstants.terabyte) || 
+						fullProductName[j].contains(AppConstants.gigabyte))){
+					middlePortion += fullProductName[j] + " ";
+				}
+				else{
+					break;
+				}
+			}
+			temp.modelName = middlePortion.trim();
+			temp.diskType = AppConstants.ssd;
+			temp.capacity = extractStructuredValue(parsedFile[i][2]);
+			temp.readSpeed = extractStructuredValue(parsedFile[i][4]);
+			temp.writeSpeed = extractStructuredValue(parsedFile[i][5]);
+			temp.interfaceType = parsedFile[i][3];
+			temp.formFactor = parsedFile[i][6];
+			diskList.add(temp);
+		}
+	}
+
+	private void hardwareInfoHDDPopulate(String[][] parsedFile) {
+		Disk temp;
+		String middlePortion;
+		String[] fullProductName;
+		//Skip header line
+		for(int i = 1; i < parsedFile.length; i++){
+			temp = new Disk();
+			temp.productName = parsedFile[i][0];
+			//Extract Make/Brand
+			temp.make = extractMultiWordBrand(temp.productName);
+			//extract the middle portion (stop at 12GB or DDR type)
+			middlePortion = "";
+			fullProductName = temp.productName.substring(temp.make.length()).split(" ");
+			for(int j = 0; j < fullProductName.length; j++){
+				if(!(fullProductName[j].contains(AppConstants.terabyte) || 
+						fullProductName[j].contains(AppConstants.gigabyte))){
+					middlePortion += fullProductName[j] + " ";
+				}
+				else{
+					break;
+				}
+			}
+			temp.modelName = middlePortion.trim();
+			temp.diskType = AppConstants.hdd;
+			temp.capacity = extractStructuredValue(parsedFile[i][2]);
+			temp.rotationSpeed = extractStructuredValue(parsedFile[i][3]);
+			temp.interfaceType = parsedFile[i][4];
+			temp.formFactor = parsedFile[i][5];
+			diskList.add(temp);
+		}
+	}
+
 	private void hardwareInfoPSUPopulate(String[][] parsedFile) {
 		PSU temp;
 		//Skip header line
@@ -374,7 +471,8 @@ public class DataBuilder {
 			temp = new PSU();
 			temp.productName = parsedFile[i][0];
 			//Extract Make/Brand
-			temp.make = extractPSUBrand(temp.productName);
+			temp.make = extractMultiWordBrand(temp.productName);
+			//TODO: extract model name
 			//Piggy back on TDP value extraction
 			temp.powerWattage = extractTDP(parsedFile[i][1]);
 			temp.efficiency = parsedFile[i][2];
@@ -382,9 +480,9 @@ public class DataBuilder {
 		}
 	}
 
-	private String extractPSUBrand(String productName) {
+	private String extractMultiWordBrand(String productName) {
 		//Check if brand consist of multiple words
-		for(String brand : AppConstants.psuMultiWordBrand){
+		for(String brand : AppConstants.multiWordBrand){
 			if(productName.contains(brand)){
 				return brand;
 			}
@@ -417,7 +515,7 @@ public class DataBuilder {
 				}
 			}
 			temp.modelName = middlePortion.trim();
-			temp.totalCapacity = extractMemSize(parsedFile[i][1]);
+			temp.totalCapacity = extractStructuredValue(parsedFile[i][1]);
 			temp.numModules = extractNumModules(parsedFile[i][2]);
 			temp.memType = parsedFile[i][3];
 			//Piggy back method to extract memory speed in MHz
@@ -426,9 +524,17 @@ public class DataBuilder {
 		}
 	}
 
-	private int extractMemSize(String string) {
-		//Expected format: number GB
-		//Expected input examples: 2 GB or 50 GB or 125 GB
+	/**
+	 * Helper method to extract numerical values from below similar formats (separated by spaces)
+	 * Expected format: number GB or number rpm
+	 * Expected input examples: 2 GB or 50 GB or 125 GB or 5200 rpm
+	 * @param string
+	 * @return
+	 */
+	private int extractStructuredValue(String string) {
+		if(string.length() == 0 || string.split(" ").length == 0){
+			return 0;
+		}
 		return Integer.parseInt(string.split(" ")[0]);
 	}
 
@@ -822,5 +928,9 @@ public class DataBuilder {
 	
 	public ArrayList<Memory> getMEMList() {
 		return memList;
+	}
+
+	public ArrayList<Disk> getDISKList() {
+		return diskList;
 	}
 }

@@ -14,17 +14,26 @@ public class AppConstants {
 	public final static String gigahertz = "GHz";
 	public final static String megahertz = "MHz";
 	public final static String gigabyte	 = "GB";
+	public final static String terabit	 = "Tb";
+	public final static String terabyte	 = "TB";
 	public final static String gigabit	 = "Gb";
 	public final static String megabyte	 = "MB";
 	public final static String megabit	 = "Mb";
 	public final static String kilobyte	 = "KB";
 	public final static String kilobit	 = "Kb";
+	public final static String perSecond = "/s";
 	//Component names
 	public final static String cpu		 = "CPU";
 	public final static String gpu		 = "GPU";
 	public final static String mobo		 = "Motherboard";
 	public final static String psu		 = "PSU";
 	public final static String memory	 = "Memory";
+	public final static String disk		 = "Disk";
+	//Disk terminology
+	public final static String hdd		 = "HDD";
+	public final static String ssd		 = "SSD";
+	public final static String sshd		 = "SSHD";
+	public final static String rpm		 = "RPM";
 	//MemoryTypes
 	public final static String ddr		 = "DDR";
 	public final static String ddr2		 = "DDR2";
@@ -33,7 +42,9 @@ public class AppConstants {
 	//Database
 	public final static int batchCommit	 = 200;
 	//PSU brand (multi-word)
-	public final static String[] psuMultiWordBrand = {
-			"Be quiet!", "Cooler Master", "Fractal Design", "Super Flower"
+	public final static String[] multiWordBrand = {
+			"Be quiet!", "Cooler Master", "Fractal Design", "Super Flower",
+			"Western Digital", "Silicon Power", "Super Talent", "Mach Xtreme Technology", "Micro Storage"
+			
 	};
 }
