@@ -10,21 +10,21 @@ import java.sql.DriverManager;
  */
 public class Database {
 
-	public Database(){
-		//nothing here
-	}
-	
-	public static Connection getConnection() throws Exception{
-		String url = "jdbc:mysql://autocompbuilder.ccmk3v3o5ojq.us-east-1.rds.amazonaws.com:3306/";
-        String dbName = "AutoCompBuilderDB";
-        String driver = "com.mysql.jdbc.Driver";
-        //Database Credentials go here
-        String userName = "";
-        String password = "";
+public Database(){
+								//nothing here
+}
 
-        Class.forName(driver).newInstance();
-        Connection conn = DriverManager.getConnection(url + dbName, userName,password);
-        
-		return conn;
-	}
+public static Connection getConnection() throws Exception {
+								String url = "jdbc:mysql://autocompbuilder.ccmk3v3o5ojq.us-east-1.rds.amazonaws.com:3306/";
+								String dbName = "AutoCompBuilderDB";
+								String driver = "com.mysql.jdbc.Driver";
+								//Database Credentials go here
+								String userName = "app";
+								String password = "autocompbuilder";
+
+								Class.forName(driver).newInstance();
+								Connection conn = DriverManager.getConnection(url + dbName, userName,password);
+
+								return conn;
+}
 }

@@ -5,6 +5,7 @@ buildscript {
     }
     dependencies {
          classpath 'com.bmuschko:gradle-cargo-plugin:2.2.3'
+         classpath 'io.spring.gradle:dependency-management-plugin:0.6.1.RELEASE'
      }
 }
 
