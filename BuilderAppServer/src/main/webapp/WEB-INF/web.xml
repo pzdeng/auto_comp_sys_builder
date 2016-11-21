@@ -18,8 +18,9 @@
 		<servlet-name>jersey-servlet</servlet-name>
 		<url-pattern>/api/*</url-pattern>
 	</servlet-mapping>
-
+<!-- Default behavior to find the index.html file
   <welcome-file-list>
     <welcome-file>../index.html</welcome-file>
   </welcome-file-list>
+   -->
 </web-app>
