@@ -91,3 +91,6 @@ cargo {
         }
     }
   }
+
+
+  cargoRunLocal.dependsOn war
