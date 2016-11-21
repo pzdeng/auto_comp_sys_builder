@@ -167,13 +167,18 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                             <span class="icon-box bg-color-blue">
                     <i class="fa fa-warning"></i>
                 </span>
-                            <div class="text-box" ng-controller="indexController">
+                        <div ng-controller="indexController">
+                            <div class="text-box">
+
                                 <p class="main-text">Resulted build </p>
-                                <p class="text-muted">Please fix these issues to work smooth</p>
-                                <p class="text-muted">Time Left: 30 mins</p>
+                                  <p class="text-muted">budget: {{build.budget}}</p>
+                                  <p class="text-muted">type: {{build.computerType}}</p>
+                                  <p class="text-muted">price: {{build.totalPrice}}</p>
+                                <!-- <p class="text-muted">Please fix these issues to work smooth</p> -->
+                                <!-- <p class="text-muted">Time Left: 30 mins</p> -->
                                 <hr />
                                 <p class="text-muted">
-                                    <li ng-repeat="(key,val) in products">{{key}}: {{val}}</li>
+                                    <li ng-repeat="(key,val) in build.components">{{key}}: {{val}}</li>
 
                                     <!-- <p ng-if="item.comp">{{item.components}}</p> -->
 
@@ -181,6 +186,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                                </span>
                                 </p>
                             </div>
+                          </div>
                         </div>
                     </div>
 

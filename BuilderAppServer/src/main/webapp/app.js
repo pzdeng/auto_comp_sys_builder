@@ -45,7 +45,7 @@ myApp.controller('indexController', ["$scope", "$window", "$http", 'sharedProper
         //$window.alert(JSON.stringify(response.data));
 
         //$scope.html(JSON.stringify(response.data));
-        $scope.products = response.data;
+        $scope.build = response.data;
     });
 
 }]);
