@@ -42,6 +42,8 @@ public class AmazonWebService {
     	browseNodes.put(AppConstants.gpu, "284822");
     	browseNodes.put(AppConstants.mobo, "1048424");
     	browseNodes.put(AppConstants.memory, "172500");
+    	browseNodes.put(AppConstants.psu, "1161760");
+    	browseNodes.put(AppConstants.disk, "1254762011");
     	browseNodes.put("DEFAULT", "193870011");
     }
     

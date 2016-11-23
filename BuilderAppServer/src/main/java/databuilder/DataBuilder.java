@@ -106,7 +106,6 @@ public class DataBuilder {
 		if(diskList.isEmpty()){
 			firstTimeLoadDISKData();
 		}
-		
 	}
 	
 	private void firstTimeLoadDISKData() {
@@ -309,6 +308,40 @@ public class DataBuilder {
 		}
 	}
 	
+	public void updateDISKData(){
+		DISKDao memDao = new DISKDaoMySQLImpl();	
+		ArrayList<Disk> dirtyDISK = new ArrayList<Disk>();
+		for(int i = 0; i < diskList.size(); i++){
+			if(diskList.get(i).dirty){
+				dirtyDISK.add(diskList.get(i));
+				diskList.get(i).dirty = false;
+			}
+		}
+		try{
+			memDao.updateVendorInfoDisk(dirtyDISK);
+		}
+		catch(Exception e){
+			System.err.println("Something bad happened during disk record updates, handle me... " + e);
+		}
+	}
+	
+	public void updatePSUData(){
+		PSUDao memDao = new PSUDaoMySQLImpl();	
+		ArrayList<PSU> dirtyPSU = new ArrayList<PSU>();
+		for(int i = 0; i < psuList.size(); i++){
+			if(psuList.get(i).dirty){
+				dirtyPSU.add(psuList.get(i));
+				psuList.get(i).dirty = false;
+			}
+		}
+		try{
+			memDao.updateVendorInfoPSU(dirtyPSU);
+		}
+		catch(Exception e){
+			System.err.println("Something bad happened during psu record updates, handle me... " + e);
+		}
+	}
+	
 	public void updateCheckProductID(){
 		//For each computer part that has an empty productID, fetch information from Vendor (Amazon)
 		for(int i = 0; i < cpuList.size(); i++){
@@ -335,6 +368,20 @@ public class DataBuilder {
 			}
 		}
 		updateMEMData();
+		
+		for(int i = 0; i < diskList.size(); i++){
+			if(diskList.get(i).productID == null || diskList.get(i).productID.isEmpty()){
+				diskList.set(i, (Disk) VendorProductSearch.getProductInfo(diskList.get(i)));
+			}
+		}
+		updateDISKData();
+		
+		for(int i = 0; i < psuList.size(); i++){
+			if(psuList.get(i).productID == null || psuList.get(i).productID.isEmpty()){
+				psuList.set(i, (PSU) VendorProductSearch.getProductInfo(psuList.get(i)));
+			}
+		}
+		updatePSUData();
 	}
 	
 	public void updateProductPricing(){
@@ -368,6 +415,26 @@ public class DataBuilder {
 			}
 		}
 		updateMBData();
+		
+		for(int i = 0; i < diskList.size(); i++){
+			if(diskList.get(i).productID != null || !diskList.get(i).productID.equals("-")){
+				temp = VendorProductSearch.getProductInfo(diskList.get(i));
+				if(!temp.productID.equals("-")){
+					diskList.set(i, (Disk) temp);
+				}
+			}
+		}
+		updateDISKData();
+		
+		for(int i = 0; i < psuList.size(); i++){
+			if(psuList.get(i).productID != null || !psuList.get(i).productID.equals("-")){
+				temp = VendorProductSearch.getProductInfo(psuList.get(i));
+				if(!temp.productID.equals("-")){
+					psuList.set(i, (PSU) temp);
+				}
+			}
+		}
+		updatePSUData();
 	}
 	
 	/**
@@ -466,18 +533,50 @@ public class DataBuilder {
 
 	private void hardwareInfoPSUPopulate(String[][] parsedFile) {
 		PSU temp;
+		String middlePortion;
+		String[] fullProductName;
 		//Skip header line
 		for(int i = 1; i < parsedFile.length; i++){
 			temp = new PSU();
 			temp.productName = parsedFile[i][0];
 			//Extract Make/Brand
 			temp.make = extractMultiWordBrand(temp.productName);
-			//TODO: extract model name
+			//extract the middle portion (stop at 200W value type)
+			middlePortion = "";
+			fullProductName = temp.productName.substring(temp.make.length()).split(" ");
+			for(int j = 0; j < fullProductName.length; j++){
+				if(!(isNumeric(fullProductName[j]))){
+					middlePortion += fullProductName[j] + " ";
+				}
+				else{
+					break;
+				}
+			}
+			temp.modelName = middlePortion.trim();
 			//Piggy back on TDP value extraction
 			temp.powerWattage = extractTDP(parsedFile[i][1]);
 			temp.efficiency = parsedFile[i][2];
 			psuList.add(temp);
 		}
+	}
+	
+	/**
+	 * Checker to see if the str is some measured value
+	 * Like: 200W
+	 * @param str
+	 * @return
+	 */
+	private boolean isNumeric(String str){
+		if(str.contains(AppConstants.wattage)){
+			try{
+				Integer.parseInt(str.substring(0, str.length() - 1));
+				return true;
+			}
+			catch(Exception e){
+				return false;
+			}
+		}
+		return false;
 	}
 
 	private String extractMultiWordBrand(String productName) {
@@ -931,6 +1030,13 @@ public class DataBuilder {
 	}
 
 	public ArrayList<Disk> getDISKList() {
+		if(diskList == null || diskList.isEmpty()){
+			try {
+				diskList = new DISKDaoMySQLImpl().getAllDisk();
+			} catch (SQLException e) {
+				//do nothing for now
+			}
+		}
 		return diskList;
 	}
 }

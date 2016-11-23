@@ -21,6 +21,7 @@ public class AppConstants {
 	public final static String megabit	 = "Mb";
 	public final static String kilobyte	 = "KB";
 	public final static String kilobit	 = "Kb";
+	public final static String wattage	 = "W";
 	public final static String perSecond = "/s";
 	//Component names
 	public final static String cpu		 = "CPU";
@@ -34,6 +35,8 @@ public class AppConstants {
 	public final static String ssd		 = "SSD";
 	public final static String sshd		 = "SSHD";
 	public final static String rpm		 = "RPM";
+	public final static String sata2	 = "Serial ATA 300";
+	public final static String sata3	 = "Serial ATA 600";
 	//MemoryTypes
 	public final static String ddr		 = "DDR";
 	public final static String ddr2		 = "DDR2";

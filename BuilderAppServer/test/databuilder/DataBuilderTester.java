@@ -15,6 +15,7 @@ import main.java.objects.GPU;
 import main.java.objects.Memory;
 import main.java.objects.Motherboard;
 import main.java.objects.PSU;
+import main.java.webservice.VendorProductSearch;
 
 public class DataBuilderTester {
 	private DataBuilder dataBuild;

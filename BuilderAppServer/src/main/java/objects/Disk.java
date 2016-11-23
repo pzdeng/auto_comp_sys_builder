@@ -42,4 +42,50 @@ public class Disk extends ComputerPart{
 		specs.append("FormFactor: ").append(formFactor).append(AppConstants.separator);
 		return specs.toString();
 	}
+	public boolean titleCheck(String productTitle) {
+		productTitle = productTitle.toLowerCase();
+		//Check make
+		if(!productTitle.contains(make.toLowerCase())){
+			return false;
+		}
+		//Check model name (in parts)
+		String[] modelNameParition = modelName.toLowerCase().split(" ");
+		boolean partialMatch = false;
+		if(modelNameParition.length > 0){
+			for(String partition : modelNameParition){
+				if(productTitle.contains(partition)){
+					partialMatch = true;
+				}
+			}
+		}
+		if(!partialMatch){
+			return false;
+		}
+		//Check capacity
+		boolean capacityCheck = true;
+		if(!(productTitle.contains((capacity + AppConstants.gigabyte).toLowerCase()) ||
+				productTitle.contains((capacity + " " + AppConstants.gigabyte).toLowerCase()))){
+			capacityCheck = false;
+		}
+		//Check TB
+		if(capacity > 1000 && !capacityCheck){
+			if(!(productTitle.contains((capacity/1000 + AppConstants.terabyte).toLowerCase()) ||
+					productTitle.contains((capacity/1000 + " " + AppConstants.terabyte).toLowerCase()))){
+				return false;
+			}
+		}
+		
+		//Check proper interface
+		/*
+		if(interfaceType.equals(AppConstants.sata2)){
+			if(productTitle){
+				return false;
+			}
+		}
+		else if(interfaceType.equals(AppConstants.sata3)){
+			
+		}
+		*/
+		return true;
+	}
 }
