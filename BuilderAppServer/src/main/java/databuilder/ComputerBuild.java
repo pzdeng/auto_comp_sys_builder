@@ -48,7 +48,6 @@ public class ComputerBuild {
 		parts = DataBuilder.getInstance();
 		parts.initValidComputerParts();
 		buildComp();
-		//buildRandomComp();
 	}
 	
 	/*
@@ -104,7 +103,7 @@ public class ComputerBuild {
 		// Motherboard
 		// Mid - Low Graphics
 		// Storage should be > 500 GB
-		validateBuild();
+		//validateBuild();
 	}
 
 	private void buildWorkstationComp() {
@@ -116,7 +115,7 @@ public class ComputerBuild {
 		// Motherboard
 		// Mid - Low Graphics
 		// Storage should be > 500GB
-		validateBuild();
+		//validateBuild();
 	}
 
 	private void buildGamingComp() {
@@ -128,7 +127,7 @@ public class ComputerBuild {
 		// High Graphics (40% of budget)
 			// Dual Graphics Cards (if time permits) 
 		// Storage should be > 500GB
-		validateBuild();
+		//validateBuild();
 	}
 
 	private void buildServerComp() {
@@ -139,7 +138,7 @@ public class ComputerBuild {
 		// Motherboard, favor high # of SataPorts, favor high number of memory slots
 		// Graphics (None)
 		// Storage should be > 10TB
-		validateBuild();
+		//validateBuild();
 	}
 
 	/**
