@@ -11,10 +11,12 @@ import java.util.List;
 
 import main.java.database.Database;
 import main.java.global.AppConstants;
+import main.java.objects.CPU;
 import main.java.objects.Motherboard;
 
 public class MBDaoMySQLImpl implements MBDao{
 
+	private final String generalSelect = "select * from motherboard";
 	private final String selectMotherboard = "SELECT * FROM motherboard WHERE productName = ?";
 	private final String insertStmt = "INSERT INTO motherboard(createTime, modifyTime, type, productName, productID, "
 			+ "modelName, make, year, powerRating, picURL, productURL, "
@@ -27,9 +29,23 @@ public class MBDaoMySQLImpl implements MBDao{
 	private final String updatePriceStmt = "UPDATE motherboard SET modifyTime = ?, picURL = ?, productURL = ?, "
 			+ "vendorPrice = ?, productID = ? WHERE mbid = ?";
 	private final String deleStmt = "DELETE FROM motherboard WHERE mbid = ?";
+	private final String validSelect = "select * from motherboard where productURL != '-' and vendorPrice > 0 order by vendorPrice asc";
 	
 	@Override
 	public ArrayList<Motherboard> getAllMotherboard() throws SQLException{
+		return selectCore(generalSelect);
+	}	
+	
+	@Override
+	public ArrayList<Motherboard> getAllValidMotherboard() throws SQLException {
+		return selectCore(validSelect);
+	}
+	
+	/**
+	 * Central helper method to select cpu's
+	 * @return
+	 */
+	private ArrayList<Motherboard> selectCore(String selectStmt) throws SQLException{
 		ArrayList<Motherboard> mbList = new ArrayList<Motherboard>();
 		Connection dbConn = null;
 		Statement stmt = null;
@@ -38,7 +54,7 @@ public class MBDaoMySQLImpl implements MBDao{
 		try{
 			dbConn = Database.getConnection();
 			stmt = dbConn.createStatement();  
-			ResultSet rs = stmt.executeQuery("select * from motherboard");  
+			ResultSet rs = stmt.executeQuery(selectStmt);  
 			while(rs.next()) {
 				temp = new Motherboard();
 				temp.id = rs.getInt("mbID");
@@ -77,7 +93,6 @@ public class MBDaoMySQLImpl implements MBDao{
 		}
 		return mbList;
 	}	
-	
 
 	@Override
 	public void insertMotherboard(Motherboard mb) throws SQLException{

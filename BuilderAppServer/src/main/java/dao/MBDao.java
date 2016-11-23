@@ -8,6 +8,7 @@ import main.java.objects.Motherboard;
 
 public interface MBDao {
 	public ArrayList<Motherboard> getAllMotherboard() throws SQLException;
+	public ArrayList<Motherboard> getAllValidMotherboard() throws SQLException;
 	public void insertMotherboard(Motherboard mb) throws SQLException;
 	public void insertMotherboard(List<Motherboard> mbList) throws SQLException;
 	public void updateFullMotherboard(Motherboard mb) throws SQLException;

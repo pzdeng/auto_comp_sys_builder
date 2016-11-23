@@ -11,10 +11,12 @@ import java.util.List;
 
 import main.java.database.Database;
 import main.java.global.AppConstants;
+import main.java.objects.CPU;
 import main.java.objects.Disk;
 
 public class DISKDaoMySQLImpl implements DISKDao{
 	
+	private final String generalSelect = "select * from disk";
 	private final String selectDisk = "SELECT * FROM disk WHERE productName = ?";
 	private final String insertStmt = "INSERT INTO disk(createTime, modifyTime, type, productName, productID, "
 			+ "modelName, make, year, powerRating, picURL, productURL, "
@@ -29,9 +31,23 @@ public class DISKDaoMySQLImpl implements DISKDao{
 	private final String updatePriceStmt = "UPDATE disk SET modifyTime = ?, picURL = ?, productURL = ?, "
 			+ "vendorPrice = ?, productID = ? WHERE diskid = ?";
 	private final String deleStmt = "DELETE FROM disk WHERE diskid = ?";
-	
+	private final String validSelect = "select * from disk where productURL != '-' and vendorPrice > 0 order by vendorPrice asc";
+		
 	@Override
 	public ArrayList<Disk> getAllDisk() throws SQLException{
+		return selectCore(generalSelect);
+	}	
+	
+	@Override
+	public ArrayList<Disk> getAllValidDisk() throws SQLException {
+		return selectCore(validSelect);
+	}
+	
+	/**
+	 * Central helper method to select cpu's
+	 * @return
+	 */
+	private ArrayList<Disk> selectCore(String selectStmt) throws SQLException{
 		ArrayList<Disk> diskList = new ArrayList<Disk>();
 		Connection dbConn = null;
 		Statement stmt = null;
@@ -40,7 +56,7 @@ public class DISKDaoMySQLImpl implements DISKDao{
 		try{
 			dbConn = Database.getConnection();
 			stmt = dbConn.createStatement();  
-			ResultSet rs = stmt.executeQuery("select * from disk");  
+			ResultSet rs = stmt.executeQuery(selectStmt);  
 			while(rs.next()) {
 				temp = new Disk();
 				temp.id = rs.getInt("diskID");
@@ -80,7 +96,6 @@ public class DISKDaoMySQLImpl implements DISKDao{
 		}
 		return diskList;
 	}	
-	
 
 	@Override
 	public void insertDisk(Disk disk) throws SQLException{

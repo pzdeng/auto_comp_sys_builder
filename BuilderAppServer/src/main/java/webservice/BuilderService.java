@@ -10,8 +10,8 @@ import javax.ws.rs.core.Response;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import main.java.databuilder.ComputerBuild;
 import main.java.objects.ClientPayload;
-import main.java.objects.ComputerBuild;
 
 @Path("/build")
 public class BuilderService {

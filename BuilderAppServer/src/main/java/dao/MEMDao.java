@@ -8,6 +8,7 @@ import main.java.objects.Memory;
 
 public interface MEMDao {
 	public ArrayList<Memory> getAllMemory() throws SQLException;
+	public ArrayList<Memory> getAllValidMemory() throws SQLException;
 	public void insertMemory(Memory mem) throws SQLException;
 	public void insertMemory(List<Memory> memList) throws SQLException;
 	public void updateFullMemory(Memory mem) throws SQLException;

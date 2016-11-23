@@ -30,10 +30,32 @@ public class DataBuilderTester {
     	dataBuild.clear();
     }
     
-    
+    /**
+     * Check all computer parts data
+     */
     @Test
     public void testDataBuilder_Init(){
-    	dataBuild.initData();
+    	dataBuild.initAllData();
+    	assertTrue(dataBuild.getCPUList().size() > 0);
+    	System.out.println("Total # of CPUs: " + dataBuild.getCPUList().size());
+    	assertTrue(dataBuild.getGPUList().size() > 0);
+    	System.out.println("Total # of GPUs: " + dataBuild.getGPUList().size());
+    	assertTrue(dataBuild.getMBList().size() > 0);
+    	System.out.println("Total # of Motherboards: " + dataBuild.getMBList().size());
+    	assertTrue(dataBuild.getMEMList().size() > 0);
+    	System.out.println("Total # of Memory Units: " + dataBuild.getMEMList().size());
+    	assertTrue(dataBuild.getPSUList().size() > 0);
+    	System.out.println("Total # of PSUs: " + dataBuild.getPSUList().size());
+    	assertTrue(dataBuild.getDISKList().size() > 0);
+    	System.out.println("Total # of Disks: " + dataBuild.getDISKList().size());
+    }
+    
+    /**
+     * Check only valid computer parts data
+     */
+    @Test
+    public void testDataBuilder_ValidInit(){
+    	dataBuild.initValidComputerParts();
     	assertTrue(dataBuild.getCPUList().size() > 0);
     	System.out.println("Total # of CPUs: " + dataBuild.getCPUList().size());
     	assertTrue(dataBuild.getGPUList().size() > 0);
@@ -51,7 +73,7 @@ public class DataBuilderTester {
     //Update if productID is empty or null
     @Test
     public void testDataBuilder_Update(){
-    	dataBuild.initData();
+    	dataBuild.initAllData();
     	assertTrue(dataBuild.getCPUList().size() > 0);
     	System.out.println("Total # of CPU's: " + dataBuild.getCPUList().size());
     	assertTrue(dataBuild.getGPUList().size() > 0);
@@ -69,7 +91,7 @@ public class DataBuilderTester {
     //Update if productID is some valid value
     @Test
     public void testDataBuilder_Update2(){
-    	dataBuild.initData();
+    	dataBuild.initAllData();
     	assertTrue(dataBuild.getCPUList().size() > 0);
     	System.out.println("Total # of CPU's: " + dataBuild.getCPUList().size());
     	assertTrue(dataBuild.getGPUList().size() > 0);

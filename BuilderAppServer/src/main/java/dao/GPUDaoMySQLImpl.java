@@ -11,10 +11,12 @@ import java.util.List;
 
 import main.java.database.Database;
 import main.java.global.AppConstants;
+import main.java.objects.CPU;
 import main.java.objects.GPU;
 
 public class GPUDaoMySQLImpl implements GPUDao{
 
+	private final String generalSelect = "select * from gpu";
 	private final String selectGPU = "SELECT * FROM gpu WHERE productName = ?";
 	private final String insertStmt = "INSERT INTO gpu(createTime, modifyTime, type, productName, productID, "
 			+ "modelName, make, year, powerRating, picURL, productURL, "
@@ -27,9 +29,23 @@ public class GPUDaoMySQLImpl implements GPUDao{
 	private final String updatePriceStmt = "UPDATE gpu SET modifyTime = ?, picURL = ?, productURL = ?, "
 			+ "vendorPrice = ?, productID = ? WHERE gpuid = ?";
 	private final String deleStmt = "DELETE FROM gpu WHERE gpuid = ?";
+	private final String validSelect = "select * from gpu where productURL != '-' and vendorPrice > 0 order by vendorPrice asc";
 	
 	@Override
 	public ArrayList<GPU> getAllGPU() throws SQLException{
+		return selectCore(generalSelect);
+	}	
+	
+	@Override
+	public ArrayList<GPU> getAllValidGPU() throws SQLException {
+		return selectCore(validSelect);
+	}
+	
+	/**
+	 * Central helper method to select cpu's
+	 * @return
+	 */
+	private ArrayList<GPU> selectCore(String selectStmt) throws SQLException{
 		ArrayList<GPU> gpuList = new ArrayList<GPU>();
 		Connection dbConn = null;
 		Statement stmt = null;
@@ -38,7 +54,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 		try{
 			dbConn = Database.getConnection();
 			stmt = dbConn.createStatement();  
-			ResultSet rs = stmt.executeQuery("select * from gpu");  
+			ResultSet rs = stmt.executeQuery(selectStmt);  
 			while(rs.next()) {
 				temp = new GPU();
 				temp.id = rs.getInt("gpuID");
@@ -77,7 +93,6 @@ public class GPUDaoMySQLImpl implements GPUDao{
 		}
 		return gpuList;
 	}	
-	
 
 	@Override
 	public void insertGPU(GPU gpu) throws SQLException{

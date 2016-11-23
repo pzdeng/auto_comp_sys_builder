@@ -11,10 +11,12 @@ import java.util.List;
 
 import main.java.database.Database;
 import main.java.global.AppConstants;
+import main.java.objects.CPU;
 import main.java.objects.PSU;
 
 public class PSUDaoMySQLImpl implements PSUDao{
 
+	private final String generalSelect = "select * from psu";
 	private final String selectPSU = "SELECT * FROM psu WHERE productName = ?";
 	private final String insertStmt = "INSERT INTO psu(createTime, modifyTime, type, productName, productID, "
 			+ "modelName, make, year, powerRating, picURL, productURL, "
@@ -27,9 +29,23 @@ public class PSUDaoMySQLImpl implements PSUDao{
 	private final String updatePriceStmt = "UPDATE psu SET modifyTime = ?, picURL = ?, productURL = ?, "
 			+ "vendorPrice = ?, productID = ? WHERE psuid = ?";
 	private final String deleStmt = "DELETE FROM psu WHERE psuid = ?";
+	private final String validSelect = "select * from psu where productURL != '-' and vendorPrice > 0 order by vendorPrice asc";
 	
 	@Override
 	public ArrayList<PSU> getAllPSU() throws SQLException{
+		return selectCore(generalSelect);
+	}
+	
+	@Override
+	public ArrayList<PSU> getAllValidPSU() throws SQLException {
+		return selectCore(validSelect);
+	}
+	
+	/**
+	 * Central helper method to select cpu's
+	 * @return
+	 */
+	private ArrayList<PSU> selectCore(String selectStmt) throws SQLException{
 		ArrayList<PSU> psuList = new ArrayList<PSU>();
 		Connection dbConn = null;
 		Statement stmt = null;
@@ -38,7 +54,7 @@ public class PSUDaoMySQLImpl implements PSUDao{
 		try{
 			dbConn = Database.getConnection();
 			stmt = dbConn.createStatement();  
-			ResultSet rs = stmt.executeQuery("select * from psu");  
+			ResultSet rs = stmt.executeQuery(selectStmt);  
 			while(rs.next()) {
 				temp = new PSU();
 				temp.id = rs.getInt("psuID");

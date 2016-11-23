@@ -15,6 +15,7 @@ import main.java.objects.CPU;
 
 public class CPUDaoMySQLImpl implements CPUDao{
 
+	private final String generalSelect = "select * from cpu";
 	private final String selectCPU = "SELECT * FROM cpu WHERE productName = ?";
 	private final String insertStmt = "INSERT INTO cpu(createTime, modifyTime, type, productName, productID, "
 			+ "modelName, make, year, powerRating, picURL, productURL, "
@@ -27,9 +28,23 @@ public class CPUDaoMySQLImpl implements CPUDao{
 	private final String updatePriceStmt = "UPDATE cpu SET modifyTime = ?, picURL = ?, productURL = ?, "
 			+ "vendorPrice = ?, productID = ? WHERE cpuid = ?";
 	private final String deleStmt = "DELETE FROM cpu WHERE cpuid = ?";
+	private final String validSelect = "select * from cpu where productURL != '-' and vendorPrice > 0 order by vendorPrice asc";
 	
 	@Override
 	public ArrayList<CPU> getAllCPU() throws SQLException{
+		return selectCore(generalSelect);
+	}	
+	
+	@Override
+	public ArrayList<CPU> getAllValidCPU() throws SQLException {
+		return selectCore(validSelect);
+	}
+	
+	/**
+	 * Central helper method to select cpu's
+	 * @return
+	 */
+	private ArrayList<CPU> selectCore(String selectStmt) throws SQLException{
 		ArrayList<CPU> cpuList = new ArrayList<CPU>();
 		Connection dbConn = null;
 		Statement stmt = null;
@@ -38,7 +53,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 		try{
 			dbConn = Database.getConnection();
 			stmt = dbConn.createStatement();  
-			ResultSet rs = stmt.executeQuery("select * from cpu");  
+			ResultSet rs = stmt.executeQuery(selectStmt);  
 			while(rs.next()) {
 				temp = new CPU();
 				temp.id = rs.getInt("cpuID");
@@ -77,7 +92,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 			}
 		}
 		return cpuList;
-	}	
+	}
 	
 
 	@Override

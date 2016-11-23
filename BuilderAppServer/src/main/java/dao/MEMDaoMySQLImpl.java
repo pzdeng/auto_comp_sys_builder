@@ -11,10 +11,12 @@ import java.util.List;
 
 import main.java.database.Database;
 import main.java.global.AppConstants;
+import main.java.objects.CPU;
 import main.java.objects.Memory;
 
 public class MEMDaoMySQLImpl implements MEMDao{
 
+	private final String generalSelect = "select * from memory";
 	private final String selectmem = "SELECT * FROM memory WHERE productName = ?";
 	private final String insertStmt = "INSERT INTO memory(createTime, modifyTime, type, productName, productID, "
 			+ "modelName, make, year, powerRating, picURL, productURL, "
@@ -27,9 +29,23 @@ public class MEMDaoMySQLImpl implements MEMDao{
 	private final String updatePriceStmt = "UPDATE memory SET modifyTime = ?, picURL = ?, productURL = ?, "
 			+ "vendorPrice = ?, productID = ? WHERE memid = ?";
 	private final String deleStmt = "DELETE FROM memory WHERE memid = ?";
+	private final String validSelect = "select * from memory where productURL != '-' and vendorPrice > 0 order by vendorPrice asc";
 	
 	@Override
 	public ArrayList<Memory> getAllMemory() throws SQLException{
+		return selectCore(generalSelect);
+	}
+	
+	@Override
+	public ArrayList<Memory> getAllValidMemory() throws SQLException {
+		return selectCore(validSelect);
+	}
+	
+	/**
+	 * Central helper method to select cpu's
+	 * @return
+	 */
+	private ArrayList<Memory> selectCore(String selectStmt) throws SQLException{
 		ArrayList<Memory> memList = new ArrayList<Memory>();
 		Connection dbConn = null;
 		Statement stmt = null;
@@ -38,7 +54,7 @@ public class MEMDaoMySQLImpl implements MEMDao{
 		try{
 			dbConn = Database.getConnection();
 			stmt = dbConn.createStatement();  
-			ResultSet rs = stmt.executeQuery("select * from memory");  
+			ResultSet rs = stmt.executeQuery(selectStmt);  
 			while(rs.next()) {
 				temp = new Memory();
 				temp.id = rs.getInt("memID");

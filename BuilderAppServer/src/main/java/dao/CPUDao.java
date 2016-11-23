@@ -7,6 +7,7 @@ import main.java.objects.CPU;
 
 public interface CPUDao {
    public ArrayList<CPU> getAllCPU() throws SQLException;
+   public ArrayList<CPU> getAllValidCPU() throws SQLException;
    public void insertCPU(CPU cpu) throws SQLException;
    public void insertCPU(List<CPU> cpuList) throws SQLException;
    public void updateFullCPU(CPU cpu) throws SQLException;

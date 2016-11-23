@@ -1,4 +1,4 @@
-package main.java.objects;
+package main.java.databuilder;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -6,7 +6,13 @@ import java.util.Random;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import main.java.databuilder.DataBuilder;
+import main.java.objects.CPU;
+import main.java.objects.ClientPayload;
+import main.java.objects.ComputerType;
+import main.java.objects.GPU;
+import main.java.objects.Memory;
+import main.java.objects.Motherboard;
+import main.java.objects.PSU;
 
 /**
  * In memory data class to hold computer build information
@@ -23,12 +29,15 @@ public class ComputerBuild {
 	private float totalCost;
 	private int budget;
 	private ComputerType type;
+	private DataBuilder parts;
 	
 	public ComputerBuild(){
 		cpu = null;
 		gpuList = new ArrayList<GPU>();
 		mb = null;
 		type = ComputerType.GENERAL;
+		parts = DataBuilder.getInstance();
+		parts.initValidComputerParts();
 		buildComp();
 	}
 	
@@ -36,6 +45,8 @@ public class ComputerBuild {
 		this.budget = budget;
 		type = ComputerType.toType(compType);
 		gpuList = new ArrayList<GPU>();
+		parts = DataBuilder.getInstance();
+		parts.initValidComputerParts();
 		buildComp();
 		//buildRandomComp();
 	}
@@ -55,9 +66,8 @@ public class ComputerBuild {
 	/**
 	 * Method should choose some optimal build based on target computer type
 	 */
-	private void buildComp(){
-		DataBuilder components = DataBuilder.getInstance();
-		
+	private void buildComp(){		
+		//Keeping Dummy Section until algorithm works
 		cpu = new CPU();
 		cpu.dummyPopulate();
 		
@@ -68,42 +78,70 @@ public class ComputerBuild {
 		mb.dummyPopulate();
 		
 		gpuList.add(gpu);
+		
 		//Algorithm to build computer
 		//Check Computer Type
-		//If GAMING
-			//Outlining Computer Specs:
-			// > 8GB RAM
-			// > Mid CPU
-			// Motherboard, needs to have > 1 PCIExpress slot
-			// High Graphics (40% of budget)
-				// Dual Graphics Cards (if time permits) 
-			// Storage should be > 500GB
-		//If SERVER
-			//Outlining Computer Specs:
-			// > 16GB RAM
-			// > Low CPU
-			// Motherboard, favor high # of SataPorts, favor high number of memory slots
-			// Graphics (None)
-			// Storage should be > 10TB
-		//If WORKSTATION or BATCH PROCESSING SERVER
-			//Outlining Computer Specs:
-			// > 8GB RAM
-			// High CPU, favor high threading (40% of budget)
-			// Motherboard
-			// Mid - Low Graphics
-			// Storage should be > 500GB
-		//If GENERAL
-			//Outlining Computer Specs:
-			// > 4 GB
-			// Mid - Low CPU
-			// Motherboard
-			// Mid - Low Graphics
-			// Storage should be > 500 GB
-		//While computer is being built,
-			// Validate build
-			// Check Power supply
+		switch(type){
+			case SERVER:
+				buildServerComp();
+				break;
+			case GAMING:
+				buildGamingComp();
+				break;
+			case WORKSTATION:
+				buildWorkstationComp();
+				break;
+			default:
+				buildGeneralComp();
+		}
 	}
 	
+	private void buildGeneralComp() {
+		// TODO:
+		//Outlining Computer Specs:
+		// > 4 GB
+		// Mid - Low CPU
+		// Motherboard
+		// Mid - Low Graphics
+		// Storage should be > 500 GB
+		validateBuild();
+	}
+
+	private void buildWorkstationComp() {
+		//Could also be BATCH PROCESSING SERVER
+		// TODO:
+		//Outlining Computer Specs:
+		// > 8GB RAM
+		// High CPU, favor high threading (40% of budget)
+		// Motherboard
+		// Mid - Low Graphics
+		// Storage should be > 500GB
+		validateBuild();
+	}
+
+	private void buildGamingComp() {
+		// TODO:
+		//Outlining Computer Specs:
+		// > 8GB RAM
+		// > Mid CPU
+		// Motherboard, needs to have > 1 PCIExpress slot
+		// High Graphics (40% of budget)
+			// Dual Graphics Cards (if time permits) 
+		// Storage should be > 500GB
+		validateBuild();
+	}
+
+	private void buildServerComp() {
+		// TODO:
+		//Outlining Computer Specs:
+		// > 16GB RAM
+		// > Low CPU
+		// Motherboard, favor high # of SataPorts, favor high number of memory slots
+		// Graphics (None)
+		// Storage should be > 10TB
+		validateBuild();
+	}
+
 	/**
 	 * Build some random computer...
 	 */

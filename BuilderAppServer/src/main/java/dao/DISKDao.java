@@ -7,6 +7,7 @@ import main.java.objects.Disk;
 
 public interface DISKDao {
 	public ArrayList<Disk> getAllDisk() throws SQLException;
+	public ArrayList<Disk> getAllValidDisk() throws SQLException;
 	public void insertDisk(Disk disk) throws SQLException;
 	public void insertDisk(List<Disk> diskList) throws SQLException;
 	public void updateFullDisk(Disk disk) throws SQLException;

@@ -45,7 +45,8 @@ public class DataBuilder {
 	private ArrayList<Memory> memList;
 	private ArrayList<PSU> psuList;
 	private ArrayList<Disk> diskList;
-	
+	//Flag to determine if the data stored in this singleton is for building or data loading
+	private boolean buildMode;
 	private static DataBuilder dBuild;
 	
 	public static DataBuilder getInstance(){
@@ -63,13 +64,17 @@ public class DataBuilder {
 		psuList = new ArrayList<PSU>();
 		memList = new ArrayList<Memory>();
 		diskList = new ArrayList<Disk>();
-		initData();
 	}
 	
 	/**
-	 * Pull existing data from database
+	 * Pull (all) existing data from database
+	 * For purposes of bulk data loading/updating to database
+	 * SHOULD ONLY BE AVAILABLE/CALLED IN TESTER
 	 */
-	public void initData(){
+	public void initAllData(){
+		if(buildMode){
+			buildMode = false;
+		}
 		CPUDao cpuDao = new CPUDaoMySQLImpl();
 		GPUDao gpuDao = new GPUDaoMySQLImpl();
 		MBDao mbDao = new MBDaoMySQLImpl();
@@ -105,6 +110,35 @@ public class DataBuilder {
 		}
 		if(diskList.isEmpty()){
 			firstTimeLoadDISKData();
+		}
+	}
+	
+	/**
+	 * Pull valid existing data from database
+	 * For purposes of building computer
+	 */
+	public synchronized void initValidComputerParts(){
+		if(buildMode && !cpuList.isEmpty()){
+			//Expected data is loaded
+			return;
+		}
+		buildMode = true;
+		CPUDao cpuDao = new CPUDaoMySQLImpl();
+		GPUDao gpuDao = new GPUDaoMySQLImpl();
+		MBDao mbDao = new MBDaoMySQLImpl();
+		MEMDao memDao = new MEMDaoMySQLImpl();
+		PSUDao psuDao = new PSUDaoMySQLImpl();
+		DISKDao diskDao = new DISKDaoMySQLImpl();
+		
+		try {
+			cpuList = cpuDao.getAllValidCPU();
+			gpuList = gpuDao.getAllValidGPU();
+			mbList = mbDao.getAllValidMotherboard();
+			memList = memDao.getAllValidMemory();
+			psuList = psuDao.getAllValidPSU();
+			diskList = diskDao.getAllValidDisk();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 	
