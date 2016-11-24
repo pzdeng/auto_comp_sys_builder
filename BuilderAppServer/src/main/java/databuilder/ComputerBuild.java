@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import main.java.objects.CPU;
 import main.java.objects.ClientPayload;
 import main.java.objects.ComputerType;
+import main.java.objects.Disk;
 import main.java.objects.GPU;
 import main.java.objects.Memory;
 import main.java.objects.Motherboard;
@@ -49,18 +50,71 @@ public class ComputerBuild {
 		parts.initValidComputerParts();
 		buildComp();
 	}
-	
-	/*
-	 * Not used yet...
-	public ComputerBuild(CPU cpu, GPU gpu, Motherboard mb, String compType){
-		this.cpu = cpu;
-		gpuList = new ArrayList<GPU>();
-		gpuList.add(gpu);
-		this.mb = mb;
-		type = ComputerType.toType(compType);
-		buildComp();
+	/**
+	 * Get all possible combinations
+	 * @return
+	 */
+	public int getAllPossibleCombinations(){
+		ArrayList<CPU> cpuList = parts.getCPUList();
+		ArrayList<GPU> gpuList = parts.getGPUList();
+		ArrayList<Motherboard> mbList = parts.getMBList();
+		ArrayList<Memory> memList = parts.getMEMList();
+		ArrayList<Disk> diskList = parts.getDISKList();
+		ArrayList<PSU> psuList = parts.getPSUList();
+		int numBuilds = 0;
+		int powerUsage = 0;
+		int diskNum = 1;
+		for(Motherboard mb : mbList){
+			for(CPU cpu : cpuList){
+				if(mb.fitCPU(cpu)){
+					for(Memory mem : memList){
+						if(mb.fitMem(mem)){
+							//TODO: consider additional memory units
+							//Assume all motherboards should accommodate at least one disk
+							//TODO: consider multiple disk setups
+							//Consider builds without discrete GPU 
+							powerUsage = calcPower(cpu, mb, mem, null, diskNum);
+							for(PSU psu : psuList){
+								if(powerUsage < psu.powerWattage){
+									numBuilds += diskList.size();
+								}
+							}
+							//Consider builds with (one) discrete GPU
+							//TODO: consider multiGPU setups?
+							for(GPU gpu : gpuList){
+								powerUsage = calcPower(cpu, mb, mem, gpu, diskNum);
+								System.out.println(powerUsage);
+								for(PSU psu : psuList){
+									if(powerUsage < psu.powerWattage){
+										numBuilds += diskList.size();
+									}
+								}
+							}
+							if(numBuilds > 5000){
+								System.out.println(cpu.toString() + " | " + mb.toString() + " | " + mem.toString());
+								break;
+							}
+						}
+					}	
+				}
+			}
+		}
+		return numBuilds;
 	}
-	*/
+	private int calcPower(CPU aCPU, Motherboard aMB, Memory aMEM, GPU aGPU, int diskNum) {
+		int powerUsage = 0;
+		powerUsage += aCPU.getPowerUsage();
+		powerUsage += aMB.getPowerUsage();
+		powerUsage += aMEM.getPowerUsage();
+		powerUsage += 10 * diskNum;
+		if(aGPU != null){
+			powerUsage += aGPU.getPowerUsage();
+		}
+		//Cooling consider 5 fans where each fan is rated around 2W 
+		powerUsage += 10;
+		powerUsage *= 1.5;
+		return powerUsage;
+	}
 	
 	/**
 	 * Method should choose some optimal build based on target computer type

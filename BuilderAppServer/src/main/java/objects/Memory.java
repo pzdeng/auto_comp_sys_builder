@@ -65,6 +65,29 @@ public class Memory extends ComputerPart{
 		return null;
 	}
 	
+	@Override
+	public int getPowerUsage() {
+		//Expected number of modules to be at least one
+		if(numModules < 1){
+			numModules = 1;
+		}
+		switch(memType){
+			case(AppConstants.ddr2):
+				//DDR2 rated at around 5W
+				return 5 * numModules;
+			case(AppConstants.ddr3):
+				//DDR3 rated at around 3W
+				return 3 * numModules;
+			case(AppConstants.ddr4):
+				//DDR3 rated at around 3W
+				return 3 * numModules;
+			default:
+				//Return max power consumption for memory
+				//DDR rated at around 6W
+				return 6 * numModules;
+		}
+	}	
+	
 	public String dataContent(){
 		StringBuilder specs = new StringBuilder();
 		specs.append("TotalCapacity: ").append(totalCapacity).append(AppConstants.gigabyte).append(AppConstants.separator);

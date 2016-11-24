@@ -44,6 +44,10 @@ public abstract class ComputerPart {
 	public abstract ComputerPartMin shortenSpecs();
 	public abstract String specBuilder();
 	
+	public int getPowerUsage(){
+		return powerRating;
+	}
+	
 	public ComputerPart(){
 		dirty = false;
 	}

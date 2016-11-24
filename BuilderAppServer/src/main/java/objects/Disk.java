@@ -88,4 +88,24 @@ public class Disk extends ComputerPart{
 		*/
 		return true;
 	}
+	
+	@Override
+	public int getPowerUsage(){
+		if(diskType.equals(AppConstants.ssd)){
+			//SSD rated around 3W
+			return 3;
+		}
+		else{
+			if(formFactor.contains("2.5")){
+				//HDD 2.5 inch are rated around 3W
+				return 3;
+			}
+			if(formFactor.contains("3.5")){
+				//HDD 3.5 inch are rated around 10W
+				return 10;
+			}
+		}
+		//If no disk type specified return max wattage for disk
+		return 10;
+	}
 }

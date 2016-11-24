@@ -65,14 +65,18 @@ public class Motherboard extends ComputerPart{
 	}
 	
 	public boolean fitCPU(CPU cpu){
+		if(cpu == null || cpu.socketType == null){
+			return false;
+		}
 		//If socket types are perfect match
 		if(socketType.equals(cpu.socketType)){
 			return true;
 		}
-		//Due to different data, treat contains also as a match
+		/*
 		if(socketType.contains(cpu.socketType) || cpu.socketType.contains(socketType)){
 			return true;
 		}
+		*/
 		//TODO: check partial match?
 		return false;
 	}
@@ -86,5 +90,25 @@ public class Motherboard extends ComputerPart{
 			return true;
 		}
 		return false;
+	}
+
+	public boolean fitMem(Memory mem) {
+		if(!memType.contains(mem.memType)){
+			return false;
+		}
+		if(memSlotNum < mem.numModules){
+			return false;
+		}
+		return true;
+	}
+	
+	@Override
+	public int getPowerUsage(){
+		//TODO: get power difference between standard and high performance Motherboards
+		if(powerRating < 1){
+			//Motherboards rated around 50W
+			powerRating = 50;
+		}
+		return powerRating;
 	}
 }
