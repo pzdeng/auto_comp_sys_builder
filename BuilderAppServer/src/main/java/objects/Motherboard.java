@@ -49,7 +49,10 @@ public class Motherboard extends ComputerPart{
 	public String specBuilder(){
 		StringBuilder specs = new StringBuilder();
 		specs.append("Make: ").append(make).append(AppConstants.newLine);
-		specs.append("Year: ").append(year);
+		specs.append("Supported CPU socket: ").append(socketType).append(AppConstants.newLine);
+		specs.append("Supported Memory Types: ").append(memType).append(AppConstants.newLine);
+		specs.append("Avaliable Memory Slots: ").append(memSlotNum);
+		specs.append("FormFactor: ").append(formFactor).append(AppConstants.separator);
 		return specs.toString();
 	}
 	
@@ -94,10 +97,11 @@ public class Motherboard extends ComputerPart{
 	}
 
 	public boolean fitMem(Memory mem) {
+		int numSlots = memSlotNum > 0 ? memSlotNum : 2;
 		if(!memType.contains(mem.memType)){
 			return false;
 		}
-		if(memSlotNum < mem.numModules){
+		if(numSlots < mem.numModules){
 			return false;
 		}
 		return true;

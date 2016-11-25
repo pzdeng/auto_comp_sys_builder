@@ -54,15 +54,25 @@ public class Memory extends ComputerPart{
 	}
 	
 	@Override
-	public ComputerPartMin shortenSpecs() {
-		// TODO Auto-generated method stub
-		return null;
+	public ComputerPartMin shortenSpecs(){
+		ComputerPartMin part = new ComputerPartMin();
+		part.type = type;
+		part.name = productName;
+		part.url = productURL;
+		part.picUrl = picURL;
+		part.price = vendorPrice;
+		part.specs = specBuilder();
+		return part;
 	}
 
 	@Override
 	public String specBuilder() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder specs = new StringBuilder();
+		specs.append("Make: ").append(make).append(AppConstants.newLine);
+		specs.append("Memory Type: ").append(memType).append(AppConstants.newLine);
+		specs.append("Memory Speed: ").append(memSpeed).append(AppConstants.megahertz).append(AppConstants.newLine);
+		specs.append("Number of modules: ").append(numModules);
+		return specs.toString();
 	}
 	
 	@Override

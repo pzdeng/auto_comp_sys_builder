@@ -11,15 +11,24 @@ public class PSU extends ComputerPart{
 		type = AppConstants.psu;
 	}
 	@Override
-	public ComputerPartMin shortenSpecs() {
-		// TODO Auto-generated method stub
-		return null;
+	public ComputerPartMin shortenSpecs(){
+		ComputerPartMin part = new ComputerPartMin();
+		part.type = type;
+		part.name = productName;
+		part.url = productURL;
+		part.picUrl = picURL;
+		part.price = vendorPrice;
+		part.specs = specBuilder();
+		return part;
 	}
 
 	@Override
 	public String specBuilder() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder specs = new StringBuilder();
+		specs.append("Make: ").append(make).append(AppConstants.newLine);
+		specs.append("Rated Power: ").append(powerWattage).append(AppConstants.wattage).append(AppConstants.newLine);
+		specs.append("Power Efficiency Award: ").append(efficiency);
+		return specs.toString();
 	}
 	
 	public String dataContent(){
@@ -28,6 +37,7 @@ public class PSU extends ComputerPart{
 		specs.append("EfficiencyRating: ");	
 		return specs.toString();
 	}
+	
 	public boolean titleCheck(String productTitle) {
 		productTitle = productTitle.toLowerCase();
 		//Check make

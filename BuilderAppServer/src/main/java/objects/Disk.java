@@ -24,15 +24,32 @@ public class Disk extends ComputerPart{
 	}
 	
 	@Override
-	public ComputerPartMin shortenSpecs() {
-		// TODO Auto-generated method stub
-		return null;
+	public ComputerPartMin shortenSpecs(){
+		ComputerPartMin part = new ComputerPartMin();
+		part.type = type;
+		part.name = productName;
+		part.url = productURL;
+		part.picUrl = picURL;
+		part.price = vendorPrice;
+		part.specs = specBuilder();
+		return part;
 	}
 
 	@Override
 	public String specBuilder() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder specs = new StringBuilder();
+		specs.append("DiskType: ").append(diskType).append(AppConstants.separator);
+		specs.append("Capacity: ").append(capacity).append(AppConstants.gigabyte).append(AppConstants.separator);
+		if(diskType.equals(AppConstants.hdd)){
+			specs.append("RotationSpeed: ").append(rotationSpeed).append(AppConstants.rpm).append(AppConstants.separator);
+		}
+		if(diskType.equals(AppConstants.ssd)){
+			specs.append("ReadSpeed: ").append(readSpeed).append(AppConstants.megabyte).append(AppConstants.perSecond).append(AppConstants.separator);
+			specs.append("WriteSpeed: ").append(writeSpeed).append(AppConstants.megabyte).append(AppConstants.perSecond).append(AppConstants.separator);
+		}
+		specs.append("Interface: ").append(interfaceType).append(AppConstants.separator);
+		specs.append("FormFactor: ").append(formFactor).append(AppConstants.separator);
+		return specs.toString();
 	}
 	
 	public String dataContent(){
@@ -50,6 +67,7 @@ public class Disk extends ComputerPart{
 		specs.append("FormFactor: ").append(formFactor).append(AppConstants.separator);
 		return specs.toString();
 	}
+	
 	public boolean titleCheck(String productTitle) {
 		productTitle = productTitle.toLowerCase();
 		//Check make

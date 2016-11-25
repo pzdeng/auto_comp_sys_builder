@@ -169,6 +169,7 @@ public class ComputerBuild {
 		for(GPU gpu : gpuList){
 			cost += gpu.vendorPrice;
 		}
+		cost += psu.vendorPrice;
 		//Cooling consider cooling and case
 		//Case: ~$50
 		//Cooling: ~$25
@@ -218,7 +219,34 @@ public class ComputerBuild {
 		// Motherboard
 		// Mid - Low Graphics
 		// Storage should be > 500 GB
-		//validateBuild();
+
+		//TRY Budget Allocation Approach
+		// CPU : 20%
+		// Motherboard : 20%
+		// Memory : 15%
+		// GPU : 10%
+		// PSU : 15%
+		// Disk : 20%
+		// Case and Cooling : fixed -$75
+		float cpuAlloc = (float) .2;
+		float mbAlloc = (float) .2;
+		float memAlloc = (float) .15;
+		float gpuAlloc = (float) .1;
+		float psuAlloc = (float) .15;
+		float diskAlloc = (float) .2;
+		float compBudget = budget - 75;
+		setCPUandMBComponents(cpuAlloc, mbAlloc);
+		if(cpu == null || mb == null){
+			//give up, no valid build
+			return;
+		}
+		memList = findMEM(compBudget * memAlloc, mb, type);
+		gpuList = findGPU(compBudget * gpuAlloc, mb, type);
+		diskList = findDisk(compBudget * diskAlloc, mb, type);
+		psu = findPSU(compBudget * psuAlloc, calcPower());
+		//Any additional funds left goes to CPU
+		//TODO: incremental improvement
+		validateBuild();	
 	}
 
 	private void buildWorkstationComp() {
@@ -231,6 +259,34 @@ public class ComputerBuild {
 		// Mid - Low Graphics
 		// Storage should be > 500GB
 		//validateBuild();
+		
+		//TRY Budget Allocation Approach
+		// CPU : 30%+
+		// Motherboard : 20%
+		// Memory : 15%
+		// GPU : 10%
+		// PSU : 15%
+		// Disk : 10%
+		// Case and Cooling : fixed -$75
+		float cpuAlloc = (float) .3;
+		float mbAlloc = (float) .2;
+		float memAlloc = (float) .15;
+		float gpuAlloc = (float) .1;
+		float psuAlloc = (float) .15;
+		float diskAlloc = (float) .1;
+		float compBudget = budget - 75;
+		setCPUandMBComponents(cpuAlloc, mbAlloc);
+		if(cpu == null || mb == null){
+			//give up, no valid build
+			return;
+		}
+		memList = findMEM(compBudget * memAlloc, mb, type);
+		gpuList = findGPU(compBudget * gpuAlloc, mb, type);
+		diskList = findDisk(compBudget * diskAlloc, mb, type);
+		psu = findPSU(compBudget * psuAlloc, calcPower());
+		//Any additional funds left goes to CPU
+		//TODO: incremental improvement
+		validateBuild();		
 	}
 
 	private void buildGamingComp() {
@@ -246,7 +302,7 @@ public class ComputerBuild {
 		//TRY Budget Allocation Approach
 		// CPU : 20%
 		// Motherboard : 20%
-		// Memory : 10%
+		// Memory : 15%
 		// GPU : 20%+
 		// PSU : 15%
 		// Disk : 10%
@@ -273,18 +329,46 @@ public class ComputerBuild {
 	}
 
 	private void setCPUandMBComponents(float cpuAlloc, float mbAlloc) {
-		if(type.equals(ComputerType.GAMING)){
-			//Create a subset of good cpus and good motherboards
-			ArrayList<CPU> goodCPU = new ArrayList<CPU>();
-			ArrayList<Motherboard> goodMB = new ArrayList<Motherboard>();
+		//Create a subset of good cpus and good motherboards
+		ArrayList<CPU> goodCPU = new ArrayList<CPU>();
+		ArrayList<Motherboard> goodMB = new ArrayList<Motherboard>();
+		float budgetAlloc;
+		
+		if(type.equals(ComputerType.SERVER)){
 			//Scan for good CPUs
-			float budgetAlloc = budget * cpuAlloc;
+			budgetAlloc = budget * cpuAlloc;
+			for(int i = 0; i < parts.getCPUList().size(); i++){
+				CPU aCPU = parts.getCPUList().get(i);
+				//Check if within price range
+				if(aCPU.vendorPrice <= budgetAlloc){
+					//Any CPU would work
+					goodCPU.add(aCPU);
+				}
+			}
+			
+			//Scan for good MBs
+			budgetAlloc = budget * mbAlloc;
+			for(int i = 0; i < parts.getMBList().size(); i++){
+				Motherboard aMB = parts.getMBList().get(i);
+				//Check if within price range
+				if(aMB.vendorPrice <= budgetAlloc){
+					//Favor motherboard with a lot of sata ports (>= 4)
+					if(aMB.sataNum >= 4){
+						goodMB.add(aMB);
+					}
+				}
+			}
+		}
+		
+		if(type.equals(ComputerType.GAMING)){	
+			//Scan for good CPUs
+			budgetAlloc = budget * cpuAlloc;
 			for(int i = 0; i < parts.getCPUList().size(); i++){
 				CPU aCPU = parts.getCPUList().get(i);
 				//Check if within price range
 				if(aCPU.vendorPrice <= budgetAlloc){
 					//TODO: (future scope) consider hyperthreading for intel
-					//Check number of cores (4 phyiscal cores)
+					//Check number of cores (4 physical cores)
 					//NOTE: < 4 cores too low, > 4 cores too high
 					if(aCPU.coreCount == 4){
 						goodCPU.add(aCPU);
@@ -292,44 +376,90 @@ public class ComputerBuild {
 				}
 			}
 			//Scan for good MBs
+			budgetAlloc = budget * mbAlloc;
 			for(int i = 0; i < parts.getMBList().size(); i++){
 				Motherboard aMB = parts.getMBList().get(i);
 				//Check if within price range
 				if(aMB.vendorPrice <= budgetAlloc){
 					//Favor motherboards with DDR4
 					//TODO: consider DDR3 if there are no motherboards with DDR4
-					if(aMB.memType.equals(AppConstants.ddr4)
-							//|| aMB.memType.equals(AppConstants.ddr3)
-							)
-					{
+					if(aMB.memType.equals(AppConstants.ddr4)){
 						goodMB.add(aMB);
 					}
 				}
 			}
-			//Match cpu with motherboard
-			System.out.println(goodCPU.size());
-			System.out.println(goodMB.size());
-			for(int i = 0; i < goodCPU.size(); i++){
-				for(int j = 0; j < goodMB.size(); j++){
-					//TODO: better logic here, probably do some rank compare
-					if(goodMB.get(j).fitCPU(goodCPU.get(i))){
-						cpu = goodCPU.get(i);
-						mb = goodMB.get(j);
-						return;
+		}
+		
+		if(type.equals(ComputerType.WORKSTATION)){
+			//Scan for good CPUs
+			budgetAlloc = budget * cpuAlloc;
+			for(int i = 0; i < parts.getCPUList().size(); i++){
+				CPU aCPU = parts.getCPUList().get(i);
+				//Check if within price range
+				if(aCPU.vendorPrice <= budgetAlloc){
+					//Favor highly threaded CPU
+					if(aCPU.coreCount > 4){
+						goodCPU.add(aCPU);
 					}
 				}
 			}
-			//if we could not get a good CPU and MB component, try against with a slightly bigger budget
-			if(cpu == null && cpuAlloc + mbAlloc < .8){
-				System.out.println("Trying again...");
-				setCPUandMBComponents((float) (cpuAlloc + .1), (float) (mbAlloc + .1));
-			}
-			else{
-				//budget is too small to get a CPU and MB combo, or there are no suitable parts
-				cpu = null;
-				mb = null;
-			}
 			
+			//Scan for good MBs
+			budgetAlloc = budget * mbAlloc;
+			for(int i = 0; i < parts.getMBList().size(); i++){
+				Motherboard aMB = parts.getMBList().get(i);
+				//Check if within price range
+				if(aMB.vendorPrice <= budgetAlloc){
+					//Favor motherboard with DDR4 memory
+					if(aMB.memType.equals(AppConstants.ddr4)){
+						goodMB.add(aMB);
+					}
+				}
+			}
+		}
+		
+		if(type.equals(ComputerType.GENERAL)){
+			//Scan for good CPUs
+			budgetAlloc = budget * cpuAlloc;
+			for(int i = 0; i < parts.getCPUList().size(); i++){
+				CPU aCPU = parts.getCPUList().get(i);
+				//Check if within price range
+				if(aCPU.vendorPrice <= budgetAlloc){
+					goodCPU.add(aCPU);
+				}
+			}
+			//Scan for good MBs
+			budgetAlloc = budget * mbAlloc;
+			for(int i = 0; i < parts.getMBList().size(); i++){
+				Motherboard aMB = parts.getMBList().get(i);
+				//Check if within price range
+				if(aMB.vendorPrice <= budgetAlloc){
+					goodMB.add(aMB);
+				}
+			}
+		}
+		//Match cpu with motherboard
+		System.out.println(goodCPU.size());
+		System.out.println(goodMB.size());
+		for(int i = 0; i < goodCPU.size(); i++){
+			for(int j = 0; j < goodMB.size(); j++){
+				//TODO: better logic here, probably do some rank compare
+				if(goodMB.get(j).fitCPU(goodCPU.get(i))){
+					cpu = goodCPU.get(i);
+					mb = goodMB.get(j);
+					return;
+				}
+			}
+		}
+		//if we could not get a good CPU and MB component, try against with a slightly bigger budget
+		if(cpu == null && cpuAlloc + mbAlloc < .8){
+			System.out.println("Trying again...");
+			setCPUandMBComponents((float) (cpuAlloc + .1), (float) (mbAlloc + .1));
+		}
+		else{
+			//budget is too small to get a CPU and MB combo, or there are no suitable parts
+			cpu = null;
+			mb = null;
 		}
 	}
 
@@ -425,35 +555,7 @@ public class ComputerBuild {
 				}
 			}
 		}
-		return null;
-	}
-
-	private Motherboard findMB(float budgetAlloc, CPU aCPU, ComputerType compType) {
-		if(compType.equals(ComputerType.GAMING)){
-			//TODO: pick better (create a subset of valid motherboards and rank them)
-			//ArrayList<Motherboard> goodMB = new ArrayList<Motherboard>();
-			for(int i = 0; i < parts.getMBList().size(); i++){
-				Motherboard mb = parts.getMBList().get(i);
-				//Check if within price range
-				if(mb.vendorPrice <= budgetAlloc){
-					//Check if it fits CPU
-					if(mb.fitCPU(aCPU)){
-						//Favor DDR4 over DDR3
-						if(mb.memType.equals(AppConstants.ddr4)
-								//|| mb.memType.equals(AppConstants.ddr3)
-								)
-						{
-							return mb;
-						}
-					}
-				}
-			}
-		}
-		return null;
-	}
-
-	private CPU findCPU(float budgetAlloc, ComputerType compType) {
-		
+		System.out.println("SHIT");
 		return null;
 	}
 
@@ -465,26 +567,33 @@ public class ComputerBuild {
 		// Motherboard, favor high # of SataPorts, favor high number of memory slots
 		// Graphics (None)
 		// Storage should be > 10TB
-		//validateBuild();
-	}
-
-	/**
-	 * Build some random computer...
-	 */
-	private void buildRandomComp(){
-		DataBuilder components = DataBuilder.getInstance();
-		Random rand = new Random();
-		
-		do{
-			//random cpu
-			cpu = components.getCPUList().get(rand.nextInt(components.getCPUList().size()));
-			//random gpu
-			GPU gpu = components.getGPUList().get(rand.nextInt(components.getGPUList().size()));
-			//random motherboard
-			mb = components.getMBList().get(rand.nextInt(components.getMBList().size()));
-			gpuList.add(gpu);
+		//TRY Budget Allocation Approach
+		// CPU : 30%+
+		// Motherboard : 20%
+		// Memory : 10%
+		// GPU : 20%
+		// PSU : 15%
+		// Disk : 10%
+		// Case and Cooling : fixed -$75
+		float cpuAlloc = (float) .3;
+		float mbAlloc = (float) .2;
+		float memAlloc = (float) .15;
+		float gpuAlloc = (float) .2;
+		float psuAlloc = (float) .15;
+		float diskAlloc = (float) .1;
+		float compBudget = budget - 75;
+		setCPUandMBComponents(cpuAlloc, mbAlloc);
+		if(cpu == null || mb == null){
+			//give up, no valid build
+			return;
 		}
-		while(!validateBuild());
+		memList = findMEM(compBudget * memAlloc, mb, type);
+		gpuList = findGPU(compBudget * gpuAlloc, mb, type);
+		diskList = findDisk(compBudget * diskAlloc, mb, type);
+		psu = findPSU(compBudget * psuAlloc, calcPower());
+		//Any additional funds left goes to GPU
+		//TODO: incremental improvement
+		validateBuild();
 	}
 	
 	/**
@@ -529,21 +638,21 @@ public class ComputerBuild {
 		if(cpu != null){
 			clientObj.components.add(cpu.shortenSpecs());
 		}
-		for(GPU gpu : gpuList){
-			clientObj.components.add(gpu.shortenSpecs());
-		}
 		if(mb != null){
 			clientObj.components.add(mb.shortenSpecs());
 		}
-		/*
-		//transform to JSON
-		try {
-			jsonStr = new ObjectMapper().writeValueAsString(clientObj);
-		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		for(Memory mem : memList){
+			clientObj.components.add(mem.shortenSpecs());
 		}
-		*/
+		for(GPU gpu : gpuList){
+			clientObj.components.add(gpu.shortenSpecs());
+		}
+		for(Disk disk : diskList){
+			clientObj.components.add(disk.shortenSpecs());
+		}
+		if(psu != null){
+			clientObj.components.add(psu.shortenSpecs());
+		}
 		return clientObj;
 	}
 	
