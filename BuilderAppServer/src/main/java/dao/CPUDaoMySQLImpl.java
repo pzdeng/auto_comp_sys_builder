@@ -28,7 +28,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 	private final String updatePriceStmt = "UPDATE cpu SET modifyTime = ?, picURL = ?, productURL = ?, "
 			+ "vendorPrice = ?, productID = ? WHERE cpuid = ?";
 	private final String deleStmt = "DELETE FROM cpu WHERE cpuid = ?";
-	private final String validSelect = "select * from cpu where productURL != '-' and vendorPrice > 0 order by vendorPrice asc";
+	private final String validSelect = "select * from cpu where productURL != '-' and socketType is not null and vendorPrice > 0 order by vendorPrice desc";
 	
 	@Override
 	public ArrayList<CPU> getAllCPU() throws SQLException{
@@ -79,6 +79,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 				temp.l1Size = rs.getInt("l1Size");
 				temp.l2Size = rs.getInt("l2Size");
 				temp.l3Size = rs.getInt("l3Size");
+				temp.computePricePerPoint();
 				cpuList.add(temp);
 			}
 		} catch (Exception e) {

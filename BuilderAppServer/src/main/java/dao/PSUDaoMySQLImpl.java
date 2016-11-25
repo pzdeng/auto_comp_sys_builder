@@ -29,7 +29,7 @@ public class PSUDaoMySQLImpl implements PSUDao{
 	private final String updatePriceStmt = "UPDATE psu SET modifyTime = ?, picURL = ?, productURL = ?, "
 			+ "vendorPrice = ?, productID = ? WHERE psuid = ?";
 	private final String deleStmt = "DELETE FROM psu WHERE psuid = ?";
-	private final String validSelect = "select * from psu where productURL != '-' and vendorPrice > 0 order by vendorPrice asc";
+	private final String validSelect = "select * from psu where productURL != '-' and vendorPrice > 0 order by vendorPrice desc";
 	
 	@Override
 	public ArrayList<PSU> getAllPSU() throws SQLException{

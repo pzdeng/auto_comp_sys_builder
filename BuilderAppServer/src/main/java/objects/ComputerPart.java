@@ -40,12 +40,22 @@ public abstract class ComputerPart {
 	//Comparison metrics
 	public int relativeRating;
 	public float benchScore;
+	public float pricePerPoint;
 	
 	public abstract ComputerPartMin shortenSpecs();
 	public abstract String specBuilder();
 	
 	public int getPowerUsage(){
 		return powerRating;
+	}
+	
+	public void computePricePerPoint(){
+		if(benchScore > 0){
+			pricePerPoint = vendorPrice / benchScore;
+		}
+		else{
+			pricePerPoint = 0;
+		}
 	}
 	
 	public ComputerPart(){

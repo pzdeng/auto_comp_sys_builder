@@ -1,5 +1,6 @@
 package main.java.objects;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import main.java.global.AppConstants;
@@ -110,5 +111,14 @@ public class Motherboard extends ComputerPart{
 			powerRating = 50;
 		}
 		return powerRating;
+	}
+
+	public boolean fitDisk(List<Disk> diskList) {
+		//Assume all motherboards should have at least one sata port
+		int numSata = sataNum > 0 ? sataNum : 1;
+		if(diskList.size() > numSata){
+			return false;
+		}
+		return true;
 	}
 }

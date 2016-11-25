@@ -7,24 +7,25 @@ import org.junit.Before;
 import org.junit.Test;
 
 import main.java.databuilder.ComputerBuild;
+import main.java.objects.ComputerType;
 
 public class ComputerBuildTester {
-	private ComputerBuild compBuild;
-	
-    @Before
-    public void setUp() throws Exception {
-    	compBuild = new ComputerBuild();
-    }
-    
-    @After
-    public void tearDown() throws Exception {
-    	compBuild = null;
-    }
     
 	@Test
 	public void testAllPossbileBuilds(){
+		ComputerBuild compBuild = new ComputerBuild();
 		int numBuilds = compBuild.getAllPossibleCombinations();
 		System.out.println(numBuilds);
 		assertTrue(numBuilds > 0);
+	}
+	
+	@Test
+	public void testGamingBuild(){
+		int budget = 1000;
+		String compType = ComputerType.GAMING.name();
+		
+		ComputerBuild compBuild = new ComputerBuild(budget, compType);
+		System.out.println(compBuild.toString());
+		
 	}
 }

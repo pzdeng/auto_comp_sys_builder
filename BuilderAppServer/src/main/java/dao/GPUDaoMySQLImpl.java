@@ -29,7 +29,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 	private final String updatePriceStmt = "UPDATE gpu SET modifyTime = ?, picURL = ?, productURL = ?, "
 			+ "vendorPrice = ?, productID = ? WHERE gpuid = ?";
 	private final String deleStmt = "DELETE FROM gpu WHERE gpuid = ?";
-	private final String validSelect = "select * from gpu where productURL != '-' and vendorPrice > 0 order by vendorPrice asc";
+	private final String validSelect = "select * from gpu where productURL != '-' and vendorPrice > 0 order by vendorPrice desc";
 	
 	@Override
 	public ArrayList<GPU> getAllGPU() throws SQLException{
@@ -79,6 +79,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 				temp.coreCount = rs.getInt("coreCount");
 				temp.interfaceType = rs.getString("interfaceType");
 				temp.memSize = rs.getInt("memSize");
+				temp.computePricePerPoint();
 				gpuList.add(temp);
 			}
 		} catch (Exception e) {

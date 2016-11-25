@@ -15,6 +15,14 @@ public class Disk extends ComputerPart{
 		super();
 		type = AppConstants.disk;
 	}
+	
+	//For quick add
+	public Disk(String type){
+		super();
+		type = AppConstants.disk;
+		diskType = type;
+	}
+	
 	@Override
 	public ComputerPartMin shortenSpecs() {
 		// TODO Auto-generated method stub

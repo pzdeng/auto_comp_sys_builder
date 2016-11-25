@@ -29,7 +29,7 @@ public class MBDaoMySQLImpl implements MBDao{
 	private final String updatePriceStmt = "UPDATE motherboard SET modifyTime = ?, picURL = ?, productURL = ?, "
 			+ "vendorPrice = ?, productID = ? WHERE mbid = ?";
 	private final String deleStmt = "DELETE FROM motherboard WHERE mbid = ?";
-	private final String validSelect = "select * from motherboard where productURL != '-' and vendorPrice > 0 order by vendorPrice asc";
+	private final String validSelect = "select * from motherboard where productURL != '-' and vendorPrice > 0 order by vendorPrice desc";
 	
 	@Override
 	public ArrayList<Motherboard> getAllMotherboard() throws SQLException{
