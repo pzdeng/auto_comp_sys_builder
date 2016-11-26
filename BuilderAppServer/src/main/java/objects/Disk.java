@@ -23,6 +23,19 @@ public class Disk extends ComputerPart{
 		diskType = type;
 	}
 	
+	/**
+	 * Price per gigabyte
+	 */
+	@Override
+	public void computePricePerPoint(){
+		if(capacity > 0){
+			pricePerPoint = (float) (vendorPrice / capacity);
+		}
+		else{
+			pricePerPoint = 0;
+		}
+	}
+	
 	@Override
 	public ComputerPartMin shortenSpecs(){
 		ComputerPartMin part = new ComputerPartMin();

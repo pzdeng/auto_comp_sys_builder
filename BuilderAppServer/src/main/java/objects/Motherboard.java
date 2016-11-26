@@ -86,6 +86,10 @@ public class Motherboard extends ComputerPart{
 	}
 	
 	public boolean fitGPU(List<GPU> gpuList){
+		//No gpu check
+		if(gpuList.isEmpty()){
+			return true;
+		}
 		int pciex16 = pciExpressX16Num;
 		if(pciex16 == 0){
 			pciex16 = 1;
@@ -95,13 +99,28 @@ public class Motherboard extends ComputerPart{
 		}
 		return false;
 	}
-
+	
 	public boolean fitMem(Memory mem) {
 		int numSlots = memSlotNum > 0 ? memSlotNum : 2;
 		if(!memType.contains(mem.memType)){
 			return false;
 		}
 		if(numSlots < mem.numModules){
+			return false;
+		}
+		return true;
+	}
+
+	public boolean fitMem(List<Memory> memList) {
+		int numSlots = memSlotNum > 0 ? memSlotNum : 2;
+		int totalModules = 0;
+		for(int i = 0; i < memList.size(); i++){
+			if(!memType.contains(memList.get(i).memType)){
+				return false;
+			}
+			totalModules += memList.get(i).numModules;
+		}
+		if(numSlots < totalModules){
 			return false;
 		}
 		return true;

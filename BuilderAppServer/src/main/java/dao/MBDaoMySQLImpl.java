@@ -29,7 +29,7 @@ public class MBDaoMySQLImpl implements MBDao{
 	private final String updatePriceStmt = "UPDATE motherboard SET modifyTime = ?, picURL = ?, productURL = ?, "
 			+ "vendorPrice = ?, productID = ? WHERE mbid = ?";
 	private final String deleStmt = "DELETE FROM motherboard WHERE mbid = ?";
-	private final String validSelect = "select * from motherboard where productURL != '-' and vendorPrice > 0 order by vendorPrice desc";
+	private final String validSelect = "select * from motherboard where productURL != '-' and vendorPrice > 10 order by vendorPrice desc";
 	
 	@Override
 	public ArrayList<Motherboard> getAllMotherboard() throws SQLException{
@@ -79,6 +79,7 @@ public class MBDaoMySQLImpl implements MBDao{
 				temp.memSlotNum = rs.getInt("memSlotNum");
 				temp.sataNum = rs.getInt("sataNum");
 				temp.pciExpressX16Num = rs.getInt("pciExpressX16Num");
+				temp.computePricePerPoint();
 				mbList.add(temp);
 			}
 		} catch (Exception e) {

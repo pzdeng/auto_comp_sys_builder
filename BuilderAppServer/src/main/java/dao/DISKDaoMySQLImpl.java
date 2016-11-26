@@ -31,7 +31,7 @@ public class DISKDaoMySQLImpl implements DISKDao{
 	private final String updatePriceStmt = "UPDATE disk SET modifyTime = ?, picURL = ?, productURL = ?, "
 			+ "vendorPrice = ?, productID = ? WHERE diskid = ?";
 	private final String deleStmt = "DELETE FROM disk WHERE diskid = ?";
-	private final String validSelect = "select * from disk where productURL != '-' and vendorPrice > 0 order by vendorPrice asc";
+	private final String validSelect = "select * from disk where productURL != '-' and vendorPrice > 10 order by vendorPrice asc";
 		
 	@Override
 	public ArrayList<Disk> getAllDisk() throws SQLException{
@@ -82,6 +82,7 @@ public class DISKDaoMySQLImpl implements DISKDao{
 				temp.writeSpeed = rs.getInt("writeSpeed");
 				temp.interfaceType = rs.getString("interfaceType");
 				temp.formFactor = rs.getString("formFactor");
+				temp.computePricePerPoint();
 				diskList.add(temp);
 			}
 		} catch (Exception e) {

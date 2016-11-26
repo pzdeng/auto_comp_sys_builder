@@ -21,7 +21,7 @@ public class ComputerBuildTester {
 	
 	@Test
 	public void testGamingBuild(){
-		int budget = 2000;
+		int budget = 1000;
 		String compType = ComputerType.GAMING.name();
 		
 		ComputerBuild compBuild = new ComputerBuild(budget, compType);

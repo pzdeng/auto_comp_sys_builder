@@ -64,6 +64,19 @@ public class Memory extends ComputerPart{
 		part.specs = specBuilder();
 		return part;
 	}
+	
+	/**
+	 * Price per gigabyte
+	 */
+	@Override
+	public void computePricePerPoint(){
+		if(totalCapacity > 0){
+			pricePerPoint = (float) (vendorPrice / totalCapacity);
+		}
+		else{
+			pricePerPoint = 0;
+		}
+	}
 
 	@Override
 	public String specBuilder() {

@@ -30,6 +30,9 @@ public class AppConstants {
 	public final static String psu		 = "PSU";
 	public final static String memory	 = "Memory";
 	public final static String disk		 = "Disk";
+	//Motherboard types
+	public final static String atx		 = "ATX";
+	public final static String uatx		 = "Micro ATX";
 	//Disk terminology
 	public final static String hdd		 = "HDD";
 	public final static String ssd		 = "SSD";

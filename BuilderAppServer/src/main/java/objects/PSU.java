@@ -21,6 +21,23 @@ public class PSU extends ComputerPart{
 		part.specs = specBuilder();
 		return part;
 	}
+	
+	public boolean checkPower(float powerUsage){
+		return powerUsage < powerWattage;
+	}
+	
+	/**
+	 * Price per watt
+	 */
+	@Override
+	public void computePricePerPoint(){
+		if(powerWattage > 0){
+			pricePerPoint = (float) (vendorPrice / powerWattage);
+		}
+		else{
+			pricePerPoint = 0;
+		}
+	}
 
 	@Override
 	public String specBuilder() {

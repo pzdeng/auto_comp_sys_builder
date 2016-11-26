@@ -29,7 +29,7 @@ public class PSUDaoMySQLImpl implements PSUDao{
 	private final String updatePriceStmt = "UPDATE psu SET modifyTime = ?, picURL = ?, productURL = ?, "
 			+ "vendorPrice = ?, productID = ? WHERE psuid = ?";
 	private final String deleStmt = "DELETE FROM psu WHERE psuid = ?";
-	private final String validSelect = "select * from psu where productURL != '-' and vendorPrice > 0 order by vendorPrice desc";
+	private final String validSelect = "select * from psu where productURL != '-' and vendorPrice > 10 order by vendorPrice desc";
 	
 	@Override
 	public ArrayList<PSU> getAllPSU() throws SQLException{
@@ -75,6 +75,7 @@ public class PSUDaoMySQLImpl implements PSUDao{
 				temp.benchScore = rs.getFloat("benchScore");
 				temp.powerWattage = rs.getInt("powerWattage");
 				temp.efficiency = rs.getString("efficiency");
+				temp.computePricePerPoint();
 				psuList.add(temp);
 			}
 		} catch (Exception e) {

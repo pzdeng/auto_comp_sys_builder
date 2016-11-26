@@ -51,7 +51,7 @@ public abstract class ComputerPart {
 	
 	public void computePricePerPoint(){
 		if(benchScore > 0){
-			pricePerPoint = vendorPrice / benchScore;
+			pricePerPoint = (float) vendorPrice / benchScore;
 		}
 		else{
 			pricePerPoint = 0;

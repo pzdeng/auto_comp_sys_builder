@@ -29,7 +29,7 @@ public class MEMDaoMySQLImpl implements MEMDao{
 	private final String updatePriceStmt = "UPDATE memory SET modifyTime = ?, picURL = ?, productURL = ?, "
 			+ "vendorPrice = ?, productID = ? WHERE memid = ?";
 	private final String deleStmt = "DELETE FROM memory WHERE memid = ?";
-	private final String validSelect = "select * from memory where productURL != '-' and vendorPrice > 0 order by vendorPrice desc";
+	private final String validSelect = "select * from memory where productURL != '-' and vendorPrice > 10 order by vendorPrice desc";
 	
 	@Override
 	public ArrayList<Memory> getAllMemory() throws SQLException{
@@ -77,6 +77,7 @@ public class MEMDaoMySQLImpl implements MEMDao{
 				temp.numModules = rs.getInt("numModules");
 				temp.memType = rs.getString("memType");
 				temp.memSpeed = rs.getFloat("memSpeed");
+				temp.computePricePerPoint();
 				memList.add(temp);
 			}
 		} catch (Exception e) {
