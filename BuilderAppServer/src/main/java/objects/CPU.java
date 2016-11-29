@@ -56,4 +56,24 @@ public class CPU extends ComputerPart{
 		
 		return specs.toString();
 	}
+
+	@Override
+	public boolean titleCheck(String productTitle) {
+		productTitle = productTitle.toLowerCase();
+		//Check make
+		if(!productTitle.contains(make.toLowerCase())){
+			return false;
+		}
+		//Check model name (in parts)
+		String[] modelNameParition = modelName.toLowerCase().split(" |\\-");
+		if(modelNameParition.length > 0){
+			//Require 100% match with modelName
+			for(String partition : modelNameParition){
+				if(!productTitle.contains(partition)){
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 }

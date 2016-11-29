@@ -422,37 +422,40 @@ public class DataBuilder {
 		//For each computer part that has some valid productID, fetch information from Vendor (Amazon)
 		//TODO: due to slow nature of hitting amazon, do time checking
 		ComputerPart temp;
+		/*
 		for(int i = 0; i < cpuList.size(); i++){
 			if(cpuList.get(i).productID != null && !cpuList.get(i).productID.equals("-")){
-				temp = VendorProductSearch.getProductInfo(cpuList.get(i));
+				temp = VendorProductSearch.updateProductInfo(cpuList.get(i));
 				if(!temp.productID.equals("-")){
 					cpuList.set(i, (CPU) temp);
 				}
 			}
 		}
 		updateCPUData();
+		*/
 		for(int i = 0; i < gpuList.size(); i++){
 			if(gpuList.get(i).productID != null && !(gpuList.get(i).productID.equals("-") || gpuList.get(i).productID.equals("*"))){
-				temp = VendorProductSearch.getProductInfo(gpuList.get(i));
+				temp = VendorProductSearch.updateProductInfo(gpuList.get(i));
 				if(!temp.productID.equals("-")){
 					gpuList.set(i, (GPU) temp);
 				}
 			}
 		}
 		updateGPUData();
+		/*
 		for(int i = 0; i < mbList.size(); i++){
 			if(mbList.get(i).productID != null && !mbList.get(i).productID.equals("-")){
-				temp = VendorProductSearch.getProductInfo(mbList.get(i));
+				temp = VendorProductSearch.updateProductInfo(mbList.get(i));
 				if(!temp.productID.equals("-")){
 					mbList.set(i, (Motherboard) temp);
 				}
 			}
 		}
 		updateMBData();
-		
+		*/
 		for(int i = 0; i < diskList.size(); i++){
 			if(diskList.get(i).productID != null || !diskList.get(i).productID.equals("-")){
-				temp = VendorProductSearch.getProductInfo(diskList.get(i));
+				temp = VendorProductSearch.updateProductInfo(diskList.get(i));
 				if(!temp.productID.equals("-")){
 					diskList.set(i, (Disk) temp);
 				}
@@ -462,7 +465,7 @@ public class DataBuilder {
 		
 		for(int i = 0; i < psuList.size(); i++){
 			if(psuList.get(i).productID != null || !psuList.get(i).productID.equals("-")){
-				temp = VendorProductSearch.getProductInfo(psuList.get(i));
+				temp = VendorProductSearch.updateProductInfo(psuList.get(i));
 				if(!temp.productID.equals("-")){
 					psuList.set(i, (PSU) temp);
 				}

@@ -58,4 +58,28 @@ public class GPU extends ComputerPart{
 		specs.append("Year: ").append(year);
 		return specs.toString();
 	}
+	
+	@Override
+	public boolean titleCheck(String productTitle) {
+		productTitle = productTitle.toLowerCase();
+		//Check make (GPU data bugged... slight mix up between make and brand; is part of product name)
+		/*
+		if(!productTitle.contains(make.toLowerCase())){
+			return false;
+		}
+		*/
+		//Check model name (in parts)
+		String[] productNameParition = productName.toLowerCase().split(" ");
+		boolean partialMatch = false;
+		if(productNameParition.length > 0){
+			for(String partition : productNameParition){
+				if(!productTitle.contains(partition)){
+					//partialMatch = true;
+					System.out.println(partition);
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 }
