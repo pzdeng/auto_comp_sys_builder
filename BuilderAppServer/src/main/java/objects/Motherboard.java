@@ -144,4 +144,32 @@ public class Motherboard extends ComputerPart{
 		}
 		return true;
 	}
+	
+	@Override
+	public boolean titleCheck(String productTitle) {
+		productTitle = productTitle.toLowerCase();
+		//Check make
+		if(!productTitle.contains(make.toLowerCase())){
+			return false;
+		}
+		//Check model name (in parts)
+		String[] modelNameParition = modelName.toLowerCase().split(" ");
+		boolean partialMatch = false;
+		if(modelNameParition.length > 0){
+			for(String partition : modelNameParition){
+				if(!productTitle.contains(partition)){
+					//partialMatch = true;
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	
+	@Override
+	public String toString(){
+		String base = super.toString();
+		base += " :: " + memType;
+		return base;
+	}
 }

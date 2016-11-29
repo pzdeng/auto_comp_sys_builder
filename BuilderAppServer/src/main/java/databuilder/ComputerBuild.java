@@ -44,7 +44,7 @@ public class ComputerBuild {
 	private PSU psu;
 	private ArrayList<PSU> psuCandidates;
 	
-	private int partSetSize = 25;
+	private int partSetSize = 50;
 	private float totalCost;
 	private float totalPower;
 	private int budget;
@@ -405,8 +405,8 @@ public class ComputerBuild {
 				if(aCPU.vendorPrice <= budgetAlloc){
 					//TODO: (future scope) consider hyperthreading for intel
 					//Check number of cores (4 physical cores)
-					//NOTE: < 4 cores too low, > 4 cores too high
-					if(aCPU.coreCount == 4){
+					//NOTE: < 4 cores too low, > 8 cores too high
+					if(aCPU.coreCount >= 4 && aCPU.coreCount <= 8){
 						goodCPU.add(aCPU);
 					}
 				}
@@ -422,7 +422,7 @@ public class ComputerBuild {
 						//Choose motherboards with at least two sata ports 
 						if(aMB.sataNum > 1){
 							//Choose/Favor motherboards with DDR4
-							if(aMB.memType.equals(AppConstants.ddr4)){
+							if(aMB.memType.equals(AppConstants.ddr4) || aMB.memType.equals(AppConstants.ddr3)){
 								goodMB.add(aMB);
 							}
 						}
@@ -484,8 +484,8 @@ public class ComputerBuild {
 		Collections.sort(goodMB, new PricePerPointComparator());
 		//TODO: better logic here if time permits
 		//Put in the first 5 matching cpu and motherboard combos		
-		for(int i = 0; i < goodCPU.size(); i++){
-			for(int j = 0; j < goodMB.size(); j++){
+		for(int j = 0; j < goodMB.size(); j++){
+			for(int i = 0; i < goodCPU.size(); i++){
 				if(goodMB.get(j).fitCPU(goodCPU.get(i))){
 					cpuCandidates.add(goodCPU.get(i));
 					mbCandidates.add(goodMB.get(j));
@@ -534,7 +534,7 @@ public class ComputerBuild {
 			return;
 		}
 		for(int i = 0; i < partSetSize; i++){
-			index = i == partSetSize - 1 ? goodPSU.size() - 1 : (i/(partSetSize - 1))*goodPSU.size();
+			index = i == partSetSize - 1 ? goodPSU.size() - 1 : (int)(((float)i/(partSetSize - 1))*goodPSU.size());
 			psuCandidates.add(goodPSU.get(index));
 		}
 	}
@@ -574,11 +574,11 @@ public class ComputerBuild {
 			for(int i = 0; i < partSetSize; i++){
 				while(temp.size() < 2){
 					if(!goodSSD.isEmpty()){
-						index = i == partSetSize - 1 ? goodSSD.size() - 1 : (i/(partSetSize - 1))*goodSSD.size();
+						index = i == partSetSize - 1 ? goodSSD.size() - 1 : (int)(((float)i/(partSetSize - 1))*goodSSD.size());
 						temp.add(goodSSD.get(index));
 					}
 					if(!goodHDD.isEmpty()){
-						index = i == partSetSize - 1 ? goodHDD.size() - 1 : (i/(partSetSize - 1))*goodHDD.size();
+						index = i == partSetSize - 1 ? goodHDD.size() - 1 : (int)(((float)i/(partSetSize - 1))*goodHDD.size());
 						temp.add(goodHDD.get(index));
 					}
 				}
@@ -589,13 +589,13 @@ public class ComputerBuild {
 			for(int i = 0; i < partSetSize; i++){
 				//Consider one drive setups
 				if(!goodSSD.isEmpty()){
-					index = i == partSetSize - 1 ? goodSSD.size() - 1 : (i/(partSetSize - 1))*goodSSD.size();
+					index = i == partSetSize - 1 ? goodSSD.size() - 1 : (int)(((float)i/(partSetSize - 1))*goodSSD.size());
 					temp.add(goodSSD.get(index));
 					diskSet.add(temp);
 					temp = new ArrayList<Disk>();
 				}
 				if(!goodHDD.isEmpty()){
-					index = i == partSetSize - 1 ? goodHDD.size() - 1 : (i/(partSetSize - 1))*goodHDD.size();
+					index = i == partSetSize - 1 ? goodHDD.size() - 1 : (int)(((float)i/(partSetSize - 1))*goodHDD.size());
 					temp.add(goodHDD.get(index));	
 					diskSet.add(temp);
 					temp = new ArrayList<Disk>();
@@ -633,7 +633,7 @@ public class ComputerBuild {
 			return;
 		}
 		for(int i = 0; i < partSetSize; i++){
-			index = i == partSetSize - 1 ? goodGPU.size() - 1 : (i/(partSetSize - 1))*goodGPU.size();
+			index = i == partSetSize - 1 ? goodGPU.size() - 1 : (int)(((float)i/(partSetSize - 1))*goodGPU.size());
 			temp.add(goodGPU.get(index));
 			gpuSet.add(temp);
 			temp = new ArrayList<GPU>();
@@ -668,7 +668,7 @@ public class ComputerBuild {
 			return;
 		}
 		for(int i = 0; i < partSetSize; i++){
-			index = i == partSetSize - 1 ? goodMem.size() - 1 : (i/(partSetSize - 1))*goodMem.size();
+			index = i == partSetSize - 1 ? goodMem.size() - 1 : (int)(((float)i/(partSetSize - 1)*goodMem.size()));
 			temp.add(goodMem.get(index));
 			memSet.add(temp);
 			temp = new ArrayList<Memory>();
@@ -728,8 +728,17 @@ public class ComputerBuild {
 								//Check: Storage Units fits into Motherboard's available SATA ports
 								if(mb.fitDisk(diskList)){
 									for(int m = 0; m <= gpuCandidates.size(); m++){
-										//Consider empty gpu list
-										gpuList = m == gpuCandidates.size() ? new ArrayList<GPU>() : gpuCandidates.get(m);
+										if(m == gpuCandidates.size()){
+											if(type == ComputerType.GAMING){
+												//GPU is mandatory for GAMING Computer
+												break;
+											}
+											//Consider empty gpu list
+											gpuList = new ArrayList<GPU>();
+										}
+										else{
+											gpuList = gpuCandidates.get(m);
+										}
 										//Check: GPU(s) fits into Motherboard's available interface(s)
 										if(mb.fitGPU(gpuList)){
 											totalPower = calcCurrentPower();

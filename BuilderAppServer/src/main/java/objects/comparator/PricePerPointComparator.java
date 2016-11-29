@@ -14,10 +14,10 @@ public class PricePerPointComparator implements Comparator<ComputerPart>{
 	@Override
 	public int compare(ComputerPart o1, ComputerPart o2) {
 		if(o2.pricePerPoint > o1.pricePerPoint){
-			return -1;
+			return 1;
 		}
 		if(o2.pricePerPoint < o1.pricePerPoint){
-			return 1;
+			return -1;
 		}
 		return 0; 
 	}

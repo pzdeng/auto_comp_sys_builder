@@ -83,6 +83,8 @@ public class DataBuilderTester {
     	System.out.println("Total # of Memory Units: " + dataBuild.getMEMList().size());
     	assertTrue(dataBuild.getPSUList().size() > 0);
     	System.out.println("Total # of PSU: " + dataBuild.getPSUList().size());
+    	assertTrue(dataBuild.getDISKList().size() > 0);
+    	System.out.println("Total # of Disks: " + dataBuild.getDISKList().size());
     	dataBuild.updateCheckProductID();
     	System.out.println("Update Complete");
     }
@@ -97,8 +99,14 @@ public class DataBuilderTester {
     	System.out.println("Total # of GPU's: " + dataBuild.getGPUList().size());
     	assertTrue(dataBuild.getMBList().size() > 0);
     	System.out.println("Total # of Motherboards's: " + dataBuild.getMBList().size());
+    	assertTrue(dataBuild.getMEMList().size() > 0);
+    	System.out.println("Total # of Memory Units: " + dataBuild.getMEMList().size());
+    	assertTrue(dataBuild.getPSUList().size() > 0);
+    	System.out.println("Total # of PSU: " + dataBuild.getPSUList().size());
+    	assertTrue(dataBuild.getDISKList().size() > 0);
+    	System.out.println("Total # of Disks: " + dataBuild.getDISKList().size());
     	dataBuild.updateProductPricing();
-    	System.out.println("Update Complete");
+    	System.out.println("Price Fetching Update Complete");
     }
     
 	@Test

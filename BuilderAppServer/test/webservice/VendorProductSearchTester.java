@@ -5,26 +5,73 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import main.java.dao.CPUDao;
+import main.java.dao.CPUDaoMySQLImpl;
+import main.java.dao.GPUDao;
+import main.java.dao.GPUDaoMySQLImpl;
+import main.java.dao.MBDao;
+import main.java.dao.MBDaoMySQLImpl;
 import main.java.dao.MEMDao;
 import main.java.dao.MEMDaoMySQLImpl;
 import main.java.databuilder.DataBuilder;
 import main.java.global.AppConstants;
 import main.java.objects.CPU;
 import main.java.objects.Disk;
+import main.java.objects.GPU;
 import main.java.objects.ItemSearchExtract;
 import main.java.objects.Memory;
+import main.java.objects.Motherboard;
 import main.java.objects.PSU;
 import main.java.webservice.AmazonWebService;
 import main.java.webservice.VendorProductSearch;
 
 public class VendorProductSearchTester {
+	
 	@Test
 	public void testCPUProductItemService(){
-		CPU temp = new CPU();
-		temp.modelName = "Pentium E5300";
-		temp.productName = temp.modelName;
+		CPUDao cpuDao = new CPUDaoMySQLImpl();
+		String name = "Core i7-7700";
+		CPU temp = null;
+		try {
+			temp = cpuDao.getCPUByName(name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		CPU result = (CPU) VendorProductSearch.getProductInfo(temp);
-		System.out.println(result.productID + " :: " + result.productName);
+		System.out.println(result.toString());
+		System.out.println(result.dataContent());
+	}
+	@Test
+	public void testGPUProductItemService(){
+		GPUDao gpuDao = new GPUDaoMySQLImpl();
+		String name = "Zotac GTX 1080 8GB Founders Edition";
+		GPU temp = null;
+		try {
+			temp = gpuDao.getGPUByName(name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		GPU result = (GPU) VendorProductSearch.getProductInfo(temp);
+		System.out.println(result.toString());
+		System.out.println(result.dataContent());
+	}
+	
+	@Test
+	public void testMotherboardProductItemService(){
+		MBDao mbDao = new MBDaoMySQLImpl();
+		String name = "ASUS M2N-SLI";
+		Motherboard temp = null;
+		try {
+			temp = mbDao.getMotherboardByName(name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Motherboard result = (Motherboard) VendorProductSearch.getProductInfo(temp);
+		System.out.println(result.toString());
+		System.out.println(result.dataContent());
 	}
 	
 	@Test

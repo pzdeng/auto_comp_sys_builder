@@ -87,4 +87,6 @@ public abstract class ComputerPart {
 		out.append(type).append(" :: ").append(printMake).append(",").append(AppConstants.tab).append(printName);
 		return out.toString();
 	}
+	
+	public abstract boolean titleCheck(String itemName);
 }

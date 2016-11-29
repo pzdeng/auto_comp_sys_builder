@@ -33,7 +33,7 @@ public class AmazonWebServiceTester {
 		
 		maxPrice = "50000";
 		minPrice = "5000";
-		keywords = "Pentium E5300";
+		keywords = "i7-7700K";
 		computerPartType = AppConstants.cpu;
 		items = AmazonWebService.getSpecificItems(maxPrice,minPrice,keywords,computerPartType);
 		for(ItemSearchExtract item : items){
