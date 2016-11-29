@@ -169,6 +169,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                     <i class="fa fa-warning"></i>
                 </span>
                             <div ng-controller="indexController">
+                              <div class="spinner" ng-show="loading"></div>
                                 <div class="text-box">
 
                                     <p class="main-text">Resulted build </p>
@@ -184,7 +185,14 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                                             <tr ng-repeat="(key,val) in build.components">
 
                                                 <!-- <td>{{ val.picUrl }}</td> -->
-                                                <td><li ng-repeat = "(spec_key, spec_val) in val">{{spec_key}}: {{spec_val}}</li></td>
+                                                <td>
+                                                  <div ng-repeat = "(spec_key, spec_val) in val">
+                                                  <li ng-if="spec_key == 'url' ">{{spec_key}} : <a href="{{spec_val}}">Buy link</a></li>
+                                                  <li ng-if="spec_key == 'price' ">{{spec_key}} : {{spec_val}}</li>
+                                                  <li ng-if="spec_key == 'name' ">{{spec_key}} : {{spec_val}}</li>
+                                                  <li ng-if="spec_key == 'specs' ">{{spec_key}} : {{spec_val}}</li>
+                                                    <div>
+                                                </td>
                                                 <td><img src="{{ val.picUrl }}" /></td>
                                             </tr>
                                         </table>
