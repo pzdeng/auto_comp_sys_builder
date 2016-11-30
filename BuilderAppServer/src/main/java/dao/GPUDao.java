@@ -15,4 +15,5 @@ public interface GPUDao {
    public void updateVendorInfoGPU(List<GPU> gpuList) throws SQLException;
    public GPU getGPUByName(String productName) throws SQLException;
    public void deleteGPU(GPU gpu) throws SQLException;
+   public int getValidGPUCount() throws SQLException;
 }

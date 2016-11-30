@@ -16,4 +16,5 @@ public interface MEMDao {
 	public void updateVendorInfoMemory(List<Memory> memList) throws SQLException;
 	public Memory getMemoryByName(String productName) throws SQLException;
 	public void deleteMemory(Memory mem) throws SQLException;
+	public int getValidMemoryCount() throws SQLException;
 }

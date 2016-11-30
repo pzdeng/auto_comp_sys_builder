@@ -32,6 +32,7 @@ public class DISKDaoMySQLImpl implements DISKDao{
 			+ "vendorPrice = ?, productID = ? WHERE diskid = ?";
 	private final String deleStmt = "DELETE FROM disk WHERE diskid = ?";
 	private final String validSelect = "select * from disk where productURL != '-' and vendorPrice > 10 order by vendorPrice asc";
+	private final String validSelectCount = "select count(*) from disk where productURL != '-' and vendorPrice > 10 order by vendorPrice asc";
 		
 	@Override
 	public ArrayList<Disk> getAllDisk() throws SQLException{
@@ -391,5 +392,31 @@ public class DISKDaoMySQLImpl implements DISKDao{
 				stmt.close();
 			}
 		}
+	}
+
+	@Override
+	public int getValidDiskCount() throws SQLException {
+		int count = 0;
+		Connection dbConn = null;
+		Statement stmt = null;
+		
+		try{
+			dbConn = Database.getConnection();
+			stmt = dbConn.createStatement();  
+			ResultSet rs = stmt.executeQuery(validSelectCount);  
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally{
+			if(dbConn != null){
+				dbConn.close();
+			}
+			if(stmt != null){
+				stmt.close();
+			}
+		}
+		return count;
 	}
 }

@@ -1,5 +1,7 @@
 package main.java.webservice;
 
+import java.util.Map;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -11,9 +13,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import main.java.databuilder.ComputerBuild;
+import main.java.databuilder.DataBuilder;
 import main.java.objects.ClientPayload;
 
-@Path("/build")
+@Path("/")
 public class BuilderService {
 	
     public ComputerBuild doBuilderService(float budget, String type){
@@ -21,6 +24,7 @@ public class BuilderService {
 		return new ComputerBuild();
     }
     
+    @Path("/build")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response respond(
@@ -41,4 +45,22 @@ public class BuilderService {
         		.build();
     }
     
+    @Path("/inventory")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getInventory() {
+    	String jsonStr = "";
+    	DataBuilder dBuilder = DataBuilder.getInstance();
+    	try {
+			jsonStr = new ObjectMapper().writeValueAsString(dBuilder.getInventory());
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	//Building response with CORS support
+        return Response.status(200).entity(jsonStr)
+        		.header("Access-Control-Allow-Origin", "*")
+    			.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+        		.build();
+    }
 }

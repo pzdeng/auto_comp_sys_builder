@@ -15,4 +15,5 @@ public interface PSUDao {
 	public void updateVendorInfoPSU(List<PSU> psuList) throws SQLException;
 	public PSU getPSUByName(String productName) throws SQLException;
 	public void deletePSU(PSU psu) throws SQLException;
+	public int getValidPSUCount() throws SQLException;
 }

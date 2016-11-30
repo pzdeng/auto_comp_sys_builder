@@ -30,6 +30,7 @@ public class MBDaoMySQLImpl implements MBDao{
 			+ "vendorPrice = ?, productID = ? WHERE mbid = ?";
 	private final String deleStmt = "DELETE FROM motherboard WHERE mbid = ?";
 	private final String validSelect = "select * from motherboard where productURL != '-' and vendorPrice > 10 order by vendorPrice desc";
+	private final String validSelectCount = "select count(*) from motherboard where productURL != '-' and vendorPrice > 10 order by vendorPrice desc";
 	
 	@Override
 	public ArrayList<Motherboard> getAllMotherboard() throws SQLException{
@@ -385,5 +386,31 @@ public class MBDaoMySQLImpl implements MBDao{
 				stmt.close();
 			}
 		}
+	}
+
+	@Override
+	public int getValidMotherboardCount() throws SQLException {
+		int count = 0;
+		Connection dbConn = null;
+		Statement stmt = null;
+		
+		try{
+			dbConn = Database.getConnection();
+			stmt = dbConn.createStatement();  
+			ResultSet rs = stmt.executeQuery(validSelectCount);  
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally{
+			if(dbConn != null){
+				dbConn.close();
+			}
+			if(stmt != null){
+				stmt.close();
+			}
+		}
+		return count;
 	}
 }

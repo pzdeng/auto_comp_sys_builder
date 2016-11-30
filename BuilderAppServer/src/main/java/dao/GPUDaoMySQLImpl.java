@@ -30,6 +30,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 			+ "vendorPrice = ?, productID = ? WHERE gpuid = ?";
 	private final String deleStmt = "DELETE FROM gpu WHERE gpuid = ?";
 	private final String validSelect = "select * from gpu where productURL != '-' and vendorPrice > 10 order by vendorPrice desc";
+	private final String validSelectCount = "select count(*) from gpu where productURL != '-' and vendorPrice > 10 order by vendorPrice desc";
 	
 	@Override
 	public ArrayList<GPU> getAllGPU() throws SQLException{
@@ -375,5 +376,31 @@ public class GPUDaoMySQLImpl implements GPUDao{
 				stmt.close();
 			}
 		}
+	}
+
+	@Override
+	public int getValidGPUCount() throws SQLException {
+		int count = 0;
+		Connection dbConn = null;
+		Statement stmt = null;
+		
+		try{
+			dbConn = Database.getConnection();
+			stmt = dbConn.createStatement();  
+			ResultSet rs = stmt.executeQuery(validSelectCount);  
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally{
+			if(dbConn != null){
+				dbConn.close();
+			}
+			if(stmt != null){
+				stmt.close();
+			}
+		}
+		return count;
 	}
 }

@@ -29,6 +29,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 			+ "vendorPrice = ?, productID = ? WHERE cpuid = ?";
 	private final String deleStmt = "DELETE FROM cpu WHERE cpuid = ?";
 	private final String validSelect = "select * from cpu where productURL != '-' and socketType is not null and vendorPrice > 10 order by vendorPrice desc";
+	private final String validSelectCount = "select count(*) from cpu where productURL != '-' and socketType is not null and vendorPrice > 10 order by vendorPrice desc";
 	
 	@Override
 	public ArrayList<CPU> getAllCPU() throws SQLException{
@@ -389,5 +390,31 @@ public class CPUDaoMySQLImpl implements CPUDao{
 				stmt.close();
 			}
 		}
+	}
+
+	@Override
+	public int getValidCPUCount() throws SQLException {
+		int count = 0;
+		Connection dbConn = null;
+		Statement stmt = null;
+		
+		try{
+			dbConn = Database.getConnection();
+			stmt = dbConn.createStatement();  
+			ResultSet rs = stmt.executeQuery(validSelectCount);  
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally{
+			if(dbConn != null){
+				dbConn.close();
+			}
+			if(stmt != null){
+				stmt.close();
+			}
+		}
+		return count;
 	}
 }

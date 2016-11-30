@@ -3,11 +3,15 @@ package databuilder;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.sql.SQLException;
+import java.util.Map;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import main.java.dao.CPUDao;
+import main.java.dao.CPUDaoMySQLImpl;
 import main.java.databuilder.DataBuilder;
 import main.java.objects.CPU;
 import main.java.objects.Disk;
@@ -207,5 +211,13 @@ public class DataBuilderTester {
 		}
 		
 		System.out.println("Total Number of disk products: " + dataBuild.getDISKList().size());
+	}
+	
+	@Test
+	public void testGetInventory(){
+		Map<String, String> inventory = dataBuild.getInventory();
+		for(String key : inventory.keySet()){
+			System.out.println(key + " :: " + inventory.get(key));
+		}
 	}
 }

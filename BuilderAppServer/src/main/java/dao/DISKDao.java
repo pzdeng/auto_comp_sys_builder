@@ -15,4 +15,5 @@ public interface DISKDao {
 	public void updateVendorInfoDisk(List<Disk> diskList) throws SQLException;
 	public Disk getDiskByName(String productName) throws SQLException;
 	public void deleteDisk(Disk disk) throws SQLException;
+	public int getValidDiskCount() throws SQLException;
 }

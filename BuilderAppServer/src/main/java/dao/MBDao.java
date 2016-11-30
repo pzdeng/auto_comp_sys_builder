@@ -16,4 +16,5 @@ public interface MBDao {
 	public void updateVendorInfoMotherboard(List<Motherboard> mbList) throws SQLException;
 	public Motherboard getMotherboardByName(String productName) throws SQLException;
 	public void deleteMotherboard(Motherboard mb) throws SQLException;
+	public int getValidMotherboardCount() throws SQLException;
 }

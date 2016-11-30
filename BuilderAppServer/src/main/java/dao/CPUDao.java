@@ -15,4 +15,5 @@ public interface CPUDao {
    public void updateVendorInfoCPU(List<CPU> cpuList) throws SQLException;
    public CPU getCPUByName(String productName) throws SQLException;
    public void deleteCPU(CPU cpu) throws SQLException;
+   public int getValidCPUCount() throws SQLException;
 }

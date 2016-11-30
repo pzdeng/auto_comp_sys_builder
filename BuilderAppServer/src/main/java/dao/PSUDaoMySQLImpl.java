@@ -30,6 +30,7 @@ public class PSUDaoMySQLImpl implements PSUDao{
 			+ "vendorPrice = ?, productID = ? WHERE psuid = ?";
 	private final String deleStmt = "DELETE FROM psu WHERE psuid = ?";
 	private final String validSelect = "select * from psu where productURL != '-' and vendorPrice > 10 order by vendorPrice desc";
+	private final String validSelectCount = "select count(*) from psu where productURL != '-' and vendorPrice > 10 order by vendorPrice desc";
 	
 	@Override
 	public ArrayList<PSU> getAllPSU() throws SQLException{
@@ -365,5 +366,31 @@ public class PSUDaoMySQLImpl implements PSUDao{
 				stmt.close();
 			}
 		}
+	}
+
+	@Override
+	public int getValidPSUCount() throws SQLException {
+		int count = 0;
+		Connection dbConn = null;
+		Statement stmt = null;
+		
+		try{
+			dbConn = Database.getConnection();
+			stmt = dbConn.createStatement();  
+			ResultSet rs = stmt.executeQuery(validSelectCount);  
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally{
+			if(dbConn != null){
+				dbConn.close();
+			}
+			if(stmt != null){
+				stmt.close();
+			}
+		}
+		return count;
 	}
 }

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 import main.java.dao.CPUDao;
 import main.java.dao.CPUDaoMySQLImpl;
@@ -1075,5 +1076,27 @@ public class DataBuilder {
 			}
 		}
 		return diskList;
+	}
+
+	public Map<String, String> getInventory() {
+		HashMap<String, String> stats = new HashMap<String, String>();
+		CPUDao cpuDao = new CPUDaoMySQLImpl();
+		GPUDao gpuDao = new GPUDaoMySQLImpl();
+		MBDao mbDao = new MBDaoMySQLImpl();
+		MEMDao memDao = new MEMDaoMySQLImpl();
+		PSUDao psuDao = new PSUDaoMySQLImpl();
+		DISKDao diskDao = new DISKDaoMySQLImpl();
+		try {
+			stats.put(AppConstants.cpu, cpuDao.getValidCPUCount() + "");
+			stats.put(AppConstants.gpu, gpuDao.getValidGPUCount() + "");
+			stats.put(AppConstants.mobo, mbDao.getValidMotherboardCount() + "");
+			stats.put(AppConstants.memory, memDao.getValidMemoryCount() + "");
+			stats.put(AppConstants.psu, psuDao.getValidPSUCount() + "");
+			stats.put(AppConstants.disk, diskDao.getValidDiskCount() + "");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return stats;
 	}
 }
