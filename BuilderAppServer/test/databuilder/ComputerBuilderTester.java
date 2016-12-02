@@ -22,7 +22,7 @@ public class ComputerBuilderTester {
 	@Test
 	public void testGamingBuild(){
 		int budget = 500;
-		String compType = ComputerType.SERVER.name();
+		String compType = ComputerType.GAMING.name();
 		
 		ComputerBuilder compBuilder = new ComputerBuilder(budget, compType);
 		System.out.println(compBuilder.getBuild().toString());

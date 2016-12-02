@@ -54,5 +54,5 @@ public class AppConstants {
 			
 	};
 	//Timeout
-	public final static int buildTime	= 15;
+	public final static int buildTime	= 10;
 }

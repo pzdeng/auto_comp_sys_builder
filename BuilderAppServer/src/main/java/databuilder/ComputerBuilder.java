@@ -666,6 +666,7 @@ public class ComputerBuilder {
 		//Give method 'buildTime' seconds to run
 		long expireTime = System.currentTimeMillis() + AppConstants.buildTime * 1000;
 		ComputerBuild temp = new ComputerBuild();
+		temp.budget = budget;
 		for(int i = 0; i < mbCandidates.size(); i++){
 			temp.mb = mbCandidates.get(i);
 			for(int j = 0; j < cpuCandidates.size(); j++){
