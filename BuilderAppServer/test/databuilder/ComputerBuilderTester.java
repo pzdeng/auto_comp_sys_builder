@@ -6,11 +6,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import main.java.databuilder.ComputerBuild;
+import main.java.databuilder.ComputerBuilder;
 import main.java.objects.ComputerType;
 
-public class ComputerBuildTester {
-    
+public class ComputerBuilderTester {
+    /*
 	@Test
 	public void testAllPossbileBuilds(){
 		ComputerBuild compBuild = new ComputerBuild();
@@ -18,14 +18,14 @@ public class ComputerBuildTester {
 		System.out.println(numBuilds);
 		assertTrue(numBuilds > 0);
 	}
-	
+	*/
 	@Test
 	public void testGamingBuild(){
-		int budget = 400;
-		String compType = ComputerType.GAMING.name();
+		int budget = 500;
+		String compType = ComputerType.SERVER.name();
 		
-		ComputerBuild compBuild = new ComputerBuild(budget, compType);
-		System.out.println(compBuild.toString());
+		ComputerBuilder compBuilder = new ComputerBuilder(budget, compType);
+		System.out.println(compBuilder.getBuild().toString());
 		
 	}
 }

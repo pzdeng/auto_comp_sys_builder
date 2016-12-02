@@ -53,4 +53,6 @@ public class AppConstants {
 			"Western Digital", "Silicon Power", "Super Talent", "Mach Xtreme Technology", "Micro Storage"
 			
 	};
+	//Timeout
+	public final static int buildTime	= 15;
 }

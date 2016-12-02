@@ -13,6 +13,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import main.java.databuilder.ComputerBuild;
+import main.java.databuilder.ComputerBuilder;
 import main.java.databuilder.DataBuilder;
 import main.java.objects.ClientPayload;
 
@@ -31,9 +32,9 @@ public class BuilderService {
     		@QueryParam("budget") int budget,
     		@QueryParam("computerType") String computerType) {
     	String jsonStr = "";
-    	ComputerBuild build = new ComputerBuild(budget, computerType);
+    	ComputerBuilder builder = new ComputerBuilder(budget, computerType);
     	try {
-			jsonStr = new ObjectMapper().writeValueAsString(build.createClientPayload());
+			jsonStr = new ObjectMapper().writeValueAsString(builder.getBuild().createClientPayload());
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

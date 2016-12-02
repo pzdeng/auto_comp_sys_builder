@@ -28,8 +28,8 @@ public class CPUDaoMySQLImpl implements CPUDao{
 	private final String updatePriceStmt = "UPDATE cpu SET modifyTime = ?, picURL = ?, productURL = ?, "
 			+ "vendorPrice = ?, productID = ? WHERE cpuid = ?";
 	private final String deleStmt = "DELETE FROM cpu WHERE cpuid = ?";
-	private final String validSelect = "select * from cpu where productURL != '-' and socketType is not null and vendorPrice > 10 order by vendorPrice desc";
-	private final String validSelectCount = "select count(*) from cpu where productURL != '-' and socketType is not null and vendorPrice > 10 order by vendorPrice desc";
+	private final String validSelect = "select * from cpu where productURL != '-' and benchscore > 0 and socketType is not null and vendorPrice > 10 order by vendorPrice desc";
+	private final String validSelectCount = "select count(*) from cpu where productURL != '-' and benchscore > 0 and socketType is not null and vendorPrice > 10 order by vendorPrice desc";
 	
 	@Override
 	public ArrayList<CPU> getAllCPU() throws SQLException{
