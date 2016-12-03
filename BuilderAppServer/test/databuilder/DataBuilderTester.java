@@ -13,6 +13,7 @@ import org.junit.Test;
 import main.java.dao.CPUDao;
 import main.java.dao.CPUDaoMySQLImpl;
 import main.java.databuilder.DataBuilder;
+import main.java.databuilder.DataInitializer;
 import main.java.objects.CPU;
 import main.java.objects.Disk;
 import main.java.objects.GPU;
@@ -58,6 +59,7 @@ public class DataBuilderTester {
      */
     @Test
     public void testDataBuilder_ValidInit(){
+    	DataInitializer dataBuild = DataInitializer.getInstance();
     	dataBuild.initValidComputerParts();
     	assertTrue(dataBuild.getCPUList().size() > 0);
     	System.out.println("Total # of CPUs: " + dataBuild.getCPUList().size());
@@ -215,7 +217,7 @@ public class DataBuilderTester {
 	
 	@Test
 	public void testGetInventory(){
-		Map<String, String> inventory = dataBuild.getInventory();
+		Map<String, String> inventory = DataInitializer.getInstance().getInventory();
 		for(String key : inventory.keySet()){
 			System.out.println(key + " :: " + inventory.get(key));
 		}

@@ -24,7 +24,7 @@ public class ComputerBuilderTester {
 		int budget = 500;
 		String compType = ComputerType.GAMING.name();
 		
-		ComputerBuilder compBuilder = new ComputerBuilder(budget, compType);
+		ComputerBuilder compBuilder = new ComputerBuilder(budget, compType, 20);
 		System.out.println(compBuilder.getBuild().toString());
 		
 	}

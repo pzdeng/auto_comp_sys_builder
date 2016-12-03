@@ -47,7 +47,7 @@ public class DataBuilder {
 	private ArrayList<PSU> psuList;
 	private ArrayList<Disk> diskList;
 	//Flag to determine if the data stored in this singleton is for building or data loading
-	private boolean buildMode;
+	private boolean updateMode;
 	private static DataBuilder dBuild;
 	
 	public static DataBuilder getInstance(){
@@ -65,17 +65,15 @@ public class DataBuilder {
 		psuList = new ArrayList<PSU>();
 		memList = new ArrayList<Memory>();
 		diskList = new ArrayList<Disk>();
+		updateMode = false;
 	}
 	
 	/**
 	 * Pull (all) existing data from database
 	 * For purposes of bulk data loading/updating to database
-	 * SHOULD ONLY BE AVAILABLE/CALLED IN TESTER
+	 * SHOULD ONLY BE AVAILABLE/CALLED IN TESTER OR THROUGH UPDATER THREAD
 	 */
 	public void initAllData(){
-		if(buildMode){
-			buildMode = false;
-		}
 		CPUDao cpuDao = new CPUDaoMySQLImpl();
 		GPUDao gpuDao = new GPUDaoMySQLImpl();
 		MBDao mbDao = new MBDaoMySQLImpl();
@@ -111,35 +109,6 @@ public class DataBuilder {
 		}
 		if(diskList.isEmpty()){
 			firstTimeLoadDISKData();
-		}
-	}
-	
-	/**
-	 * Pull valid existing data from database
-	 * For purposes of building computer
-	 */
-	public synchronized void initValidComputerParts(){
-		if(buildMode && !cpuList.isEmpty()){
-			//Expected data is loaded
-			return;
-		}
-		buildMode = true;
-		CPUDao cpuDao = new CPUDaoMySQLImpl();
-		GPUDao gpuDao = new GPUDaoMySQLImpl();
-		MBDao mbDao = new MBDaoMySQLImpl();
-		MEMDao memDao = new MEMDaoMySQLImpl();
-		PSUDao psuDao = new PSUDaoMySQLImpl();
-		DISKDao diskDao = new DISKDaoMySQLImpl();
-		
-		try {
-			cpuList = cpuDao.getAllValidCPU();
-			gpuList = gpuDao.getAllValidGPU();
-			mbList = mbDao.getAllValidMotherboard();
-			memList = memDao.getAllValidMemory();
-			psuList = psuDao.getAllValidPSU();
-			diskList = diskDao.getAllValidDisk();
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 	}
 	
@@ -378,6 +347,10 @@ public class DataBuilder {
 	}
 	
 	public void updateCheckProductID(){
+		if(!enterUpdateMode()){
+			System.out.println("Update already in progress");
+			return;
+		}
 		//For each computer part that has an empty productID, fetch information from Vendor (Amazon)
 		for(int i = 0; i < cpuList.size(); i++){
 			if(cpuList.get(i).productID == null || cpuList.get(i).productID.isEmpty()){
@@ -417,13 +390,18 @@ public class DataBuilder {
 			}
 		}
 		updatePSUData();
+		leaveUpdateMode();
 	}
 	
 	public void updateProductPricing(){
+		if(!enterUpdateMode()){
+			System.out.println("Update already in progress");
+			return;
+		}
 		//For each computer part that has some valid productID, fetch information from Vendor (Amazon)
 		//TODO: due to slow nature of hitting amazon, do time checking
 		ComputerPart temp;
-		/*
+		
 		for(int i = 0; i < cpuList.size(); i++){
 			if(cpuList.get(i).productID != null && !cpuList.get(i).productID.equals("-")){
 				temp = VendorProductSearch.updateProductInfo(cpuList.get(i));
@@ -433,7 +411,7 @@ public class DataBuilder {
 			}
 		}
 		updateCPUData();
-		*/
+		
 		for(int i = 0; i < gpuList.size(); i++){
 			if(gpuList.get(i).productID != null && !(gpuList.get(i).productID.equals("-") || gpuList.get(i).productID.equals("*"))){
 				temp = VendorProductSearch.updateProductInfo(gpuList.get(i));
@@ -443,7 +421,7 @@ public class DataBuilder {
 			}
 		}
 		updateGPUData();
-		/*
+		
 		for(int i = 0; i < mbList.size(); i++){
 			if(mbList.get(i).productID != null && !mbList.get(i).productID.equals("-")){
 				temp = VendorProductSearch.updateProductInfo(mbList.get(i));
@@ -453,7 +431,7 @@ public class DataBuilder {
 			}
 		}
 		updateMBData();
-		*/
+		
 		for(int i = 0; i < diskList.size(); i++){
 			if(diskList.get(i).productID != null || !diskList.get(i).productID.equals("-")){
 				temp = VendorProductSearch.updateProductInfo(diskList.get(i));
@@ -473,6 +451,7 @@ public class DataBuilder {
 			}
 		}
 		updatePSUData();
+		leaveUpdateMode();
 	}
 	
 	/**
@@ -1077,26 +1056,16 @@ public class DataBuilder {
 		}
 		return diskList;
 	}
-
-	public Map<String, String> getInventory() {
-		HashMap<String, String> stats = new HashMap<String, String>();
-		CPUDao cpuDao = new CPUDaoMySQLImpl();
-		GPUDao gpuDao = new GPUDaoMySQLImpl();
-		MBDao mbDao = new MBDaoMySQLImpl();
-		MEMDao memDao = new MEMDaoMySQLImpl();
-		PSUDao psuDao = new PSUDaoMySQLImpl();
-		DISKDao diskDao = new DISKDaoMySQLImpl();
-		try {
-			stats.put(AppConstants.cpu, cpuDao.getValidCPUCount() + "");
-			stats.put(AppConstants.gpu, gpuDao.getValidGPUCount() + "");
-			stats.put(AppConstants.mobo, mbDao.getValidMotherboardCount() + "");
-			stats.put(AppConstants.memory, memDao.getValidMemoryCount() + "");
-			stats.put(AppConstants.psu, psuDao.getValidPSUCount() + "");
-			stats.put(AppConstants.disk, diskDao.getValidDiskCount() + "");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	
+	private synchronized boolean enterUpdateMode(){
+		if(updateMode){
+			return false;
 		}
-		return stats;
+		updateMode = true;
+		return updateMode;
+	}
+	
+	private synchronized void leaveUpdateMode(){
+		updateMode = false;
 	}
 }

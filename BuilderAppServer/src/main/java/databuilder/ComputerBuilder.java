@@ -26,14 +26,16 @@ public class ComputerBuilder {
 	private int coolingCost = 25;
 	private int caseCost = 50;
 	private int budget;
+	private int timeout;
 	private ComputerType type;
 	private ComputerBuild currBuild;
 	
-	private DataBuilder parts;
+	private DataInitializer parts;
 	
-	public ComputerBuilder(int budget, String compType){
+	public ComputerBuilder(int budget, String compType, int buildTimeOut){
 		this.budget = budget;
 		type = ComputerType.toType(compType);
+		timeout = buildTimeOut;
 		initParts();
 		buildComp();
 	}
@@ -46,7 +48,7 @@ public class ComputerBuilder {
 		diskCandidates = new ArrayList<ArrayList<Disk>>();
 		psuCandidates = new ArrayList<PSU>();
 		
-		parts = DataBuilder.getInstance();
+		parts = DataInitializer.getInstance();
 		parts.initValidComputerParts();
 		currBuild = new ComputerBuild();
 	}
@@ -664,9 +666,11 @@ public class ComputerBuilder {
 	 */
 	private void constructValidBuild() {
 		//Give method 'buildTime' seconds to run
-		long expireTime = System.currentTimeMillis() + AppConstants.buildTime * 1000;
+		long expireTime = System.currentTimeMillis() + timeout * 1000;
 		ComputerBuild temp = new ComputerBuild();
 		temp.budget = budget;
+		temp.type = type;
+		temp.timeout = timeout;
 		for(int i = 0; i < mbCandidates.size(); i++){
 			temp.mb = mbCandidates.get(i);
 			for(int j = 0; j < cpuCandidates.size(); j++){

@@ -1,5 +1,10 @@
 package main.java.global;
 
+import java.util.HashMap;
+
+import main.java.databuilder.ComputerBuild;
+import main.java.objects.ComputerType;
+
 /**
  * Declare any global constants 
  * @author Peter
@@ -54,5 +59,7 @@ public class AppConstants {
 			
 	};
 	//Timeout
-	public final static int buildTime	= 10;
+	public final static int buildTime	= 20;
+	//Simple cache
+	public static HashMap<ComputerType, HashMap<String, ComputerBuild>> cache = new HashMap<ComputerType, HashMap<String, ComputerBuild>>();
 }

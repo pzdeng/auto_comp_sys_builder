@@ -39,6 +39,7 @@ public class ComputerBuild {
 	public float totalStorageCapacity;
 	public int budget;
 	public ComputerType type;
+	public int timeout; //Time out parameter that was used to get results
 	
 	
 	public ComputerBuild(){
@@ -228,6 +229,7 @@ public class ComputerBuild {
 		totalStorageCapacity = copy.totalStorageCapacity;
 		budget = copy.budget;
 		type = copy.type;
+		timeout = copy.timeout;
 	}
 	
 }
