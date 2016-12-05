@@ -94,11 +94,13 @@ public class BuilderService {
     
     @Path("/cacheRefresh")
     @GET
+    @Produces(MediaType.TEXT_PLAIN)
     public Response refreshCache() {
+    	String msg = "Refreshed server cache.";
     	AppConstants.cache = new HashMap<ComputerType, HashMap<String, ComputerBuild>>();
-    	System.out.println("Refreshed server cache.");
+    	System.out.println(msg);
     	//Building response with CORS support
-        return Response.status(200)
+        return Response.status(200).entity(msg)
         		.header("Access-Control-Allow-Origin", "*")
     			.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
         		.build();
@@ -106,8 +108,10 @@ public class BuilderService {
     
     @Path("/productPriceUpdate")
     @GET
+    @Produces(MediaType.TEXT_PLAIN)
     public Response updateInventoryPrices() {
-    	System.out.println("Updating inventory items.");
+    	String msg = "Updating inventory items.";
+    	System.out.println(msg);
     	//Building response with CORS support
             new Thread(new Runnable() {
                 @Override
@@ -122,7 +126,7 @@ public class BuilderService {
                     System.out.println("Update Duration {" + (float)(System.currentTimeMillis() - updateTime.getTime())/1000 + "}" );
                 }
             }).start();
-        return Response.status(200)
+        return Response.status(200).entity(msg)
         		.header("Access-Control-Allow-Origin", "*")
     			.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
         		.build();
