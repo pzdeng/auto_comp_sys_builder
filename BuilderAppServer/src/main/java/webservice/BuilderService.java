@@ -1,5 +1,6 @@
 package main.java.webservice;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,6 +34,7 @@ public class BuilderService {
     		@QueryParam("budget") int budget,
     		@QueryParam("computerType") String computerType,
     		@QueryParam("timeOut") int timeout) {
+    	Date profileTime = new Date(System.currentTimeMillis());
     	//Good timeout values are between 1 - 300 seconds, otherwise set to default build time limit
     	if(timeout < 1 || timeout > 300){
     		timeout = AppConstants.buildTime;
@@ -50,6 +52,11 @@ public class BuilderService {
     		ComputerBuilder builder = new ComputerBuilder(budget, computerType, timeout);
     		compBuild = builder.getBuild();
     		AppConstants.cache.get(ComputerType.toType(computerType)).put(budget + "", compBuild);
+    		System.out.println("No Cache Hit: Completed Search in {" + (float)(System.currentTimeMillis() - profileTime.getTime())/1000 + 
+    				"} with TimeOut Val {" + timeout + "}" );
+    	}
+    	else{
+    		System.out.println("Cache Hit: ProfileTime {" + (float)(System.currentTimeMillis() - profileTime.getTime())/1000 + "}" );
     	}
     	String jsonStr = "";
     	
@@ -105,12 +112,14 @@ public class BuilderService {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
+                	Date updateTime = new Date(System.currentTimeMillis());
                 	DataBuilder db = DataBuilder.getInstance();
                 	db.initAllData();
                     db.updateProductPricing();
                     //Reset data structures
                     DataInitializer.getInstance().refresh();
                     AppConstants.cache = new HashMap<ComputerType, HashMap<String, ComputerBuild>>();
+                    System.out.println("Update Duration {" + (float)(System.currentTimeMillis() - updateTime.getTime())/1000 + "}" );
                 }
             }).start();
         return Response.status(200)

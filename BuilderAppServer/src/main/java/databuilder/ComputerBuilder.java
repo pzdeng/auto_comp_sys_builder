@@ -51,6 +51,9 @@ public class ComputerBuilder {
 		parts = DataInitializer.getInstance();
 		parts.initValidComputerParts();
 		currBuild = new ComputerBuild();
+		currBuild.budget = budget;
+		currBuild.timeout = timeout;
+		currBuild.type = type;
 	}
 	
 	/**
@@ -716,16 +719,16 @@ public class ComputerBuilder {
 													}
 												}
 											}
+											if(expireTime < System.currentTimeMillis()){
+												//End early
+												return;
+											}
 										}
 									}
 								}
 							}
 						}
 					}
-				}
-				if(expireTime < System.currentTimeMillis()){
-					//End early
-					return;
 				}
 			}
 		}

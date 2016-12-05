@@ -59,7 +59,7 @@ public class AppConstants {
 			
 	};
 	//Timeout
-	public final static int buildTime	= 20;
+	public final static int buildTime	= 5;
 	//Simple cache
 	public static HashMap<ComputerType, HashMap<String, ComputerBuild>> cache = new HashMap<ComputerType, HashMap<String, ComputerBuild>>();
 }
