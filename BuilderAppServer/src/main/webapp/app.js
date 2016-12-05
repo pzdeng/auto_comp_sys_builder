@@ -1,4 +1,27 @@
-var myApp = angular.module('AutoBuilder', ["ngRoute"]);
+var myApp = angular.module('AutoBuilder', ["ngRoute", "ngResource"]);
+
+// myApp.config(function($httpProvider) {
+//     $httpProvider.responseInterceptors.push('myHttpInterceptor');
+//
+//     var spinnerFunction = function spinnerFunction(data, headersGetter) {
+//         $("#spinner").show();
+//         return data;
+//     };
+//
+//     $httpProvider.defaults.transformRequest.push(spinnerFunction);
+// });
+//
+// myApp.factory('myHttpInterceptor', function($q, $window) {
+//     return function(promise) {
+//         return promise.then(function(response) {
+//             $("#spinner").hide();
+//             return response;
+//         }, function(response) {
+//             $("#spinner").hide();
+//             return $q.reject(response);
+//         });
+//     };
+// });
 
 myApp.service('sharedProperties', function() {
     var apiKey = "";
@@ -47,13 +70,36 @@ myApp.controller('indexController', ["$scope", "$window", "$http", 'sharedProper
 
         //$scope.html(JSON.stringify(response.data));
         $scope.build = response.data;
+        $(".build-spinner").hide();
     }, function(response) {
         // TODO: handle the error somehow
-    }).finally(function() {
-        // called no matter success or failure
-        $scope.loading = false;
+    });
+
+    $http.get("api/inventory", []).then(function(response) {
+        //$window.alert(JSON.stringify(response.data));
+
+        //$scope.html(JSON.stringify(response.data));
+        $scope.inventory = response.data;
+        $(".inv-spinner").hide();
+
+    }, function(response) {
+        // TODO: handle the error somehow
     });
 }]);
+// myApp.controller('inventoryController', ["$scope", "$window", "$http", 'sharedProperties', function($scope, $window, $http, sharedProperties) {
+//     $scope.loading = true;
+//     $http.get("api/inventory", []).then(function(response) {
+//         //$window.alert(JSON.stringify(response.data));
+//
+//         //$scope.html(JSON.stringify(response.data));
+//         $scope.inventory = response.data;
+//     }, function(response) {
+//         // TODO: handle the error somehow
+//     }).finally(function() {
+//         // called no matter success or failure
+//         $scope.loading = false;
+//     });
+// }]);
 // myApp.controller('loginController', ["$scope", "$window", "$http", 'sharedProperties', function($scope, $window, $http, sharedProperties) {
 //
 //     $scope.submitFunction = function() {
