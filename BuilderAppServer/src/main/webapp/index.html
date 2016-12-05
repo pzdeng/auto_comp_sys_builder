@@ -176,14 +176,26 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                     <i class="fa fa-warning"></i>
                 </span>
                             <div>
-                                <div class="spinner" ng-show="loading"></div>
                                 <div class="text-box">
-
-                                    <p class="main-text">Resulted build </p>
+                                    <p class="main-text"> Build </p>
+                                    <div class="form-group">
+                                        <select id="build_type" class="form-control">
+                                          <option>GAMING</option>
+                                          <option>WORKSTATION</option>
+                                          <option>SERVER</option>
+                                          <option>GENERAL</option>
+                                      </select>
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">$</span>
+                                        <input id="budget" type="text" class="form-control">
+                                        <span class="form-group input-group-btn">
+                                        <button id="build-btn" class="btn btn-default" type="button">Build!</button>
+                                      </span>
+                                    </div>
                                     <p class="text-muted">budget: {{build.budget}}</p>
                                     <p class="text-muted">type: {{build.computerType}}</p>
                                     <p class="text-muted">price: {{build.totalPrice}}</p>
-
                                     <!-- <p class="text-muted">Please fix these issues to work smooth</p> -->
                                     <!-- <p class="text-muted">Time Left: 30 mins</p> -->
                                     <hr />
@@ -194,7 +206,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                                                 Build List
                                             </div>
                                             <div class="panel-body">
-                                                <img id="build-spinner" class="build-spinner" ng-src="assets/img/hourglass.svg">
+                                                <img id="build-spinner" class="build-spinner" ng-src="assets/img/hourglass.svg" style="display:none;">
                                                 <div class="table-responsive">
                                                     <table class="table table-striped table-bordered table-hover">
                                                         <thead>
