@@ -101,7 +101,7 @@ public class Motherboard extends ComputerPart{
 	}
 	
 	public boolean fitMem(Memory mem) {
-		int numSlots = memSlotNum > 0 ? memSlotNum : 2;
+		int numSlots = getMemSlots();
 		if(!memType.contains(mem.memType)){
 			return false;
 		}
@@ -112,7 +112,7 @@ public class Motherboard extends ComputerPart{
 	}
 
 	public boolean fitMem(List<Memory> memList) {
-		int numSlots = memSlotNum > 0 ? memSlotNum : 2;
+		int numSlots = getMemSlots();
 		int totalModules = 0;
 		for(int i = 0; i < memList.size(); i++){
 			if(!memType.contains(memList.get(i).memType)){
@@ -174,6 +174,9 @@ public class Motherboard extends ComputerPart{
 	}
 	
 	public int getMemSlots(){
+		if(formFactor.equals("ATX")){
+			return memSlotNum > 0 ? memSlotNum : 4;
+		}
 		return memSlotNum > 0 ? memSlotNum : 2;
 	}
 }
