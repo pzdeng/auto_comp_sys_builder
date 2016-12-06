@@ -51,12 +51,15 @@ public class BuilderService {
     	if(compBuild == null || compBuild.timeout < timeout){
     		ComputerBuilder builder = new ComputerBuilder(budget, computerType, timeout);
     		compBuild = builder.getBuild();
+    		compBuild.responseTime = (float) ((System.currentTimeMillis() - profileTime.getTime())/1000);
     		AppConstants.cache.get(ComputerType.toType(computerType)).put(budget + "", compBuild);
-    		System.out.println("No Cache Hit: Completed Search in {" + (float)(System.currentTimeMillis() - profileTime.getTime())/1000 + 
+    		System.out.println("No Cache Hit: Completed Search in {" + compBuild.responseTime + 
     				"} with TimeOut Val {" + timeout + "} FOR {" + computerType + ", " + budget + "}");
     	}
     	else{
-    		System.out.println("Cache Hit: ProfileTime {" + (float)(System.currentTimeMillis() - profileTime.getTime())/1000 + "} FOR {" + computerType + ", " + budget + "}" );
+    		compBuild.responseTime = (float) ((System.currentTimeMillis() - profileTime.getTime())/1000);
+    		System.out.println("Cache Hit: ProfileTime {" + compBuild.responseTime + "} FOR {" + computerType + ", " + budget + "}" );
+    		
     	}
     	String jsonStr = "";
     	
@@ -84,13 +87,13 @@ public class BuilderService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response profile(
-    		@QueryParam("budget") int budget,
+    		@QueryParam("budget") float budget,
     		@QueryParam("computerType") String computerType,
     		@QueryParam("iterations") int iterations) {
     	int timeout = 60;
     	ComputerBuild compBuild;
     	Date profileTime = new Date(System.currentTimeMillis());
-    	ComputerBuilder builder = new ComputerBuilder(budget, computerType, timeout, iterations);
+    	ComputerBuilder builder = new ComputerBuilder((int) budget, computerType, timeout, iterations);
     	compBuild = builder.getBuild();
     	System.out.println("Profiling: Completed Search in {" + (float)(System.currentTimeMillis() - profileTime.getTime())/1000 + 
     				"} with iteration count {" + iterations + "}" );

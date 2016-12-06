@@ -41,6 +41,7 @@ public class ComputerBuild {
 	public int budget;
 	public ComputerType type;
 	public int timeout; //Time out parameter that was used to get results
+	public float responseTime;	//Response timings to be displayed on the frontend
 	
 	
 	public ComputerBuild(){
@@ -137,6 +138,7 @@ public class ComputerBuild {
 		clientObj.budget = String.format("%.2f", (float) budget);
 		clientObj.computerType = type.name();
 		clientObj.totalPrice = String.format("%.2f", totalCost);
+		clientObj.responseTime = responseTime;
 		//add computer parts as components
 		if(cpu != null){
 			clientObj.components.add(cpu.shortenSpecs());
