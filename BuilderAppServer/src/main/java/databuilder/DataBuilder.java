@@ -433,7 +433,7 @@ public class DataBuilder {
 		updateMBData();
 		
 		for(int i = 0; i < diskList.size(); i++){
-			if(diskList.get(i).productID != null || !diskList.get(i).productID.equals("-")){
+			if(diskList.get(i).productID != null && !diskList.get(i).productID.equals("-")){
 				temp = VendorProductSearch.updateProductInfo(diskList.get(i));
 				if(!temp.productID.equals("-")){
 					diskList.set(i, (Disk) temp);
@@ -443,7 +443,7 @@ public class DataBuilder {
 		updateDISKData();
 		
 		for(int i = 0; i < psuList.size(); i++){
-			if(psuList.get(i).productID != null || !psuList.get(i).productID.equals("-")){
+			if(psuList.get(i).productID != null && !psuList.get(i).productID.equals("-")){
 				temp = VendorProductSearch.updateProductInfo(psuList.get(i));
 				if(!temp.productID.equals("-")){
 					psuList.set(i, (PSU) temp);

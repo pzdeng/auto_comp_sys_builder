@@ -42,7 +42,8 @@ public class CPU extends ComputerPart{
 		StringBuilder specs = new StringBuilder();
 		specs.append("Clock Speed: ").append(coreSpeed).append(AppConstants.megahertz).append(AppConstants.newLine);
 		specs.append("Core Count: ").append(coreCount).append(AppConstants.newLine);
-		specs.append("Year: ").append(year);
+		specs.append("Year: ").append(year).append(AppConstants.newLine);
+		specs.append("BenchScore (UserBenchmark): ").append(benchScore);
 		return specs.toString();
 	}
 

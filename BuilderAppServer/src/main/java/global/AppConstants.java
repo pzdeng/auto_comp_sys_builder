@@ -35,6 +35,11 @@ public class AppConstants {
 	public final static String psu		 = "PSU";
 	public final static String memory	 = "Memory";
 	public final static String disk		 = "Disk";
+	public final static String cooling	 = "Cooling";
+	public final static String compCase	 = "Case";
+	public final static int coolingPrice = 40;
+	public final static int casePrice 	 = 60;
+	
 	//Motherboard types
 	public final static String atx		 = "ATX";
 	public final static String uatx		 = "Micro ATX";

@@ -41,10 +41,7 @@ public class GPU extends ComputerPart{
 	
 	public String specBuilder(){
 		StringBuilder specs = new StringBuilder();
-		specs.append("Clock Speed: ").append(coreSpeed).append(AppConstants.megahertz).append(AppConstants.newLine);
-		specs.append("Stream Processors: ").append(coreCount).append(AppConstants.newLine);
-		specs.append("Video Memory: ").append(memSize).append(AppConstants.megabyte).append(AppConstants.newLine);
-		specs.append("Year: ").append(year);
+		specs.append("BenchScore (UserBenchmark): ").append(benchScore);
 		return specs.toString();
 	}
 	

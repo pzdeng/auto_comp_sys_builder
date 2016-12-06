@@ -51,8 +51,8 @@ public class Motherboard extends ComputerPart{
 		specs.append("Make: ").append(make).append(AppConstants.newLine);
 		specs.append("Supported CPU socket: ").append(socketType).append(AppConstants.newLine);
 		specs.append("Supported Memory Types: ").append(memType).append(AppConstants.newLine);
-		specs.append("Avaliable Memory Slots: ").append(memSlotNum);
-		specs.append("FormFactor: ").append(formFactor).append(AppConstants.separator);
+		specs.append("Avaliable Memory Slots: ").append(getMemSlots()).append(AppConstants.newLine);
+		specs.append("FormFactor: ").append(formFactor);
 		return specs.toString();
 	}
 	
@@ -171,5 +171,9 @@ public class Motherboard extends ComputerPart{
 		String base = super.toString();
 		base += " :: " + memType;
 		return base;
+	}
+	
+	public int getMemSlots(){
+		return memSlotNum > 0 ? memSlotNum : 2;
 	}
 }
