@@ -27,6 +27,7 @@ public class ComputerBuilder {
 	private int caseCost = 50;
 	private int budget;
 	private int timeout;
+	private int maxIterations;
 	private ComputerType type;
 	private ComputerBuild currBuild;
 	
@@ -37,6 +38,21 @@ public class ComputerBuilder {
 		type = ComputerType.toType(compType);
 		timeout = buildTimeOut;
 		initParts();
+		buildComp();
+	}
+	
+	/**
+	 * For profiling
+	 * @param budget
+	 * @param compType
+	 * @param buildTimeOut
+	 */
+	public ComputerBuilder(int budget, String compType, int buildTimeOut, int iterations){
+		this.budget = budget;
+		type = ComputerType.toType(compType);
+		timeout = buildTimeOut;
+		initParts();
+		maxIterations = iterations;
 		buildComp();
 	}
 	
@@ -54,6 +70,7 @@ public class ComputerBuilder {
 		currBuild.budget = budget;
 		currBuild.timeout = timeout;
 		currBuild.type = type;
+		maxIterations = -1;
 	}
 	
 	/**
@@ -668,6 +685,7 @@ public class ComputerBuilder {
 	 * @return the first build that is good
 	 */
 	private void constructValidBuild() {
+		int currIteration = 1;
 		//Give method 'buildTime' seconds to run
 		long expireTime = System.currentTimeMillis() + timeout * 1000;
 		ComputerBuild temp = new ComputerBuild();
@@ -711,6 +729,10 @@ public class ComputerBuilder {
 													//Check: Build is within budget
 													temp.computeCost();
 													if(temp.totalCost <= budget){
+														if(maxIterations > 0 && currIteration > maxIterations){
+															return;
+														}
+														currIteration++;
 														//Replace goodBuild if temp is better
 														if(compareBuilds(currBuild, temp) > 0){
 															currBuild.copyComputerBuild(temp);
@@ -733,69 +755,6 @@ public class ComputerBuilder {
 			}
 		}
 	}
-	
-	//TODO: Finish
-	/*
-	 * Get all possible combinations
-	 * @return
-
-	public int getAllPossibleCombinations(){
-		ArrayList<CPU> cpuList = parts.getCPUList();
-		ArrayList<GPU> gpuList = parts.getGPUList();
-		ArrayList<Motherboard> mbList = parts.getMBList();
-		ArrayList<Memory> memList = parts.getMEMList();
-		ArrayList<Disk> diskList = parts.getDISKList();
-		ArrayList<PSU> psuList = parts.getPSUList();
-		int numBuilds = 0;
-		int powerUsage = 0;
-		ArrayList<Memory> memTemp = new ArrayList<Memory>();
-		ArrayList<GPU> gpuTemp = new ArrayList<GPU>();
-		ArrayList<Disk> diskTemp = new ArrayList<Disk>();
-		diskTemp.add(new Disk(AppConstants.hdd));
-		for(Motherboard mb : mbList){
-			for(CPU cpu : cpuList){
-				if(mb.fitCPU(cpu)){
-					for(Memory mem : memList){
-						ArrayList<Memory> temp = new ArrayList<Memory>();
-						temp.add(mem);
-						if(mb.fitMem(temp)){
-							//TODO: consider additional memory units
-							//Assume all motherboards should accommodate at least one disk
-							//TODO: consider multiple disk setups
-							//Consider builds without discrete GPU 
-							memTemp.add(mem);
-							powerUsage = calcPower(cpu, mb, memTemp, gpuTemp, diskTemp);
-							for(PSU psu : psuList){
-								if(powerUsage < psu.powerWattage){
-									numBuilds += diskList.size();
-								}
-							}
-							//Consider builds with (one) discrete GPU
-							//TODO: consider multiGPU setups?
-							for(GPU gpu : gpuList){
-								gpuTemp.add(gpu);
-								powerUsage = calcPower(cpu, mb, memTemp, gpuTemp, diskTemp);
-								System.out.println(powerUsage);
-								for(PSU psu : psuList){
-									if(powerUsage < psu.powerWattage){
-										numBuilds += diskList.size();
-									}
-								}
-							}
-							if(numBuilds > 5000){
-								System.out.println(cpu.toString() + " | " + mb.toString() + " | " + mem.toString());
-								break;
-							}
-						}
-						memTemp.clear();
-						gpuTemp.clear();
-					}	
-				}
-			}
-		}
-		return numBuilds;
-	}
-	 */
 	
 	/**
 	 * Method to compare two builds

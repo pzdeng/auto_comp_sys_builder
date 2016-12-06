@@ -73,6 +73,42 @@ public class BuilderService {
         		.build();
     }
     
+    /**
+     * Endpoint to help conduct profiling tests
+     * @param budget
+     * @param computerType
+     * @param iterations
+     * @return
+     */
+    @Path("/profileTest")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response profile(
+    		@QueryParam("budget") int budget,
+    		@QueryParam("computerType") String computerType,
+    		@QueryParam("iterations") int iterations) {
+    	int timeout = 60;
+    	ComputerBuild compBuild;
+    	Date profileTime = new Date(System.currentTimeMillis());
+    	ComputerBuilder builder = new ComputerBuilder(budget, computerType, timeout, iterations);
+    	compBuild = builder.getBuild();
+    	System.out.println("Profiling: Completed Search in {" + (float)(System.currentTimeMillis() - profileTime.getTime())/1000 + 
+    				"} with iteration count {" + iterations + "}" );
+    	String jsonStr = "";
+    	
+    	try {
+			jsonStr = new ObjectMapper().writeValueAsString(compBuild.createClientPayload());
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	//Building response with CORS support
+        return Response.status(200).entity(jsonStr)
+        		.header("Access-Control-Allow-Origin", "*")
+    			.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+        		.build();
+    }
+    
     @Path("/inventory")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
