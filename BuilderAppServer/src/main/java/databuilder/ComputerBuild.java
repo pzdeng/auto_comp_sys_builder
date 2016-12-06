@@ -134,9 +134,9 @@ public class ComputerBuild {
 	public ClientPayload createClientPayload(){
 		ClientPayload clientObj = new ClientPayload();
 		//transform information to client object
-		clientObj.budget = budget;
+		clientObj.budget = String.format("%.2f", (float) budget);
 		clientObj.computerType = type.name();
-		clientObj.totalPrice = totalCost;
+		clientObj.totalPrice = String.format("%.2f", totalCost);
 		//add computer parts as components
 		if(cpu != null){
 			clientObj.components.add(cpu.shortenSpecs());
@@ -225,7 +225,7 @@ public class ComputerBuild {
 		ComputerPartMin part = new ComputerPartMin();
 		part.type = AppConstants.cooling + "\\" + AppConstants.compCase;
 		part.name = AppConstants.cooling + "\\" + AppConstants.compCase;
-		part.price = AppConstants.coolingPrice + AppConstants.casePrice;
+		part.price = String.format("%.2f", (float) (AppConstants.coolingPrice + AppConstants.casePrice));
 		part.specs = "Reserved for Cooling and Computer Case";
 		return part;
 	}

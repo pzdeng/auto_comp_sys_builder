@@ -41,7 +41,7 @@ public class Motherboard extends ComputerPart{
 		part.name = productName;
 		part.url = productURL;
 		part.picUrl = picURL;
-		part.price = vendorPrice;
+		part.price = String.format("%.2f", vendorPrice);
 		part.specs = specBuilder();
 		return part;
 	}

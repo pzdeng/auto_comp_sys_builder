@@ -9,9 +9,9 @@ import java.util.ArrayList;
  *
  */
 public class ClientPayload {
-	public int budget;
+	public String budget;
 	public String computerType;
-	public float totalPrice;
+	public String totalPrice;
 	public ArrayList<ComputerPartMin> components;
 	
 	public ClientPayload(){

@@ -12,6 +12,6 @@ public class ComputerPartMin {
 	public String name;
 	public String url;
 	public String picUrl;
-	public float price;
+	public String price;
 	public String specs;
 }
