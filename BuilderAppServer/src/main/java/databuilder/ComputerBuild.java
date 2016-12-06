@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import main.java.global.AppConstants;
 import main.java.objects.CPU;
 import main.java.objects.ClientPayload;
+import main.java.objects.ComputerPartMin;
 import main.java.objects.ComputerType;
 import main.java.objects.Disk;
 import main.java.objects.GPU;
@@ -32,8 +33,8 @@ public class ComputerBuild {
 	public ArrayList<Disk> diskList;	
 	public PSU psu;
 	
-	private int coolingCost = 25;
-	private int caseCost = 50;
+	private int coolingCost = AppConstants.coolingPrice;
+	private int caseCost = AppConstants.casePrice;
 	public float totalCost;
 	public float totalPower;
 	public float totalStorageCapacity;
@@ -155,6 +156,10 @@ public class ComputerBuild {
 		if(psu != null){
 			clientObj.components.add(psu.shortenSpecs());
 		}
+		if(clientObj.components.size() > 0){
+			//For Case and Cooling
+			clientObj.components.add(shortenCoolingAndCaseSpecs());
+		}
 		return clientObj;
 	}
 	
@@ -214,6 +219,15 @@ public class ComputerBuild {
 			return 0;
 		}
 		return cpu.benchScore;
+	}
+	
+	public ComputerPartMin shortenCoolingAndCaseSpecs(){
+		ComputerPartMin part = new ComputerPartMin();
+		part.type = AppConstants.cooling + "\\" + AppConstants.compCase;
+		part.name = AppConstants.cooling + "\\" + AppConstants.compCase;
+		part.price = AppConstants.coolingPrice + AppConstants.casePrice;
+		part.specs = "Reserved for Cooling and Computer Case";
+		return part;
 	}
 	
 	public void copyComputerBuild(ComputerBuild copy){
