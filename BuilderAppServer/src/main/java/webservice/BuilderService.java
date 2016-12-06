@@ -53,10 +53,10 @@ public class BuilderService {
     		compBuild = builder.getBuild();
     		AppConstants.cache.get(ComputerType.toType(computerType)).put(budget + "", compBuild);
     		System.out.println("No Cache Hit: Completed Search in {" + (float)(System.currentTimeMillis() - profileTime.getTime())/1000 + 
-    				"} with TimeOut Val {" + timeout + "}" );
+    				"} with TimeOut Val {" + timeout + "} FOR {" + computerType + ", " + budget + "}");
     	}
     	else{
-    		System.out.println("Cache Hit: ProfileTime {" + (float)(System.currentTimeMillis() - profileTime.getTime())/1000 + "}" );
+    		System.out.println("Cache Hit: ProfileTime {" + (float)(System.currentTimeMillis() - profileTime.getTime())/1000 + "} FOR {" + computerType + ", " + budget + "}" );
     	}
     	String jsonStr = "";
     	

@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Map;
 
 import org.junit.After;
@@ -91,8 +92,9 @@ public class DataBuilderTester {
     	System.out.println("Total # of PSU: " + dataBuild.getPSUList().size());
     	assertTrue(dataBuild.getDISKList().size() > 0);
     	System.out.println("Total # of Disks: " + dataBuild.getDISKList().size());
+    	Date profileTime = new Date(System.currentTimeMillis());
     	dataBuild.updateCheckProductID();
-    	System.out.println("Update Complete");
+    	System.out.println("Update Complete in " + (float)(System.currentTimeMillis() - profileTime.getTime())/1000 + " seconds");
     }
     
     //Update if productID is some valid value
@@ -111,8 +113,9 @@ public class DataBuilderTester {
     	System.out.println("Total # of PSU: " + dataBuild.getPSUList().size());
     	assertTrue(dataBuild.getDISKList().size() > 0);
     	System.out.println("Total # of Disks: " + dataBuild.getDISKList().size());
+    	Date profileTime = new Date(System.currentTimeMillis());
     	dataBuild.updateProductPricing();
-    	System.out.println("Price Fetching Update Complete");
+    	System.out.println("Price Fetching Update Complete in " + (float)(System.currentTimeMillis() - profileTime.getTime())/1000 + " seconds");
     }
     
 	@Test
