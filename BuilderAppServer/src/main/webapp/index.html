@@ -211,22 +211,28 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                                                     <table class="table table-striped table-bordered table-hover">
                                                         <thead>
                                                             <tr>
-                                                                <th>Specs</th>
-                                                                <th>Picture</th>
+                                                                <th>Product Information</th>
+                                                                <th>Picture (Link to Amazon)</th>
                                                             </tr>
                                                         </thead>
                                                         <tr ng-repeat="(key,val) in build.components">
 
                                                             <!-- <td>{{ val.picUrl }}</td> -->
                                                             <td>
+                                                            
                                                                 <div ng-repeat="(spec_key, spec_val) in val">
-                                                                    <li ng-if="spec_key == 'url' ">{{spec_key}} : <a href="{{spec_val}}">Buy link</a></li>
-                                                                    <li ng-if="spec_key == 'price' ">{{spec_key}} : {{spec_val}}</li>
-                                                                    <li ng-if="spec_key == 'name' ">{{spec_key}} : {{spec_val}}</li>
-                                                                    <li ng-if="spec_key == 'specs' ">{{spec_key}} : {{spec_val}}</li>
-                                                                    <div>
+                                                                    <div ng-if="spec_key == 'price' "><b>Price</b> : ${{spec_val}}</div>
+                                                                    <div ng-if="spec_key == 'name' "><b>Product Name</b> : {{spec_val}}</div>
+                                                                    
+                                                                    <div ng-if="spec_key == 'specs' "><b>Additional Info</b> : 
+                                                                    <div style="padding-left:50px">
+                                                                    <div style="white-space:pre-wrap">{{spec_val}}</div>
+                                                                    </div>
+                                                                    </div>
+                                                                    
+                                                                    </div>
                                                             </td>
-                                                            <td><img src="{{ val.picUrl }}" /></td>
+                                                            <td><a href="{{val.url}}" target="_blank"> <img src="{{ val.picUrl }}" /></a></td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
