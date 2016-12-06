@@ -69,14 +69,16 @@ myApp.controller('indexController', ["$scope", "$window", "$http", 'sharedProper
     $('#build-btn').on('click', function() {
         $(".build-spinner").show();
         var Status = $(this).val();
-        $http.get("api/build?budget=" + $("#budget").val() + "&computerType=" + $("#build_type").val(), []).then(function(response) {
+        $http.get("api/build?budget=" + $("#budget").val() + "&computerType=" + $("#build_type").val() + "&timeOut=" + $("#timeout").val(), []).then(function(response) {
             //$window.alert(JSON.stringify(response.data));
 
             //$scope.html(JSON.stringify(response.data));
             $scope.build = response.data;
+            $scope.build.time = $scope.build.time / 1000;
             $(".build-spinner").hide();
         }, function(response) {
             // TODO: handle the error somehow
+            $(".build-spinner").hide();
         });
     });
 

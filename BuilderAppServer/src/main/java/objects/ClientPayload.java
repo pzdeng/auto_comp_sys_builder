@@ -14,7 +14,7 @@ public class ClientPayload {
 	public String totalPrice;
 	public ArrayList<ComputerPartMin> components;
 	public float responseTime;	//Response time to the client
-	
+	public long time;
 	public ClientPayload(){
 		components = new ArrayList<ComputerPartMin>();
 	}

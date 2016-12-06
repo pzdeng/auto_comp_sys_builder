@@ -26,7 +26,7 @@
 
 <body>
     <div id="wrapper" ng-controller="indexController">
-        <!-- <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+        <!-- <nav class="navbar navbar-default navbar-cls-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -111,7 +111,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                 <div class="row">
                     <div class="col-md-12">
                         <h2>AutoBuilder Dashboard</h2>
-                        <h5>Welcome! Love to see you back. </h5>
+                        <h5>Welcome!</h5>
                     </div>
                 </div>
                 <!-- /. ROW  -->
@@ -202,15 +202,22 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                             <div>
                                 <div class="text-box">
                                     <p class="main-text"> Build </p>
+                                    <p class="text-muted"> compute time: {{build.time}} seconds</p>
                                     <div class="form-group">
-                                        <select id="build_type" class="form-control">
+                                        <select id="build_type" class="form-control" style="margin: auto; width:30%;">
                                           <option>GAMING</option>
                                           <option>WORKSTATION</option>
                                           <option>SERVER</option>
                                           <option>GENERAL</option>
                                       </select>
                                     </div>
-                                    <div class="form-group input-group">
+                                    <div class="form-group input-group" style="margin: auto; width:30%;">
+                                        <span class="input-group-addon" style="width:10%;">timeout</span>
+                                        <input id="timeout" type="text" class="form-control" value="5" style="text-align: center;">
+                                        <span class="input-group-addon" style="width:10%;">seconds</span>
+                                    </div>
+
+                                    <div class="form-group input-group" style="margin: auto;">
                                         <span class="input-group-addon">$</span>
                                         <input id="budget" type="text" class="form-control">
                                         <span class="form-group input-group-btn">
@@ -243,50 +250,52 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
 
                                                             <!-- <td>{{ val.picUrl }}</td> -->
                                                             <td>
-                                                            
+
                                                                 <div ng-repeat="(spec_key, spec_val) in val">
-                                                                    <div ng-if="spec_key == 'price' "><b>Price</b> : ${{spec_val}}</div>
-                                                                    <div ng-if="spec_key == 'name' "><b>Product Name</b> : {{spec_val}}</div>
-                                                                    
-                                                                    <div ng-if="spec_key == 'specs' "><b>Additional Info</b> : 
-                                                                    <div style="padding-left:50px">
-                                                                    <div style="white-space:pre-wrap">{{spec_val}}</div>
+                                                                    <div ng-if="spec_key=='price'"><b>Price</b> : ${{spec_val}}</div>
+                                                                    <div ng-if="spec_key=='name'"><b>Product Name</b> : {{spec_val}}</div>
+
+                                                                    <div ng-if="spec_key=='specs'"><b>Additional Info</b> :
+                                                                        <div style="padding-left:50px">
+                                                                            <div style="white-space:pre-wrap">{{spec_val}}</div>
+                                                                        </div>
                                                                     </div>
-                                                                    </div>
-                                                                    
-                                                                    </div>
+
+                                                                </div>
                                                             </td>
-                                                            <td><a href="{{val.url}}" target="_blank"> <img src="{{ val.picUrl }}" /></a></td>
+                                                            <td>
+                                                                <a href="{{val.url}}" target="_blank"> <img src="{{ val.picUrl }}" /></a>
+                                                            </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
-                                                    </div>
-                                                    </div>
                                                 </div>
-                                                <!-- <table border="1">
+                                            </div>
+                                        </div>
+                                        <!-- <table border="1">
 
                                         </table> -->
 
-                                                <!-- <p ng-if="item.comp">{{item.components}}</p> -->
+                                        <!-- <p ng-if="item.comp">{{item.components}}</p> -->
 
-                                                <span class="text-muted color-bottom-txt"><i class="fa fa-edit"></i>
+                                        <span class="text-muted color-bottom-txt"><i class="fa fa-edit"></i>
                                </span>
                                     </p>
-                                    </div>
-                                    </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
 
-                            <!-- <div class="col-md-3 col-sm-12 col-xs-12">
+                    <!-- <div class="col-md-3 col-sm-12 col-xs-12">
                         <div class="panel back-dash">
                             <i class="fa fa-dashboard fa-3x"></i><strong> &nbsp; SPEED</strong>
                             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing sit ametsit amet elit ftr. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
                         </div>
 
                     </div>
-                    <div class="col-md-3 col-sm-12 col-xs-12 ">
-                        <div class="panel ">
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="panel">
                             <div class="main-temp-back">
                                 <div class="panel-body">
                                     <div class="row">
@@ -314,24 +323,24 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                 </div> -->
 
 
-                        </div>
-                        <!-- /. PAGE INNER  -->
-                    </div>
-                    <!-- /. PAGE WRAPPER  -->
                 </div>
-                <!-- /. WRAPPER  -->
-                <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-                <!-- JQUERY SCRIPTS -->
-                <script src="assets/js/jquery-1.10.2.js"></script>
-                <!-- BOOTSTRAP SCRIPTS -->
-                <script src="assets/js/bootstrap.min.js"></script>
-                <!-- METISMENU SCRIPTS -->
-                <script src="assets/js/jquery.metisMenu.js"></script>
-                <!-- MORRIS CHART SCRIPTS -->
-                <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
-                <!-- <script src="assets/js/morris/morris.js"></script> -->
-                <!-- CUSTOM SCRIPTS -->
-                <script src="assets/js/custom.js"></script>
+                <!-- /. PAGE INNER  -->
+            </div>
+            <!-- /. PAGE WRAPPER  -->
+        </div>
+        <!-- /. WRAPPER  -->
+        <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+        <!-- JQUERY SCRIPTS -->
+        <script src="assets/js/jquery-1.10.2.js"></script>
+        <!-- BOOTSTRAP SCRIPTS -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <!-- METISMENU SCRIPTS -->
+        <script src="assets/js/jquery.metisMenu.js"></script>
+        <!-- MORRIS CHART SCRIPTS -->
+        <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+        <!-- <script src="assets/js/morris/morris.js"></script> -->
+        <!-- CUSTOM SCRIPTS -->
+        <script src="assets/js/custom.js"></script>
 
 
 </body>

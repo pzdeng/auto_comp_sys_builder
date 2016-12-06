@@ -26,7 +26,7 @@ import main.java.objects.ComputerType;
 
 @Path("/")
 public class BuilderService {
-    
+
     @Path("/build")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -44,8 +44,8 @@ public class BuilderService {
     		AppConstants.cache.put(ComputerType.toType(computerType), new HashMap<String, ComputerBuild>());
     	}
     	ComputerBuild compBuild = AppConstants.cache.get(ComputerType.toType(computerType)).get(budget + "");
-    	
-    	//Execute the query if 
+
+    	//Execute the query if
     		//Build doesn't exist in cache OR
     		//Build in cache was executed for a small time interval, we can replace with better results with more time
     	if(compBuild == null || compBuild.timeout < timeout){
@@ -53,18 +53,20 @@ public class BuilderService {
     		compBuild = builder.getBuild();
     		compBuild.responseTime = (float) ((System.currentTimeMillis() - profileTime.getTime())/1000);
     		AppConstants.cache.get(ComputerType.toType(computerType)).put(budget + "", compBuild);
-    		System.out.println("No Cache Hit: Completed Search in {" + compBuild.responseTime + 
+    		System.out.println("No Cache Hit: Completed Search in {" + compBuild.responseTime +
     				"} with TimeOut Val {" + timeout + "} FOR {" + computerType + ", " + budget + "}");
     	}
     	else{
     		compBuild.responseTime = (float) ((System.currentTimeMillis() - profileTime.getTime())/1000);
     		System.out.println("Cache Hit: ProfileTime {" + compBuild.responseTime + "} FOR {" + computerType + ", " + budget + "}" );
-    		
+
     	}
     	String jsonStr = "";
-    	
+
     	try {
-			jsonStr = new ObjectMapper().writeValueAsString(compBuild.createClientPayload());
+        ClientPayload cp = compBuild.createClientPayload();
+        cp.time = (System.currentTimeMillis() - profileTime.getTime());
+			jsonStr = new ObjectMapper().writeValueAsString(cp);
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -75,7 +77,7 @@ public class BuilderService {
     			.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
         		.build();
     }
-    
+
     /**
      * Endpoint to help conduct profiling tests
      * @param budget
@@ -95,10 +97,10 @@ public class BuilderService {
     	Date profileTime = new Date(System.currentTimeMillis());
     	ComputerBuilder builder = new ComputerBuilder((int) budget, computerType, timeout, iterations);
     	compBuild = builder.getBuild();
-    	System.out.println("Profiling: Completed Search in {" + (float)(System.currentTimeMillis() - profileTime.getTime())/1000 + 
+    	System.out.println("Profiling: Completed Search in {" + (float)(System.currentTimeMillis() - profileTime.getTime())/1000 +
     				"} with iteration count {" + iterations + "}" );
     	String jsonStr = "";
-    	
+
     	try {
 			jsonStr = new ObjectMapper().writeValueAsString(compBuild.createClientPayload());
 		} catch (JsonProcessingException e) {
@@ -111,7 +113,7 @@ public class BuilderService {
     			.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
         		.build();
     }
-    
+
     @Path("/inventory")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -130,7 +132,7 @@ public class BuilderService {
     			.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
         		.build();
     }
-    
+
     @Path("/cacheRefresh")
     @GET
     @Produces(MediaType.TEXT_PLAIN)
@@ -144,7 +146,7 @@ public class BuilderService {
     			.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
         		.build();
     }
-    
+
     @Path("/productPriceUpdate")
     @GET
     @Produces(MediaType.TEXT_PLAIN)
