@@ -432,6 +432,16 @@ public class DataBuilder {
 		}
 		updateMBData();
 		
+		for(int i = 0; i < memList.size(); i++){
+			if(memList.get(i).productID == null && memList.get(i).productID.isEmpty()){
+				temp = VendorProductSearch.updateProductInfo(diskList.get(i));
+				if(!temp.productID.equals("-")){
+					memList.set(i, (Memory) temp);
+				}
+			}
+		}
+		updateMEMData();
+		
 		for(int i = 0; i < diskList.size(); i++){
 			if(diskList.get(i).productID != null && !diskList.get(i).productID.equals("-")){
 				temp = VendorProductSearch.updateProductInfo(diskList.get(i));
