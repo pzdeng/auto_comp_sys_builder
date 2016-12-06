@@ -46,7 +46,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="text-center">
-                        <img src="assets/img/find_user.png" class="user-image img-responsive" />
+                        <img src="assets/img/spinner.gif" class="user-image img-responsive" />
                     </li>
 
 
@@ -117,10 +117,10 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                 <!-- /. ROW  -->
                 <hr />
                 <div class="row">
-                    <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="col-md-2 col-sm-6 col-xs-6">
                         <div class="panel panel-back noti-box">
                             <span class="icon-box bg-color-red set-icon">
-                    <i class="fa fa-envelope-o"></i>
+                    <i class="fa fa-gears"></i>
                 </span>
                             <div class="text-box">
                                 <p class="main-text">{{inventory.CPU}}</p>
@@ -129,10 +129,10 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="col-md-2 col-sm-6 col-xs-6">
                         <div class="panel panel-back noti-box">
                             <span class="icon-box bg-color-green set-icon">
-                    <i class="fa fa-bars"></i>
+                    <i class="fa fa-desktop"></i>
                 </span>
                             <div class="text-box">
                                 <p class="main-text">{{inventory.GPU}}</p>
@@ -141,7 +141,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="col-md-2 col-sm-6 col-xs-6">
                         <div class="panel panel-back noti-box">
                             <span class="icon-box bg-color-blue set-icon">
                     <i class="fa fa-bell-o"></i>
@@ -149,19 +149,43 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                             <div class="text-box">
                                 <p class="main-text">{{inventory.Motherboard}}</p>
                                 <img id="build-spinner" class="inv-spinner" ng-src="assets/img/hourglass.svg">
-                                <p class="text-muted">Motherboards</p>
+                                <p class="text-muted">Motherboard</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="col-md-2 col-sm-6 col-xs-6">
                         <div class="panel panel-back noti-box">
                             <span class="icon-box bg-color-brown set-icon">
-                    <i class="fa fa-rocket"></i>
+                    <i class="fa fa-microchip"></i>
                 </span>
                             <div class="text-box">
                                 <p class="main-text">{{inventory.Memory}}</p>
                                 <img id="build-spinner" class="inv-spinner" ng-src="assets/img/hourglass.svg">
                                 <p class="text-muted">Memory</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-6 col-xs-6">
+                        <div class="panel panel-back noti-box">
+                            <span class="icon-box bg-color-purple set-icon">
+                    <i class="fa fa-power-off"></i>
+                </span>
+                            <div class="text-box">
+                                <p class="main-text">{{inventory.PSU}}</p>
+                                <img id="build-spinner" class="inv-spinner" ng-src="assets/img/hourglass.svg">
+                                <p class="text-muted">PSU</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-6 col-xs-6">
+                        <div class="panel panel-back noti-box">
+                            <span class="icon-box bg-color-orange set-icon">
+                    <i class="fa fa-server"></i>
+                </span>
+                            <div class="text-box">
+                                <p class="main-text">{{inventory.Disk}}</p>
+                                <img id="build-spinner" class="inv-spinner" ng-src="assets/img/hourglass.svg">
+                                <p class="text-muted">Disk</p>
                             </div>
                         </div>
                     </div>
