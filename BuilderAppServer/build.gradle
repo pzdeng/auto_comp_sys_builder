@@ -86,7 +86,7 @@ cargo "org.codehaus.cargo:cargo-core-uberjar:$cargoVersion",
    compile 'org.webjars:angular-ui-utils:0.1.0'
    compile 'org.webjars:angular-ui-bootstrap:0.9.0'
 }
-war.archiveName = "ROOT"
+war.archiveName = "AutoCompBuilder.war"
 cargo {
     containerId = 'tomcat7x'
     port = 8080
