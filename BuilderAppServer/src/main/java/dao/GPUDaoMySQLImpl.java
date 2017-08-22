@@ -33,12 +33,12 @@ public class GPUDaoMySQLImpl implements GPUDao{
 	private final String validSelectCount = "select count(*) from gpu where productURL != '-' and vendorPrice > 10 order by vendorPrice desc";
 	
 	@Override
-	public ArrayList<GPU> getAllGPU() throws SQLException{
+	public ArrayList<GPU> getAll() throws SQLException{
 		return selectCore(generalSelect);
 	}	
 	
 	@Override
-	public ArrayList<GPU> getAllValidGPU() throws SQLException {
+	public ArrayList<GPU> getAllValid() throws SQLException {
 		return selectCore(validSelect);
 	}
 	
@@ -97,7 +97,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 	}	
 
 	@Override
-	public void insertGPU(GPU gpu) throws SQLException{
+	public void insert(GPU gpu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -141,7 +141,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 
 
 	@Override
-	public void updateFullGPU(GPU gpu) throws SQLException{
+	public void updateFull(GPU gpu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -184,7 +184,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 	}
 	
 	@Override
-	public void updateVendorInfoGPU(GPU gpu) throws SQLException{
+	public void updateVendorInfo(GPU gpu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -213,7 +213,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 	}
 
 	@Override
-	public void deleteGPU(GPU gpu) throws SQLException{
+	public void delete(GPU gpu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -236,7 +236,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 	}
 	
 	@Override
-	public GPU getGPUByName(String productName) throws SQLException {
+	public GPU getByName(String productName) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		GPU temp = null;
@@ -291,7 +291,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 
 
 	@Override
-	public void insertGPU(List<GPU> gpuList) throws SQLException {
+	public void insertList(List<GPU> gpuList) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -340,7 +340,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 
 
 	@Override
-	public void updateVendorInfoGPU(List<GPU> gpuList) throws SQLException {
+	public void updateVendorInfoList(List<GPU> gpuList) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		int count = 0;
@@ -379,7 +379,7 @@ public class GPUDaoMySQLImpl implements GPUDao{
 	}
 
 	@Override
-	public int getValidGPUCount() throws SQLException {
+	public int getValidCount() throws SQLException {
 		int count = 0;
 		Connection dbConn = null;
 		Statement stmt = null;

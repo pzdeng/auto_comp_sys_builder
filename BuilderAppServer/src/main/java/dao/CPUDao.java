@@ -6,14 +6,14 @@ import java.util.List;
 import main.java.objects.CPU;
 
 public interface CPUDao {
-   public ArrayList<CPU> getAllCPU() throws SQLException;
-   public ArrayList<CPU> getAllValidCPU() throws SQLException;
-   public void insertCPU(CPU cpu) throws SQLException;
-   public void insertCPU(List<CPU> cpuList) throws SQLException;
-   public void updateFullCPU(CPU cpu) throws SQLException;
-   public void updateVendorInfoCPU(CPU cpu) throws SQLException;
-   public void updateVendorInfoCPU(List<CPU> cpuList) throws SQLException;
-   public CPU getCPUByName(String productName) throws SQLException;
-   public void deleteCPU(CPU cpu) throws SQLException;
-   public int getValidCPUCount() throws SQLException;
+   public ArrayList<CPU> getAll() throws SQLException;
+   public ArrayList<CPU> getAllValid() throws SQLException;
+   public void insert(CPU cpu) throws SQLException;
+   public void insertList(List<CPU> cpuList) throws SQLException;
+   public void updateFull(CPU cpu) throws SQLException;
+   public void updateVendorInfo(CPU cpu) throws SQLException;
+   public void updateVendorInfoList(List<CPU> cpuList) throws SQLException;
+   public CPU getByName(String productName) throws SQLException;
+   public void delete(CPU cpu) throws SQLException;
+   public int getValidCount() throws SQLException;
 }

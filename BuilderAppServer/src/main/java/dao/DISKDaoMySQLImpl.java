@@ -35,12 +35,12 @@ public class DISKDaoMySQLImpl implements DISKDao{
 	private final String validSelectCount = "select count(*) from disk where productURL != '-' and vendorPrice > 10 order by vendorPrice asc";
 		
 	@Override
-	public ArrayList<Disk> getAllDisk() throws SQLException{
+	public ArrayList<Disk> getAll() throws SQLException{
 		return selectCore(generalSelect);
 	}	
 	
 	@Override
-	public ArrayList<Disk> getAllValidDisk() throws SQLException {
+	public ArrayList<Disk> getAllValid() throws SQLException {
 		return selectCore(validSelect);
 	}
 	
@@ -100,7 +100,7 @@ public class DISKDaoMySQLImpl implements DISKDao{
 	}	
 
 	@Override
-	public void insertDisk(Disk disk) throws SQLException{
+	public void insert(Disk disk) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -145,7 +145,7 @@ public class DISKDaoMySQLImpl implements DISKDao{
 
 
 	@Override
-	public void updateFullDisk(Disk disk) throws SQLException{
+	public void updateFull(Disk disk) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -189,7 +189,7 @@ public class DISKDaoMySQLImpl implements DISKDao{
 	}
 	
 	@Override
-	public void updateVendorInfoDisk(Disk disk) throws SQLException{
+	public void updateVendorInfo(Disk disk) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -218,7 +218,7 @@ public class DISKDaoMySQLImpl implements DISKDao{
 	}
 
 	@Override
-	public void deleteDisk(Disk disk) throws SQLException{
+	public void delete(Disk disk) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -241,7 +241,7 @@ public class DISKDaoMySQLImpl implements DISKDao{
 	}
 	
 	@Override
-	public Disk getDiskByName(String productName) throws SQLException {
+	public Disk getByName(String productName) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		Disk temp = null;
@@ -297,7 +297,7 @@ public class DISKDaoMySQLImpl implements DISKDao{
 
 
 	@Override
-	public void insertDisk(List<Disk> diskList) throws SQLException {
+	public void insertList(List<Disk> diskList) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		int count = 0;
@@ -355,7 +355,7 @@ public class DISKDaoMySQLImpl implements DISKDao{
 
 
 	@Override
-	public void updateVendorInfoDisk(List<Disk> diskList) throws SQLException {
+	public void updateVendorInfoList(List<Disk> diskList) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		int count = 0;
@@ -395,7 +395,7 @@ public class DISKDaoMySQLImpl implements DISKDao{
 	}
 
 	@Override
-	public int getValidDiskCount() throws SQLException {
+	public int getValidCount() throws SQLException {
 		int count = 0;
 		Connection dbConn = null;
 		Statement stmt = null;

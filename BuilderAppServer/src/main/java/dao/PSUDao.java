@@ -6,14 +6,14 @@ import java.util.List;
 import main.java.objects.PSU;
 
 public interface PSUDao {
-	public ArrayList<PSU> getAllPSU() throws SQLException;
-	public ArrayList<PSU> getAllValidPSU() throws SQLException;
-	public void insertPSU(PSU psu) throws SQLException;
-	public void insertPSU(List<PSU> psuList) throws SQLException;
-	public void updateFullPSU(PSU psu) throws SQLException;
-	public void updateVendorInfoPSU(PSU psu) throws SQLException;
-	public void updateVendorInfoPSU(List<PSU> psuList) throws SQLException;
-	public PSU getPSUByName(String productName) throws SQLException;
-	public void deletePSU(PSU psu) throws SQLException;
-	public int getValidPSUCount() throws SQLException;
+	public ArrayList<PSU> getAll() throws SQLException;
+	public ArrayList<PSU> getAllValid() throws SQLException;
+	public void insert(PSU psu) throws SQLException;
+	public void insertList(List<PSU> psuList) throws SQLException;
+	public void updateFull(PSU psu) throws SQLException;
+	public void updateVendorInfo(PSU psu) throws SQLException;
+	public void updateVendorInfoList(List<PSU> psuList) throws SQLException;
+	public PSU getByName(String productName) throws SQLException;
+	public void delete(PSU psu) throws SQLException;
+	public int getValidCount() throws SQLException;
 }

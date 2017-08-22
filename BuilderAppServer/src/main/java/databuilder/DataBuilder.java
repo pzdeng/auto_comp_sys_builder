@@ -82,12 +82,12 @@ public class DataBuilder {
 		DISKDao diskDao = new DISKDaoMySQLImpl();
 		
 		try {
-			cpuList = cpuDao.getAllCPU();
-			gpuList = gpuDao.getAllGPU();
-			mbList = mbDao.getAllMotherboard();
-			memList = memDao.getAllMemory();
-			psuList = psuDao.getAllPSU();
-			diskList = diskDao.getAllDisk();
+			cpuList = cpuDao.getAll();
+			gpuList = gpuDao.getAll();
+			mbList = mbDao.getAll();
+			memList = memDao.getAll();
+			psuList = psuDao.getAll();
+			diskList = diskDao.getAll();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -121,13 +121,13 @@ public class DataBuilder {
 		addProductListings(productFileHDD, productFileCatHDD);
 		addProductListings(productFileSSD, productFileCatSSD);
 		try{
-			diskDao.insertDisk(diskList);
+			diskDao.insertList(diskList);
 		} catch(Exception e){
 			System.err.println("Records cannot be inserted into disk table; Error: " + e);
 		}
 		//Refresh disk list, to get id and time stamps
 		try{
-			diskList = diskDao.getAllDisk();
+			diskList = diskDao.getAll();
 		} catch(Exception e){
 			System.err.println("Error getting disks, Error: " + e);
 		}
@@ -139,13 +139,13 @@ public class DataBuilder {
 		String productFileCat = "HARDWAREINFO_PSU";
 		addProductListings(productFile, productFileCat);
 		try{
-			psuDao.insertPSU(psuList);
+			psuDao.insertList(psuList);
 		} catch(Exception e){
 			System.err.println("Records cannot be inserted into psu table; Error: " + e);
 		}
 		//Refresh psu list, to get id and time stamps
 		try{
-			psuList = psuDao.getAllPSU();
+			psuList = psuDao.getAll();
 		} catch(Exception e){
 			System.err.println("Error getting psus, Error: " + e);
 		}
@@ -157,13 +157,13 @@ public class DataBuilder {
 		String productFileCat = "HARDWAREINFO_MEM";
 		addProductListings(productFile, productFileCat);
 		try{
-			memDao.insertMemory(memList);
+			memDao.insertList(memList);
 		} catch(Exception e){
 			System.err.println("Records cannot be inserted into memory table; Error: " + e);
 		}
 		//Refresh memory list, to get id and time stamps
 		try{
-			memList = memDao.getAllMemory();
+			memList = memDao.getAll();
 		} catch(Exception e){
 			System.err.println("Error getting memory units, Error: " + e);
 		}
@@ -175,13 +175,13 @@ public class DataBuilder {
 		String productFileCat = "HARDWAREINFO_MB";
 		addProductListings(productFile, productFileCat);
 		try{
-			mbDao.insertMotherboard(mbList);
+			mbDao.insertList(mbList);
 		} catch(Exception e){
 			System.err.println("Records cannot be inserted into motherboard table; Error: " + e);
 		}
 		//Refresh motherboard list, to get id and time stamps
 		try{
-			mbList = mbDao.getAllMotherboard();
+			mbList = mbDao.getAll();
 		} catch(Exception e){
 			System.err.println("Error getting motherboards', Error: " + e);
 		}
@@ -196,14 +196,14 @@ public class DataBuilder {
 		addProductListings(productFile, productFileCat);
 		autoMapHardwareSpecs(techPoweredUpCPUFile, techPoweredUpCPUFileCat);
 		try{
-			gpuDao.insertGPU(gpuList);
+			gpuDao.insertList(gpuList);
 		} catch(Exception e){
 			System.err.println("Records cannot be inserted into gpu table; Error: " + e);
 		}
 
 		//Refresh GPUlist, to get id and time stamps
 		try{
-			gpuList = gpuDao.getAllGPU();
+			gpuList = gpuDao.getAll();
 		} catch(Exception e){
 			System.err.println("Error getting GPU's, Error: " + e);
 		}		
@@ -228,14 +228,14 @@ public class DataBuilder {
 		addProductListings(productFile, productFileCat);
 		autoMapHardwareSpecs(techPoweredUpCPUFile, techPoweredUpCPUFileCat);
 		try{
-			cpuDao.insertCPU(cpuList);
+			cpuDao.insertList(cpuList);
 		} catch(Exception e){
 			System.err.println("Records cannot be inserted into cpu table; Error: " + e);
 		}
 
 		//Refresh CPUlist, to get id and time stamps
 		try{
-			cpuList = cpuDao.getAllCPU();
+			cpuList = cpuDao.getAll();
 		} catch(Exception e){
 			System.err.println("Error getting CPU's, Error: " + e);
 		}	
@@ -254,7 +254,7 @@ public class DataBuilder {
 			}
 		}
 		try{
-			cpuDao.updateVendorInfoCPU(dirtyCPU);			
+			cpuDao.updateVendorInfoList(dirtyCPU);			
 		}
 		catch(Exception e){
 			System.err.println("Something bad happened during record updates, handle me... " + e);
@@ -271,7 +271,7 @@ public class DataBuilder {
 			}
 		}
 		try{
-			gpuDao.updateVendorInfoGPU(dirtyGPU);
+			gpuDao.updateVendorInfoList(dirtyGPU);
 		}
 		catch(Exception e){
 			System.err.println("Something bad happened during gpu record updates, handle me... " + e);
@@ -288,7 +288,7 @@ public class DataBuilder {
 			}
 		}
 		try{
-			mbDao.updateVendorInfoMotherboard(dirtyMB);
+			mbDao.updateVendorInfoList(dirtyMB);
 		}
 		catch(Exception e){
 			System.err.println("Something bad happened during motherboard record updates, handle me... " + e);
@@ -305,7 +305,7 @@ public class DataBuilder {
 			}
 		}
 		try{
-			memDao.updateVendorInfoMemory(dirtyMEM);
+			memDao.updateVendorInfoList(dirtyMEM);
 		}
 		catch(Exception e){
 			System.err.println("Something bad happened during memory record updates, handle me... " + e);
@@ -322,7 +322,7 @@ public class DataBuilder {
 			}
 		}
 		try{
-			memDao.updateVendorInfoDisk(dirtyDISK);
+			memDao.updateVendorInfoList(dirtyDISK);
 		}
 		catch(Exception e){
 			System.err.println("Something bad happened during disk record updates, handle me... " + e);
@@ -339,7 +339,7 @@ public class DataBuilder {
 			}
 		}
 		try{
-			memDao.updateVendorInfoPSU(dirtyPSU);
+			memDao.updateVendorInfoList(dirtyPSU);
 		}
 		catch(Exception e){
 			System.err.println("Something bad happened during psu record updates, handle me... " + e);
@@ -1059,7 +1059,7 @@ public class DataBuilder {
 	public ArrayList<Disk> getDISKList() {
 		if(diskList == null || diskList.isEmpty()){
 			try {
-				diskList = new DISKDaoMySQLImpl().getAllDisk();
+				diskList = new DISKDaoMySQLImpl().getAll();
 			} catch (SQLException e) {
 				//do nothing for now
 			}

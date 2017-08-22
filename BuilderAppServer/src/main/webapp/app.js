@@ -93,6 +93,19 @@ myApp.controller('indexController', ["$scope", "$window", "$http", 'sharedProper
     }, function(response) {
         // TODO: handle the error somehow
     });
+    
+    $scope.getParts = function() {
+        $(".build-spinner").show();
+        $http.get("api/partList?partType=" + $scope.partName, []).then(function(response) {
+            //$window.alert(JSON.stringify(response.data));
+            //$scope.html(JSON.stringify(response.data));
+            $scope.partList = response.data;
+            $(".build-spinner").hide();
+        }, function(response) {
+            // TODO: handle the error somehow
+            $(".build-spinner").hide();
+        });
+    };
 }]);
 // myApp.controller('inventoryController', ["$scope", "$window", "$http", 'sharedProperties', function($scope, $window, $http, sharedProperties) {
 //     $scope.loading = true;

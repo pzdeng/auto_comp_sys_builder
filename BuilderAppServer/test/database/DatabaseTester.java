@@ -66,18 +66,18 @@ public class DatabaseTester {
 		try {
 			CPU temp, temp2;
 			//Check insert
-			cpuDao.insertCPU(aCPU);
-			temp = cpuDao.getCPUByName(aCPU.productName);
+			cpuDao.insert(aCPU);
+			temp = cpuDao.getByName(aCPU.productName);
 			assertEquals(aCPU.productName, temp.productName);			
 			//Check update
 			temp.picURL = temp.picURL + "2";
-			cpuDao.updateFullCPU(temp);
-			temp2 = cpuDao.getCPUByName(temp.productName);
+			cpuDao.updateFull(temp);
+			temp2 = cpuDao.getByName(temp.productName);
 			assertEquals(temp.picURL, temp2.picURL);
 			temp2 = null;
 			//Check delete
-			cpuDao.deleteCPU(temp);
-			temp = cpuDao.getCPUByName(aCPU.productName);
+			cpuDao.delete(temp);
+			temp = cpuDao.getByName(aCPU.productName);
 			assertEquals(temp, null);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -99,18 +99,18 @@ public class DatabaseTester {
 		try {
 			GPU temp, temp2;
 			//Check insert
-			gpuDao.insertGPU(aGPU);
-			temp = gpuDao.getGPUByName(aGPU.productName);
+			gpuDao.insert(aGPU);
+			temp = gpuDao.getByName(aGPU.productName);
 			assertEquals(aGPU.productName, temp.productName);			
 			//Check update
 			temp.picURL = temp.picURL + "2";
-			gpuDao.updateFullGPU(temp);
-			temp2 = gpuDao.getGPUByName(temp.productName);
+			gpuDao.updateFull(temp);
+			temp2 = gpuDao.getByName(temp.productName);
 			assertEquals(temp.picURL, temp2.picURL);
 			temp2 = null;
 			//Check delete
-			gpuDao.deleteGPU(temp);
-			temp = gpuDao.getGPUByName(aGPU.productName);
+			gpuDao.delete(temp);
+			temp = gpuDao.getByName(aGPU.productName);
 			assertEquals(temp, null);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

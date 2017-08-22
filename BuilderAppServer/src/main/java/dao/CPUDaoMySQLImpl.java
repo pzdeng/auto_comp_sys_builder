@@ -32,12 +32,12 @@ public class CPUDaoMySQLImpl implements CPUDao{
 	private final String validSelectCount = "select count(*) from cpu where productURL != '-' and benchscore > 0 and socketType is not null and vendorPrice > 10 order by vendorPrice desc";
 	
 	@Override
-	public ArrayList<CPU> getAllCPU() throws SQLException{
+	public ArrayList<CPU> getAll() throws SQLException{
 		return selectCore(generalSelect);
 	}	
 	
 	@Override
-	public ArrayList<CPU> getAllValidCPU() throws SQLException {
+	public ArrayList<CPU> getAllValid() throws SQLException {
 		return selectCore(validSelect);
 	}
 	
@@ -98,7 +98,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 	
 
 	@Override
-	public void insertCPU(CPU cpu) throws SQLException{
+	public void insert(CPU cpu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -143,7 +143,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 
 
 	@Override
-	public void updateFullCPU(CPU cpu) throws SQLException{
+	public void updateFull(CPU cpu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -187,7 +187,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 	}
 	
 	@Override
-	public void updateVendorInfoCPU(CPU cpu) throws SQLException{
+	public void updateVendorInfo(CPU cpu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -216,7 +216,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 	}
 
 	@Override
-	public void deleteCPU(CPU cpu) throws SQLException{
+	public void delete(CPU cpu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -239,7 +239,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 	}
 	
 	@Override
-	public CPU getCPUByName(String productName) throws SQLException {
+	public CPU getByName(String productName) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		CPU temp = null;
@@ -295,7 +295,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 
 
 	@Override
-	public void insertCPU(List<CPU> cpuList) throws SQLException {
+	public void insertList(List<CPU> cpuList) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		int count = 0;
@@ -353,7 +353,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 
 
 	@Override
-	public void updateVendorInfoCPU(List<CPU> cpuList) throws SQLException {
+	public void updateVendorInfoList(List<CPU> cpuList) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		int count = 0;
@@ -393,7 +393,7 @@ public class CPUDaoMySQLImpl implements CPUDao{
 	}
 
 	@Override
-	public int getValidCPUCount() throws SQLException {
+	public int getValidCount() throws SQLException {
 		int count = 0;
 		Connection dbConn = null;
 		Statement stmt = null;

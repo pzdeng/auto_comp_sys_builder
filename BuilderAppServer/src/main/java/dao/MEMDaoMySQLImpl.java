@@ -33,12 +33,12 @@ public class MEMDaoMySQLImpl implements MEMDao{
 	private final String validSelectCount = "select count(*) from memory where productURL != '-' and vendorPrice > 10 order by vendorPrice desc";
 	
 	@Override
-	public ArrayList<Memory> getAllMemory() throws SQLException{
+	public ArrayList<Memory> getAll() throws SQLException{
 		return selectCore(generalSelect);
 	}
 	
 	@Override
-	public ArrayList<Memory> getAllValidMemory() throws SQLException {
+	public ArrayList<Memory> getAllValid() throws SQLException {
 		return selectCore(validSelect);
 	}
 	
@@ -96,7 +96,7 @@ public class MEMDaoMySQLImpl implements MEMDao{
 	
 
 	@Override
-	public void insertMemory(Memory mem) throws SQLException{
+	public void insert(Memory mem) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -138,7 +138,7 @@ public class MEMDaoMySQLImpl implements MEMDao{
 
 
 	@Override
-	public void updateFullMemory(Memory mem) throws SQLException{
+	public void updateFull(Memory mem) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -179,7 +179,7 @@ public class MEMDaoMySQLImpl implements MEMDao{
 	}
 	
 	@Override
-	public void updateVendorInfoMemory(Memory mem) throws SQLException{
+	public void updateVendorInfo(Memory mem) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -208,7 +208,7 @@ public class MEMDaoMySQLImpl implements MEMDao{
 	}
 
 	@Override
-	public void deleteMemory(Memory mem) throws SQLException{
+	public void delete(Memory mem) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -231,7 +231,7 @@ public class MEMDaoMySQLImpl implements MEMDao{
 	}
 	
 	@Override
-	public Memory getMemoryByName(String productName) throws SQLException {
+	public Memory getByName(String productName) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		Memory temp = null;
@@ -284,7 +284,7 @@ public class MEMDaoMySQLImpl implements MEMDao{
 
 
 	@Override
-	public void insertMemory(List<Memory> memList) throws SQLException {
+	public void insertList(List<Memory> memList) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		int count = 0;
@@ -339,7 +339,7 @@ public class MEMDaoMySQLImpl implements MEMDao{
 
 
 	@Override
-	public void updateVendorInfoMemory(List<Memory> memList) throws SQLException {
+	public void updateVendorInfoList(List<Memory> memList) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		int count = 0;
@@ -379,7 +379,7 @@ public class MEMDaoMySQLImpl implements MEMDao{
 	}
 
 	@Override
-	public int getValidMemoryCount() throws SQLException {
+	public int getValidCount() throws SQLException {
 		int count = 0;
 		Connection dbConn = null;
 		Statement stmt = null;

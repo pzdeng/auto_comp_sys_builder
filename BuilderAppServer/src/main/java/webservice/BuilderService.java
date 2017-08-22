@@ -132,6 +132,26 @@ public class BuilderService {
     			.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
         		.build();
     }
+    
+    @Path("/partList")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getInventory(
+    		@QueryParam("partType") String partType) {
+    	String jsonStr = "";
+    	DataInitializer dBuilder = DataInitializer.getInstance();
+    	try {
+			jsonStr = new ObjectMapper().writeValueAsString(dBuilder.getPartList(partType));
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	//Building response with CORS support
+        return Response.status(200).entity(jsonStr)
+        		.header("Access-Control-Allow-Origin", "*")
+    			.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+        		.build();
+    }
 
     @Path("/cacheRefresh")
     @GET

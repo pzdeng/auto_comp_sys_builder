@@ -33,12 +33,12 @@ public class MBDaoMySQLImpl implements MBDao{
 	private final String validSelectCount = "select count(*) from motherboard where productURL != '-' and vendorPrice > 10 order by vendorPrice desc";
 	
 	@Override
-	public ArrayList<Motherboard> getAllMotherboard() throws SQLException{
+	public ArrayList<Motherboard> getAll() throws SQLException{
 		return selectCore(generalSelect);
 	}	
 	
 	@Override
-	public ArrayList<Motherboard> getAllValidMotherboard() throws SQLException {
+	public ArrayList<Motherboard> getAllValid() throws SQLException {
 		return selectCore(validSelect);
 	}
 	
@@ -97,7 +97,7 @@ public class MBDaoMySQLImpl implements MBDao{
 	}	
 
 	@Override
-	public void insertMotherboard(Motherboard mb) throws SQLException{
+	public void insert(Motherboard mb) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -141,7 +141,7 @@ public class MBDaoMySQLImpl implements MBDao{
 
 
 	@Override
-	public void updateFullMotherboard(Motherboard mb) throws SQLException{
+	public void updateFull(Motherboard mb) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -184,7 +184,7 @@ public class MBDaoMySQLImpl implements MBDao{
 	}
 	
 	@Override
-	public void updateVendorInfoMotherboard(Motherboard mb) throws SQLException{
+	public void updateVendorInfo(Motherboard mb) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -212,7 +212,7 @@ public class MBDaoMySQLImpl implements MBDao{
 	}
 
 	@Override
-	public void deleteMotherboard(Motherboard mb) throws SQLException{
+	public void delete(Motherboard mb) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -235,7 +235,7 @@ public class MBDaoMySQLImpl implements MBDao{
 	}
 	
 	@Override
-	public Motherboard getMotherboardByName(String productName) throws SQLException {
+	public Motherboard getByName(String productName) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		Motherboard temp = null;
@@ -290,7 +290,7 @@ public class MBDaoMySQLImpl implements MBDao{
 
 
 	@Override
-	public void insertMotherboard(List<Motherboard> mbList) throws SQLException {
+	public void insertList(List<Motherboard> mbList) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		int count = 0;
@@ -349,7 +349,7 @@ public class MBDaoMySQLImpl implements MBDao{
 
 
 	@Override
-	public void updateVendorInfoMotherboard(List<Motherboard> mbList) throws SQLException {
+	public void updateVendorInfoList(List<Motherboard> mbList) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		int count = 0;
@@ -389,7 +389,7 @@ public class MBDaoMySQLImpl implements MBDao{
 	}
 
 	@Override
-	public int getValidMotherboardCount() throws SQLException {
+	public int getValidCount() throws SQLException {
 		int count = 0;
 		Connection dbConn = null;
 		Statement stmt = null;

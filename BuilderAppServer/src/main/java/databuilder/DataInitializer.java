@@ -21,7 +21,9 @@ import main.java.dao.PSUDao;
 import main.java.dao.PSUDaoMySQLImpl;
 import main.java.global.AppConstants;
 import main.java.objects.CPU;
+import main.java.objects.ClientPayload;
 import main.java.objects.ComputerPart;
+import main.java.objects.ComputerType;
 import main.java.objects.Disk;
 import main.java.objects.GPU;
 import main.java.objects.Memory;
@@ -79,12 +81,12 @@ public class DataInitializer {
 		DISKDao diskDao = new DISKDaoMySQLImpl();
 		
 		try {
-			cpuList = cpuDao.getAllValidCPU();
-			gpuList = gpuDao.getAllValidGPU();
-			mbList = mbDao.getAllValidMotherboard();
-			memList = memDao.getAllValidMemory();
-			psuList = psuDao.getAllValidPSU();
-			diskList = diskDao.getAllValidDisk();
+			cpuList = cpuDao.getAllValid();
+			gpuList = gpuDao.getAllValid();
+			mbList = mbDao.getAllValid();
+			memList = memDao.getAllValid();
+			psuList = psuDao.getAllValid();
+			diskList = diskDao.getAllValid();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -113,7 +115,7 @@ public class DataInitializer {
 	public ArrayList<Disk> getDISKList() {
 		if(diskList == null || diskList.isEmpty()){
 			try {
-				diskList = new DISKDaoMySQLImpl().getAllDisk();
+				diskList = new DISKDaoMySQLImpl().getAll();
 			} catch (SQLException e) {
 				//do nothing for now
 			}
@@ -139,16 +141,98 @@ public class DataInitializer {
 		PSUDao psuDao = new PSUDaoMySQLImpl();
 		DISKDao diskDao = new DISKDaoMySQLImpl();
 		try {
-			stats.put(AppConstants.cpu, cpuDao.getValidCPUCount() + "");
-			stats.put(AppConstants.gpu, gpuDao.getValidGPUCount() + "");
-			stats.put(AppConstants.mobo, mbDao.getValidMotherboardCount() + "");
-			stats.put(AppConstants.memory, memDao.getValidMemoryCount() + "");
-			stats.put(AppConstants.psu, psuDao.getValidPSUCount() + "");
-			stats.put(AppConstants.disk, diskDao.getValidDiskCount() + "");
+			stats.put(AppConstants.cpu, cpuDao.getValidCount() + "");
+			stats.put(AppConstants.gpu, gpuDao.getValidCount() + "");
+			stats.put(AppConstants.mobo, mbDao.getValidCount() + "");
+			stats.put(AppConstants.memory, memDao.getValidCount() + "");
+			stats.put(AppConstants.psu, psuDao.getValidCount() + "");
+			stats.put(AppConstants.disk, diskDao.getValidCount() + "");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return stats;
+	}
+
+	public ClientPayload getPartList(String partType) {
+		ClientPayload clientObj = new ClientPayload();
+		switch(partType){
+			case "CPU":	
+				CPUDao cpuDao = new CPUDaoMySQLImpl();
+				try {
+					ArrayList<CPU> cpuList = cpuDao.getAllValid();
+					for(CPU aCPU : cpuList){
+						clientObj.components.add(aCPU.shortenSpecs());
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case "GPU":	
+				GPUDao gpuDao = new GPUDaoMySQLImpl();
+				try {
+					ArrayList<GPU> gpuList = gpuDao.getAllValid();
+					for(GPU aGPU : gpuList){
+						clientObj.components.add(aGPU.shortenSpecs());
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case "MB":	
+				MBDao mbDao = new MBDaoMySQLImpl();
+				try {
+					ArrayList<Motherboard> mbList = mbDao.getAllValid();
+					for(Motherboard aMB : mbList){
+						clientObj.components.add(aMB.shortenSpecs());
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case "MEM":	
+				MEMDao memDao = new MEMDaoMySQLImpl();
+				try {
+					ArrayList<Memory> memList = memDao.getAllValid();
+					for(Memory aMEM : memList){
+						clientObj.components.add(aMEM.shortenSpecs());
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case "PSU":	
+				PSUDao psuDao = new PSUDaoMySQLImpl();
+				try {
+					ArrayList<PSU> psuList = psuDao.getAllValid();
+					for(PSU aPSU : psuList){
+						clientObj.components.add(aPSU.shortenSpecs());
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case "DISK":	
+				DISKDao diskDao = new DISKDaoMySQLImpl();
+				try {
+					ArrayList<Disk> diskList = diskDao.getAllValid();
+					for(Disk aDisk : diskList){
+						clientObj.components.add(aDisk.shortenSpecs());
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			default:
+				//TODO: Do we need to handle this case?
+				break;
+		}
+		return clientObj;
 	}
 }

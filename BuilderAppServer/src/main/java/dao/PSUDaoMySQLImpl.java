@@ -33,12 +33,12 @@ public class PSUDaoMySQLImpl implements PSUDao{
 	private final String validSelectCount = "select count(*) from psu where productURL != '-' and vendorPrice > 10 order by vendorPrice desc";
 	
 	@Override
-	public ArrayList<PSU> getAllPSU() throws SQLException{
+	public ArrayList<PSU> getAll() throws SQLException{
 		return selectCore(generalSelect);
 	}
 	
 	@Override
-	public ArrayList<PSU> getAllValidPSU() throws SQLException {
+	public ArrayList<PSU> getAllValid() throws SQLException {
 		return selectCore(validSelect);
 	}
 	
@@ -94,7 +94,7 @@ public class PSUDaoMySQLImpl implements PSUDao{
 	
 
 	@Override
-	public void insertPSU(PSU psu) throws SQLException{
+	public void insert(PSU psu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -134,7 +134,7 @@ public class PSUDaoMySQLImpl implements PSUDao{
 
 
 	@Override
-	public void updateFullPSU(PSU psu) throws SQLException{
+	public void updateFull(PSU psu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -173,7 +173,7 @@ public class PSUDaoMySQLImpl implements PSUDao{
 	}
 	
 	@Override
-	public void updateVendorInfoPSU(PSU psu) throws SQLException{
+	public void updateVendorInfo(PSU psu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -202,7 +202,7 @@ public class PSUDaoMySQLImpl implements PSUDao{
 	}
 
 	@Override
-	public void deletePSU(PSU psu) throws SQLException{
+	public void delete(PSU psu) throws SQLException{
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		
@@ -225,7 +225,7 @@ public class PSUDaoMySQLImpl implements PSUDao{
 	}
 	
 	@Override
-	public PSU getPSUByName(String productName) throws SQLException {
+	public PSU getByName(String productName) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		PSU temp = null;
@@ -276,7 +276,7 @@ public class PSUDaoMySQLImpl implements PSUDao{
 
 
 	@Override
-	public void insertPSU(List<PSU> psuList) throws SQLException {
+	public void insertList(List<PSU> psuList) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		int count = 0;
@@ -329,7 +329,7 @@ public class PSUDaoMySQLImpl implements PSUDao{
 
 
 	@Override
-	public void updateVendorInfoPSU(List<PSU> psuList) throws SQLException {
+	public void updateVendorInfoList(List<PSU> psuList) throws SQLException {
 		Connection dbConn = null;
 		PreparedStatement stmt = null;
 		int count = 0;
@@ -369,7 +369,7 @@ public class PSUDaoMySQLImpl implements PSUDao{
 	}
 
 	@Override
-	public int getValidPSUCount() throws SQLException {
+	public int getValidCount() throws SQLException {
 		int count = 0;
 		Connection dbConn = null;
 		Statement stmt = null;

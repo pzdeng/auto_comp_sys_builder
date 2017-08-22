@@ -33,7 +33,7 @@ public class VendorProductSearchTester {
 		String name = "Core i7-7700";
 		CPU temp = null;
 		try {
-			temp = cpuDao.getCPUByName(name);
+			temp = cpuDao.getByName(name);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -48,7 +48,7 @@ public class VendorProductSearchTester {
 		String name = "Zotac GTX 1080 8GB Founders Edition";
 		GPU temp = null;
 		try {
-			temp = gpuDao.getGPUByName(name);
+			temp = gpuDao.getByName(name);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,7 +64,7 @@ public class VendorProductSearchTester {
 		String name = "ASUS M2N-SLI";
 		Motherboard temp = null;
 		try {
-			temp = mbDao.getMotherboardByName(name);
+			temp = mbDao.getByName(name);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -80,7 +80,7 @@ public class VendorProductSearchTester {
 		String name = "Corsair Vengeance Black/Blue LED 32GB DDR4-3000 CL15 kit";
 		Memory temp = null;
 		try {
-			temp = memDao.getMemoryByName(name);
+			temp = memDao.getByName(name);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to budget computer auto Builder</title>
+    <title>Automatic Computer Builder</title>
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
@@ -46,18 +46,19 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="text-center">
+					    <!-- TODO: Change GIF Image -->
                         <img src="assets/img/spinner.gif" class="user-image img-responsive" />
                     </li>
 
 
                     <li>
-                        <a class="active-menu" href="index.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                        <a class="active-menu" href="index.html"><i class="fa fa-dashboard fa-3x"></i> Build Board</a>
+                    </li>
+                    <li>
+                        <a href="table.html"><i class="fa fa-qrcode fa-3x"></i> Computer Parts Inventory</a>
                     </li>
                     <!-- <li>
                         <a href="ui.html"><i class="fa fa-desktop fa-3x"></i> UI Elements</a>
-                    </li>
-                    <li>
-                        <a href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> Tabs & Panels</a>
                     </li>
                     <li>
                         <a href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
@@ -110,8 +111,8 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>AutoBuilder Dashboard</h2>
-                        <h5>Welcome!</h5>
+                        <h2>Automatic Computer Builder</h2>
+                        <h5>Welcome! Build your computer here!</h5>
                     </div>
                 </div>
                 <!-- /. ROW  -->
@@ -202,7 +203,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                             <div>
                                 <div class="text-box">
                                     <p class="main-text"> Build </p>
-                                    <p class="text-muted"> compute time: {{build.time}} seconds</p>
+                                    <p class="text-muted"> Build Time: {{build.time}} seconds</p>
                                     <div class="form-group">
                                         <select id="build_type" class="form-control" style="margin: auto; width:30%;">
                                           <option>GAMING</option>
@@ -213,7 +214,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                                     </div>
                                     <div class="form-group input-group" style="margin: auto; width:30%;">
                                         <span class="input-group-addon" style="width:10%;">timeout</span>
-                                        <input id="timeout" type="text" class="form-control" value="5" style="text-align: center;">
+                                        <input id="timeout" type="text" class="form-control" value=5 style="text-align: center;">
                                         <span class="input-group-addon" style="width:10%;">seconds</span>
                                     </div>
 

@@ -7,14 +7,14 @@ import java.util.List;
 import main.java.objects.Motherboard;
 
 public interface MBDao {
-	public ArrayList<Motherboard> getAllMotherboard() throws SQLException;
-	public ArrayList<Motherboard> getAllValidMotherboard() throws SQLException;
-	public void insertMotherboard(Motherboard mb) throws SQLException;
-	public void insertMotherboard(List<Motherboard> mbList) throws SQLException;
-	public void updateFullMotherboard(Motherboard mb) throws SQLException;
-	public void updateVendorInfoMotherboard(Motherboard mb) throws SQLException;
-	public void updateVendorInfoMotherboard(List<Motherboard> mbList) throws SQLException;
-	public Motherboard getMotherboardByName(String productName) throws SQLException;
-	public void deleteMotherboard(Motherboard mb) throws SQLException;
-	public int getValidMotherboardCount() throws SQLException;
+	public ArrayList<Motherboard> getAll() throws SQLException;
+	public ArrayList<Motherboard> getAllValid() throws SQLException;
+	public void insert(Motherboard mb) throws SQLException;
+	public void insertList(List<Motherboard> mbList) throws SQLException;
+	public void updateFull(Motherboard mb) throws SQLException;
+	public void updateVendorInfo(Motherboard mb) throws SQLException;
+	public void updateVendorInfoList(List<Motherboard> mbList) throws SQLException;
+	public Motherboard getByName(String productName) throws SQLException;
+	public void delete(Motherboard mb) throws SQLException;
+	public int getValidCount() throws SQLException;
 }
